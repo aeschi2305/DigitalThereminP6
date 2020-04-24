@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="175" />
+   <irq preferredWidth="34" />
+   <export preferredWidth="232" />
+   <name preferredWidth="244" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Project,Project/Terasic Technologies Inc.,Library" />
+ <window width="2418" height="1318" x="-2409" y="-9" />
+ <generation synthesis="VHDL" />
+</preferences>
