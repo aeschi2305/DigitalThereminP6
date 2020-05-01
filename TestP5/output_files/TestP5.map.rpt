@@ -1,5 +1,5 @@
 Analysis & Synthesis report for TestP5
-Tue Apr 28 14:50:47 2020
+Wed Apr 29 14:36:25 2020
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
 
 
@@ -127,7 +127,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Apr 28 14:50:46 2020           ;
+; Analysis & Synthesis Status     ; Successful - Wed Apr 29 14:36:25 2020           ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Standard Edition ;
 ; Revision Name                   ; TestP5                                          ;
 ; Top-level Entity Name           ; TestP5                                          ;
@@ -252,63 +252,63 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                 ;
-+-------------------------------------------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path                                        ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                      ; Library ;
-+-------------------------------------------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------+---------+
-; TestP5/synthesis/TestP5.vhd                                             ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/TestP5.vhd                                             ; TestP5  ;
-; TestP5/synthesis/submodules/altera_reset_controller.v                   ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_reset_controller.v                   ; TestP5  ;
-; TestP5/synthesis/submodules/altera_reset_synchronizer.v                 ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_reset_synchronizer.v                 ; TestP5  ;
-; TestP5/synthesis/submodules/TestP5_pll_0.v                              ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_pll_0.v                              ; TestP5  ;
-; TestP5/synthesis/submodules/altera_avalon_dc_fifo.v                     ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_avalon_dc_fifo.v                     ; TestP5  ;
-; TestP5/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v         ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v         ; TestP5  ;
-; TestP5/synthesis/submodules/altera_std_synchronizer_nocut.v             ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_std_synchronizer_nocut.v             ; TestP5  ;
-; TestP5/synthesis/submodules/TestP5_audio_pll_0.v                        ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0.v                        ; TestP5  ;
-; TestP5/synthesis/submodules/altera_up_avalon_reset_from_locked_signal.v ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_avalon_reset_from_locked_signal.v ; TestP5  ;
-; TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v              ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v              ; TestP5  ;
-; TestP5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v ; TestP5  ;
-; TestP5/synthesis/submodules/altera_up_slow_clock_generator.v            ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_slow_clock_generator.v            ; TestP5  ;
-; TestP5/synthesis/submodules/altera_up_av_config_auto_init.v             ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init.v             ; TestP5  ;
-; TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v  ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v  ; TestP5  ;
-; TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_audio.v    ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_audio.v    ; TestP5  ;
-; TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7180.v  ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7180.v  ; TestP5  ;
-; TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v           ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v           ; TestP5  ;
-; TestP5/synthesis/submodules/altera_up_audio_out_serializer.v            ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_audio_out_serializer.v            ; TestP5  ;
-; TestP5/synthesis/submodules/altera_up_clock_edge.v                      ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_clock_edge.v                      ; TestP5  ;
-; TestP5/synthesis/submodules/altera_up_sync_fifo.v                       ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v                       ; TestP5  ;
-; TestP5/synthesis/submodules/TestP5_audio.v                              ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio.v                              ; TestP5  ;
-; TestP5/synthesis/submodules/Tone_generation_top.vhd                     ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd                     ; TestP5  ;
-; TestP5/synthesis/submodules/cic_codec.vhd                               ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/cic_codec.vhd                               ; TestP5  ;
-; TestP5/synthesis/submodules/cordic_control.vhd                          ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/cordic_control.vhd                          ; TestP5  ;
-; TestP5/synthesis/submodules/cordic_pipelined.vhd                        ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/cordic_pipelined.vhd                        ; TestP5  ;
-; TestP5/synthesis/submodules/freq_mes.vhd                                ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/freq_mes.vhd                                ; TestP5  ;
-; TestP5/synthesis/submodules/mixer.vhd                                   ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/mixer.vhd                                   ; TestP5  ;
-; scfifo.tdf                                                              ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/scfifo.tdf                                      ;         ;
-; a_regfifo.inc                                                           ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_regfifo.inc                                   ;         ;
-; a_dpfifo.inc                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_dpfifo.inc                                    ;         ;
-; a_i2fifo.inc                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_i2fifo.inc                                    ;         ;
-; a_fffifo.inc                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_fffifo.inc                                    ;         ;
-; a_f2fifo.inc                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_f2fifo.inc                                    ;         ;
-; aglobal171.inc                                                          ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/aglobal171.inc                                  ;         ;
-; db/scfifo_7ba1.tdf                                                      ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/TestP5/db/scfifo_7ba1.tdf                                                      ;         ;
-; db/a_dpfifo_q2a1.tdf                                                    ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/TestP5/db/a_dpfifo_q2a1.tdf                                                    ;         ;
-; db/altsyncram_n3i1.tdf                                                  ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/TestP5/db/altsyncram_n3i1.tdf                                                  ;         ;
-; db/cmpr_6l8.tdf                                                         ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/TestP5/db/cmpr_6l8.tdf                                                         ;         ;
-; db/cntr_h2b.tdf                                                         ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/TestP5/db/cntr_h2b.tdf                                                         ;         ;
-; db/cntr_u27.tdf                                                         ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/TestP5/db/cntr_u27.tdf                                                         ;         ;
-; db/cntr_i2b.tdf                                                         ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/TestP5/db/cntr_i2b.tdf                                                         ;         ;
-; altera_pll.v                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/altera_pll.v                                    ;         ;
-; altsyncram.tdf                                                          ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/altsyncram.tdf                                  ;         ;
-; stratix_ram_block.inc                                                   ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/stratix_ram_block.inc                           ;         ;
-; lpm_mux.inc                                                             ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/lpm_mux.inc                                     ;         ;
-; lpm_decode.inc                                                          ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/lpm_decode.inc                                  ;         ;
-; a_rdenreg.inc                                                           ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_rdenreg.inc                                   ;         ;
-; altrom.inc                                                              ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/altrom.inc                                      ;         ;
-; altram.inc                                                              ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/altram.inc                                      ;         ;
-; altdpram.inc                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/altdpram.inc                                    ;         ;
-; db/altsyncram_a6j1.tdf                                                  ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/TestP5/db/altsyncram_a6j1.tdf                                                  ;         ;
-+-------------------------------------------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                   ;
++-------------------------------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                                        ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                        ; Library ;
++-------------------------------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+---------+
+; TestP5/synthesis/TestP5.vhd                                             ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/TestP5.vhd                                             ; TestP5  ;
+; TestP5/synthesis/submodules/altera_reset_controller.v                   ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_reset_controller.v                   ; TestP5  ;
+; TestP5/synthesis/submodules/altera_reset_synchronizer.v                 ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_reset_synchronizer.v                 ; TestP5  ;
+; TestP5/synthesis/submodules/TestP5_pll_0.v                              ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_pll_0.v                              ; TestP5  ;
+; TestP5/synthesis/submodules/altera_avalon_dc_fifo.v                     ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_avalon_dc_fifo.v                     ; TestP5  ;
+; TestP5/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v         ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v         ; TestP5  ;
+; TestP5/synthesis/submodules/altera_std_synchronizer_nocut.v             ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_std_synchronizer_nocut.v             ; TestP5  ;
+; TestP5/synthesis/submodules/TestP5_audio_pll_0.v                        ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0.v                        ; TestP5  ;
+; TestP5/synthesis/submodules/altera_up_avalon_reset_from_locked_signal.v ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_avalon_reset_from_locked_signal.v ; TestP5  ;
+; TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v              ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v              ; TestP5  ;
+; TestP5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v ; TestP5  ;
+; TestP5/synthesis/submodules/altera_up_slow_clock_generator.v            ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_slow_clock_generator.v            ; TestP5  ;
+; TestP5/synthesis/submodules/altera_up_av_config_auto_init.v             ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init.v             ; TestP5  ;
+; TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v  ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v  ; TestP5  ;
+; TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_audio.v    ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_audio.v    ; TestP5  ;
+; TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7180.v  ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7180.v  ; TestP5  ;
+; TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v           ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v           ; TestP5  ;
+; TestP5/synthesis/submodules/altera_up_audio_out_serializer.v            ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_audio_out_serializer.v            ; TestP5  ;
+; TestP5/synthesis/submodules/altera_up_clock_edge.v                      ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_clock_edge.v                      ; TestP5  ;
+; TestP5/synthesis/submodules/altera_up_sync_fifo.v                       ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v                       ; TestP5  ;
+; TestP5/synthesis/submodules/TestP5_audio.v                              ; yes             ; User Verilog HDL File        ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio.v                              ; TestP5  ;
+; TestP5/synthesis/submodules/Tone_generation_top.vhd                     ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd                     ; TestP5  ;
+; TestP5/synthesis/submodules/cic_codec.vhd                               ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/cic_codec.vhd                               ; TestP5  ;
+; TestP5/synthesis/submodules/cordic_control.vhd                          ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/cordic_control.vhd                          ; TestP5  ;
+; TestP5/synthesis/submodules/cordic_pipelined.vhd                        ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/cordic_pipelined.vhd                        ; TestP5  ;
+; TestP5/synthesis/submodules/freq_mes.vhd                                ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/freq_mes.vhd                                ; TestP5  ;
+; TestP5/synthesis/submodules/mixer.vhd                                   ; yes             ; User VHDL File               ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/mixer.vhd                                   ; TestP5  ;
+; scfifo.tdf                                                              ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/scfifo.tdf                                                                        ;         ;
+; a_regfifo.inc                                                           ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_regfifo.inc                                                                     ;         ;
+; a_dpfifo.inc                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_dpfifo.inc                                                                      ;         ;
+; a_i2fifo.inc                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_i2fifo.inc                                                                      ;         ;
+; a_fffifo.inc                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_fffifo.inc                                                                      ;         ;
+; a_f2fifo.inc                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_f2fifo.inc                                                                      ;         ;
+; aglobal171.inc                                                          ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/aglobal171.inc                                                                    ;         ;
+; db/scfifo_7ba1.tdf                                                      ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/scfifo_7ba1.tdf                                                      ;         ;
+; db/a_dpfifo_q2a1.tdf                                                    ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/a_dpfifo_q2a1.tdf                                                    ;         ;
+; db/altsyncram_n3i1.tdf                                                  ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/altsyncram_n3i1.tdf                                                  ;         ;
+; db/cmpr_6l8.tdf                                                         ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/cmpr_6l8.tdf                                                         ;         ;
+; db/cntr_h2b.tdf                                                         ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/cntr_h2b.tdf                                                         ;         ;
+; db/cntr_u27.tdf                                                         ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/cntr_u27.tdf                                                         ;         ;
+; db/cntr_i2b.tdf                                                         ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/cntr_i2b.tdf                                                         ;         ;
+; altera_pll.v                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/altera_pll.v                                                                      ;         ;
+; altsyncram.tdf                                                          ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/altsyncram.tdf                                                                    ;         ;
+; stratix_ram_block.inc                                                   ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                             ;         ;
+; lpm_mux.inc                                                             ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/lpm_mux.inc                                                                       ;         ;
+; lpm_decode.inc                                                          ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/lpm_decode.inc                                                                    ;         ;
+; a_rdenreg.inc                                                           ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/a_rdenreg.inc                                                                     ;         ;
+; altrom.inc                                                              ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/altrom.inc                                                                        ;         ;
+; altram.inc                                                              ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/altram.inc                                                                        ;         ;
+; altdpram.inc                                                            ; yes             ; Megafunction                 ; c:/intelfpga/17.1/quartus/libraries/megafunctions/altdpram.inc                                                                      ;         ;
+; db/altsyncram_a6j1.tdf                                                  ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/altsyncram_a6j1.tdf                                                  ;         ;
++-------------------------------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------------------------------------------------------+
@@ -2439,7 +2439,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:05     ;
 +----------------+--------------+
 
 
@@ -2449,108 +2449,108 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
-    Info: Processing started: Tue Apr 28 14:50:18 2020
+    Info: Processing started: Wed Apr 29 14:35:54 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off TestP5 -c TestP5
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file testp5/synthesis/testp5.vhd
-    Info (12022): Found design unit 1: TestP5-rtl File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/TestP5.vhd Line: 22
-    Info (12023): Found entity 1: TestP5 File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/TestP5.vhd Line: 9
+    Info (12022): Found design unit 1: TestP5-rtl File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/TestP5.vhd Line: 22
+    Info (12023): Found entity 1: TestP5 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/TestP5.vhd Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_reset_controller.v
-    Info (12023): Found entity 1: altera_reset_controller File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_reset_controller.v Line: 42
+    Info (12023): Found entity 1: altera_reset_controller File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_reset_controller.v Line: 42
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_reset_synchronizer.v
-    Info (12023): Found entity 1: altera_reset_synchronizer File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_reset_synchronizer.v Line: 24
+    Info (12023): Found entity 1: altera_reset_synchronizer File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_reset_synchronizer.v Line: 24
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/testp5_pll_0.v
-    Info (12023): Found entity 1: TestP5_pll_0 File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_pll_0.v Line: 2
+    Info (12023): Found entity 1: TestP5_pll_0 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_pll_0.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_avalon_dc_fifo.v
-    Info (12023): Found entity 1: altera_avalon_dc_fifo File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_avalon_dc_fifo.v Line: 13
+    Info (12023): Found entity 1: altera_avalon_dc_fifo File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_avalon_dc_fifo.v Line: 13
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v
-    Info (12023): Found entity 1: altera_dcfifo_synchronizer_bundle File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v Line: 8
+    Info (12023): Found entity 1: altera_dcfifo_synchronizer_bundle File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v Line: 8
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_std_synchronizer_nocut.v
-    Info (12023): Found entity 1: altera_std_synchronizer_nocut File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_std_synchronizer_nocut.v Line: 44
+    Info (12023): Found entity 1: altera_std_synchronizer_nocut File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_std_synchronizer_nocut.v Line: 44
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/testp5_audio_pll_0.v
-    Info (12023): Found entity 1: TestP5_audio_pll_0 File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0.v Line: 9
+    Info (12023): Found entity 1: TestP5_audio_pll_0 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_avalon_reset_from_locked_signal.v
-    Info (12023): Found entity 1: altera_up_avalon_reset_from_locked_signal File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_avalon_reset_from_locked_signal.v Line: 28
+    Info (12023): Found entity 1: altera_up_avalon_reset_from_locked_signal File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_avalon_reset_from_locked_signal.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/testp5_audio_pll_0_audio_pll.v
-    Info (12023): Found entity 1: TestP5_audio_pll_0_audio_pll File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v Line: 2
+    Info (12023): Found entity 1: TestP5_audio_pll_0_audio_pll File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v
-    Info (12023): Found entity 1: altera_up_av_config_serial_bus_controller File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v Line: 29
+    Info (12023): Found entity 1: altera_up_av_config_serial_bus_controller File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_slow_clock_generator.v
-    Info (12023): Found entity 1: altera_up_slow_clock_generator File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_slow_clock_generator.v Line: 34
-Warning (10238): Verilog Module Declaration warning at altera_up_av_config_auto_init.v(51): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "altera_up_av_config_auto_init" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init.v Line: 51
+    Info (12023): Found entity 1: altera_up_slow_clock_generator File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_slow_clock_generator.v Line: 34
+Warning (10238): Verilog Module Declaration warning at altera_up_av_config_auto_init.v(51): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "altera_up_av_config_auto_init" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init.v Line: 51
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init.v Line: 29
+    Info (12023): Found entity 1: altera_up_av_config_auto_init File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init.v Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_dc2.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_dc2 File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_dc2.v Line: 28
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_dc2 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_dc2.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_d5m.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_d5m File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_d5m.v Line: 28
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_d5m File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_d5m.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_lcm.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_lcm File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_lcm.v Line: 28
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_lcm File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_lcm.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_ltm.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_ltm File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ltm.v Line: 28
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_ltm File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ltm.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_de1_soc File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v Line: 29
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_de1_soc File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_ob_de2_115.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_de2_115 File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de2_115.v Line: 29
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_de2_115 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de2_115.v Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_ob_de2i_150.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_de2i_150 File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de2i_150.v Line: 29
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_de2i_150 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de2i_150.v Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_ob_de10_standard.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_de10_standard File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de10_standard.v Line: 29
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_de10_standard File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de10_standard.v Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_ob_audio.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_audio File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_audio.v Line: 28
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_audio File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_audio.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7180.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_adv7180 File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7180.v Line: 28
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_adv7180 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7180.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7181.v
-    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_adv7181 File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7181.v Line: 28
+    Info (12023): Found entity 1: altera_up_av_config_auto_init_ob_adv7181 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7181.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/testp5_audio_and_video_config_0.v
-    Info (12023): Found entity 1: TestP5_audio_and_video_config_0 File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v Line: 35
+    Info (12023): Found entity 1: TestP5_audio_and_video_config_0 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v Line: 35
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_audio_bit_counter.v
-    Info (12023): Found entity 1: altera_up_audio_bit_counter File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_audio_bit_counter.v Line: 30
+    Info (12023): Found entity 1: altera_up_audio_bit_counter File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_audio_bit_counter.v Line: 30
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_audio_in_deserializer.v
-    Info (12023): Found entity 1: altera_up_audio_in_deserializer File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_audio_in_deserializer.v Line: 28
+    Info (12023): Found entity 1: altera_up_audio_in_deserializer File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_audio_in_deserializer.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_audio_out_serializer.v
-    Info (12023): Found entity 1: altera_up_audio_out_serializer File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_audio_out_serializer.v Line: 28
+    Info (12023): Found entity 1: altera_up_audio_out_serializer File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_audio_out_serializer.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_clock_edge.v
-    Info (12023): Found entity 1: altera_up_clock_edge File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_clock_edge.v Line: 29
-Warning (10275): Verilog HDL Module Instantiation warning at altera_up_sync_fifo.v(138): ignored dangling comma in List of Port Connections File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v Line: 138
+    Info (12023): Found entity 1: altera_up_clock_edge File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_clock_edge.v Line: 29
+Warning (10275): Verilog HDL Module Instantiation warning at altera_up_sync_fifo.v(138): ignored dangling comma in List of Port Connections File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v Line: 138
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/altera_up_sync_fifo.v
-    Info (12023): Found entity 1: altera_up_sync_fifo File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v Line: 28
+    Info (12023): Found entity 1: altera_up_sync_fifo File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file testp5/synthesis/submodules/testp5_audio.v
-    Info (12023): Found entity 1: TestP5_audio File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio.v Line: 30
+    Info (12023): Found entity 1: TestP5_audio File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio.v Line: 30
 Info (12021): Found 2 design units, including 1 entities, in source file testp5/synthesis/submodules/tone_generation_top.vhd
-    Info (12022): Found design unit 1: Tone_generation_top-struct File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 38
-    Info (12023): Found entity 1: Tone_generation_top File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 15
+    Info (12022): Found design unit 1: Tone_generation_top-struct File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 38
+    Info (12023): Found entity 1: Tone_generation_top File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 15
 Info (12021): Found 2 design units, including 1 entities, in source file testp5/synthesis/submodules/cic_codec.vhd
-    Info (12022): Found design unit 1: cic-rtl File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/cic_codec.vhd Line: 29
-    Info (12023): Found entity 1: cic File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/cic_codec.vhd Line: 14
+    Info (12022): Found design unit 1: cic-rtl File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/cic_codec.vhd Line: 29
+    Info (12023): Found entity 1: cic File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/cic_codec.vhd Line: 14
 Info (12021): Found 2 design units, including 1 entities, in source file testp5/synthesis/submodules/cordic_control.vhd
-    Info (12022): Found design unit 1: cordic_Control-behavioral File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/cordic_control.vhd Line: 33
-    Info (12023): Found entity 1: cordic_Control File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/cordic_control.vhd Line: 19
+    Info (12022): Found design unit 1: cordic_Control-behavioral File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/cordic_control.vhd Line: 33
+    Info (12023): Found entity 1: cordic_Control File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/cordic_control.vhd Line: 19
 Info (12021): Found 2 design units, including 1 entities, in source file testp5/synthesis/submodules/cordic_pipelined.vhd
-    Info (12022): Found design unit 1: cordic_pipelined-behavioral File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/cordic_pipelined.vhd Line: 28
-    Info (12023): Found entity 1: cordic_pipelined File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/cordic_pipelined.vhd Line: 15
+    Info (12022): Found design unit 1: cordic_pipelined-behavioral File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/cordic_pipelined.vhd Line: 28
+    Info (12023): Found entity 1: cordic_pipelined File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/cordic_pipelined.vhd Line: 15
 Info (12021): Found 2 design units, including 1 entities, in source file testp5/synthesis/submodules/freq_mes.vhd
-    Info (12022): Found design unit 1: freq_mes-rtl File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/freq_mes.vhd Line: 33
-    Info (12023): Found entity 1: freq_mes File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/freq_mes.vhd Line: 13
+    Info (12022): Found design unit 1: freq_mes-rtl File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/freq_mes.vhd Line: 33
+    Info (12023): Found entity 1: freq_mes File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/freq_mes.vhd Line: 13
 Info (12021): Found 2 design units, including 1 entities, in source file testp5/synthesis/submodules/mixer.vhd
-    Info (12022): Found design unit 1: mixer-rtl File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/mixer.vhd Line: 27
-    Info (12023): Found entity 1: mixer File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/mixer.vhd Line: 14
+    Info (12022): Found design unit 1: mixer-rtl File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/mixer.vhd Line: 27
+    Info (12023): Found entity 1: mixer File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/mixer.vhd Line: 14
 Info (12127): Elaborating entity "TestP5" for the top level hierarchy
-Info (12128): Elaborating entity "Tone_generation_top" for hierarchy "Tone_generation_top:tone_generation_0" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/TestP5.vhd Line: 224
-Info (12128): Elaborating entity "mixer" for hierarchy "Tone_generation_top:tone_generation_0|mixer:mixer_1" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 126
-Info (12128): Elaborating entity "cordic_pipelined" for hierarchy "Tone_generation_top:tone_generation_0|cordic_pipelined:cordic_pipelined_1" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 136
-Info (12128): Elaborating entity "cordic_Control" for hierarchy "Tone_generation_top:tone_generation_0|cordic_Control:cordic_Control_1" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 149
-Info (12128): Elaborating entity "cic" for hierarchy "Tone_generation_top:tone_generation_0|cic:cic_1" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 162
-Info (12128): Elaborating entity "freq_mes" for hierarchy "Tone_generation_top:tone_generation_0|freq_mes:freq_mes_1" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 176
-Warning (10540): VHDL Signal Declaration warning at freq_mes.vhd(43): used explicit default value for signal "freq" because signal was never assigned a value File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/freq_mes.vhd Line: 43
-Info (12128): Elaborating entity "TestP5_audio" for hierarchy "TestP5_audio:audio" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/TestP5.vhd Line: 237
-Info (12128): Elaborating entity "altera_up_clock_edge" for hierarchy "TestP5_audio:audio|altera_up_clock_edge:Bit_Clock_Edges" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio.v Line: 159
-Info (12128): Elaborating entity "altera_up_audio_out_serializer" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio.v Line: 200
-Info (12128): Elaborating entity "altera_up_sync_fifo" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_audio_out_serializer.v Line: 210
-Info (12128): Elaborating entity "scfifo" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v Line: 138
-Info (12130): Elaborated megafunction instantiation "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v Line: 138
-Info (12133): Instantiated megafunction "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO" with the following parameter: File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v Line: 138
+Info (12128): Elaborating entity "Tone_generation_top" for hierarchy "Tone_generation_top:tone_generation_0" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/TestP5.vhd Line: 224
+Info (12128): Elaborating entity "mixer" for hierarchy "Tone_generation_top:tone_generation_0|mixer:mixer_1" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 126
+Info (12128): Elaborating entity "cordic_pipelined" for hierarchy "Tone_generation_top:tone_generation_0|cordic_pipelined:cordic_pipelined_1" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 136
+Info (12128): Elaborating entity "cordic_Control" for hierarchy "Tone_generation_top:tone_generation_0|cordic_Control:cordic_Control_1" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 149
+Info (12128): Elaborating entity "cic" for hierarchy "Tone_generation_top:tone_generation_0|cic:cic_1" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 162
+Info (12128): Elaborating entity "freq_mes" for hierarchy "Tone_generation_top:tone_generation_0|freq_mes:freq_mes_1" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/Tone_generation_top.vhd Line: 176
+Warning (10540): VHDL Signal Declaration warning at freq_mes.vhd(43): used explicit default value for signal "freq" because signal was never assigned a value File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/freq_mes.vhd Line: 43
+Info (12128): Elaborating entity "TestP5_audio" for hierarchy "TestP5_audio:audio" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/TestP5.vhd Line: 237
+Info (12128): Elaborating entity "altera_up_clock_edge" for hierarchy "TestP5_audio:audio|altera_up_clock_edge:Bit_Clock_Edges" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio.v Line: 159
+Info (12128): Elaborating entity "altera_up_audio_out_serializer" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio.v Line: 200
+Info (12128): Elaborating entity "altera_up_sync_fifo" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_audio_out_serializer.v Line: 210
+Info (12128): Elaborating entity "scfifo" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v Line: 138
+Info (12130): Elaborated megafunction instantiation "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v Line: 138
+Info (12133): Instantiated megafunction "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO" with the following parameter: File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_sync_fifo.v Line: 138
     Info (12134): Parameter "add_ram_output_register" = "OFF"
     Info (12134): Parameter "intended_device_family" = "Cyclone II"
     Info (12134): Parameter "lpm_numwords" = "128"
@@ -2562,43 +2562,43 @@ Info (12133): Instantiated megafunction "TestP5_audio:audio|altera_up_audio_out_
     Info (12134): Parameter "underflow_checking" = "OFF"
     Info (12134): Parameter "use_eab" = "ON"
 Info (12021): Found 1 design units, including 1 entities, in source file db/scfifo_7ba1.tdf
-    Info (12023): Found entity 1: scfifo_7ba1 File: D:/GitHub/Projekt6/TestP5/db/scfifo_7ba1.tdf Line: 24
+    Info (12023): Found entity 1: scfifo_7ba1 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/scfifo_7ba1.tdf Line: 24
 Info (12128): Elaborating entity "scfifo_7ba1" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated" File: c:/intelfpga/17.1/quartus/libraries/megafunctions/scfifo.tdf Line: 299
 Info (12021): Found 1 design units, including 1 entities, in source file db/a_dpfifo_q2a1.tdf
-    Info (12023): Found entity 1: a_dpfifo_q2a1 File: D:/GitHub/Projekt6/TestP5/db/a_dpfifo_q2a1.tdf Line: 32
-Info (12128): Elaborating entity "a_dpfifo_q2a1" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo" File: D:/GitHub/Projekt6/TestP5/db/scfifo_7ba1.tdf Line: 37
+    Info (12023): Found entity 1: a_dpfifo_q2a1 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/a_dpfifo_q2a1.tdf Line: 32
+Info (12128): Elaborating entity "a_dpfifo_q2a1" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/scfifo_7ba1.tdf Line: 37
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_n3i1.tdf
-    Info (12023): Found entity 1: altsyncram_n3i1 File: D:/GitHub/Projekt6/TestP5/db/altsyncram_n3i1.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_n3i1" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|altsyncram_n3i1:FIFOram" File: D:/GitHub/Projekt6/TestP5/db/a_dpfifo_q2a1.tdf Line: 45
+    Info (12023): Found entity 1: altsyncram_n3i1 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/altsyncram_n3i1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_n3i1" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|altsyncram_n3i1:FIFOram" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/a_dpfifo_q2a1.tdf Line: 45
 Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_6l8.tdf
-    Info (12023): Found entity 1: cmpr_6l8 File: D:/GitHub/Projekt6/TestP5/db/cmpr_6l8.tdf Line: 22
-Info (12128): Elaborating entity "cmpr_6l8" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|cmpr_6l8:almost_full_comparer" File: D:/GitHub/Projekt6/TestP5/db/a_dpfifo_q2a1.tdf Line: 54
-Info (12128): Elaborating entity "cmpr_6l8" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|cmpr_6l8:three_comparison" File: D:/GitHub/Projekt6/TestP5/db/a_dpfifo_q2a1.tdf Line: 55
+    Info (12023): Found entity 1: cmpr_6l8 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/cmpr_6l8.tdf Line: 22
+Info (12128): Elaborating entity "cmpr_6l8" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|cmpr_6l8:almost_full_comparer" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/a_dpfifo_q2a1.tdf Line: 54
+Info (12128): Elaborating entity "cmpr_6l8" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|cmpr_6l8:three_comparison" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/a_dpfifo_q2a1.tdf Line: 55
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_h2b.tdf
-    Info (12023): Found entity 1: cntr_h2b File: D:/GitHub/Projekt6/TestP5/db/cntr_h2b.tdf Line: 25
-Info (12128): Elaborating entity "cntr_h2b" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|cntr_h2b:rd_ptr_msb" File: D:/GitHub/Projekt6/TestP5/db/a_dpfifo_q2a1.tdf Line: 56
+    Info (12023): Found entity 1: cntr_h2b File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/cntr_h2b.tdf Line: 25
+Info (12128): Elaborating entity "cntr_h2b" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|cntr_h2b:rd_ptr_msb" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/a_dpfifo_q2a1.tdf Line: 56
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_u27.tdf
-    Info (12023): Found entity 1: cntr_u27 File: D:/GitHub/Projekt6/TestP5/db/cntr_u27.tdf Line: 25
-Info (12128): Elaborating entity "cntr_u27" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|cntr_u27:usedw_counter" File: D:/GitHub/Projekt6/TestP5/db/a_dpfifo_q2a1.tdf Line: 57
+    Info (12023): Found entity 1: cntr_u27 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/cntr_u27.tdf Line: 25
+Info (12128): Elaborating entity "cntr_u27" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|cntr_u27:usedw_counter" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/a_dpfifo_q2a1.tdf Line: 57
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_i2b.tdf
-    Info (12023): Found entity 1: cntr_i2b File: D:/GitHub/Projekt6/TestP5/db/cntr_i2b.tdf Line: 25
-Info (12128): Elaborating entity "cntr_i2b" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|cntr_i2b:wr_ptr" File: D:/GitHub/Projekt6/TestP5/db/a_dpfifo_q2a1.tdf Line: 58
-Info (12128): Elaborating entity "TestP5_audio_and_video_config_0" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/TestP5.vhd Line: 258
-Info (12128): Elaborating entity "altera_up_av_config_auto_init" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_auto_init:AV_Config_Auto_Init" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v Line: 412
-Warning (10230): Verilog HDL assignment warning at altera_up_av_config_auto_init.v(137): truncated value with size 32 to match size of target (6) File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init.v Line: 137
-Info (12128): Elaborating entity "altera_up_av_config_auto_init_ob_de1_soc" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_auto_init_ob_de1_soc:Auto_Init_OB_Devices_ROM" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v Line: 427
-Info (12128): Elaborating entity "altera_up_av_config_auto_init_ob_audio" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_auto_init_ob_de1_soc:Auto_Init_OB_Devices_ROM|altera_up_av_config_auto_init_ob_audio:Auto_Init_Audio_ROM" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v Line: 116
-Info (12128): Elaborating entity "altera_up_av_config_auto_init_ob_adv7180" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_auto_init_ob_de1_soc:Auto_Init_OB_Devices_ROM|altera_up_av_config_auto_init_ob_adv7180:Auto_Init_Video_ROM" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v Line: 137
-Info (12128): Elaborating entity "altera_up_av_config_serial_bus_controller" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_serial_bus_controller:Serial_Bus_Controller" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v Line: 464
-Warning (10230): Verilog HDL assignment warning at altera_up_av_config_serial_bus_controller.v(241): truncated value with size 32 to match size of target (5) File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v Line: 241
-Info (12128): Elaborating entity "altera_up_slow_clock_generator" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_serial_bus_controller:Serial_Bus_Controller|altera_up_slow_clock_generator:Serial_Config_Clock_Generator" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v Line: 294
-Warning (10230): Verilog HDL assignment warning at altera_up_slow_clock_generator.v(109): truncated value with size 32 to match size of target (11) File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_slow_clock_generator.v Line: 109
-Info (12128): Elaborating entity "TestP5_audio_pll_0" for hierarchy "TestP5_audio_pll_0:audio_pll_0" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/TestP5.vhd Line: 273
-Info (12128): Elaborating entity "TestP5_audio_pll_0_audio_pll" for hierarchy "TestP5_audio_pll_0:audio_pll_0|TestP5_audio_pll_0_audio_pll:audio_pll" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0.v Line: 23
-Info (12128): Elaborating entity "altera_pll" for hierarchy "TestP5_audio_pll_0:audio_pll_0|TestP5_audio_pll_0_audio_pll:audio_pll|altera_pll:altera_pll_i" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v Line: 85
+    Info (12023): Found entity 1: cntr_i2b File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/cntr_i2b.tdf Line: 25
+Info (12128): Elaborating entity "cntr_i2b" for hierarchy "TestP5_audio:audio|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|cntr_i2b:wr_ptr" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/a_dpfifo_q2a1.tdf Line: 58
+Info (12128): Elaborating entity "TestP5_audio_and_video_config_0" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/TestP5.vhd Line: 258
+Info (12128): Elaborating entity "altera_up_av_config_auto_init" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_auto_init:AV_Config_Auto_Init" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v Line: 412
+Warning (10230): Verilog HDL assignment warning at altera_up_av_config_auto_init.v(137): truncated value with size 32 to match size of target (6) File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init.v Line: 137
+Info (12128): Elaborating entity "altera_up_av_config_auto_init_ob_de1_soc" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_auto_init_ob_de1_soc:Auto_Init_OB_Devices_ROM" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v Line: 427
+Info (12128): Elaborating entity "altera_up_av_config_auto_init_ob_audio" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_auto_init_ob_de1_soc:Auto_Init_OB_Devices_ROM|altera_up_av_config_auto_init_ob_audio:Auto_Init_Audio_ROM" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v Line: 116
+Info (12128): Elaborating entity "altera_up_av_config_auto_init_ob_adv7180" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_auto_init_ob_de1_soc:Auto_Init_OB_Devices_ROM|altera_up_av_config_auto_init_ob_adv7180:Auto_Init_Video_ROM" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_de1_soc.v Line: 137
+Info (12128): Elaborating entity "altera_up_av_config_serial_bus_controller" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_serial_bus_controller:Serial_Bus_Controller" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_and_video_config_0.v Line: 464
+Warning (10230): Verilog HDL assignment warning at altera_up_av_config_serial_bus_controller.v(241): truncated value with size 32 to match size of target (5) File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v Line: 241
+Info (12128): Elaborating entity "altera_up_slow_clock_generator" for hierarchy "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_serial_bus_controller:Serial_Bus_Controller|altera_up_slow_clock_generator:Serial_Config_Clock_Generator" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_serial_bus_controller.v Line: 294
+Warning (10230): Verilog HDL assignment warning at altera_up_slow_clock_generator.v(109): truncated value with size 32 to match size of target (11) File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_slow_clock_generator.v Line: 109
+Info (12128): Elaborating entity "TestP5_audio_pll_0" for hierarchy "TestP5_audio_pll_0:audio_pll_0" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/TestP5.vhd Line: 273
+Info (12128): Elaborating entity "TestP5_audio_pll_0_audio_pll" for hierarchy "TestP5_audio_pll_0:audio_pll_0|TestP5_audio_pll_0_audio_pll:audio_pll" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0.v Line: 23
+Info (12128): Elaborating entity "altera_pll" for hierarchy "TestP5_audio_pll_0:audio_pll_0|TestP5_audio_pll_0_audio_pll:audio_pll|altera_pll:altera_pll_i" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v Line: 85
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
-Info (12130): Elaborated megafunction instantiation "TestP5_audio_pll_0:audio_pll_0|TestP5_audio_pll_0_audio_pll:audio_pll|altera_pll:altera_pll_i" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v Line: 85
-Info (12133): Instantiated megafunction "TestP5_audio_pll_0:audio_pll_0|TestP5_audio_pll_0_audio_pll:audio_pll|altera_pll:altera_pll_i" with the following parameter: File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v Line: 85
+Info (12130): Elaborated megafunction instantiation "TestP5_audio_pll_0:audio_pll_0|TestP5_audio_pll_0_audio_pll:audio_pll|altera_pll:altera_pll_i" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v Line: 85
+Info (12133): Instantiated megafunction "TestP5_audio_pll_0:audio_pll_0|TestP5_audio_pll_0_audio_pll:audio_pll|altera_pll:altera_pll_i" with the following parameter: File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0_audio_pll.v Line: 85
     Info (12134): Parameter "fractional_vco_multiplier" = "false"
     Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"
     Info (12134): Parameter "operation_mode" = "direct"
@@ -2659,15 +2659,15 @@ Info (12133): Instantiated megafunction "TestP5_audio_pll_0:audio_pll_0|TestP5_a
     Info (12134): Parameter "duty_cycle17" = "50"
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
-Info (12128): Elaborating entity "altera_up_avalon_reset_from_locked_signal" for hierarchy "TestP5_audio_pll_0:audio_pll_0|altera_up_avalon_reset_from_locked_signal:reset_from_locked" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0.v Line: 28
-Info (12128): Elaborating entity "altera_avalon_dc_fifo" for hierarchy "altera_avalon_dc_fifo:dc_fifo_0" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/TestP5.vhd Line: 281
-Info (12128): Elaborating entity "altera_dcfifo_synchronizer_bundle" for hierarchy "altera_avalon_dc_fifo:dc_fifo_0|altera_dcfifo_synchronizer_bundle:write_crosser" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_avalon_dc_fifo.v Line: 373
-Info (12128): Elaborating entity "altera_std_synchronizer_nocut" for hierarchy "altera_avalon_dc_fifo:dc_fifo_0|altera_dcfifo_synchronizer_bundle:write_crosser|altera_std_synchronizer_nocut:sync[0].u" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v Line: 33
-Info (12128): Elaborating entity "TestP5_pll_0" for hierarchy "TestP5_pll_0:pll_0" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/TestP5.vhd Line: 328
-Info (12128): Elaborating entity "altera_pll" for hierarchy "TestP5_pll_0:pll_0|altera_pll:altera_pll_i" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_pll_0.v Line: 85
+Info (12128): Elaborating entity "altera_up_avalon_reset_from_locked_signal" for hierarchy "TestP5_audio_pll_0:audio_pll_0|altera_up_avalon_reset_from_locked_signal:reset_from_locked" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_audio_pll_0.v Line: 28
+Info (12128): Elaborating entity "altera_avalon_dc_fifo" for hierarchy "altera_avalon_dc_fifo:dc_fifo_0" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/TestP5.vhd Line: 281
+Info (12128): Elaborating entity "altera_dcfifo_synchronizer_bundle" for hierarchy "altera_avalon_dc_fifo:dc_fifo_0|altera_dcfifo_synchronizer_bundle:write_crosser" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_avalon_dc_fifo.v Line: 373
+Info (12128): Elaborating entity "altera_std_synchronizer_nocut" for hierarchy "altera_avalon_dc_fifo:dc_fifo_0|altera_dcfifo_synchronizer_bundle:write_crosser|altera_std_synchronizer_nocut:sync[0].u" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_dcfifo_synchronizer_bundle.v Line: 33
+Info (12128): Elaborating entity "TestP5_pll_0" for hierarchy "TestP5_pll_0:pll_0" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/TestP5.vhd Line: 328
+Info (12128): Elaborating entity "altera_pll" for hierarchy "TestP5_pll_0:pll_0|altera_pll:altera_pll_i" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_pll_0.v Line: 85
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
-Info (12130): Elaborated megafunction instantiation "TestP5_pll_0:pll_0|altera_pll:altera_pll_i" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_pll_0.v Line: 85
-Info (12133): Instantiated megafunction "TestP5_pll_0:pll_0|altera_pll:altera_pll_i" with the following parameter: File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/TestP5_pll_0.v Line: 85
+Info (12130): Elaborated megafunction instantiation "TestP5_pll_0:pll_0|altera_pll:altera_pll_i" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_pll_0.v Line: 85
+Info (12133): Instantiated megafunction "TestP5_pll_0:pll_0|altera_pll:altera_pll_i" with the following parameter: File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/TestP5_pll_0.v Line: 85
     Info (12134): Parameter "fractional_vco_multiplier" = "false"
     Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"
     Info (12134): Parameter "operation_mode" = "direct"
@@ -2728,11 +2728,11 @@ Info (12133): Instantiated megafunction "TestP5_pll_0:pll_0|altera_pll:altera_pl
     Info (12134): Parameter "duty_cycle17" = "50"
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
-Info (12128): Elaborating entity "altera_reset_controller" for hierarchy "altera_reset_controller:rst_controller" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/TestP5.vhd Line: 336
-Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_reset_controller.v Line: 208
-Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1" File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_reset_controller.v Line: 220
+Info (12128): Elaborating entity "altera_reset_controller" for hierarchy "altera_reset_controller:rst_controller" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/TestP5.vhd Line: 336
+Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_reset_controller.v Line: 208
+Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_reset_controller.v Line: 220
 Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276004): RAM logic "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_auto_init_ob_de1_soc:Auto_Init_OB_Devices_ROM|altera_up_av_config_auto_init_ob_adv7180:Auto_Init_Video_ROM|Ram0" is uninferred due to inappropriate RAM size File: D:/GitHub/Projekt6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7180.v Line: 142
+    Info (276004): RAM logic "TestP5_audio_and_video_config_0:audio_and_video_config_0|altera_up_av_config_auto_init_ob_de1_soc:Auto_Init_OB_Devices_ROM|altera_up_av_config_auto_init_ob_adv7180:Auto_Init_Video_ROM|Ram0" is uninferred due to inappropriate RAM size File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/TestP5/synthesis/submodules/altera_up_av_config_auto_init_ob_adv7180.v Line: 142
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "altera_avalon_dc_fifo:dc_fifo_0|mem_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
@@ -2766,7 +2766,7 @@ Info (12133): Instantiated megafunction "altera_avalon_dc_fifo:dc_fifo_0|altsync
     Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_a6j1.tdf
-    Info (12023): Found entity 1: altsyncram_a6j1 File: D:/GitHub/Projekt6/TestP5/db/altsyncram_a6j1.tdf Line: 27
+    Info (12023): Found entity 1: altsyncram_a6j1 File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/TestP5/db/altsyncram_a6j1.tdf Line: 27
 Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 22 registers lost all their fanouts during netlist optimizations.
@@ -2781,9 +2781,9 @@ Info (21057): Implemented 1440 device resources after synthesis - the final reso
     Info (21065): Implemented 2 PLLs
     Info (21062): Implemented 2 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4900 megabytes
-    Info: Processing ended: Tue Apr 28 14:50:47 2020
-    Info: Elapsed time: 00:00:29
-    Info: Total CPU time (on all processors): 00:00:43
+    Info: Peak virtual memory: 4908 megabytes
+    Info: Processing ended: Wed Apr 29 14:36:25 2020
+    Info: Elapsed time: 00:00:31
+    Info: Total CPU time (on all processors): 00:00:45
 
 

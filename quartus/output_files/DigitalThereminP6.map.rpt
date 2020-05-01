@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DigitalThereminP6
-Fri Apr 24 10:42:11 2020
+Wed Apr 29 09:19:29 2020
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
 
 
@@ -320,7 +320,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Apr 24 10:42:11 2020           ;
+; Analysis & Synthesis Status     ; Successful - Wed Apr 29 09:19:29 2020           ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Standard Edition ;
 ; Revision Name                   ; DigitalThereminP6                               ;
 ; Top-level Entity Name           ; system                                          ;
@@ -8733,7 +8733,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
-    Info: Processing started: Fri Apr 24 10:40:51 2020
+    Info: Processing started: Wed Apr 29 09:18:00 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DigitalThereminP6 -c DigitalThereminP6
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -9735,7 +9735,7 @@ Info (12128): Elaborating entity "system_rst_controller_001" for hierarchy "syst
 Info (12128): Elaborating entity "altera_reset_controller" for hierarchy "system_rst_controller_001:rst_controller_001|altera_reset_controller:rst_controller_001" File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus/system/synthesis/system_rst_controller_001.vhd Line: 144
 Warning (12020): Port "jdo" on the entity instantiation of "the_system_cpu_cpu_nios2_oci_itrace" is connected to a signal of width 38. The formal width of the signal in the module is 16.  The extra bits will be ignored. File: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus/system/synthesis/submodules/system_cpu_cpu.v Line: 3216
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2020.04.24.10:41:36 Progress: Loading sldaef199e8/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2020.04.29.09:18:47 Progress: Loading sldaef199e8/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -9812,10 +9812,10 @@ Info (21057): Implemented 5149 device resources after synthesis - the final reso
     Info (21065): Implemented 2 PLLs
     Info (21062): Implemented 3 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 16 warnings
-    Info: Peak virtual memory: 5072 megabytes
-    Info: Processing ended: Fri Apr 24 10:42:11 2020
-    Info: Elapsed time: 00:01:20
-    Info: Total CPU time (on all processors): 00:01:43
+    Info: Peak virtual memory: 5070 megabytes
+    Info: Processing ended: Wed Apr 29 09:19:30 2020
+    Info: Elapsed time: 00:01:30
+    Info: Total CPU time (on all processors): 00:01:50
 
 
 +------------------------------------------+
