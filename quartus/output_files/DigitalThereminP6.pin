@@ -269,7 +269,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AF10      :        :                   :      
 dram_ctrl_wire_cas_n         : AF11      : output : 2.5 V             :         : 3B        : Y              
 GND                          : AF12      : gnd    :                   :         :           :                
 dram_ctrl_wire_ba[1]         : AF13      : output : 2.5 V             :         : 3B        : Y              
-clk_clk                      : AF14      : input  : 2.5 V             :         : 3B        : Y              
+clk_clk                      : AF14      : input  : 2.5 V             :         : 3B        : N              
 dram_ctrl_wire_addr[7]       : AF15      : output : 2.5 V             :         : 3B        : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AF16      :        :                   :         : 4A        :                
 GND                          : AF17      : gnd    :                   :         :           :                

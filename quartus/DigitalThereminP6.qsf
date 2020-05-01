@@ -119,5 +119,4 @@ set_location_assignment PIN_AA21 -to touch_panel_spi_external_MOSI
 set_location_assignment PIN_AC23 -to touch_panel_spi_external_MISO
 set_global_assignment -name SDC_FILE DigitalThereminP6.sdc
 set_global_assignment -name QIP_FILE system/synthesis/system.qip
-set_location_assignment PIN_AF14 -to clk_clk
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -93,7 +93,7 @@ refer to the applicable agreement for further details.
 		(text "reset_n" (rect 293 235 628 480)(font "Arial" (color 0 0 0)))
 		(text "tone_generation_0_conduit_end_0" (rect 87 251 360 515)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "export" (rect 293 275 622 560)(font "Arial" (color 0 0 0)))
-		(text " system " (rect 621 296 1290 602)(font "Arial" ))
+		(text " TestP5 " (rect 623 296 1294 602)(font "Arial" ))
 		(line (pt 288 32)(pt 368 32)(line_width 1))
 		(line (pt 368 32)(pt 368 296)(line_width 1))
 		(line (pt 288 296)(pt 368 296)(line_width 1))

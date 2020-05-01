@@ -1,5 +1,5 @@
 Flow report for DigitalThereminP6
-Wed Apr 29 09:23:26 2020
+Fri Apr 24 10:47:03 2020
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Wed Apr 29 09:22:56 2020           ;
+; Flow Status                     ; Successful - Fri Apr 24 10:46:29 2020           ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Standard Edition ;
 ; Revision Name                   ; DigitalThereminP6                               ;
 ; Top-level Entity Name           ; system                                          ;
@@ -48,7 +48,7 @@ refer to the applicable agreement for further details.
 ; Device                          ; 5CSEMA5F31C6                                    ;
 ; Timing Models                   ; Final                                           ;
 ; Logic utilization (in ALMs)     ; 1,869 / 32,070 ( 6 % )                          ;
-; Total registers                 ; 3355                                            ;
+; Total registers                 ; 3366                                            ;
 ; Total pins                      ; 67 / 457 ( 15 % )                               ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 65,600 / 4,065,280 ( 2 % )                      ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/29/2020 09:18:03 ;
+; Start date & time ; 04/24/2020 10:40:54 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DigitalThereminP6   ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------------------------+-------------------+-------------+------------+
 ; Assignment Name                     ; Value                                                    ; Default Value     ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------------------------+-------------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 24062491136.158814468117932                              ; --                ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 24062491136.158771765317352                              ; --                ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                       ; --                ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                        ; --                ; --          ; --         ;
 ; MISC_FILE                           ; system/synthesis/../system.cmp                           ; --                ; --          ; --         ;
@@ -103,11 +103,11 @@ refer to the applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:01:25     ; 1.0                     ; 5070 MB             ; 00:01:45                           ;
-; Fitter                    ; 00:03:06     ; 1.1                     ; 6704 MB             ; 00:05:09                           ;
-; Assembler                 ; 00:00:14     ; 1.0                     ; 4879 MB             ; 00:00:12                           ;
-; TimeQuest Timing Analyzer ; 00:00:28     ; 1.5                     ; 5348 MB             ; 00:00:35                           ;
-; Total                     ; 00:05:13     ; --                      ; --                  ; 00:07:41                           ;
+; Analysis & Synthesis      ; 00:01:15     ; 1.0                     ; 5072 MB             ; 00:01:39                           ;
+; Fitter                    ; 00:03:55     ; 1.1                     ; 6712 MB             ; 00:06:20                           ;
+; Assembler                 ; 00:00:16     ; 1.0                     ; 4879 MB             ; 00:00:14                           ;
+; TimeQuest Timing Analyzer ; 00:00:32     ; 1.5                     ; 5341 MB             ; 00:00:41                           ;
+; Total                     ; 00:05:58     ; --                      ; --                  ; 00:08:54                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
