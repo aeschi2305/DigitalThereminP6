@@ -1,5 +1,5 @@
 Info: Starting: Create block symbol file (.bsf)
-Info: qsys-generate D:\GitHub\Projekt6\TestP5\TestP5.qsys --block-symbol-file --output-directory=D:\GitHub\Projekt6\TestP5\TestP5 --family="Cyclone V" --part=5CSEMA5F31C6
+Info: qsys-generate C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\TestP5\TestP5.qsys --block-symbol-file --output-directory=C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\TestP5\TestP5 --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading TestP5/TestP5.qsys
 Progress: Reading input file
 Progress: Adding Tone_generation_0 [Tone_generation 1.0]
@@ -21,7 +21,7 @@ Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
 Info: TestP5.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
-Info: TestP5.pll_0: Able to implement PLL with user settings
+Warning: TestP5.pll_0: Able to implement PLL - Actual settings differ from Requested settings
 Warning: TestP5.audio.avalon_left_channel_source: audio.avalon_left_channel_source must be connected to an Avalon-ST sink
 Warning: TestP5.audio.avalon_right_channel_source: audio.avalon_right_channel_source must be connected to an Avalon-ST sink
 Warning: TestP5.audio.avalon_left_channel_sink: audio.avalon_left_channel_sink must be connected to an Avalon-ST source
@@ -30,7 +30,7 @@ Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: qsys-generate D:\GitHub\Projekt6\TestP5\TestP5.qsys --synthesis=VHDL --output-directory=D:\GitHub\Projekt6\TestP5\TestP5\synthesis --family="Cyclone V" --part=5CSEMA5F31C6
+Info: qsys-generate C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\TestP5\TestP5.qsys --synthesis=VHDL --output-directory=C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\TestP5\TestP5\synthesis --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading TestP5/TestP5.qsys
 Progress: Reading input file
 Progress: Adding Tone_generation_0 [Tone_generation 1.0]
@@ -52,7 +52,7 @@ Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
 Info: TestP5.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
-Info: TestP5.pll_0: Able to implement PLL with user settings
+Warning: TestP5.pll_0: Able to implement PLL - Actual settings differ from Requested settings
 Warning: TestP5.audio.avalon_left_channel_source: audio.avalon_left_channel_source must be connected to an Avalon-ST sink
 Warning: TestP5.audio.avalon_right_channel_source: audio.avalon_right_channel_source must be connected to an Avalon-ST sink
 Warning: TestP5.audio.avalon_left_channel_sink: audio.avalon_left_channel_sink must be connected to an Avalon-ST source

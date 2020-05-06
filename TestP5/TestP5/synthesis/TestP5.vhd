@@ -15,7 +15,8 @@ entity TestP5 is
 		audio_and_video_config_0_external_interface_SCLK : out   std_logic;        --                                            .SCLK
 		clk_clk                                          : in    std_logic := '0'; --                                         clk.clk
 		reset_reset_n                                    : in    std_logic := '0'; --                                       reset.reset_n
-		tone_generation_0_conduit_end_0_export           : in    std_logic := '0'  --             tone_generation_0_conduit_end_0.export
+		tone_generation_0_conduit_end_0_export           : in    std_logic := '0';  --             tone_generation_0_conduit_end_0.export
+		AUD_XCK           								 : out std_logic
 	);
 end entity TestP5;
 
@@ -38,12 +39,12 @@ architecture rtl of TestP5 is
 		port (
 			clk                          : in  std_logic                     := 'X';             -- clk
 			reset                        : in  std_logic                     := 'X';             -- reset
-		--	from_adc_left_channel_ready  : in  std_logic                     := 'X';             -- ready
-		--	from_adc_left_channel_data   : out std_logic_vector(31 downto 0);                    -- data
-		--	from_adc_left_channel_valid  : out std_logic;                                        -- valid
-		--	from_adc_right_channel_ready : in  std_logic                     := 'X';             -- ready
-		--	from_adc_right_channel_data  : out std_logic_vector(31 downto 0);                    -- data
-		--	from_adc_right_channel_valid : out std_logic;                                        -- valid
+--			from_adc_left_channel_ready  : in  std_logic                     := 'X';             -- ready
+--			from_adc_left_channel_data   : out std_logic_vector(31 downto 0);                    -- data
+--			from_adc_left_channel_valid  : out std_logic;                                        -- valid
+--			from_adc_right_channel_ready : in  std_logic                     := 'X';             -- ready
+--			from_adc_right_channel_data  : out std_logic_vector(31 downto 0);                    -- data
+--			from_adc_right_channel_valid : out std_logic;                                        -- valid
 			to_dac_left_channel_data     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- data
 			to_dac_left_channel_valid    : in  std_logic                     := 'X';             -- valid
 			to_dac_left_channel_ready    : out std_logic;                                        -- ready
@@ -119,7 +120,7 @@ architecture rtl of TestP5 is
 			in_endofpacket    : in  std_logic                     := 'X';             -- endofpacket
 			out_startofpacket : out std_logic;                                        -- startofpacket
 			out_endofpacket   : out std_logic;                                        -- endofpacket
-			in_empty          : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- empty
+			in_empty          : in  std_logic_vector(0 downto 0)  := (others => 'X'); -- empty
 			out_empty         : out std_logic_vector(0 downto 0);                     -- empty
 			in_error          : in  std_logic_vector(0 downto 0)  := (others => 'X'); -- error
 			out_error         : out std_logic_vector(0 downto 0);                     -- error
@@ -210,16 +211,19 @@ architecture rtl of TestP5 is
 	signal tone_generation_0_se_valid                   : std_logic;                     -- Tone_generation_0:aso_se_valid -> dc_fifo_0:in_valid
 	signal tone_generation_0_se_data                    : std_logic_vector(31 downto 0); -- Tone_generation_0:aso_se_data -> dc_fifo_0:in_data
 	signal tone_generation_0_se_ready                   : std_logic;                     -- dc_fifo_0:in_ready -> Tone_generation_0:aso_se_ready
-	signal audio_pll_0_audio_clk_clk                    : std_logic;                     -- audio_pll_0:audio_clk_clk -> [audio:clk, audio_and_video_config_0:clk, dc_fifo_0:out_clk, rst_controller_001:clk]
+	signal audio_pll_0_audio_clk_clk                    : std_logic;                     -- audio_pll_0:audio_clk_clk -> [audio:clk, audio_and_video_config_0:clk, dc_fifo_0:out_clk, rst_controller_001:clk, rst_controller_002:clk]
 	signal pll_0_outclk0_clk                            : std_logic;                     -- pll_0:outclk_0 -> [Tone_generation_0:csi_clk, dc_fifo_0:in_clk, rst_controller:clk]
 	signal rst_controller_reset_out_reset               : std_logic;                     -- rst_controller:reset_out -> rst_controller_reset_out_reset:in
-	signal rst_controller_001_reset_out_reset           : std_logic;                     -- rst_controller_001:reset_out -> [audio:reset, audio_and_video_config_0:reset, rst_controller_001_reset_out_reset:in]
+	signal rst_controller_001_reset_out_reset           : std_logic;                     -- rst_controller_001:reset_out -> [audio:reset, audio_and_video_config_0:reset]
 	signal audio_pll_0_reset_source_reset               : std_logic;                     -- audio_pll_0:reset_source_reset -> rst_controller_001:reset_in0
-	signal reset_reset_n_ports_inv                      : std_logic;                     -- reset_reset_n:inv -> [audio_pll_0:ref_reset_reset, pll_0:rst, rst_controller:reset_in0]
+	signal rst_controller_002_reset_out_reset           : std_logic;                     -- rst_controller_002:reset_out -> rst_controller_002_reset_out_reset:in
+	signal reset_reset_n_ports_inv                      : std_logic;                     -- reset_reset_n:inv -> [audio_pll_0:ref_reset_reset, pll_0:rst, rst_controller:reset_in0, rst_controller_002:reset_in0]
 	signal rst_controller_reset_out_reset_ports_inv     : std_logic;                     -- rst_controller_reset_out_reset:inv -> [Tone_generation_0:rsi_reset_n, dc_fifo_0:in_reset_n]
-	signal rst_controller_001_reset_out_reset_ports_inv : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> dc_fifo_0:out_reset_n
+	signal rst_controller_002_reset_out_reset_ports_inv : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> dc_fifo_0:out_reset_n
 
 begin
+
+	AUD_XCK <= audio_pll_0_audio_clk_clk;
 
 	tone_generation_0 : component Tone_generation_top
 		generic map (
@@ -238,14 +242,14 @@ begin
 		port map (
 			clk                          => audio_pll_0_audio_clk_clk,          --                         clk.clk
 			reset                        => rst_controller_001_reset_out_reset, --                       reset.reset
-		--	from_adc_left_channel_ready  => open,                               --  avalon_left_channel_source.ready
-		--	from_adc_left_channel_data   => open,                               --                            .data
-		--	from_adc_left_channel_valid  => open,                               --                            .valid
-		--	from_adc_right_channel_ready => open,                               -- avalon_right_channel_source.ready
-		--	from_adc_right_channel_data  => open,                               --                            .data
-		--	from_adc_right_channel_valid => open,                               --                            .valid
-			to_dac_left_channel_data     => open,                               --    avalon_left_channel_sink.data
-			to_dac_left_channel_valid    => open,                               --                            .valid
+--			from_adc_left_channel_ready  => open,                               --  avalon_left_channel_source.ready
+--			from_adc_left_channel_data   => open,                               --                            .data
+--			from_adc_left_channel_valid  => open,                               --                            .valid
+--			from_adc_right_channel_ready => open,                               -- avalon_right_channel_source.ready
+--			from_adc_right_channel_data  => open,                               --                            .data
+--			from_adc_right_channel_valid => open,                               --                            .valid
+			to_dac_left_channel_data     => (others => '0'),                               --    avalon_left_channel_sink.data
+			to_dac_left_channel_valid    => '1',                               --                            .valid
 			to_dac_left_channel_ready    => open,                               --                            .ready
 			to_dac_right_channel_data    => dc_fifo_0_out_data,                 --   avalon_right_channel_sink.data
 			to_dac_right_channel_valid   => dc_fifo_0_out_valid,                --                            .valid
@@ -280,8 +284,8 @@ begin
 
 	dc_fifo_0 : component altera_avalon_dc_fifo
 		generic map (
-			SYMBOLS_PER_BEAT   => 4,
-			BITS_PER_SYMBOL    => 8,
+			SYMBOLS_PER_BEAT   => 1,
+			BITS_PER_SYMBOL    => 32,
 			FIFO_DEPTH         => 32,
 			CHANNEL_WIDTH      => 0,
 			ERROR_WIDTH        => 0,
@@ -295,7 +299,7 @@ begin
 			in_clk            => pll_0_outclk0_clk,                            --        in_clk.clk
 			in_reset_n        => rst_controller_reset_out_reset_ports_inv,     --  in_clk_reset.reset_n
 			out_clk           => audio_pll_0_audio_clk_clk,                    --       out_clk.clk
-			out_reset_n       => rst_controller_001_reset_out_reset_ports_inv, -- out_clk_reset.reset_n
+			out_reset_n       => rst_controller_002_reset_out_reset_ports_inv, -- out_clk_reset.reset_n
 			in_data           => tone_generation_0_se_data,                    --            in.data
 			in_valid          => tone_generation_0_se_valid,                   --              .valid
 			in_ready          => tone_generation_0_se_ready,                   --              .ready
@@ -316,7 +320,7 @@ begin
 			in_endofpacket    => '0',                                          --   (terminated)
 			out_startofpacket => open,                                         --   (terminated)
 			out_endofpacket   => open,                                         --   (terminated)
-			in_empty          => "00",                                         --   (terminated)
+			in_empty          => "0",                                          --   (terminated)
 			out_empty         => open,                                         --   (terminated)
 			in_error          => "0",                                          --   (terminated)
 			out_error         => open,                                         --   (terminated)
@@ -463,10 +467,75 @@ begin
 			reset_req_in15 => '0'                                 -- (terminated)
 		);
 
+	rst_controller_002 : component altera_reset_controller
+		generic map (
+			NUM_RESET_INPUTS          => 1,
+			OUTPUT_RESET_SYNC_EDGES   => "deassert",
+			SYNC_DEPTH                => 2,
+			RESET_REQUEST_PRESENT     => 0,
+			RESET_REQ_WAIT_TIME       => 1,
+			MIN_RST_ASSERTION_TIME    => 3,
+			RESET_REQ_EARLY_DSRT_TIME => 1,
+			USE_RESET_REQUEST_IN0     => 0,
+			USE_RESET_REQUEST_IN1     => 0,
+			USE_RESET_REQUEST_IN2     => 0,
+			USE_RESET_REQUEST_IN3     => 0,
+			USE_RESET_REQUEST_IN4     => 0,
+			USE_RESET_REQUEST_IN5     => 0,
+			USE_RESET_REQUEST_IN6     => 0,
+			USE_RESET_REQUEST_IN7     => 0,
+			USE_RESET_REQUEST_IN8     => 0,
+			USE_RESET_REQUEST_IN9     => 0,
+			USE_RESET_REQUEST_IN10    => 0,
+			USE_RESET_REQUEST_IN11    => 0,
+			USE_RESET_REQUEST_IN12    => 0,
+			USE_RESET_REQUEST_IN13    => 0,
+			USE_RESET_REQUEST_IN14    => 0,
+			USE_RESET_REQUEST_IN15    => 0,
+			ADAPT_RESET_REQUEST       => 0
+		)
+		port map (
+			reset_in0      => reset_reset_n_ports_inv,            -- reset_in0.reset
+			clk            => audio_pll_0_audio_clk_clk,          --       clk.clk
+			reset_out      => rst_controller_002_reset_out_reset, -- reset_out.reset
+			reset_req      => open,                               -- (terminated)
+			reset_req_in0  => '0',                                -- (terminated)
+			reset_in1      => '0',                                -- (terminated)
+			reset_req_in1  => '0',                                -- (terminated)
+			reset_in2      => '0',                                -- (terminated)
+			reset_req_in2  => '0',                                -- (terminated)
+			reset_in3      => '0',                                -- (terminated)
+			reset_req_in3  => '0',                                -- (terminated)
+			reset_in4      => '0',                                -- (terminated)
+			reset_req_in4  => '0',                                -- (terminated)
+			reset_in5      => '0',                                -- (terminated)
+			reset_req_in5  => '0',                                -- (terminated)
+			reset_in6      => '0',                                -- (terminated)
+			reset_req_in6  => '0',                                -- (terminated)
+			reset_in7      => '0',                                -- (terminated)
+			reset_req_in7  => '0',                                -- (terminated)
+			reset_in8      => '0',                                -- (terminated)
+			reset_req_in8  => '0',                                -- (terminated)
+			reset_in9      => '0',                                -- (terminated)
+			reset_req_in9  => '0',                                -- (terminated)
+			reset_in10     => '0',                                -- (terminated)
+			reset_req_in10 => '0',                                -- (terminated)
+			reset_in11     => '0',                                -- (terminated)
+			reset_req_in11 => '0',                                -- (terminated)
+			reset_in12     => '0',                                -- (terminated)
+			reset_req_in12 => '0',                                -- (terminated)
+			reset_in13     => '0',                                -- (terminated)
+			reset_req_in13 => '0',                                -- (terminated)
+			reset_in14     => '0',                                -- (terminated)
+			reset_req_in14 => '0',                                -- (terminated)
+			reset_in15     => '0',                                -- (terminated)
+			reset_req_in15 => '0'                                 -- (terminated)
+		);
+
 	reset_reset_n_ports_inv <= not reset_reset_n;
 
 	rst_controller_reset_out_reset_ports_inv <= not rst_controller_reset_out_reset;
 
-	rst_controller_001_reset_out_reset_ports_inv <= not rst_controller_001_reset_out_reset;
+	rst_controller_002_reset_out_reset_ports_inv <= not rst_controller_reset_out_reset;--rst_controller_002_reset_out_reset;
 
 end architecture rtl; -- of TestP5

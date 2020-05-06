@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for TestP5
-Tue Apr 28 14:52:54 2020
+Wed May 06 14:20:17 2020
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
 
 
@@ -99,15 +99,17 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.27        ;
-; Maximum used               ; 2           ;
+; Average used               ; 1.92        ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  27.1%      ;
+;     Processor 2            ;  30.8%      ;
+;     Processor 3            ;  30.6%      ;
+;     Processor 4            ;  30.4%      ;
 +----------------------------+-------------+
 
 
@@ -116,9 +118,9 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                           ; Status ; Read at                  ;
 +---------------------------------------------------------+--------+--------------------------+
-; TestP5.sdc                                              ; OK     ; Tue Apr 28 14:52:45 2020 ;
-; TestP5/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Tue Apr 28 14:52:45 2020 ;
-; TestP5/synthesis/submodules/altera_avalon_dc_fifo.sdc   ; OK     ; Tue Apr 28 14:52:45 2020 ;
+; TestP5.sdc                                              ; OK     ; Wed May 06 14:19:52 2020 ;
+; TestP5/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Wed May 06 14:19:53 2020 ;
+; TestP5/synthesis/submodules/altera_avalon_dc_fifo.sdc   ; OK     ; Wed May 06 14:19:53 2020 ;
 +---------------------------------------------------------+--------+--------------------------+
 
 
@@ -127,6 +129,7 @@ refer to the applicable agreement for further details.
 +------------------------------------------------------------------------------+-----------+--------+------------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+----------------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
 ; Clock Name                                                                   ; Type      ; Period ; Frequency  ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master                                                                     ; Source                                                                          ; Targets                                                                          ;
 +------------------------------------------------------------------------------+-----------+--------+------------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+----------------------------------------------------------------------------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+; altera_reserved_tck                                                          ; Base      ; 33.333 ; 30.0 MHz   ; 0.000 ; 16.666 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                            ;                                                                                 ; { altera_reserved_tck }                                                          ;
 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; Generated ; 1.379  ; 725.16 MHz ; 0.000 ; 0.689  ; 50.00      ; 2         ; 29          ;       ;        ;           ;            ; false    ; clk_clk                                                                    ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin      ; { audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] }   ;
 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; Generated ; 81.379 ; 12.29 MHz  ; 0.000 ; 40.689 ; 50.00      ; 59        ; 1           ;       ;        ;           ;            ; false    ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|vco0ph[0] ; { audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk } ;
 ; clk_clk                                                                      ; Base      ; 20.000 ; 50.0 MHz   ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                            ;                                                                                 ; { clk_clk }                                                                      ;
@@ -140,8 +143,9 @@ refer to the applicable agreement for further details.
 +------------+-----------------+------------------------------------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                                                   ; Note ;
 +------------+-----------------+------------------------------------------------------------------------------+------+
-; 82.01 MHz  ; 82.01 MHz       ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ;      ;
-; 210.26 MHz ; 210.26 MHz      ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 83.49 MHz  ; 83.49 MHz       ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ;      ;
+; 87.18 MHz  ; 87.18 MHz       ; altera_reserved_tck                                                          ;      ;
+; 207.51 MHz ; 207.51 MHz      ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
 +------------+-----------------+------------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -157,8 +161,9 @@ HTML report is unavailable in plain text report export.
 +------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                        ; Slack  ; End Point TNS ;
 +------------------------------------------------------------------------------+--------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 8.639  ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 76.623 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 8.856  ; 0.000         ;
+; altera_reserved_tck                                                          ; 10.931 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 76.560 ; 0.000         ;
 +------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -167,29 +172,30 @@ HTML report is unavailable in plain text report export.
 +------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                        ; Slack ; End Point TNS ;
 +------------------------------------------------------------------------------+-------+---------------+
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.210 ; 0.000         ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.242 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.236 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.298 ; 0.000         ;
+; altera_reserved_tck                                                          ; 0.430 ; 0.000         ;
 +------------------------------------------------------------------------------+-------+---------------+
 
 
-+-------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Recovery Summary                                                                ;
-+------------------------------------------------------------------------------+--------+---------------+
-; Clock                                                                        ; Slack  ; End Point TNS ;
-+------------------------------------------------------------------------------+--------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 17.870 ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 79.641 ; 0.000         ;
-+------------------------------------------------------------------------------+--------+---------------+
++---------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Recovery Summary                                                ;
++--------------------------------------------------------------+--------+---------------+
+; Clock                                                        ; Slack  ; End Point TNS ;
++--------------------------------------------------------------+--------+---------------+
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 17.450 ; 0.000         ;
+; altera_reserved_tck                                          ; 29.759 ; 0.000         ;
++--------------------------------------------------------------+--------+---------------+
 
 
-+------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Removal Summary                                                                ;
-+------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                        ; Slack ; End Point TNS ;
-+------------------------------------------------------------------------------+-------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.562 ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.755 ; 0.000         ;
-+------------------------------------------------------------------------------+-------+---------------+
++--------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Removal Summary                                                ;
++--------------------------------------------------------------+-------+---------------+
+; Clock                                                        ; Slack ; End Point TNS ;
++--------------------------------------------------------------+-------+---------------+
+; altera_reserved_tck                                          ; 0.666 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.727 ; 0.000         ;
++--------------------------------------------------------------+-------+---------------+
 
 
 +-------------------------------------------------------------------------------------------------------+
@@ -199,9 +205,10 @@ HTML report is unavailable in plain text report export.
 +------------------------------------------------------------------------------+--------+---------------+
 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 0.689  ; 0.000         ;
 ; pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]                   ; 1.041  ; 0.000         ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 9.166  ; 0.000         ;
-; clk_clk                                                                      ; 9.900  ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 39.446 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 9.180  ; 0.000         ;
+; clk_clk                                                                      ; 9.670  ; 0.000         ;
+; altera_reserved_tck                                                          ; 14.904 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 39.466 ; 0.000         ;
 +------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -211,10 +218,10 @@ HTML report is unavailable in plain text report export.
 Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-Number of Synchronizer Chains Found: 13
-Shortest Synchronizer Chain: 3 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 0.077
-Worst Case Available Settling Time: 57.809 ns
+Number of Synchronizer Chains Found: 44
+Shortest Synchronizer Chain: 2 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.727
+Worst Case Available Settling Time: 39.722 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 79.4
@@ -223,14 +230,15 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 
 
 
-+-------------------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Fmax Summary                                                                                 ;
-+-----------+-----------------+------------------------------------------------------------------------------+------+
-; Fmax      ; Restricted Fmax ; Clock Name                                                                   ; Note ;
-+-----------+-----------------+------------------------------------------------------------------------------+------+
-; 80.21 MHz ; 80.21 MHz       ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ;      ;
-; 208.2 MHz ; 208.2 MHz       ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
-+-----------+-----------------+------------------------------------------------------------------------------+------+
++--------------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary                                                                                  ;
++------------+-----------------+------------------------------------------------------------------------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name                                                                   ; Note ;
++------------+-----------------+------------------------------------------------------------------------------+------+
+; 82.68 MHz  ; 82.68 MHz       ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ;      ;
+; 89.94 MHz  ; 89.94 MHz       ; altera_reserved_tck                                                          ;      ;
+; 209.86 MHz ; 209.86 MHz      ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
++------------+-----------------+------------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -239,8 +247,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                        ; Slack  ; End Point TNS ;
 +------------------------------------------------------------------------------+--------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 8.366  ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 76.576 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 8.738  ; 0.000         ;
+; altera_reserved_tck                                                          ; 11.107 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 76.614 ; 0.000         ;
 +------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -249,29 +258,30 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                        ; Slack ; End Point TNS ;
 +------------------------------------------------------------------------------+-------+---------------+
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.194 ; 0.000         ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.228 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.221 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.285 ; 0.000         ;
+; altera_reserved_tck                                                          ; 0.445 ; 0.000         ;
 +------------------------------------------------------------------------------+-------+---------------+
 
 
-+-------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Recovery Summary                                                                 ;
-+------------------------------------------------------------------------------+--------+---------------+
-; Clock                                                                        ; Slack  ; End Point TNS ;
-+------------------------------------------------------------------------------+--------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 18.004 ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 79.713 ; 0.000         ;
-+------------------------------------------------------------------------------+--------+---------------+
++---------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Recovery Summary                                                 ;
++--------------------------------------------------------------+--------+---------------+
+; Clock                                                        ; Slack  ; End Point TNS ;
++--------------------------------------------------------------+--------+---------------+
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 17.589 ; 0.000         ;
+; altera_reserved_tck                                          ; 29.935 ; 0.000         ;
++--------------------------------------------------------------+--------+---------------+
 
 
-+------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Removal Summary                                                                 ;
-+------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                        ; Slack ; End Point TNS ;
-+------------------------------------------------------------------------------+-------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.518 ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.675 ; 0.000         ;
-+------------------------------------------------------------------------------+-------+---------------+
++--------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Removal Summary                                                 ;
++--------------------------------------------------------------+-------+---------------+
+; Clock                                                        ; Slack ; End Point TNS ;
++--------------------------------------------------------------+-------+---------------+
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.618 ; 0.000         ;
+; altera_reserved_tck                                          ; 0.659 ; 0.000         ;
++--------------------------------------------------------------+-------+---------------+
 
 
 +-------------------------------------------------------------------------------------------------------+
@@ -281,9 +291,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +------------------------------------------------------------------------------+--------+---------------+
 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 0.689  ; 0.000         ;
 ; pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]                   ; 1.041  ; 0.000         ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 9.150  ; 0.000         ;
-; clk_clk                                                                      ; 9.926  ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 39.428 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 9.160  ; 0.000         ;
+; clk_clk                                                                      ; 9.673  ; 0.000         ;
+; altera_reserved_tck                                                          ; 14.882 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 39.451 ; 0.000         ;
 +------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -293,10 +304,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-Number of Synchronizer Chains Found: 13
-Shortest Synchronizer Chain: 3 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 0.077
-Worst Case Available Settling Time: 57.939 ns
+Number of Synchronizer Chains Found: 44
+Shortest Synchronizer Chain: 2 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.727
+Worst Case Available Settling Time: 39.708 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 5.2
@@ -310,8 +321,9 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                        ; Slack  ; End Point TNS ;
 +------------------------------------------------------------------------------+--------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 13.872 ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 78.690 ; 0.000         ;
+; altera_reserved_tck                                                          ; 13.525 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 13.988 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 78.352 ; 0.000         ;
 +------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -320,29 +332,30 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                        ; Slack ; End Point TNS ;
 +------------------------------------------------------------------------------+-------+---------------+
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.128 ; 0.000         ;
 ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.137 ; 0.000         ;
+; altera_reserved_tck                                                          ; 0.162 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.176 ; 0.000         ;
 +------------------------------------------------------------------------------+-------+---------------+
 
 
-+-------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 85C Model Recovery Summary                                                                ;
-+------------------------------------------------------------------------------+--------+---------------+
-; Clock                                                                        ; Slack  ; End Point TNS ;
-+------------------------------------------------------------------------------+--------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 18.840 ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 80.283 ; 0.000         ;
-+------------------------------------------------------------------------------+--------+---------------+
++---------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Recovery Summary                                                ;
++--------------------------------------------------------------+--------+---------------+
+; Clock                                                        ; Slack  ; End Point TNS ;
++--------------------------------------------------------------+--------+---------------+
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.625 ; 0.000         ;
+; altera_reserved_tck                                          ; 30.797 ; 0.000         ;
++--------------------------------------------------------------+--------+---------------+
 
 
-+------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 85C Model Removal Summary                                                                ;
-+------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                        ; Slack ; End Point TNS ;
-+------------------------------------------------------------------------------+-------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.305 ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.439 ; 0.000         ;
-+------------------------------------------------------------------------------+-------+---------------+
++--------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Removal Summary                                                ;
++--------------------------------------------------------------+-------+---------------+
+; Clock                                                        ; Slack ; End Point TNS ;
++--------------------------------------------------------------+-------+---------------+
+; altera_reserved_tck                                          ; 0.321 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.451 ; 0.000         ;
++--------------------------------------------------------------+-------+---------------+
 
 
 +-------------------------------------------------------------------------------------------------------+
@@ -352,9 +365,10 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +------------------------------------------------------------------------------+--------+---------------+
 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 0.689  ; 0.000         ;
 ; pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]                   ; 1.041  ; 0.000         ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 9.292  ; 0.000         ;
-; clk_clk                                                                      ; 9.643  ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 39.569 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 9.303  ; 0.000         ;
+; clk_clk                                                                      ; 9.336  ; 0.000         ;
+; altera_reserved_tck                                                          ; 14.590 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 39.579 ; 0.000         ;
 +------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -364,10 +378,10 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-Number of Synchronizer Chains Found: 13
-Shortest Synchronizer Chain: 3 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 0.077
-Worst Case Available Settling Time: 59.667 ns
+Number of Synchronizer Chains Found: 44
+Shortest Synchronizer Chain: 2 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.727
+Worst Case Available Settling Time: 40.532 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 79.4
@@ -381,8 +395,9 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                        ; Slack  ; End Point TNS ;
 +------------------------------------------------------------------------------+--------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 14.286 ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 78.896 ; 0.000         ;
+; altera_reserved_tck                                                          ; 13.942 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 14.460 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 78.569 ; 0.000         ;
 +------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -391,29 +406,30 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                        ; Slack ; End Point TNS ;
 +------------------------------------------------------------------------------+-------+---------------+
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.116 ; 0.000         ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.126 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.127 ; 0.000         ;
+; altera_reserved_tck                                                          ; 0.147 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.162 ; 0.000         ;
 +------------------------------------------------------------------------------+-------+---------------+
 
 
-+-------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 0C Model Recovery Summary                                                                 ;
-+------------------------------------------------------------------------------+--------+---------------+
-; Clock                                                                        ; Slack  ; End Point TNS ;
-+------------------------------------------------------------------------------+--------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 19.070 ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 80.415 ; 0.000         ;
-+------------------------------------------------------------------------------+--------+---------------+
++---------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Recovery Summary                                                 ;
++--------------------------------------------------------------+--------+---------------+
+; Clock                                                        ; Slack  ; End Point TNS ;
++--------------------------------------------------------------+--------+---------------+
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.867 ; 0.000         ;
+; altera_reserved_tck                                          ; 31.068 ; 0.000         ;
++--------------------------------------------------------------+--------+---------------+
 
 
-+------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 0C Model Removal Summary                                                                 ;
-+------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                        ; Slack ; End Point TNS ;
-+------------------------------------------------------------------------------+-------+---------------+
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.277 ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.365 ; 0.000         ;
-+------------------------------------------------------------------------------+-------+---------------+
++--------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Removal Summary                                                 ;
++--------------------------------------------------------------+-------+---------------+
+; Clock                                                        ; Slack ; End Point TNS ;
++--------------------------------------------------------------+-------+---------------+
+; altera_reserved_tck                                          ; 0.294 ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.369 ; 0.000         ;
++--------------------------------------------------------------+-------+---------------+
 
 
 +-------------------------------------------------------------------------------------------------------+
@@ -423,9 +439,10 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +------------------------------------------------------------------------------+--------+---------------+
 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 0.689  ; 0.000         ;
 ; pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]                   ; 1.041  ; 0.000         ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 9.293  ; 0.000         ;
-; clk_clk                                                                      ; 9.632  ; 0.000         ;
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 39.567 ; 0.000         ;
+; clk_clk                                                                      ; 9.286  ; 0.000         ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 9.301  ; 0.000         ;
+; altera_reserved_tck                                                          ; 14.577 ; 0.000         ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 39.580 ; 0.000         ;
 +------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -435,10 +452,10 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-Number of Synchronizer Chains Found: 13
-Shortest Synchronizer Chain: 3 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 0.077
-Worst Case Available Settling Time: 59.899 ns
+Number of Synchronizer Chains Found: 44
+Shortest Synchronizer Chain: 2 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.727
+Worst Case Available Settling Time: 40.577 ns
 
 Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 5.2
@@ -452,15 +469,17 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-------------------------------------------------------------------------------+--------+-------+----------+---------+---------------------+
 ; Clock                                                                         ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +-------------------------------------------------------------------------------+--------+-------+----------+---------+---------------------+
-; Worst-case Slack                                                              ; 8.366  ; 0.116 ; 17.870   ; 0.277   ; 0.689               ;
+; Worst-case Slack                                                              ; 8.738  ; 0.127 ; 17.450   ; 0.294   ; 0.689               ;
+;  altera_reserved_tck                                                          ; 10.931 ; 0.147 ; 29.759   ; 0.294   ; 14.577              ;
 ;  audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A    ; N/A   ; N/A      ; N/A     ; 0.689               ;
-;  audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 76.576 ; 0.116 ; 79.641   ; 0.365   ; 39.428              ;
-;  clk_clk                                                                      ; N/A    ; N/A   ; N/A      ; N/A     ; 9.632               ;
+;  audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 76.560 ; 0.162 ; N/A      ; N/A     ; 39.451              ;
+;  clk_clk                                                                      ; N/A    ; N/A   ; N/A      ; N/A     ; 9.286               ;
 ;  pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]                   ; N/A    ; N/A   ; N/A      ; N/A     ; 1.041               ;
-;  pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 8.366  ; 0.126 ; 17.870   ; 0.277   ; 9.150               ;
+;  pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 8.738  ; 0.127 ; 17.450   ; 0.369   ; 9.160               ;
 ; Design-wide TNS                                                               ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+;  altera_reserved_tck                                                          ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
 ;  audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A    ; N/A   ; N/A      ; N/A     ; 0.000               ;
-;  audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
+;  audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.000  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
 ;  clk_clk                                                                      ; N/A    ; N/A   ; N/A      ; N/A     ; 0.000               ;
 ;  pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]                   ; N/A    ; N/A   ; N/A      ; N/A     ; 0.000               ;
 ;  pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
@@ -472,9 +491,11 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +--------------------------------------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
 ; Pin                                              ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
 +--------------------------------------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
-; audio_0_external_interface_DACDAT                ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; audio_and_video_config_0_external_interface_SCLK ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; audio_and_video_config_0_external_interface_SDAT ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; audio_0_external_interface_DACDAT                ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; audio_and_video_config_0_external_interface_SCLK ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; AUD_XCK                                          ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; audio_and_video_config_0_external_interface_SDAT ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; altera_reserved_tdo                              ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 +--------------------------------------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
 
 
@@ -483,12 +504,15 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +--------------------------------------------------+--------------+-----------------+-----------------+
 ; Pin                                              ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
 +--------------------------------------------------+--------------+-----------------+-----------------+
-; audio_and_video_config_0_external_interface_SDAT ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; clk_clk                                          ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; reset_reset_n                                    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; audio_0_external_interface_DACLRCK               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; audio_0_external_interface_BCLK                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; tone_generation_0_conduit_end_0_export           ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; audio_and_video_config_0_external_interface_SDAT ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; tone_generation_0_conduit_end_0_export           ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; clk_clk                                          ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; reset_reset_n                                    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; audio_0_external_interface_DACLRCK               ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; audio_0_external_interface_BCLK                  ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; altera_reserved_tms                              ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; altera_reserved_tck                              ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; altera_reserved_tdi                              ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 +--------------------------------------------------+--------------+-----------------+-----------------+
 
 
@@ -497,9 +521,11 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin                                              ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; audio_0_external_interface_DACDAT                ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
-; audio_and_video_config_0_external_interface_SCLK ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
-; audio_and_video_config_0_external_interface_SDAT ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
+; audio_0_external_interface_DACDAT                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.5e-07 V                    ; 3.14 V              ; -0.195 V            ; 0.158 V                              ; 0.394 V                              ; 4.46e-10 s                  ; 1.64e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 3.5e-07 V                   ; 3.14 V             ; -0.195 V           ; 0.158 V                             ; 0.394 V                             ; 4.46e-10 s                 ; 1.64e-10 s                 ; Yes                       ; No                        ;
+; audio_and_video_config_0_external_interface_SCLK ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.62e-07 V                   ; 3.1 V               ; -0.153 V            ; 0.035 V                              ; 0.31 V                               ; 4.23e-10 s                  ; 1.59e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.62e-07 V                  ; 3.1 V              ; -0.153 V           ; 0.035 V                             ; 0.31 V                              ; 4.23e-10 s                 ; 1.59e-10 s                 ; Yes                       ; No                        ;
+; AUD_XCK                                          ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.35e-07 V                   ; 3.14 V              ; -0.258 V            ; 0.13 V                               ; 0.399 V                              ; 4.27e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.08 V                      ; 3.35e-07 V                  ; 3.14 V             ; -0.258 V           ; 0.13 V                              ; 0.399 V                             ; 4.27e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; audio_and_video_config_0_external_interface_SDAT ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.5e-07 V                    ; 3.14 V              ; -0.195 V            ; 0.158 V                              ; 0.394 V                              ; 4.46e-10 s                  ; 1.64e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 3.5e-07 V                   ; 3.14 V             ; -0.195 V           ; 0.158 V                             ; 0.394 V                             ; 4.46e-10 s                 ; 1.64e-10 s                 ; Yes                       ; No                        ;
+; altera_reserved_tdo                              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.54e-07 V                   ; 3.11 V              ; -0.0675 V           ; 0.176 V                              ; 0.182 V                              ; 5.82e-10 s                  ; 2.68e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 4.54e-07 V                  ; 3.11 V             ; -0.0675 V          ; 0.176 V                             ; 0.182 V                             ; 5.82e-10 s                 ; 2.68e-10 s                 ; Yes                       ; Yes                       ;
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
@@ -508,9 +534,11 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin                                              ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; audio_0_external_interface_DACDAT                ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
-; audio_and_video_config_0_external_interface_SCLK ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
-; audio_and_video_config_0_external_interface_SDAT ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
+; audio_0_external_interface_DACDAT                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.32e-05 V                   ; 3.09 V              ; -0.11 V             ; 0.031 V                              ; 0.155 V                              ; 5.43e-10 s                  ; 3.14e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 3.32e-05 V                  ; 3.09 V             ; -0.11 V            ; 0.031 V                             ; 0.155 V                             ; 5.43e-10 s                 ; 3.14e-10 s                 ; Yes                       ; Yes                       ;
+; audio_and_video_config_0_external_interface_SCLK ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.61e-05 V                   ; 3.09 V              ; -0.0638 V           ; 0.034 V                              ; 0.099 V                              ; 5.12e-10 s                  ; 2.97e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.61e-05 V                  ; 3.09 V             ; -0.0638 V          ; 0.034 V                             ; 0.099 V                             ; 5.12e-10 s                 ; 2.97e-10 s                 ; Yes                       ; Yes                       ;
+; AUD_XCK                                          ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.19e-05 V                   ; 3.1 V               ; -0.133 V            ; 0.025 V                              ; 0.169 V                              ; 4.92e-10 s                  ; 3.13e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 3.19e-05 V                  ; 3.1 V              ; -0.133 V           ; 0.025 V                             ; 0.169 V                             ; 4.92e-10 s                 ; 3.13e-10 s                 ; Yes                       ; No                        ;
+; audio_and_video_config_0_external_interface_SDAT ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.32e-05 V                   ; 3.09 V              ; -0.11 V             ; 0.031 V                              ; 0.155 V                              ; 5.43e-10 s                  ; 3.14e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 3.32e-05 V                  ; 3.09 V             ; -0.11 V            ; 0.031 V                             ; 0.155 V                             ; 5.43e-10 s                 ; 3.14e-10 s                 ; Yes                       ; Yes                       ;
+; altera_reserved_tdo                              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.39e-05 V                   ; 3.12 V              ; -0.0432 V           ; 0.292 V                              ; 0.097 V                              ; 6.42e-10 s                  ; 3.87e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 4.39e-05 V                  ; 3.12 V             ; -0.0432 V          ; 0.292 V                             ; 0.097 V                             ; 6.42e-10 s                 ; 3.87e-10 s                 ; Yes                       ; Yes                       ;
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
@@ -519,9 +547,11 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin                                              ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; audio_0_external_interface_DACDAT                ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; audio_and_video_config_0_external_interface_SCLK ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
-; audio_and_video_config_0_external_interface_SDAT ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
+; audio_0_external_interface_DACDAT                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; audio_and_video_config_0_external_interface_SCLK ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; AUD_XCK                                          ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; audio_and_video_config_0_external_interface_SDAT ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; altera_reserved_tdo                              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 6.35e-06 V                   ; 3.69 V              ; -0.125 V            ; 0.384 V                              ; 0.202 V                              ; 4.63e-10 s                  ; 2.66e-10 s                  ; No                         ; Yes                        ; 3.63 V                      ; 6.35e-06 V                  ; 3.69 V             ; -0.125 V           ; 0.384 V                             ; 0.202 V                             ; 4.63e-10 s                 ; 2.66e-10 s                 ; No                        ; Yes                       ;
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
@@ -530,9 +560,11 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin                                              ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; audio_0_external_interface_DACDAT                ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; audio_and_video_config_0_external_interface_SCLK ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
-; audio_and_video_config_0_external_interface_SDAT ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
+; audio_0_external_interface_DACDAT                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; audio_and_video_config_0_external_interface_SCLK ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; AUD_XCK                                          ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; audio_and_video_config_0_external_interface_SDAT ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; altera_reserved_tdo                              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000312 V                   ; 3.68 V              ; -0.0512 V           ; 0.226 V                              ; 0.205 V                              ; 5.93e-10 s                  ; 2.92e-10 s                  ; No                         ; Yes                        ; 3.63 V                      ; 0.000312 V                  ; 3.68 V             ; -0.0512 V          ; 0.226 V                             ; 0.205 V                             ; 5.93e-10 s                 ; 2.92e-10 s                 ; No                        ; Yes                       ;
 +--------------------------------------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
@@ -541,10 +573,13 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
 ; From Clock                                                                   ; To Clock                                                                     ; RR Paths   ; FR Paths ; RF Paths ; FF Paths ;
 +------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3451       ; 0        ; 0        ; 0        ;
+; altera_reserved_tck                                                          ; altera_reserved_tck                                                          ; 9468       ; 0        ; 56       ; 0        ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; altera_reserved_tck                                                          ; false path ; 0        ; 0        ; 0        ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 4628       ; 0        ; 0        ; 0        ;
 ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; 0        ; 0        ; 0        ;
+; altera_reserved_tck                                                          ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; false path ; 0        ; 0        ; 0        ;
 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; false path ; 0        ; 0        ; 0        ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 852092533  ; 0        ; 0        ; 0        ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 929584389  ; 0        ; 0        ; 0        ;
 +------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -554,33 +589,40 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
 ; From Clock                                                                   ; To Clock                                                                     ; RR Paths   ; FR Paths ; RF Paths ; FF Paths ;
 +------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3451       ; 0        ; 0        ; 0        ;
+; altera_reserved_tck                                                          ; altera_reserved_tck                                                          ; 9468       ; 0        ; 56       ; 0        ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; altera_reserved_tck                                                          ; false path ; 0        ; 0        ; 0        ;
+; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 4628       ; 0        ; 0        ; 0        ;
 ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; 0        ; 0        ; 0        ;
+; altera_reserved_tck                                                          ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; false path ; 0        ; 0        ; 0        ;
 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; false path ; 0        ; 0        ; 0        ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 852092533  ; 0        ; 0        ; 0        ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 929584389  ; 0        ; 0        ; 0        ;
 +------------------------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Recovery Transfers                                                                                                                                                                                      ;
-+------------------------------------------------------------------------------+------------------------------------------------------------------------------+----------+----------+----------+----------+
-; From Clock                                                                   ; To Clock                                                                     ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+------------------------------------------------------------------------------+------------------------------------------------------------------------------+----------+----------+----------+----------+
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 52       ; 0        ; 0        ; 0        ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 356      ; 0        ; 0        ; 0        ;
-+------------------------------------------------------------------------------+------------------------------------------------------------------------------+----------+----------+----------+----------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recovery Transfers                                                                                                                                                                        ;
++--------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
+; From Clock                                                   ; To Clock                                                                     ; RR Paths   ; FR Paths ; RF Paths ; FF Paths ;
++--------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
+; altera_reserved_tck                                          ; altera_reserved_tck                                                          ; 332        ; 0        ; 0        ; 0        ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; 0        ; 0        ; 0        ;
+; altera_reserved_tck                                          ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; false path ; 0        ; 0        ; 0        ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 393        ; 0        ; 0        ; 0        ;
++--------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removal Transfers                                                                                                                                                                                       ;
-+------------------------------------------------------------------------------+------------------------------------------------------------------------------+----------+----------+----------+----------+
-; From Clock                                                                   ; To Clock                                                                     ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+------------------------------------------------------------------------------+------------------------------------------------------------------------------+----------+----------+----------+----------+
-; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 52       ; 0        ; 0        ; 0        ;
-; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 356      ; 0        ; 0        ; 0        ;
-+------------------------------------------------------------------------------+------------------------------------------------------------------------------+----------+----------+----------+----------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removal Transfers                                                                                                                                                                         ;
++--------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
+; From Clock                                                   ; To Clock                                                                     ; RR Paths   ; FR Paths ; RF Paths ; FF Paths ;
++--------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
+; altera_reserved_tck                                          ; altera_reserved_tck                                                          ; 332        ; 0        ; 0        ; 0        ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; 0        ; 0        ; 0        ;
+; altera_reserved_tck                                          ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; false path ; 0        ; 0        ; 0        ;
+; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk                 ; 393        ; 0        ; 0        ; 0        ;
++--------------------------------------------------------------+------------------------------------------------------------------------------+------------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
@@ -603,10 +645,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 3     ; 3    ;
-; Unconstrained Input Port Paths  ; 3     ; 3    ;
-; Unconstrained Output Ports      ; 3     ; 3    ;
-; Unconstrained Output Port Paths ; 8     ; 8    ;
+; Unconstrained Input Ports       ; 5     ; 5    ;
+; Unconstrained Input Port Paths  ; 57    ; 57   ;
+; Unconstrained Output Ports      ; 5     ; 5    ;
+; Unconstrained Output Port Paths ; 14    ; 14   ;
 +---------------------------------+-------+------+
 
 
@@ -615,6 +657,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +------------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+-------------+
 ; Target                                                                       ; Clock                                                                        ; Type      ; Status      ;
 +------------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+-------------+
+; altera_reserved_tck                                                          ; altera_reserved_tck                                                          ; Base      ; Constrained ;
 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; Generated ; Constrained ;
 ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; Generated ; Constrained ;
 ; clk_clk                                                                      ; clk_clk                                                                      ; Base      ; Constrained ;
@@ -628,6 +671,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +--------------------------------------------------+--------------------------------------------------------------------------------------+
 ; Input Port                                       ; Comment                                                                              ;
 +--------------------------------------------------+--------------------------------------------------------------------------------------+
+; altera_reserved_tdi                              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tms                              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_0_external_interface_BCLK                  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_0_external_interface_DACLRCK               ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_and_video_config_0_external_interface_SDAT ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -639,6 +684,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +--------------------------------------------------+---------------------------------------------------------------------------------------+
 ; Output Port                                      ; Comment                                                                               ;
 +--------------------------------------------------+---------------------------------------------------------------------------------------+
+; AUD_XCK                                          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tdo                              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_0_external_interface_DACDAT                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_and_video_config_0_external_interface_SCLK ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_and_video_config_0_external_interface_SDAT ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -650,6 +697,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +--------------------------------------------------+--------------------------------------------------------------------------------------+
 ; Input Port                                       ; Comment                                                                              ;
 +--------------------------------------------------+--------------------------------------------------------------------------------------+
+; altera_reserved_tdi                              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tms                              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_0_external_interface_BCLK                  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_0_external_interface_DACLRCK               ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_and_video_config_0_external_interface_SDAT ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -661,6 +710,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +--------------------------------------------------+---------------------------------------------------------------------------------------+
 ; Output Port                                      ; Comment                                                                               ;
 +--------------------------------------------------+---------------------------------------------------------------------------------------+
+; AUD_XCK                                          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tdo                              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_0_external_interface_DACDAT                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_and_video_config_0_external_interface_SCLK ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; audio_and_video_config_0_external_interface_SDAT ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -673,13 +724,18 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
-    Info: Processing started: Tue Apr 28 14:52:40 2020
+    Info: Processing started: Wed May 06 14:19:45 2020
 Info: Command: quartus_sta TestP5 -c TestP5
 Info: qsta_default_script.tcl version: #3
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
+Info (332164): Evaluating HDL-embedded SDC commands
+    Info (332165): Entity sld_hub
+        Info (332166): create_clock -name altera_reserved_tck [get_ports {altera_reserved_tck}] -period 30MHz   
+        Info (332166): if { [string equal quartus_fit $::TimeQuestInfo(nameofexecutable)] } { set_max_delay -to [get_ports { altera_reserved_tdo } ] 0 }
+        Info (332166): set_clock_groups -asynchronous -group {altera_reserved_tck}
 Info (332104): Reading SDC File: 'TestP5.sdc'
 Info (332110): Deriving PLL clocks
     Info (332110): create_generated_clock -source {audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin} -divide_by 2 -multiply_by 29 -duty_cycle 50.00 -name {audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]} {audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}
@@ -699,42 +755,45 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
-Info (332146): Worst-case setup slack is 8.639
+Info (332146): Worst-case setup slack is 8.856
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.639               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    76.623               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.210
+    Info (332119):     8.856               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    10.931               0.000 altera_reserved_tck 
+    Info (332119):    76.560               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.236
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.210               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.242               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case recovery slack is 17.870
+    Info (332119):     0.236               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.298               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.430               0.000 altera_reserved_tck 
+Info (332146): Worst-case recovery slack is 17.450
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    17.870               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    79.641               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 0.562
+    Info (332119):    17.450               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    29.759               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.666
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.562               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.755               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.666               0.000 altera_reserved_tck 
+    Info (332119):     0.727               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 0.689
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     0.689               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     1.041               0.000 pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     9.166               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     9.900               0.000 clk_clk 
-    Info (332119):    39.446               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332114): Report Metastability: Found 13 synchronizer chains.
+    Info (332119):     9.180               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     9.670               0.000 clk_clk 
+    Info (332119):    14.904               0.000 altera_reserved_tck 
+    Info (332119):    39.466               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332114): Report Metastability: Found 44 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-    Info (332114): Number of Synchronizer Chains Found: 13
-    Info (332114): Shortest Synchronizer Chain: 3 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.077
-    Info (332114): Worst Case Available Settling Time: 57.809 ns
+    Info (332114): Number of Synchronizer Chains Found: 44
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.727
+    Info (332114): Worst Case Available Settling Time: 39.722 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 79.4
@@ -751,42 +810,45 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
     Info (332098): Cell: pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
     Info (332098): Cell: pll_0|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Info (332146): Worst-case setup slack is 8.366
+Info (332146): Worst-case setup slack is 8.738
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.366               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    76.576               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.194
+    Info (332119):     8.738               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    11.107               0.000 altera_reserved_tck 
+    Info (332119):    76.614               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.221
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.194               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.228               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case recovery slack is 18.004
+    Info (332119):     0.221               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.285               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.445               0.000 altera_reserved_tck 
+Info (332146): Worst-case recovery slack is 17.589
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    18.004               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    79.713               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 0.518
+    Info (332119):    17.589               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    29.935               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.618
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.518               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.675               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.618               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.659               0.000 altera_reserved_tck 
 Info (332146): Worst-case minimum pulse width slack is 0.689
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     0.689               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     1.041               0.000 pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     9.150               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     9.926               0.000 clk_clk 
-    Info (332119):    39.428               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332114): Report Metastability: Found 13 synchronizer chains.
+    Info (332119):     9.160               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     9.673               0.000 clk_clk 
+    Info (332119):    14.882               0.000 altera_reserved_tck 
+    Info (332119):    39.451               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332114): Report Metastability: Found 44 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-    Info (332114): Number of Synchronizer Chains Found: 13
-    Info (332114): Shortest Synchronizer Chain: 3 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.077
-    Info (332114): Worst Case Available Settling Time: 57.939 ns
+    Info (332114): Number of Synchronizer Chains Found: 44
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.727
+    Info (332114): Worst Case Available Settling Time: 39.708 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 5.2
@@ -803,42 +865,45 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
     Info (332098): Cell: pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
     Info (332098): Cell: pll_0|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Info (332146): Worst-case setup slack is 13.872
+Info (332146): Worst-case setup slack is 13.525
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    13.872               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    78.690               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.128
+    Info (332119):    13.525               0.000 altera_reserved_tck 
+    Info (332119):    13.988               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    78.352               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.137
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.128               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
     Info (332119):     0.137               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case recovery slack is 18.840
+    Info (332119):     0.162               0.000 altera_reserved_tck 
+    Info (332119):     0.176               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case recovery slack is 18.625
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    18.840               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    80.283               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 0.305
+    Info (332119):    18.625               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    30.797               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.321
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.305               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.439               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.321               0.000 altera_reserved_tck 
+    Info (332119):     0.451               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 0.689
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     0.689               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     1.041               0.000 pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     9.292               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     9.643               0.000 clk_clk 
-    Info (332119):    39.569               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332114): Report Metastability: Found 13 synchronizer chains.
+    Info (332119):     9.303               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     9.336               0.000 clk_clk 
+    Info (332119):    14.590               0.000 altera_reserved_tck 
+    Info (332119):    39.579               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332114): Report Metastability: Found 44 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-    Info (332114): Number of Synchronizer Chains Found: 13
-    Info (332114): Shortest Synchronizer Chain: 3 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.077
-    Info (332114): Worst Case Available Settling Time: 59.667 ns
+    Info (332114): Number of Synchronizer Chains Found: 44
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.727
+    Info (332114): Worst Case Available Settling Time: 40.532 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 79.4
@@ -853,42 +918,45 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
     Info (332098): Cell: pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
     Info (332098): Cell: pll_0|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Info (332146): Worst-case setup slack is 14.286
+Info (332146): Worst-case setup slack is 13.942
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    14.286               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    78.896               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is 0.116
+    Info (332119):    13.942               0.000 altera_reserved_tck 
+    Info (332119):    14.460               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    78.569               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.127
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.116               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.126               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case recovery slack is 19.070
+    Info (332119):     0.127               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.147               0.000 altera_reserved_tck 
+    Info (332119):     0.162               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case recovery slack is 18.867
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    19.070               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    80.415               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 0.277
+    Info (332119):    18.867               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    31.068               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.294
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.277               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.365               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.294               0.000 altera_reserved_tck 
+    Info (332119):     0.369               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 0.689
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     0.689               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     1.041               0.000 pll_0|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     9.293               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     9.632               0.000 clk_clk 
-    Info (332119):    39.567               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332114): Report Metastability: Found 13 synchronizer chains.
+    Info (332119):     9.286               0.000 clk_clk 
+    Info (332119):     9.301               0.000 pll_0|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    14.577               0.000 altera_reserved_tck 
+    Info (332119):    39.580               0.000 audio_pll_0|audio_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332114): Report Metastability: Found 44 synchronizer chains.
     Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
     Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
 
-    Info (332114): Number of Synchronizer Chains Found: 13
-    Info (332114): Shortest Synchronizer Chain: 3 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.077
-    Info (332114): Worst Case Available Settling Time: 59.899 ns
+    Info (332114): Number of Synchronizer Chains Found: 44
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.727
+    Info (332114): Worst Case Available Settling Time: 40.577 ns
     Info (332114): 
     Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
     Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 5.2
@@ -897,9 +965,9 @@ Info (332114): Report Metastability: Found 13 synchronizer chains.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 5170 megabytes
-    Info: Processing ended: Tue Apr 28 14:52:54 2020
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Peak virtual memory: 5277 megabytes
+    Info: Processing ended: Wed May 06 14:20:17 2020
+    Info: Elapsed time: 00:00:32
+    Info: Total CPU time (on all processors): 00:00:53
 
 

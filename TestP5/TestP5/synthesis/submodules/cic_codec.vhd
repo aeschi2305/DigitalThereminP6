@@ -38,8 +38,8 @@ architecture rtl of cic is
   signal en_comb              : boolean := false;
   signal count_reg            : integer range 0 to 1000;
   signal count_cmb            : integer range 0 to 1001;
-  signal audio_cmb            : std_logic_vector(N+9 downto 0);
-  signal audio_reg            : std_logic_vector(N+9 downto 0);
+  signal audio_cmb            : std_logic_vector(31 downto 0);
+  signal audio_reg            : std_logic_vector(31 downto 0);
 begin
   ------------------------------------------------------------------------------
   -- Integrator Registerd Process 
@@ -72,27 +72,24 @@ begin
       comb_reg <= (others => '0');
       comb_in_reg <= (others =>'0');
       comb_old_reg <= (others => '0');
+      audio_reg <= (others => '0');
       count_reg <= 0;
       en_comb <= false;
-      valid <= '0';
     elsif rising_edge(clk) then
         if count_reg < rc_factor then 
           count_reg <= count_cmb; 
           en_comb <= false;
         else
           en_comb <= true;
-          audio_reg <= audio_cmb;
           count_reg <= 0;
+          audio_reg <= audio_cmb;
         end if;
         if en_comb = true then  
           comb_reg <= comb_cmb;
           comb_in_reg <= integrator_reg;
           comb_old_reg <= comb_in_reg;
         end if;
-        valid <= '0';
-        if ready = '1' and en_comb = true then
-          valid <= '1';
-        end if;
+        
         
     end if;
   end process p_comb_reg;
@@ -105,12 +102,37 @@ begin
   begin
     comb_cmb <= comb_in_reg - comb_old_reg;
     count_cmb <= count_reg + 1;
-    audio_cmb <= std_logic_vector(comb_reg);
+    --audio_cmb <= std_logic_vector(comb_reg); with further signal processing
+    --without further siganl processing
+    audio_tmp := std_logic_vector(comb_reg & "000000");
+    audio_tmp(audio_tmp'high) := not audio_tmp(audio_tmp'high);
+    audio_cmb <= audio_tmp;
   end process p_comb_cmb;
+
+
+  ------------------------------------------------------------------------------
+  -- ST Process Process
+  -- Handles the communication with the Streaming Interface
+  ------------------------------------------------------------------------------
+
+
+  p_st : process (reset_n, clk)
+  
+  begin
+  if reset_n = '0' then
+        valid <= '0';
+  elsif rising_edge(clk) then
+        if en_comb = true then
+          valid <= '1';
+        elsif ready = '1' then
+          valid <= '0';
+        end if;
+  end if;
+  end process p_st;
 
   ------------------------------------------------------------------------------
   -- Output Assignments
   ------------------------------------------------------------------------------
-  audio_out <= audio_reg & "000000";
+  audio_out <= audio_reg ;
 
 end rtl;

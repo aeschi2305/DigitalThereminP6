@@ -21,6 +21,7 @@ set_clock_groups -asynchronous -group [get_clocks {audio_pll_0|audio_pll|altera_
 # set_false_path -from key[*]
 set_false_path -from [get_ports {tone_generation_0_conduit_end_0_export}]
 
+
 #**************************************************************
 # Set Output Delay
 #**************************************************************

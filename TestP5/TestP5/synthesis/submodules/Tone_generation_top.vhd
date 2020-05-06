@@ -39,7 +39,7 @@ architecture struct of Tone_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 552000;
+  constant cordic_def_freq :natural := 568000;
   -- Internal signal declarations:
   signal sine                 : signed(N-1 downto 0);
   signal phi                  : signed(N-1 downto 0);

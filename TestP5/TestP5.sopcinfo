@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="TestP5" kind="TestP5" version="1.0" fabric="QSYS">
  <!-- Format version 17.1 590 (Future versions may contain additional information.) -->
- <!-- 2020.04.28.12:57:37 -->
+ <!-- 2020.05.05.18:00:39 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1588071457</value>
+  <value>1588694439</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -246,7 +246,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>8</value>
+    <value>32</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -1033,7 +1033,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>8</value>
+    <value>32</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -2536,7 +2536,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="SYMBOLS_PER_BEAT">
    <type>int</type>
-   <value>4</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -2544,7 +2544,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="BITS_PER_SYMBOL">
    <type>int</type>
-   <value>8</value>
+   <value>32</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -2856,7 +2856,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>8</value>
+    <value>32</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -2920,7 +2920,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="symbolsPerBeat">
     <type>int</type>
-    <value>4</value>
+    <value>1</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -2993,7 +2993,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>8</value>
+    <value>32</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -3057,7 +3057,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="symbolsPerBeat">
     <type>int</type>
-    <value>4</value>
+    <value>1</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -7341,6 +7341,33 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>in_clk_reset</endConnectionPoint>
  </connection>
  <connection
+   name="clk_0.clk_reset/dc_fifo_0.out_clk_reset"
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="dc_fifo_0.out_clk_reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk_reset</startConnectionPoint>
+  <endModule>dc_fifo_0</endModule>
+  <endConnectionPoint>out_clk_reset</endConnectionPoint>
+ </connection>
+ <connection
    name="clk_0.clk_reset/audio_pll_0.ref_reset"
    kind="reset"
    version="17.1"
@@ -7420,33 +7447,6 @@ parameters are a RESULT of the module parameters. -->
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>Tone_generation_0</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
- </connection>
- <connection
-   name="audio_pll_0.reset_source/dc_fifo_0.out_clk_reset"
-   kind="reset"
-   version="17.1"
-   start="audio_pll_0.reset_source"
-   end="dc_fifo_0.out_clk_reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>audio_pll_0</startModule>
-  <startConnectionPoint>reset_source</startConnectionPoint>
-  <endModule>dc_fifo_0</endModule>
-  <endConnectionPoint>out_clk_reset</endConnectionPoint>
  </connection>
  <connection
    name="audio_pll_0.reset_source/audio_and_video_config_0.reset"

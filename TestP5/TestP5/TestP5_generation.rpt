@@ -1,5 +1,5 @@
 Info: Starting: Create block symbol file (.bsf)
-Info: qsys-generate D:\GitHub\Projekt6\TestP5\TestP5.qsys --block-symbol-file --output-directory=D:\GitHub\Projekt6\TestP5\TestP5 --family="Cyclone V" --part=5CSEMA5F31C6
+Info: qsys-generate C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\TestP5\TestP5.qsys --block-symbol-file --output-directory=C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\TestP5\TestP5 --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading TestP5/TestP5.qsys
 Progress: Reading input file
 Progress: Adding Tone_generation_0 [Tone_generation 1.0]
@@ -30,7 +30,7 @@ Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: qsys-generate D:\GitHub\Projekt6\TestP5\TestP5.qsys --synthesis=VHDL --output-directory=D:\GitHub\Projekt6\TestP5\TestP5\synthesis --family="Cyclone V" --part=5CSEMA5F31C6
+Info: qsys-generate C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\TestP5\TestP5.qsys --synthesis=VHDL --output-directory=C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\TestP5\TestP5\synthesis --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading TestP5/TestP5.qsys
 Progress: Reading input file
 Progress: Adding Tone_generation_0 [Tone_generation 1.0]
