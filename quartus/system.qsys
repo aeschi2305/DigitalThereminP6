@@ -231,6 +231,7 @@
    type="conduit"
    dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface name="sdram_clk" internal="pll.outclk2" type="clock" dir="start" />
  <interface
    name="touch_panel_busy_external_connection"
    internal="touch_panel_busy.external_connection"
@@ -276,15 +277,15 @@
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
  <module name="cpu" kind="altera_nios2_gen2" version="17.1" enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="4" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="4" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="5" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="5" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="bht_ramBlockType" value="Automatic" />
   <parameter name="breakOffset" value="32" />
   <parameter name="breakSlave" value="None" />
   <parameter name="cdx_enabled" value="false" />
-  <parameter name="clockFrequency" value="48000000" />
+  <parameter name="clockFrequency" value="50000000" />
   <parameter name="cpuArchRev" value="1" />
   <parameter name="cpuID" value="0" />
   <parameter name="cpuReset" value="false" />
@@ -465,7 +466,7 @@
   <parameter name="TRP" value="15.0" />
   <parameter name="TWR" value="14.0" />
   <parameter name="casLatency" value="3" />
-  <parameter name="clockRate" value="48000000" />
+  <parameter name="clockRate" value="50000000" />
   <parameter name="columnWidth" value="10" />
   <parameter name="componentName">$${FILENAME}_dram_ctrl</parameter>
   <parameter name="dataWidth" value="16" />
@@ -489,7 +490,7 @@
    enabled="1">
   <parameter name="allowMultipleConnections" value="false" />
   <parameter name="avalonSpec" value="2.0" />
-  <parameter name="clkFreq" value="48000000" />
+  <parameter name="clkFreq" value="50000000" />
   <parameter name="hubInstanceID" value="0" />
   <parameter name="readBufferDepth" value="64" />
   <parameter name="readIRQThreshold" value="8" />
@@ -618,9 +619,9 @@
   <parameter name="gui_fractional_cout" value="32" />
   <parameter name="gui_mif_generate" value="false" />
   <parameter name="gui_multiply_factor" value="1" />
-  <parameter name="gui_number_of_clocks" value="2" />
+  <parameter name="gui_number_of_clocks" value="3" />
   <parameter name="gui_operation_mode" value="direct" />
-  <parameter name="gui_output_clock_frequency0" value="48.0" />
+  <parameter name="gui_output_clock_frequency0" value="50.0" />
   <parameter name="gui_output_clock_frequency1" value="15.0" />
   <parameter name="gui_output_clock_frequency10" value="100.0" />
   <parameter name="gui_output_clock_frequency11" value="100.0" />
@@ -630,7 +631,7 @@
   <parameter name="gui_output_clock_frequency15" value="100.0" />
   <parameter name="gui_output_clock_frequency16" value="100.0" />
   <parameter name="gui_output_clock_frequency17" value="100.0" />
-  <parameter name="gui_output_clock_frequency2" value="100.0" />
+  <parameter name="gui_output_clock_frequency2" value="50.0" />
   <parameter name="gui_output_clock_frequency3" value="100.0" />
   <parameter name="gui_output_clock_frequency4" value="100.0" />
   <parameter name="gui_output_clock_frequency5" value="100.0" />
@@ -648,7 +649,7 @@
   <parameter name="gui_phase_shift15" value="0" />
   <parameter name="gui_phase_shift16" value="0" />
   <parameter name="gui_phase_shift17" value="0" />
-  <parameter name="gui_phase_shift2" value="0" />
+  <parameter name="gui_phase_shift2" value="-3333" />
   <parameter name="gui_phase_shift3" value="0" />
   <parameter name="gui_phase_shift4" value="0" />
   <parameter name="gui_phase_shift5" value="0" />
@@ -709,7 +710,7 @@
    kind="altera_avalon_sysid_qsys"
    version="17.1"
    enabled="1">
-  <parameter name="id" value="0" />
+  <parameter name="id" value="1" />
  </module>
  <module name="timer" kind="altera_avalon_timer" version="17.1" enabled="1">
   <parameter name="alwaysRun" value="false" />
@@ -719,7 +720,7 @@
   <parameter name="periodUnits" value="MSEC" />
   <parameter name="resetOutput" value="false" />
   <parameter name="snapshot" value="true" />
-  <parameter name="systemFrequency" value="48000000" />
+  <parameter name="systemFrequency" value="50000000" />
   <parameter name="timeoutPulseOutput" value="false" />
   <parameter name="watchdogPulse" value="2" />
  </module>

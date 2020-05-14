@@ -14,6 +14,8 @@ Progress: Adding clk_0 [clock_source 17.1]
 Progress: Parameterizing module clk_0
 Progress: Adding dc_fifo_0 [altera_avalon_dc_fifo 17.1]
 Progress: Parameterizing module dc_fifo_0
+Progress: Adding dc_fifo_1 [altera_avalon_dc_fifo 17.1]
+Progress: Parameterizing module dc_fifo_1
 Progress: Adding pll_0 [altera_pll 17.1]
 Progress: Parameterizing module pll_0
 Progress: Building connections
@@ -24,7 +26,6 @@ Info: TestP5.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
 Info: TestP5.pll_0: Able to implement PLL with user settings
 Warning: TestP5.audio.avalon_left_channel_source: audio.avalon_left_channel_source must be connected to an Avalon-ST sink
 Warning: TestP5.audio.avalon_right_channel_source: audio.avalon_right_channel_source must be connected to an Avalon-ST sink
-Warning: TestP5.audio.avalon_left_channel_sink: audio.avalon_left_channel_sink must be connected to an Avalon-ST source
 Warning: TestP5.audio_and_video_config_0: audio_and_video_config_0.avalon_av_config_slave must be connected to an Avalon-MM master
 Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
@@ -45,6 +46,8 @@ Progress: Adding clk_0 [clock_source 17.1]
 Progress: Parameterizing module clk_0
 Progress: Adding dc_fifo_0 [altera_avalon_dc_fifo 17.1]
 Progress: Parameterizing module dc_fifo_0
+Progress: Adding dc_fifo_1 [altera_avalon_dc_fifo 17.1]
+Progress: Parameterizing module dc_fifo_1
 Progress: Adding pll_0 [altera_pll 17.1]
 Progress: Parameterizing module pll_0
 Progress: Building connections
@@ -55,7 +58,6 @@ Info: TestP5.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
 Info: TestP5.pll_0: Able to implement PLL with user settings
 Warning: TestP5.audio.avalon_left_channel_source: audio.avalon_left_channel_source must be connected to an Avalon-ST sink
 Warning: TestP5.audio.avalon_right_channel_source: audio.avalon_right_channel_source must be connected to an Avalon-ST sink
-Warning: TestP5.audio.avalon_left_channel_sink: audio.avalon_left_channel_sink must be connected to an Avalon-ST source
 Warning: TestP5.audio_and_video_config_0: audio_and_video_config_0.avalon_av_config_slave must be connected to an Avalon-MM master
 Info: TestP5: Generating TestP5 "TestP5" for QUARTUS_SYNTH
 Info: Tone_generation_0: "TestP5" instantiated Tone_generation "Tone_generation_0"

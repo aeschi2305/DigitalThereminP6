@@ -20,9 +20,11 @@ entity cic is
      clk      	    : in  std_ulogic; -- clock
      mixer_out 	    : in signed(N-1 downto 0);				--Input signal
      -- Streaming Source
-     audio_out      : out std_logic_vector(31 downto 0);	--Output signal
-     valid          : out std_logic;	--Control Signals
-     ready          : in std_logic		--""
+     audio_out      : out std_logic_vector(23 downto 0);	--Output signal
+     valid_R        : out std_logic;	--Control Signals
+     valid_L        : out std_logic;  --Control Signals
+     ready_R        : in std_logic;		
+     ready_L        : in std_logic
   );
 end entity cic;
 
@@ -38,8 +40,8 @@ architecture rtl of cic is
   signal en_comb              : boolean := false;
   signal count_reg            : integer range 0 to 1000;
   signal count_cmb            : integer range 0 to 1001;
-  signal audio_cmb            : std_logic_vector(31 downto 0);
-  signal audio_reg            : std_logic_vector(31 downto 0);
+  signal audio_cmb            : std_logic_vector(23 downto 0);
+  signal audio_reg            : std_logic_vector(23 downto 0);
 begin
   ------------------------------------------------------------------------------
   -- Integrator Registerd Process 
@@ -98,13 +100,13 @@ begin
   -- subtracts the old input value from the new
   ------------------------------------------------------------------------------
   p_comb_cmb : process (all)
-  variable audio_tmp : std_logic_vector(31 downto 0);
+  variable audio_tmp : std_logic_vector(23 downto 0);
   begin
     comb_cmb <= comb_in_reg - comb_old_reg;
     count_cmb <= count_reg + 1;
     --audio_cmb <= std_logic_vector(comb_reg); with further signal processing
     --without further siganl processing
-    audio_tmp := std_logic_vector(comb_reg & "000000");
+    audio_tmp := std_logic_vector(comb_reg(25 downto 2) );
     audio_tmp(audio_tmp'high) := not audio_tmp(audio_tmp'high);
     audio_cmb <= audio_tmp;
   end process p_comb_cmb;
@@ -112,23 +114,43 @@ begin
 
   ------------------------------------------------------------------------------
   -- ST Process Process
-  -- Handles the communication with the Streaming Interface
+  -- Handles the communication with the Streaming Interface Right Channel
   ------------------------------------------------------------------------------
 
 
-  p_st : process (reset_n, clk)
+  p_st_r : process (reset_n, clk)
   
   begin
   if reset_n = '0' then
-        valid <= '0';
+        valid_R <= '0';
   elsif rising_edge(clk) then
         if en_comb = true then
-          valid <= '1';
-        elsif ready = '1' then
-          valid <= '0';
+          valid_R <= '1';
+        elsif ready_R = '1' then
+          valid_R <= '0';
         end if;
   end if;
-  end process p_st;
+  end process p_st_r;
+
+   ------------------------------------------------------------------------------
+  -- ST Process Process
+  -- Handles the communication with the Streaming Interface Left Channel
+  ------------------------------------------------------------------------------
+
+
+  p_st_l : process (reset_n, clk)
+  
+  begin
+  if reset_n = '0' then
+        valid_L <= '0';
+  elsif rising_edge(clk) then
+        if en_comb = true then
+          valid_L <= '1';
+        elsif ready_L = '1' then
+          valid_L <= '0';
+        end if;
+  end if;
+  end process p_st_l;
 
   ------------------------------------------------------------------------------
   -- Output Assignments

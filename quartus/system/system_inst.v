@@ -21,6 +21,7 @@
 		.touch_panel_spi_external_MISO                    (<connected-to-touch_panel_spi_external_MISO>),                    //                  touch_panel_spi_external.MISO
 		.touch_panel_spi_external_MOSI                    (<connected-to-touch_panel_spi_external_MOSI>),                    //                                          .MOSI
 		.touch_panel_spi_external_SCLK                    (<connected-to-touch_panel_spi_external_SCLK>),                    //                                          .SCLK
-		.touch_panel_spi_external_SS_n                    (<connected-to-touch_panel_spi_external_SS_n>)                     //                                          .SS_n
+		.touch_panel_spi_external_SS_n                    (<connected-to-touch_panel_spi_external_SS_n>),                    //                                          .SS_n
+		.sdram_clk_clk                                    (<connected-to-sdram_clk_clk>)                                     //                                 sdram_clk.clk
 	);
 

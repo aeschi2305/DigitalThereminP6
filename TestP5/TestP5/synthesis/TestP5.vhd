@@ -28,10 +28,13 @@ architecture rtl of TestP5 is
 		port (
 			csi_clk         : in  std_logic                     := 'X'; -- clk
 			rsi_reset_n     : in  std_logic                     := 'X'; -- reset_n
-			aso_se_ready    : in  std_logic                     := 'X'; -- ready
-			aso_se_valid    : out std_logic;                            -- valid
-			aso_se_data     : out std_logic_vector(31 downto 0);        -- data
-			coe_square_freq : in  std_logic                     := 'X'  -- export
+			coe_square_freq : in  std_logic                     := 'X'; -- export
+			aso_seR_ready   : in  std_logic                     := 'X'; -- ready
+			aso_seR_valid   : out std_logic;                            -- valid
+			aso_seR_data    : out std_logic_vector(23 downto 0);        -- data
+			aso_seL_ready   : in  std_logic                     := 'X'; -- ready
+			aso_seL_valid   : out std_logic;                            -- valid
+			aso_seL_data    : out std_logic_vector(23 downto 0)         -- data
 		);
 	end component Tone_generation_top;
 
@@ -40,15 +43,15 @@ architecture rtl of TestP5 is
 			clk                          : in  std_logic                     := 'X';             -- clk
 			reset                        : in  std_logic                     := 'X';             -- reset
 --			from_adc_left_channel_ready  : in  std_logic                     := 'X';             -- ready
---			from_adc_left_channel_data   : out std_logic_vector(31 downto 0);                    -- data
+--			from_adc_left_channel_data   : out std_logic_vector(23 downto 0);                    -- data
 --			from_adc_left_channel_valid  : out std_logic;                                        -- valid
 --			from_adc_right_channel_ready : in  std_logic                     := 'X';             -- ready
---			from_adc_right_channel_data  : out std_logic_vector(31 downto 0);                    -- data
+--			from_adc_right_channel_data  : out std_logic_vector(23 downto 0);                    -- data
 --			from_adc_right_channel_valid : out std_logic;                                        -- valid
-			to_dac_left_channel_data     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- data
+			to_dac_left_channel_data     : in  std_logic_vector(23 downto 0) := (others => 'X'); -- data
 			to_dac_left_channel_valid    : in  std_logic                     := 'X';             -- valid
 			to_dac_left_channel_ready    : out std_logic;                                        -- ready
-			to_dac_right_channel_data    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- data
+			to_dac_right_channel_data    : in  std_logic_vector(23 downto 0) := (others => 'X'); -- data
 			to_dac_right_channel_valid   : in  std_logic                     := 'X';             -- valid
 			to_dac_right_channel_ready   : out std_logic;                                        -- ready
 			AUD_BCLK                     : in  std_logic                     := 'X';             -- export
@@ -100,10 +103,10 @@ architecture rtl of TestP5 is
 			in_reset_n        : in  std_logic                     := 'X';             -- reset_n
 			out_clk           : in  std_logic                     := 'X';             -- clk
 			out_reset_n       : in  std_logic                     := 'X';             -- reset_n
-			in_data           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- data
+			in_data           : in  std_logic_vector(23 downto 0) := (others => 'X'); -- data
 			in_valid          : in  std_logic                     := 'X';             -- valid
 			in_ready          : out std_logic;                                        -- ready
-			out_data          : out std_logic_vector(31 downto 0);                    -- data
+			out_data          : out std_logic_vector(23 downto 0);                    -- data
 			out_valid         : out std_logic;                                        -- valid
 			out_ready         : in  std_logic                     := 'X';             -- ready
 			in_csr_address    : in  std_logic                     := 'X';             -- address
@@ -205,21 +208,27 @@ architecture rtl of TestP5 is
 		);
 	end component altera_reset_controller;
 
+	signal dc_fifo_1_out_valid                          : std_logic;                     -- dc_fifo_1:out_valid -> audio:to_dac_left_channel_valid
+	signal dc_fifo_1_out_data                           : std_logic_vector(23 downto 0); -- dc_fifo_1:out_data -> audio:to_dac_left_channel_data
+	signal dc_fifo_1_out_ready                          : std_logic;                     -- audio:to_dac_left_channel_ready -> dc_fifo_1:out_ready
 	signal dc_fifo_0_out_valid                          : std_logic;                     -- dc_fifo_0:out_valid -> audio:to_dac_right_channel_valid
-	signal dc_fifo_0_out_data                           : std_logic_vector(31 downto 0); -- dc_fifo_0:out_data -> audio:to_dac_right_channel_data
+	signal dc_fifo_0_out_data                           : std_logic_vector(23 downto 0); -- dc_fifo_0:out_data -> audio:to_dac_right_channel_data
 	signal dc_fifo_0_out_ready                          : std_logic;                     -- audio:to_dac_right_channel_ready -> dc_fifo_0:out_ready
-	signal tone_generation_0_se_valid                   : std_logic;                     -- Tone_generation_0:aso_se_valid -> dc_fifo_0:in_valid
-	signal tone_generation_0_se_data                    : std_logic_vector(31 downto 0); -- Tone_generation_0:aso_se_data -> dc_fifo_0:in_data
-	signal tone_generation_0_se_ready                   : std_logic;                     -- dc_fifo_0:in_ready -> Tone_generation_0:aso_se_ready
-	signal audio_pll_0_audio_clk_clk                    : std_logic;                     -- audio_pll_0:audio_clk_clk -> [audio:clk, audio_and_video_config_0:clk, dc_fifo_0:out_clk, rst_controller_001:clk, rst_controller_002:clk]
-	signal pll_0_outclk0_clk                            : std_logic;                     -- pll_0:outclk_0 -> [Tone_generation_0:csi_clk, dc_fifo_0:in_clk, rst_controller:clk]
+	signal tone_generation_0_sel_valid                  : std_logic;                     -- Tone_generation_0:aso_seL_valid -> dc_fifo_1:in_valid
+	signal tone_generation_0_sel_data                   : std_logic_vector(23 downto 0); -- Tone_generation_0:aso_seL_data -> dc_fifo_1:in_data
+	signal tone_generation_0_sel_ready                  : std_logic;                     -- dc_fifo_1:in_ready -> Tone_generation_0:aso_seL_ready
+	signal tone_generation_0_ser_valid                  : std_logic;                     -- Tone_generation_0:aso_seR_valid -> dc_fifo_0:in_valid
+	signal tone_generation_0_ser_data                   : std_logic_vector(23 downto 0); -- Tone_generation_0:aso_seR_data -> dc_fifo_0:in_data
+	signal tone_generation_0_ser_ready                  : std_logic;                     -- dc_fifo_0:in_ready -> Tone_generation_0:aso_seR_ready
+	signal audio_pll_0_audio_clk_clk                    : std_logic;                     -- audio_pll_0:audio_clk_clk -> [audio:clk, audio_and_video_config_0:clk, dc_fifo_0:out_clk, dc_fifo_1:out_clk, rst_controller_001:clk, rst_controller_002:clk]
+	signal pll_0_outclk0_clk                            : std_logic;                     -- pll_0:outclk_0 -> [Tone_generation_0:csi_clk, dc_fifo_0:in_clk, dc_fifo_1:in_clk, rst_controller:clk]
 	signal rst_controller_reset_out_reset               : std_logic;                     -- rst_controller:reset_out -> rst_controller_reset_out_reset:in
 	signal rst_controller_001_reset_out_reset           : std_logic;                     -- rst_controller_001:reset_out -> [audio:reset, audio_and_video_config_0:reset]
 	signal audio_pll_0_reset_source_reset               : std_logic;                     -- audio_pll_0:reset_source_reset -> rst_controller_001:reset_in0
 	signal rst_controller_002_reset_out_reset           : std_logic;                     -- rst_controller_002:reset_out -> rst_controller_002_reset_out_reset:in
 	signal reset_reset_n_ports_inv                      : std_logic;                     -- reset_reset_n:inv -> [audio_pll_0:ref_reset_reset, pll_0:rst, rst_controller:reset_in0, rst_controller_002:reset_in0]
-	signal rst_controller_reset_out_reset_ports_inv     : std_logic;                     -- rst_controller_reset_out_reset:inv -> [Tone_generation_0:rsi_reset_n, dc_fifo_0:in_reset_n]
-	signal rst_controller_002_reset_out_reset_ports_inv : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> dc_fifo_0:out_reset_n
+	signal rst_controller_reset_out_reset_ports_inv     : std_logic;                     -- rst_controller_reset_out_reset:inv -> [Tone_generation_0:rsi_reset_n, dc_fifo_0:in_reset_n, dc_fifo_1:in_reset_n]
+	signal rst_controller_002_reset_out_reset_ports_inv : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> [dc_fifo_0:out_reset_n, dc_fifo_1:out_reset_n]
 
 begin
 
@@ -232,10 +241,13 @@ begin
 		port map (
 			csi_clk         => pll_0_outclk0_clk,                        --         clock.clk
 			rsi_reset_n     => rst_controller_reset_out_reset_ports_inv, --         reset.reset_n
-			aso_se_ready    => tone_generation_0_se_ready,               --            se.ready
-			aso_se_valid    => tone_generation_0_se_valid,               --              .valid
-			aso_se_data     => tone_generation_0_se_data,                --              .data
-			coe_square_freq => tone_generation_0_conduit_end_0_export    -- conduit_end_0.export
+			coe_square_freq => tone_generation_0_conduit_end_0_export,   -- conduit_end_0.export
+			aso_seR_ready   => tone_generation_0_ser_ready,              --           ser.ready
+			aso_seR_valid   => tone_generation_0_ser_valid,              --              .valid
+			aso_seR_data    => tone_generation_0_ser_data,               --              .data
+			aso_seL_ready   => tone_generation_0_sel_ready,              --           sel.ready
+			aso_seL_valid   => tone_generation_0_sel_valid,              --              .valid
+			aso_seL_data    => tone_generation_0_sel_data                --              .data
 		);
 
 	audio : component TestP5_audio
@@ -248,9 +260,9 @@ begin
 --			from_adc_right_channel_ready => open,                               -- avalon_right_channel_source.ready
 --			from_adc_right_channel_data  => open,                               --                            .data
 --			from_adc_right_channel_valid => open,                               --                            .valid
-			to_dac_left_channel_data     => (others => '0'),                               --    avalon_left_channel_sink.data
-			to_dac_left_channel_valid    => '1',                               --                            .valid
-			to_dac_left_channel_ready    => open,                               --                            .ready
+			to_dac_left_channel_data     => dc_fifo_1_out_data,                 --    avalon_left_channel_sink.data
+			to_dac_left_channel_valid    => dc_fifo_1_out_valid,                --                            .valid
+			to_dac_left_channel_ready    => dc_fifo_1_out_ready,                --                            .ready
 			to_dac_right_channel_data    => dc_fifo_0_out_data,                 --   avalon_right_channel_sink.data
 			to_dac_right_channel_valid   => dc_fifo_0_out_valid,                --                            .valid
 			to_dac_right_channel_ready   => dc_fifo_0_out_ready,                --                            .ready
@@ -285,7 +297,7 @@ begin
 	dc_fifo_0 : component altera_avalon_dc_fifo
 		generic map (
 			SYMBOLS_PER_BEAT   => 1,
-			BITS_PER_SYMBOL    => 32,
+			BITS_PER_SYMBOL    => 24,
 			FIFO_DEPTH         => 32,
 			CHANNEL_WIDTH      => 0,
 			ERROR_WIDTH        => 0,
@@ -300,12 +312,59 @@ begin
 			in_reset_n        => rst_controller_reset_out_reset_ports_inv,     --  in_clk_reset.reset_n
 			out_clk           => audio_pll_0_audio_clk_clk,                    --       out_clk.clk
 			out_reset_n       => rst_controller_002_reset_out_reset_ports_inv, -- out_clk_reset.reset_n
-			in_data           => tone_generation_0_se_data,                    --            in.data
-			in_valid          => tone_generation_0_se_valid,                   --              .valid
-			in_ready          => tone_generation_0_se_ready,                   --              .ready
+			in_data           => tone_generation_0_ser_data,                   --            in.data
+			in_valid          => tone_generation_0_ser_valid,                  --              .valid
+			in_ready          => tone_generation_0_ser_ready,                  --              .ready
 			out_data          => dc_fifo_0_out_data,                           --           out.data
 			out_valid         => dc_fifo_0_out_valid,                          --              .valid
 			out_ready         => dc_fifo_0_out_ready,                          --              .ready
+			in_csr_address    => '0',                                          --   (terminated)
+			in_csr_read       => '0',                                          --   (terminated)
+			in_csr_write      => '0',                                          --   (terminated)
+			in_csr_readdata   => open,                                         --   (terminated)
+			in_csr_writedata  => "00000000000000000000000000000000",           --   (terminated)
+			out_csr_address   => '0',                                          --   (terminated)
+			out_csr_read      => '0',                                          --   (terminated)
+			out_csr_write     => '0',                                          --   (terminated)
+			out_csr_readdata  => open,                                         --   (terminated)
+			out_csr_writedata => "00000000000000000000000000000000",           --   (terminated)
+			in_startofpacket  => '0',                                          --   (terminated)
+			in_endofpacket    => '0',                                          --   (terminated)
+			out_startofpacket => open,                                         --   (terminated)
+			out_endofpacket   => open,                                         --   (terminated)
+			in_empty          => "0",                                          --   (terminated)
+			out_empty         => open,                                         --   (terminated)
+			in_error          => "0",                                          --   (terminated)
+			out_error         => open,                                         --   (terminated)
+			in_channel        => "0",                                          --   (terminated)
+			out_channel       => open,                                         --   (terminated)
+			space_avail_data  => open                                          --   (terminated)
+		);
+
+	dc_fifo_1 : component altera_avalon_dc_fifo
+		generic map (
+			SYMBOLS_PER_BEAT   => 1,
+			BITS_PER_SYMBOL    => 24,
+			FIFO_DEPTH         => 32,
+			CHANNEL_WIDTH      => 0,
+			ERROR_WIDTH        => 0,
+			USE_PACKETS        => 0,
+			USE_IN_FILL_LEVEL  => 0,
+			USE_OUT_FILL_LEVEL => 0,
+			WR_SYNC_DEPTH      => 3,
+			RD_SYNC_DEPTH      => 3
+		)
+		port map (
+			in_clk            => pll_0_outclk0_clk,                            --        in_clk.clk
+			in_reset_n        => rst_controller_reset_out_reset_ports_inv,     --  in_clk_reset.reset_n
+			out_clk           => audio_pll_0_audio_clk_clk,                    --       out_clk.clk
+			out_reset_n       => rst_controller_002_reset_out_reset_ports_inv, -- out_clk_reset.reset_n
+			in_data           => tone_generation_0_sel_data,                   --            in.data
+			in_valid          => tone_generation_0_sel_valid,                  --              .valid
+			in_ready          => tone_generation_0_sel_ready,                  --              .ready
+			out_data          => dc_fifo_1_out_data,                           --           out.data
+			out_valid         => dc_fifo_1_out_valid,                          --              .valid
+			out_ready         => dc_fifo_1_out_ready,                          --              .ready
 			in_csr_address    => '0',                                          --   (terminated)
 			in_csr_read       => '0',                                          --   (terminated)
 			in_csr_write      => '0',                                          --   (terminated)

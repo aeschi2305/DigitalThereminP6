@@ -27,9 +27,12 @@ entity Tone_generation_top is
  --   avs_sTG_read      : in std_logic;
  --   avs_sTG_readdata  : out std_logic_vector(dat_len_avl downto 0);
     -- Avalon Streaming Source Interface (for output data)
-    aso_se_ready      : in std_logic;
-    aso_se_valid      : out std_logic;
-    aso_se_data       : out std_logic_vector(31 downto 0);
+    aso_seR_ready      : in std_logic;
+    aso_seR_valid     : out std_logic;
+    aso_seR_data       : out std_logic_vector(23 downto 0);
+    aso_seL_ready      : in std_logic;
+    aso_seL_valid      : out std_logic;
+    aso_seL_data       : out std_logic_vector(23 downto 0);
     -- Avalon conduit Interfaces
     coe_square_freq   : in std_logic
   );
@@ -39,13 +42,13 @@ architecture struct of Tone_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 568000;
+  constant cordic_def_freq :natural := 577000;
   -- Internal signal declarations:
   signal sine                 : signed(N-1 downto 0);
   signal phi                  : signed(N-1 downto 0);
   signal mixer_out            : signed(N-1 downto 0);
   signal freq_div             : signed(N-1 downto 0);
-  signal audio_out            : std_logic_vector(31 downto 0);
+  signal audio_out            : std_logic_vector(23 downto 0);
 
 component cordic_Control is
     generic (
@@ -68,11 +71,15 @@ component cic is
      reset_n        : in  std_ulogic; -- asynchronous reset
      clk            : in  std_ulogic; -- clock
      mixer_out      : in signed(N-1 downto 0);        --Input signal
-     audio_out      : out std_logic_vector(31 downto 0);  --Output signal
-     valid          : out std_logic;  --Control Signals
-     ready          : in std_logic    --""
+     -- Streaming Source
+     audio_out      : out std_logic_vector(23 downto 0);  --Output signal
+     valid_R        : out std_logic;  --Control Signals
+     valid_L        : out std_logic;  --Control Signals
+     ready_R        : in std_logic;   
+     ready_L        : in std_logic
   );
 end component cic;
+
 
 component cordic_pipelined is
   generic (
@@ -115,13 +122,14 @@ component freq_mes is
 --    sTG_read      : in  std_logic;
 --    sTG_readdata  : out std_logic_vector(dat_len_avl downto 0);
 
-    audio_out     : in std_logic_vector(31 downto 0); 
+    audio_out     : in std_logic_vector(23 downto 0); 
     freq_div      : out signed(N-1 downto 0)  
   );
 end component freq_mes;
 
 begin
-  aso_se_data <= audio_out;
+  aso_seR_data <= audio_out;
+  aso_seL_data <= audio_out;
   -- user design: mixer
   mixer_1 : entity work.mixer
     port map (
@@ -168,8 +176,10 @@ begin
       clk         => csi_clk,
       mixer_out   => mixer_out,
       audio_out   => audio_out,
-      valid       => aso_se_valid,
-      ready       => aso_se_ready
+      valid_R     => aso_seR_valid,
+      ready_R     => aso_seR_ready,
+      valid_L     => aso_seL_valid,
+      ready_L     => aso_seL_ready
     ); 
 
   -- user design: freq_mes

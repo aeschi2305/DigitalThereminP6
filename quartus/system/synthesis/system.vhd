@@ -25,6 +25,7 @@ entity system is
 		lcd_controller_conduit_end_lt24_rs               : out   std_logic;                                        --                                          .lt24_rs
 		lcd_reset_n_external_connection_export           : out   std_logic;                                        --           lcd_reset_n_external_connection.export
 		reset_reset_n                                    : in    std_logic                     := '0';             --                                     reset.reset_n
+		sdram_clk_clk                                    : out   std_logic;                                        --                                 sdram_clk.clk
 		touch_panel_busy_external_connection_export      : in    std_logic                     := '0';             --      touch_panel_busy_external_connection.export
 		touch_panel_pen_irq_n_external_connection_export : in    std_logic                     := '0';             -- touch_panel_pen_irq_n_external_connection.export
 		touch_panel_spi_external_MISO                    : in    std_logic                     := '0';             --                  touch_panel_spi_external.MISO
@@ -143,6 +144,7 @@ architecture rtl of system is
 			rst      : in  std_logic := 'X'; -- reset
 			outclk_0 : out std_logic;        -- clk
 			outclk_1 : out std_logic;        -- clk
+			outclk_2 : out std_logic;        -- clk
 			locked   : out std_logic         -- export
 		);
 	end component system_pll;
@@ -648,6 +650,7 @@ begin
 			rst      => reset_reset_n_ports_inv, --   reset.reset
 			outclk_0 => pll_outclk0_clk,         -- outclk0.clk
 			outclk_1 => pll_outclk1_clk,         -- outclk1.clk
+			outclk_2 => sdram_clk_clk,           -- outclk2.clk
 			locked   => open                     -- (terminated)
 		);
 

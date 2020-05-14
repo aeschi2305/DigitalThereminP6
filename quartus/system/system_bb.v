@@ -22,7 +22,8 @@ module system (
 	touch_panel_spi_external_MISO,
 	touch_panel_spi_external_MOSI,
 	touch_panel_spi_external_SCLK,
-	touch_panel_spi_external_SS_n);	
+	touch_panel_spi_external_SS_n,
+	sdram_clk_clk);	
 
 	input		clk_clk;
 	output	[12:0]	dram_ctrl_wire_addr;
@@ -47,4 +48,5 @@ module system (
 	output		touch_panel_spi_external_MOSI;
 	output		touch_panel_spi_external_SCLK;
 	output		touch_panel_spi_external_SS_n;
+	output		sdram_clk_clk;
 endmodule

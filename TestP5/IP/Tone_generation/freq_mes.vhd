@@ -25,7 +25,7 @@ entity freq_mes is
 --   sTG_read      : in  std_logic;
 --   sTG_readdata  : out std_logic_vector(dat_len_avl downto 0);
 
-    audio_out     : in std_logic_vector(31 downto 0); 
+    audio_out     : in std_logic_vector(23 downto 0); 
     freq_div      : out signed(N-1 downto 0) 
   );
 end entity freq_mes;
