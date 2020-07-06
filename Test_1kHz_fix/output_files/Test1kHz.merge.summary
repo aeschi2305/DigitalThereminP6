@@ -1,0 +1,17 @@
+Partition Merge Status : Successful - Fri May 15 14:49:46 2020
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Standard Edition
+Revision Name : Test1kHz
+Top-level Entity Name : Test1kHz
+Family : Cyclone V
+Logic utilization (in ALMs) : 582 / 32,070 ( 2 % )
+Total registers : 912
+Total pins : 8 / 457 ( 2 % )
+Total virtual pins : 0
+Total block memory bits : 202,752 / 4,065,280 ( 5 % )
+Total DSP Blocks : 0 / 87 ( 0 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1 / 6 ( 17 % )
+Total DLLs : 0 / 4 ( 0 % )

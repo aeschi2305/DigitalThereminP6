@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/TestP5/output_files/") File("TestP5.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/Test_1kHz_fix/output_files/") File("Test1kHz.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

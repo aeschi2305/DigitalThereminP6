@@ -1,0 +1,12 @@
+	component Test1kHz is
+		port (
+			clk_clk                       : in    std_logic := 'X'; -- clk
+			codecdigitalinterface_BCLK    : in    std_logic := 'X'; -- BCLK
+			codecdigitalinterface_DACDAT  : out   std_logic;        -- DACDAT
+			codecdigitalinterface_DACLRCK : in    std_logic := 'X'; -- DACLRCK
+			codeci2c_SDAT                 : inout std_logic := 'X'; -- SDAT
+			codeci2c_SCLK                 : out   std_logic;        -- SCLK
+			reset_reset_n                 : in    std_logic := 'X'  -- reset_n
+		);
+	end component Test1kHz;
+

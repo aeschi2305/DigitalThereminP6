@@ -108,6 +108,7 @@ begin
     --without further siganl processing
     audio_tmp := std_logic_vector(comb_reg(25 downto 2) );
     audio_tmp(audio_tmp'high) := not audio_tmp(audio_tmp'high);
+    --audio_tmp := "000" & audio_tmp(23 downto 3);
     audio_cmb <= audio_tmp;
   end process p_comb_cmb;
 

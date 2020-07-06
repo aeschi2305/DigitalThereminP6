@@ -1,0 +1,492 @@
+Partition Merge report for TestP5
+Fri Jun 12 15:31:14 2020
+Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Partition Merge Summary
+  3. Partition Merge Netlist Types Used
+  4. Partition Merge Rapid Recompile Summary
+  5. Partition Merge Rapid Recompile Table of Changed Logic Entities
+  6. Partition Merge Rapid Recompile Table of Modified Assignments
+  7. Connections to In-System Debugging Instance "auto_signaltap_2"
+  8. Partition Merge Partition Pin Processing
+  9. Partition Merge Resource Usage Summary
+ 10. Partition Merge RAM Summary
+ 11. Partition Merge DSP Block Usage Summary
+ 12. Partition Merge Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Partition Merge Summary                                                           ;
++---------------------------------+-------------------------------------------------+
+; Partition Merge Status          ; Successful - Fri Jun 12 15:31:14 2020           ;
+; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Standard Edition ;
+; Revision Name                   ; TestP5                                          ;
+; Top-level Entity Name           ; TestP5                                          ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; 1,272 / 32,070 ( 4 % )                          ;
+; Total registers                 ; 1646                                            ;
+; Total pins                      ; 11 / 457 ( 2 % )                                ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 443,136 / 4,065,280 ( 11 % )                    ;
+; Total DSP Blocks                ; 16 / 87 ( 18 % )                                ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 1 / 6 ( 17 % )                                  ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                                   ;
++---------------------------------+-------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Netlist Types Used                                                                                                   ;
++--------------------------------+----------------+--------------------------+------------------------+--------------------------------+
+; Partition Name                 ; Partition Type ; Netlist Type Used        ; Netlist Type Requested ; Partition Contents             ;
++--------------------------------+----------------+--------------------------+------------------------+--------------------------------+
+; Top                            ; User-created   ; Hybrid (Rapid Recompile) ; Source File            ;                                ;
+; sld_hub:auto_hub               ; Auto-generated ; Hybrid (Rapid Recompile) ; Post-Synthesis         ; sld_hub:auto_hub               ;
+; sld_signaltap:auto_signaltap_2 ; Auto-generated ; Hybrid (Rapid Recompile) ; Post-Synthesis         ; sld_signaltap:auto_signaltap_2 ;
+; hard_block:auto_generated_inst ; Auto-generated ; Hybrid (Rapid Recompile) ; Source File            ; hard_block:auto_generated_inst ;
++--------------------------------+----------------+--------------------------+------------------------+--------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Rapid Recompile Summary                                                                                          ;
++--------------------------------+------------------------+--------------------------------+-------------------------------+-------+
+; Partition Name                 ; Rapid Recompile Status ; Netlist Preservation Requested ; Netlist Preservation Achieved ; Notes ;
++--------------------------------+------------------------+--------------------------------+-------------------------------+-------+
+; Top                            ; Engaged                ; 98.71% (2137 / 2165)           ; 97.83% (2118 / 2165)          ;       ;
+; sld_hub:auto_hub               ; Engaged                ; 95.24% (300 / 315)             ; 66.03% (208 / 315)            ;       ;
+; sld_signaltap:auto_signaltap_2 ; Engaged                ; 74.53% (1191 / 1598)           ; 74.53% (1191 / 1598)          ;       ;
+; hard_block:auto_generated_inst ; Engaged                ; 100.00% (48 / 48)              ; 100.00% (48 / 48)             ;       ;
++--------------------------------+------------------------+--------------------------------+-------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Rapid Recompile Table of Changed Logic Entities                                                                                                                                                                                                                                                                                            ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+; Changed Logic Entities                                                                                                                                                                                                                                                                                                           ; Number of Changed Nodes ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+; |TestP5                                                                                                                                                                                                                                                                                                                          ; 55                      ;
+; |TestP5|altera_avalon_dc_fifo:dc_fifo_0                                                                                                                                                                                                                                                                                          ; 1                       ;
+; |sld_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub                         ; 29                      ;
+; |sld_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg ; 2                       ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst                                                                                                                                                                                           ; 166                     ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram|altsyncram_al84:auto_generated                                                                                                                                                       ; 79                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|lpm_shiftreg:ram_data_shift_out                                                                                                                     ; 77                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altdpram:\stp_non_zero_ram_gen:attribute_mem_gen:attribute_mem                                                                                                                                                                       ; 60                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|lpm_shiftreg:info_data_shift_out                                                                                                                    ; 54                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|lpm_counter:read_pointer_counter|cntr_t3j:auto_generated                                                                                            ; 52                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body                                                                                                                                                                                                                                      ; 46                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|lpm_shiftreg:status_register                                                                                                                                                                                                         ; 34                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|lpm_counter:\adv_point_3_and_more:advance_pointer_counter|cntr_59i:auto_generated                                                                   ; 24                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|lpm_counter:status_advance_pointer_counter|cntr_79i:auto_generated                                                                                  ; 24                      ;
+; |sld_signaltap                                                                                                                                                                                                                                                                                                                   ; 21                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst                                                                                                                                                     ; 21                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|serial_crc_16:\tdo_crc_gen:tdo_crc_calc                                                                                                                                                                                              ; 19                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_ela_control:ela_control|sld_ela_trigger_flow_mgr:\builtin:ela_trigger_flow_mgr_entity                                                                                                                                            ; 13                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_ela_control:ela_control|sld_ela_basic_multi_level_trigger:\basic_multi_level_mbpm_trigger_gen:multi_level_mbpm|lpm_shiftreg:trigger_condition_deserialize                                                                        ; 11                      ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|lpm_shiftreg:status_data_shift_out                                                                                                                  ; 8                       ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altdpram:\stp_non_zero_ram_gen:attribute_mem_gen:attribute_mem|lpm_mux:mux|mux_jlc:auto_generated                                                                                                                                    ; 4                       ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|lpm_shiftreg:segment_offset_config_deserialize                                                                                                                                                                                       ; 4                       ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_ela_control:ela_control|sld_ela_basic_multi_level_trigger:\basic_multi_level_mbpm_trigger_gen:multi_level_mbpm|sld_mbpmg:\trigger_modules_gen:0:trigger_match|sld_sbpmg:\gen_sbpmg_pipeline_less_than_two:sm0:24:sm1             ; 3                       ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_ela_control:ela_control|sld_ela_basic_multi_level_trigger:\basic_multi_level_mbpm_trigger_gen:multi_level_mbpm|sld_mbpmg:\trigger_modules_gen:0:trigger_match|sld_sbpmg:\gen_sbpmg_pipeline_less_than_two:sm0:25:sm1             ; 3                       ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_ela_control:ela_control|sld_ela_basic_multi_level_trigger:\basic_multi_level_mbpm_trigger_gen:multi_level_mbpm|sld_mbpmg:\trigger_modules_gen:0:trigger_match|sld_sbpmg:\gen_sbpmg_pipeline_less_than_two:sm0:26:sm1             ; 3                       ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altdpram:\stp_non_zero_ram_gen:attribute_mem_gen:attribute_mem|lpm_decode:wdecoder|decode_vnf:auto_generated                                                                                                                         ; 2                       ;
+; |sld_signaltap|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram|altsyncram_al84:auto_generated|decode_5la:decode2                                                                                                                                    ; 2                       ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Rapid Recompile Table of Modified Assignments                                                                      ;
++---------------------------------+------------------------------------------------------------+----------------+--------------------+
+; Modified Assignments            ; Target                                                     ; Previous Value ; Current Value      ;
++---------------------------------+------------------------------------------------------------+----------------+--------------------+
+; SLD_NODE_CREATOR_ID             ;                                                            ; --             ; 110                ;
+; SLD_NODE_ENTITY_NAME            ;                                                            ; --             ; sld_signaltap      ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|clk                    ; --             ; acq_clk            ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|coe_AUD1_BCLK          ; --             ; acq_trigger_in[0]  ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|coe_AUD1_BCLK          ; --             ; acq_data_in[0]     ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|coe_AUD2_DACDAT        ; --             ; acq_trigger_in[1]  ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|coe_AUD2_DACDAT        ; --             ; acq_data_in[1]     ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|coe_AUD3_DACLRCK       ; --             ; acq_trigger_in[2]  ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|coe_AUD3_DACLRCK       ; --             ; acq_data_in[2]     ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[0]  ; --             ; acq_trigger_in[3]  ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[0]  ; --             ; acq_data_in[3]     ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[10] ; --             ; acq_trigger_in[4]  ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[10] ; --             ; acq_data_in[4]     ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[11] ; --             ; acq_trigger_in[5]  ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[11] ; --             ; acq_data_in[5]     ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[12] ; --             ; acq_trigger_in[6]  ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[12] ; --             ; acq_data_in[6]     ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[13] ; --             ; acq_trigger_in[7]  ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[13] ; --             ; acq_data_in[7]     ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[14] ; --             ; acq_trigger_in[8]  ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[14] ; --             ; acq_data_in[8]     ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[15] ; --             ; acq_trigger_in[9]  ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[15] ; --             ; acq_data_in[9]     ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[16] ; --             ; acq_trigger_in[10] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[16] ; --             ; acq_data_in[10]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[17] ; --             ; acq_trigger_in[11] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[17] ; --             ; acq_data_in[11]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[18] ; --             ; acq_trigger_in[12] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[18] ; --             ; acq_data_in[12]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[19] ; --             ; acq_trigger_in[13] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[19] ; --             ; acq_data_in[13]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[1]  ; --             ; acq_trigger_in[14] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[1]  ; --             ; acq_data_in[14]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[20] ; --             ; acq_trigger_in[15] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[20] ; --             ; acq_data_in[15]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[21] ; --             ; acq_trigger_in[16] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[21] ; --             ; acq_data_in[16]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[22] ; --             ; acq_trigger_in[17] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[22] ; --             ; acq_data_in[17]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[23] ; --             ; acq_trigger_in[18] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[23] ; --             ; acq_data_in[18]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[2]  ; --             ; acq_trigger_in[19] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[2]  ; --             ; acq_data_in[19]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[3]  ; --             ; acq_trigger_in[20] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[3]  ; --             ; acq_data_in[20]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[4]  ; --             ; acq_trigger_in[21] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[4]  ; --             ; acq_data_in[21]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[5]  ; --             ; acq_trigger_in[22] ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[5]  ; --             ; acq_data_in[22]    ;
+; CONNECT_TO_SLD_NODE_ENTITY_PORT ; audio_serializer:audio_serializer_0|streaming_data_reg[6]  ; --             ; acq_trigger_in[23] ;
++---------------------------------+------------------------------------------------------------+----------------+--------------------+
+This list only includes the top 50 out of 226 changed assignments
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Connections to In-System Debugging Instance "auto_signaltap_2"                                                                                                                                                     ;
++------------------------------------------------------------+---------------+-----------+--------------------------------+-------------------+------------------------------------------------------------+---------+
+; Name                                                       ; Type          ; Status    ; Partition Name                 ; Netlist Type Used ; Actual Connection                                          ; Details ;
++------------------------------------------------------------+---------------+-----------+--------------------------------+-------------------+------------------------------------------------------------+---------+
+; audio_serializer:audio_serializer_0|clk                    ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; TestP5_pll_0:pll_0|altera_pll:altera_pll_i|outclk_wire[2]  ; N/A     ;
+; audio_serializer:audio_serializer_0|coe_AUD1_BCLK          ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer_0_conduit_bclk_export~input               ; N/A     ;
+; audio_serializer:audio_serializer_0|coe_AUD1_BCLK          ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer_0_conduit_bclk_export~input               ; N/A     ;
+; audio_serializer:audio_serializer_0|coe_AUD2_DACDAT        ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|audio                  ; N/A     ;
+; audio_serializer:audio_serializer_0|coe_AUD2_DACDAT        ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|audio                  ; N/A     ;
+; audio_serializer:audio_serializer_0|coe_AUD3_DACLRCK       ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer_0_conduit_daclrck_export~input            ; N/A     ;
+; audio_serializer:audio_serializer_0|coe_AUD3_DACLRCK       ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer_0_conduit_daclrck_export~input            ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[0]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[0]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[0]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[0]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[10] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[10] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[10] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[10] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[11] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[11] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[11] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[11] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[12] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[12] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[12] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[12] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[13] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[13] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[13] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[13] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[14] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[14] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[14] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[14] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[15] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[15] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[15] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[15] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[16] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[16] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[16] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[16] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[17] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[17] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[17] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[17] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[18] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[18] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[18] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[18] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[19] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[19] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[19] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[19] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[1]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[1]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[1]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[1]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[20] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[20] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[20] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[20] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[21] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[21] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[21] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[21] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[22] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[22] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[22] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[22] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[23] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[23] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[23] ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[23] ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[2]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[2]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[2]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[2]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[3]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[3]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[3]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[3]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[4]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[4]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[4]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[4]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[5]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[5]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[5]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[5]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[6]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[6]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[6]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[6]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[7]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[7]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[7]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[7]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[8]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[8]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[8]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[8]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[9]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[9]  ; N/A     ;
+; audio_serializer:audio_serializer_0|streaming_data_reg[9]  ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; audio_serializer:audio_serializer_0|streaming_data_reg[9]  ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|gnd                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~GND                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
+; auto_signaltap_2|vcc                                       ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_2 ; post-synthesis    ; sld_signaltap:auto_signaltap_2|~VCC                        ; N/A     ;
++------------------------------------------------------------+---------------+-----------+--------------------------------+-------------------+------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Pin Processing                                                                                                                      ;
++----------------------------------------------------------------+-----------+---------------+--------------------+---------------------------------------------+
+; Name                                                           ; Partition ; Type          ; Location           ; Status                                      ;
++----------------------------------------------------------------+-----------+---------------+--------------------+---------------------------------------------+
+; altera_reserved_tck                                            ; Top       ; Input Port    ; n/a                ;                                             ;
+;     -- altera_reserved_tck                                     ; Top       ; Input Pad     ; Unplaced           ; Synthesized                                 ;
+;     -- altera_reserved_tck~input                               ; Top       ; Input Buffer  ; Unplaced           ; Synthesized                                 ;
+;                                                                ;           ;               ;                    ;                                             ;
+; altera_reserved_tdi                                            ; Top       ; Input Port    ; n/a                ;                                             ;
+;     -- altera_reserved_tdi                                     ; Top       ; Input Pad     ; Unplaced           ; Synthesized                                 ;
+;     -- altera_reserved_tdi~input                               ; Top       ; Input Buffer  ; Unplaced           ; Synthesized                                 ;
+;                                                                ;           ;               ;                    ;                                             ;
+; altera_reserved_tdo                                            ; Top       ; Output Port   ; n/a                ;                                             ;
+;     -- altera_reserved_tdo                                     ; Top       ; Output Pad    ; Unplaced           ; Synthesized                                 ;
+;     -- altera_reserved_tdo~output                              ; Top       ; Output Buffer ; Unplaced           ; Synthesized                                 ;
+;                                                                ;           ;               ;                    ;                                             ;
+; altera_reserved_tms                                            ; Top       ; Input Port    ; n/a                ;                                             ;
+;     -- altera_reserved_tms                                     ; Top       ; Input Pad     ; Unplaced           ; Synthesized                                 ;
+;     -- altera_reserved_tms~input                               ; Top       ; Input Buffer  ; Unplaced           ; Synthesized                                 ;
+;                                                                ;           ;               ;                    ;                                             ;
+; audio_and_video_config_0_external_interface_SCLK               ; Top       ; Output Port   ; n/a                ;                                             ;
+;     -- audio_and_video_config_0_external_interface_SCLK        ; Top       ; Output Pad    ; IOPAD_X12_Y81_N17  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- audio_and_video_config_0_external_interface_SCLK~output ; Top       ; Output Buffer ; IOOBUF_X12_Y81_N19 ; Preserved from Post-Fit or Imported Netlist ;
+;                                                                ;           ;               ;                    ;                                             ;
+; audio_and_video_config_0_external_interface_SDAT               ; Top       ; Bidir Port    ; n/a                ;                                             ;
+;     -- audio_and_video_config_0_external_interface_SDAT        ; Top       ; Bidir Pad     ; IOPAD_X12_Y81_N0   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- audio_and_video_config_0_external_interface_SDAT~output ; Top       ; Output Buffer ; IOOBUF_X12_Y81_N2  ; Preserved from Post-Fit or Imported Netlist ;
+;                                                                ;           ;               ;                    ;                                             ;
+; audio_serializer_0_conduit_bclk_export                         ; Top       ; Input Port    ; n/a                ;                                             ;
+;     -- audio_serializer_0_conduit_bclk_export                  ; Top       ; Input Pad     ; IOPAD_X16_Y81_N17  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- audio_serializer_0_conduit_bclk_export~input            ; Top       ; Input Buffer  ; IOIBUF_X16_Y81_N18 ; Preserved from Post-Fit or Imported Netlist ;
+;                                                                ;           ;               ;                    ;                                             ;
+; audio_serializer_0_conduit_dacdat_export                       ; Top       ; Output Port   ; n/a                ;                                             ;
+;     -- audio_serializer_0_conduit_dacdat_export                ; Top       ; Output Pad    ; IOPAD_X16_Y81_N0   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- audio_serializer_0_conduit_dacdat_export~output         ; Top       ; Output Buffer ; IOOBUF_X16_Y81_N2  ; Preserved from Post-Fit or Imported Netlist ;
+;                                                                ;           ;               ;                    ;                                             ;
+; audio_serializer_0_conduit_daclrck_export                      ; Top       ; Input Port    ; n/a                ;                                             ;
+;     -- audio_serializer_0_conduit_daclrck_export               ; Top       ; Input Pad     ; IOPAD_X24_Y81_N0   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- audio_serializer_0_conduit_daclrck_export~input         ; Top       ; Input Buffer  ; IOIBUF_X24_Y81_N1  ; Preserved from Post-Fit or Imported Netlist ;
+;                                                                ;           ;               ;                    ;                                             ;
+; clk_clk                                                        ; Top       ; Input Port    ; n/a                ;                                             ;
+;     -- clk_clk                                                 ; Top       ; Input Pad     ; Unplaced           ; Preserved from Synthesis Netlist (WYSIWYG)  ;
+;     -- clk_clk~input                                           ; Top       ; Input Buffer  ; Unplaced           ; Preserved from Synthesis Netlist (WYSIWYG)  ;
+;                                                                ;           ;               ;                    ;                                             ;
+; freq_up_down_export[0]                                         ; Top       ; Input Port    ; n/a                ;                                             ;
+;     -- freq_up_down_export[0]                                  ; Top       ; Input Pad     ; IOPAD_X40_Y0_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- freq_up_down_export[0]~input                            ; Top       ; Input Buffer  ; IOIBUF_X40_Y0_N1   ; Preserved from Post-Fit or Imported Netlist ;
+;                                                                ;           ;               ;                    ;                                             ;
+; freq_up_down_export[1]                                         ; Top       ; Input Port    ; n/a                ;                                             ;
+;     -- freq_up_down_export[1]                                  ; Top       ; Input Pad     ; IOPAD_X40_Y0_N17   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- freq_up_down_export[1]~input                            ; Top       ; Input Buffer  ; IOIBUF_X40_Y0_N18  ; Preserved from Post-Fit or Imported Netlist ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_clk                              ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_coe_AUD1_BCLK                    ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_coe_AUD2_DACDAT                  ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_coe_AUD3_DACLRCK                 ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_0_            ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_10_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_11_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_12_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_13_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_14_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_15_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_16_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_17_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_18_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_19_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_1_            ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_20_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_21_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_22_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_23_           ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_2_            ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_3_            ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_4_            ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_5_            ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_6_            ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_7_            ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_8_            ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; pre_syn.bp.audio_serializer_0_streaming_data_reg_9_            ; Top       ; Output Port   ; n/a                ;                                             ;
+;                                                                ;           ;               ;                    ;                                             ;
+; reset_reset_n                                                  ; Top       ; Input Port    ; n/a                ;                                             ;
+;     -- reset_reset_n                                           ; Top       ; Input Pad     ; Unplaced           ; Preserved from Synthesis Netlist (WYSIWYG)  ;
+;     -- reset_reset_n~input                                     ; Top       ; Input Buffer  ; Unplaced           ; Preserved from Synthesis Netlist (WYSIWYG)  ;
+;                                                                ;           ;               ;                    ;                                             ;
+; square_freq_export                                             ; Top       ; Input Port    ; n/a                ;                                             ;
+;     -- square_freq_export                                      ; Top       ; Input Pad     ; IOPAD_X54_Y0_N51   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- square_freq_export~input                                ; Top       ; Input Buffer  ; IOIBUF_X54_Y0_N52  ; Preserved from Post-Fit or Imported Netlist ;
+;                                                                ;           ;               ;                    ;                                             ;
+; xck_clk                                                        ; Top       ; Output Port   ; n/a                ;                                             ;
+;     -- xck_clk                                                 ; Top       ; Output Pad    ; Unplaced           ; Synthesized                                 ;
+;     -- xck_clk~output                                          ; Top       ; Output Buffer ; Unplaced           ; Synthesized                                 ;
+;                                                                ;           ;               ;                    ;                                             ;
++----------------------------------------------------------------+-----------+---------------+--------------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Resource Usage Summary                                                                                                                                  ;
++---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                                                                     ;
++---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 1265                                                                                                                      ;
+;                                             ;                                                                                                                           ;
+; Combinational ALUT usage for logic          ; 1609                                                                                                                      ;
+;     -- 7 input functions                    ; 2                                                                                                                         ;
+;     -- 6 input functions                    ; 145                                                                                                                       ;
+;     -- 5 input functions                    ; 161                                                                                                                       ;
+;     -- 4 input functions                    ; 136                                                                                                                       ;
+;     -- <=3 input functions                  ; 1165                                                                                                                      ;
+;                                             ;                                                                                                                           ;
+; Dedicated logic registers                   ; 1646                                                                                                                      ;
+;                                             ;                                                                                                                           ;
+; I/O pins                                    ; 11                                                                                                                        ;
+; Total MLAB memory bits                      ; 0                                                                                                                         ;
+; Total block memory bits                     ; 443136                                                                                                                    ;
+;                                             ;                                                                                                                           ;
+; Total DSP Blocks                            ; 16                                                                                                                        ;
+;                                             ;                                                                                                                           ;
+; Total PLLs                                  ; 1                                                                                                                         ;
+;     -- Fractional PLLs                      ; 1                                                                                                                         ;
+;                                             ;                                                                                                                           ;
+; Maximum fan-out node                        ; altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out ;
+; Maximum fan-out                             ; 639                                                                                                                       ;
+; Total fan-out                               ; 13754                                                                                                                     ;
+; Average fan-out                             ; 3.69                                                                                                                      ;
++---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge RAM Summary                                                                                                                                                                                                                                                                                 ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+; Name                                                                                                                                                                                                  ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF  ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+; altera_avalon_dc_fifo:dc_fifo_0|altsyncram:mem_rtl_0|altsyncram_66j1:auto_generated|ALTSYNCRAM                                                                                                        ; AUTO ; Simple Dual Port ; 32           ; 24           ; 32           ; 24           ; 768    ; None ;
+; sld_signaltap:auto_signaltap_2|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram|altsyncram_al84:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16384        ; 27           ; 16384        ; 27           ; 442368 ; None ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+
+
++--------------------------------------------------------+
+; Partition Merge DSP Block Usage Summary                ;
++------------------------------------------+-------------+
+; Statistic                                ; Number Used ;
++------------------------------------------+-------------+
+; Two Independent 18x18                    ; 1           ;
+; Independent 27x27                        ; 15          ;
+; Total number of DSP blocks               ; 16          ;
+;                                          ;             ;
+; Fixed Point Mixed Sign Multiplier        ; 16          ;
+; Fixed Point Dedicated Output Adder Chain ; 12          ;
++------------------------------------------+-------------+
+
+
++--------------------------+
+; Partition Merge Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Partition Merge
+    Info: Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
+    Info: Processing started: Fri Jun 12 15:31:08 2020
+Info: Command: quartus_cdb --read_settings_files=on --write_settings_files=off TestP5 -c TestP5 --merge=on --recompile=on
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (12849): Using Hybrid (Rapid Recompile) netlist for partition "Top"
+Info (12849): Using Hybrid (Rapid Recompile) netlist for partition "sld_hub:auto_hub"
+Info (12849): Using Hybrid (Rapid Recompile) netlist for partition "sld_signaltap:auto_signaltap_2"
+Info (35024): Successfully connected in-system debug instance "auto_signaltap_2" to all 87 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
+Info (35002): Resolved and merged 3 partition(s)
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 19 node(s), including 0 DDIO, 4 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2751 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
+    Info (21059): Implemented 4 output pins
+    Info (21060): Implemented 1 bidirectional pins
+    Info (21061): Implemented 2655 logic cells
+    Info (21064): Implemented 55 RAM segments
+    Info (21062): Implemented 16 DSP elements
+Warning (20013): Ignored 1 assignments for entity "altsyncram_jl84" -- entity does not exist in design
+    Warning (20014): Assignment for entity set_global_assignment -name OPTIMIZE_POWER_DURING_SYNTHESIS NORMAL_COMPILATION -entity altsyncram_jl84 -tag quartusii was ignored
+Warning (20013): Ignored 1 assignments for entity "altsyncram_qh84" -- entity does not exist in design
+    Warning (20014): Assignment for entity set_global_assignment -name OPTIMIZE_POWER_DURING_SYNTHESIS NORMAL_COMPILATION -entity altsyncram_qh84 -tag quartusii was ignored
+Info: Quartus Prime Partition Merge was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4995 megabytes
+    Info: Processing ended: Fri Jun 12 15:31:14 2020
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
+
+

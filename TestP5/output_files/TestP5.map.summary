@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Wed May 13 18:00:26 2020
+Analysis & Synthesis Status : Successful - Fri May 15 17:42:33 2020
 Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Standard Edition
 Revision Name : TestP5
 Top-level Entity Name : TestP5
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 1738
+Total registers : 1656
 Total pins : 9
 Total virtual pins : 0
 Total block memory bits : 2,235,904

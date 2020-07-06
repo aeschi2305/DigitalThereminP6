@@ -104,11 +104,11 @@ localparam AIAW				= 5;	// Auto Init ROM's address width
 
 localparam AUD_LINE_IN_LC	= 9'h01A;
 localparam AUD_LINE_IN_RC	= 9'h01A;
-localparam AUD_LINE_OUT_LC	= 9'h05B;
-localparam AUD_LINE_OUT_RC	= 9'h05B;
+localparam AUD_LINE_OUT_LC	= 9'h04D;
+localparam AUD_LINE_OUT_RC	= 9'h04D;
 localparam AUD_ADC_PATH		= 9'd149;
 localparam AUD_DAC_PATH		= 9'h006;
-localparam AUD_POWER			= 9'h000;
+localparam AUD_POWER			= 9'h007;
 localparam AUD_DATA_FORMAT	= 9'd77;
 localparam AUD_SAMPLE_CTRL	= 9'd0;
 localparam AUD_SET_ACTIVE	= 9'h001;
