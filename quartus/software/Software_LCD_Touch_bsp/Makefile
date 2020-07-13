@@ -101,7 +101,7 @@ ACDS_VERSION := 17.1
 # BUILD_NUMBER: 590
 
 SETTINGS_FILE := settings.bsp
-SOPC_FILE := ../../system.sopcinfo
+SOPC_FILE := C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS
@@ -207,6 +207,13 @@ GENERATED_C_LIB_SRCS += alt_sys_init.c
 # to construct a list of objects. Pattern rules to build each object are then
 # used to build each file.
 #-------------------------------------------------------------------------------
+
+# lt24_controller_driver sources root 
+LT24_Controller_driver_SRCS_ROOT := drivers
+
+# lt24_controller_driver sources 
+LT24_Controller_driver_C_LIB_SRCS := \
+	$(LT24_Controller_driver_SRCS_ROOT)/src/LT24_Controller.c
 
 # altera_avalon_jtag_uart_driver sources root 
 altera_avalon_jtag_uart_driver_SRCS_ROOT := drivers
@@ -345,6 +352,7 @@ hal_C_LIB_SRCS := \
 
 # Assemble all component C source files 
 COMPONENT_C_LIB_SRCS += \
+	$(LT24_Controller_driver_C_LIB_SRCS) \
 	$(altera_avalon_jtag_uart_driver_C_LIB_SRCS) \
 	$(altera_avalon_spi_driver_C_LIB_SRCS) \
 	$(altera_avalon_sysid_qsys_driver_C_LIB_SRCS) \

@@ -142,7 +142,17 @@ ACDS_VERSION := 17.1
 ELF := Software_LCD_Touch.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := hello_world.c
+C_SRCS += hello_world.c
+C_SRCS += graphics/graphics.c
+C_SRCS += graphics/simple_text.c
+C_SRCS += graphics/tahomabold_20.c
+C_SRCS += graphics/tahomabold_32.c
+C_SRCS += graphics/arial_24.c
+C_SRCS += graphics/bahnschriftCondensed_24.c
+C_SRCS += graphics/bahnschriftCondensed_22.c
+C_SRCS += graphics/touch_spi.c
+C_SRCS += touch/touch_isr.c
+C_SRCS += graphics/gui.c
 CXX_SRCS :=
 ASM_SRCS :=
 
@@ -180,7 +190,8 @@ SYS_LIB :=
 BSP_ROOT_DIR := ../Software_LCD_Touch_bsp/
 
 # List of application specific include directories, library directories and library names
-APP_INCLUDE_DIRS :=
+APP_INCLUDE_DIRS += graphics
+APP_INCLUDE_DIRS += touch
 APP_LIBRARY_DIRS :=
 APP_LIBRARY_NAMES :=
 

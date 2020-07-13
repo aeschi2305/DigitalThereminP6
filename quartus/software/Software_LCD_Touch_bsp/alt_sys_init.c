@@ -2,9 +2,9 @@
  * alt_sys_init.c - HAL initialization source
  *
  * Machine generated for CPU 'cpu' in SOPC Builder design 'system'
- * SOPC Builder design path: ../../system.sopcinfo
+ * SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
  *
- * Generated: Tue May 12 21:20:41 CEST 2020
+ * Generated: Wed Jun 10 10:04:21 CEST 2020
  */
 
 /*
@@ -59,6 +59,7 @@
  */
 
 #include "altera_nios2_gen2_irq.h"
+#include "LT24_Controller.h"
 #include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_spi.h"
 #include "altera_avalon_sysid_qsys.h"
@@ -73,6 +74,7 @@ ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART, jtag_uart);
 ALTERA_AVALON_SPI_INSTANCE ( TOUCH_PANEL_SPI, touch_panel_spi);
 ALTERA_AVALON_SYSID_QSYS_INSTANCE ( SYSID, sysid);
 ALTERA_AVALON_TIMER_INSTANCE ( TIMER, timer);
+LT24_CONTROLLER_INSTANCE ( LCD_CONTROLLER, LCD_Controller);
 
 /*
  * Initialize the interrupt controller devices
@@ -99,4 +101,5 @@ void alt_sys_init( void )
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART, jtag_uart);
     ALTERA_AVALON_SPI_INIT ( TOUCH_PANEL_SPI, touch_panel_spi);
     ALTERA_AVALON_SYSID_QSYS_INIT ( SYSID, sysid);
+    LT24_CONTROLLER_INIT ( LCD_CONTROLLER, LCD_Controller);
 }

@@ -17,13 +17,13 @@ module system (
 	lcd_controller_conduit_end_lt24_rs,
 	lcd_reset_n_external_connection_export,
 	reset_reset_n,
+	sdram_clk_clk,
 	touch_panel_busy_external_connection_export,
 	touch_panel_pen_irq_n_external_connection_export,
 	touch_panel_spi_external_MISO,
 	touch_panel_spi_external_MOSI,
 	touch_panel_spi_external_SCLK,
-	touch_panel_spi_external_SS_n,
-	sdram_clk_clk);	
+	touch_panel_spi_external_SS_n);	
 
 	input		clk_clk;
 	output	[12:0]	dram_ctrl_wire_addr;
@@ -42,11 +42,11 @@ module system (
 	output		lcd_controller_conduit_end_lt24_rs;
 	output		lcd_reset_n_external_connection_export;
 	input		reset_reset_n;
+	output		sdram_clk_clk;
 	input		touch_panel_busy_external_connection_export;
 	input		touch_panel_pen_irq_n_external_connection_export;
 	input		touch_panel_spi_external_MISO;
 	output		touch_panel_spi_external_MOSI;
 	output		touch_panel_spi_external_SCLK;
 	output		touch_panel_spi_external_SS_n;
-	output		sdram_clk_clk;
 endmodule

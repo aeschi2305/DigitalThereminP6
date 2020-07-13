@@ -2,9 +2,9 @@
  * system.h - SOPC Builder system and BSP software package information
  *
  * Machine generated for CPU 'cpu' in SOPC Builder design 'system'
- * SOPC Builder design path: ../../system.sopcinfo
+ * SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
  *
- * Generated: Tue May 12 21:20:41 CEST 2020
+ * Generated: Thu Jul 09 10:31:14 CEST 2020
  */
 
 /*
@@ -308,7 +308,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1589310199
+#define SYSID_TIMESTAMP 1594282733
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -374,18 +374,18 @@
 #define TOUCH_PANEL_PEN_IRQ_N_BASE 0x8001030
 #define TOUCH_PANEL_PEN_IRQ_N_BIT_CLEARING_EDGE_REGISTER 0
 #define TOUCH_PANEL_PEN_IRQ_N_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define TOUCH_PANEL_PEN_IRQ_N_CAPTURE 0
+#define TOUCH_PANEL_PEN_IRQ_N_CAPTURE 1
 #define TOUCH_PANEL_PEN_IRQ_N_DATA_WIDTH 1
 #define TOUCH_PANEL_PEN_IRQ_N_DO_TEST_BENCH_WIRING 0
 #define TOUCH_PANEL_PEN_IRQ_N_DRIVEN_SIM_VALUE 0
-#define TOUCH_PANEL_PEN_IRQ_N_EDGE_TYPE "NONE"
+#define TOUCH_PANEL_PEN_IRQ_N_EDGE_TYPE "FALLING"
 #define TOUCH_PANEL_PEN_IRQ_N_FREQ 15000000
 #define TOUCH_PANEL_PEN_IRQ_N_HAS_IN 1
 #define TOUCH_PANEL_PEN_IRQ_N_HAS_OUT 0
 #define TOUCH_PANEL_PEN_IRQ_N_HAS_TRI 0
 #define TOUCH_PANEL_PEN_IRQ_N_IRQ 3
 #define TOUCH_PANEL_PEN_IRQ_N_IRQ_INTERRUPT_CONTROLLER_ID 0
-#define TOUCH_PANEL_PEN_IRQ_N_IRQ_TYPE "LEVEL"
+#define TOUCH_PANEL_PEN_IRQ_N_IRQ_TYPE "EDGE"
 #define TOUCH_PANEL_PEN_IRQ_N_NAME "/dev/touch_panel_pen_irq_n"
 #define TOUCH_PANEL_PEN_IRQ_N_RESET_VALUE 0
 #define TOUCH_PANEL_PEN_IRQ_N_SPAN 16

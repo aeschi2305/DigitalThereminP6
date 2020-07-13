@@ -115,8 +115,8 @@ set_location_assignment PIN_AB21 -to touch_panel_busy_external_connection_export
 set_location_assignment PIN_AB17 -to touch_panel_pen_irq_n_external_connection_export
 set_location_assignment PIN_AA20 -to touch_panel_spi_external_SS_n
 set_location_assignment PIN_AD24 -to touch_panel_spi_external_SCLK
-set_location_assignment PIN_AA21 -to touch_panel_spi_external_MOSI
-set_location_assignment PIN_AC23 -to touch_panel_spi_external_MISO
+set_location_assignment PIN_AC23 -to touch_panel_spi_external_MOSI
+set_location_assignment PIN_AA21 -to touch_panel_spi_external_MISO
 set_global_assignment -name SDC_FILE DigitalThereminP6.sdc
 set_global_assignment -name QIP_FILE system/synthesis/system.qip
 set_location_assignment PIN_AH12 -to sdram_clk_clk
