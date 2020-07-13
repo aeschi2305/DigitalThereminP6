@@ -1,4 +1,3 @@
--- altera vhdl_input_version vhdl_2008
 -----------------------------------------------------
 -- Project : Cordic Control
 -----------------------------------------------------
@@ -25,16 +24,14 @@ entity cordic_Control is
     reset_n : in std_ulogic;
     clk : in std_ulogic;
     phi : out signed(N-1 downto 0);      --calculated angle for cordic processor
-    freq_div : in signed(N-1 downto 0);
-    sig_freq_up_down : in std_logic_vector(1 downto 0)
+    freq_div : in signed(N-1 downto 0)
   );
 end entity cordic_Control;
 
 
 architecture behavioral of cordic_Control is
 
-
-constant clk_Period : signed(20 downto 0) := "000010011111000100101";       -- clk_Period multiplied with 2**20 ("000010110010111101010" for 48Mhz)
+constant clk_Period : signed(20 downto 0) := "000010110010111101010";       -- clk_Period multiplied with 2**20
 constant invert : signed(20 downto 0) := '0'&(19 downto 0 => '1');          -- used to invert sawtooth angle to triangle angle
 
 signal sig_Freq : signed(20 downto 0);      -- interpreted as cordic_def_freq/2**20
@@ -44,10 +41,6 @@ signal phi_cmb : signed (N-1 downto 0);         --Combinatorial calculated trian
 signal phi_reg : signed (N-1 downto 0);         --Sequential calculated triangle angle
 signal phi_step :  signed (20 downto 0);  --Step for the calculation of the current sawtooth angle.
 signal sig_Freq_cmb : signed(20 downto 0);
-
-signal freq_up_down_1 : std_logic_vector(1 downto 0);
-signal freq_up_down_2 : std_logic_vector(1 downto 0);
-signal freq_up_down_3 : std_logic_vector(1 downto 0);
 
 begin
     
@@ -62,10 +55,6 @@ begin
             phi_reg <= phi_cmb;
             phi_noninv_reg <= phi_noninv_cmb;
             sig_Freq <= sig_Freq_cmb;
-
-            freq_up_down_1 <= sig_freq_up_down;
-            freq_up_down_2 <= freq_up_down_1;
-            freq_up_down_3 <= freq_up_down_1 and not freq_up_down_2;
         end if;
     end process p_reg;
 
@@ -88,14 +77,7 @@ begin
     --Combinatorial process to calibrate Sine frequency
     p_cmb_sig_freq : process(all)
     begin
-        sig_Freq_cmb <= sig_Freq + freq_div;
-        
-        if freq_up_down_3(1) = '1' then
-            sig_Freq_cmb <= sig_Freq + to_signed(100,21) + freq_div;
-        elsif freq_up_down_3(0) = '1' then
-            sig_Freq_cmb <= sig_Freq - to_signed(100,21) + freq_div;
-        end if;
-
+            sig_Freq_cmb <= sig_Freq + freq_div;
     end process p_cmb_sig_freq;
 
     --Combinatorial Process to calculate current angle step size
