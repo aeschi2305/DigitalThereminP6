@@ -8,7 +8,7 @@
 
 #include "touch_isr.h"
 #define DEBUG_OUT(format, arg...)
-#define ACTIVE_DELAY_TIME   (alt_ticks_per_second()/60)
+#define ACTIVE_DELAY_TIME   (alt_ticks_per_second()/4)
 const alt_u8 CommandGetX = 0x92;
 const alt_u8 CommandGetY = 0xD2;
 const alt_u8 pen_IRS_enable = 0x82;
@@ -84,6 +84,7 @@ void touch_isr(void * context)
     	xy->enable_xy = 0;
     }else{
     	xy->enable_xy = 1;
+    	xy->next_active_time = alt_nticks() + ACTIVE_DELAY_TIME;
     }
     printf("X Koordinate: %d Y Koordinate: %d\n", xy->x_coord,xy->y_coord);
 
@@ -96,7 +97,7 @@ void touch_isr(void * context)
 
     alt_ic_irq_enable(TOUCH_PANEL_PEN_IRQ_N_IRQ_INTERRUPT_CONTROLLER_ID,TOUCH_PANEL_PEN_IRQ_N_IRQ);
 
-    xy->next_active_time = alt_nticks() + ACTIVE_DELAY_TIME;
+    //xy->next_active_time = alt_nticks() + ACTIVE_DELAY_TIME;
 }
 
 

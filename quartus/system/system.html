@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2020.07.09.10:18:54</td>
+    <td class="l">2020.07.15.09:24:37</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -96,6 +96,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <br/>&#160;&#160;
      <a href="#module_LCD_Reset_N"><b>LCD_Reset_N</b>
      </a> altera_avalon_pio 17.1
+     <br/>&#160;&#160;
+     <a href="#module_audio_and_video_config_0"><b>audio_and_video_config_0</b>
+     </a> altera_up_avalon_audio_and_video_config 17.1
      <br/>&#160;&#160;
      <a href="#module_cpu"><b>cpu</b>
      </a> altera_nios2_gen2 17.1
@@ -146,7 +149,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">avalon_slave_0&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001058</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001090</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -159,6 +162,19 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001070</td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_audio_and_video_config_0"><b>audio_and_video_config_0</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">avalon_av_config_slave&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>08001040</td>
     <td class="empty"></td>
    </tr>
@@ -198,8 +214,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">avalon_jtag_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001068</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001068</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001098</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001098</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -211,7 +227,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">control_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001060</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001088</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -224,7 +240,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>00000000</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001020</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -237,7 +253,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001020</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001050</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -250,7 +266,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001030</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001060</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -540,6 +556,147 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
+  <a name="module_audio_and_video_config_0"> </a>
+  <div>
+   <hr/>
+   <h2>audio_and_video_config_0</h2>altera_up_avalon_audio_and_video_config v17.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_cpu">cpu</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="8">audio_and_video_config_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avalon_av_config_slave</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_pll">pll</a>
+      </td>
+      <td class="from">outclk3&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clk_0">clk_0</a>
+      </td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">device</td>
+        <td class="parametervalue">On-Board Peripherals</td>
+       </tr>
+       <tr>
+        <td class="parametername">board</td>
+        <td class="parametervalue">DE10-Standard</td>
+       </tr>
+       <tr>
+        <td class="parametername">eai</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">audio_in</td>
+        <td class="parametervalue">Microphone to ADC</td>
+       </tr>
+       <tr>
+        <td class="parametername">dac_enable</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">mic_bypass</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">line_in_bypass</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">mic_attenuation</td>
+        <td class="parametervalue">-6dB</td>
+       </tr>
+       <tr>
+        <td class="parametername">data_format</td>
+        <td class="parametervalue">Left Justified</td>
+       </tr>
+       <tr>
+        <td class="parametername">bit_length</td>
+        <td class="parametervalue">24</td>
+       </tr>
+       <tr>
+        <td class="parametername">sampling_rate</td>
+        <td class="parametervalue">48 kHz</td>
+       </tr>
+       <tr>
+        <td class="parametername">bosr</td>
+        <td class="parametervalue">250fs/256fs</td>
+       </tr>
+       <tr>
+        <td class="parametername">sr_register</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">video_format</td>
+        <td class="parametervalue">NTSC</td>
+       </tr>
+       <tr>
+        <td class="parametername">d5m_resolution</td>
+        <td class="parametervalue">2592 x 1944</td>
+       </tr>
+       <tr>
+        <td class="parametername">exposure</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE_FAMILY</td>
+        <td class="parametervalue">CYCLONEV</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_CLK_CLOCK_RATE</td>
+        <td class="parametervalue">12000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">Cyclone V</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
   <a name="module_clk_0"> </a>
   <div>
    <hr/>
@@ -599,7 +756,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_pll">pll</a>
       </td>
       <td class="from">outclk0&#160;&#160;</td>
-      <td class="main" rowspan="45">cpu</td>
+      <td class="main" rowspan="48">cpu</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -615,6 +772,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_audio_and_video_config_0">audio_and_video_config_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avalon_av_config_slave</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
      </tr>
      <tr>
       <td></td>
@@ -1518,7 +1691,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">instSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x8001068' end='0x8001070' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x8001098' end='0x80010A0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">faSlaveMapParam</td>
@@ -1526,7 +1699,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='timer.s1' start='0x0' end='0x20' type='altera_avalon_timer.s1' /&gt;&lt;slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /&gt;&lt;slave name='touch_panel_busy.s1' start='0x8001020' end='0x8001030' type='altera_avalon_pio.s1' /&gt;&lt;slave name='touch_panel_pen_irq_n.s1' start='0x8001030' end='0x8001040' type='altera_avalon_pio.s1' /&gt;&lt;slave name='LCD_Reset_N.s1' start='0x8001040' end='0x8001050' type='altera_avalon_pio.s1' /&gt;&lt;slave name='LCD_Controller.avalon_slave_0' start='0x8001058' end='0x8001060' type='LT24_Controller.avalon_slave_0' /&gt;&lt;slave name='sysid.control_slave' start='0x8001060' end='0x8001068' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x8001068' end='0x8001070' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /&gt;&lt;slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x8001040' end='0x8001050' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='touch_panel_busy.s1' start='0x8001050' end='0x8001060' type='altera_avalon_pio.s1' /&gt;&lt;slave name='touch_panel_pen_irq_n.s1' start='0x8001060' end='0x8001070' type='altera_avalon_pio.s1' /&gt;&lt;slave name='LCD_Reset_N.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /&gt;&lt;slave name='sysid.control_slave' start='0x8001088' end='0x8001090' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='LCD_Controller.avalon_slave_0' start='0x8001090' end='0x8001098' type='LT24_Controller.avalon_slave_0' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x8001098' end='0x80010A0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -2218,7 +2391,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="33">pll</td>
+      <td class="main" rowspan="36">pll</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;refclk</td>
@@ -2386,6 +2559,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="to">&#160;&#160;clock</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">outclk3&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_audio_and_video_config_0">audio_and_video_config_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
     </table>
    </div>
    <br/>
@@ -2473,11 +2662,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">gui_number_of_clocks</td>
-        <td class="parametervalue">3</td>
+        <td class="parametervalue">4</td>
        </tr>
        <tr>
         <td class="parametername">number_of_clocks</td>
-        <td class="parametervalue">3</td>
+        <td class="parametervalue">4</td>
        </tr>
        <tr>
         <td class="parametername">number_of_cascade_counters</td>
@@ -2645,7 +2834,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">gui_output_clock_frequency3</td>
-        <td class="parametervalue">100.0</td>
+        <td class="parametervalue">12.0</td>
        </tr>
        <tr>
         <td class="parametername">gui_divide_factor_c3</td>
@@ -2653,7 +2842,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">gui_actual_multiply_factor3</td>
-        <td class="parametervalue">1</td>
+        <td class="parametervalue">6</td>
        </tr>
        <tr>
         <td class="parametername">gui_actual_frac_multiply_factor3</td>
@@ -2661,7 +2850,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">gui_actual_divide_factor3</td>
-        <td class="parametervalue">1</td>
+        <td class="parametervalue">25</td>
        </tr>
        <tr>
         <td class="parametername">gui_actual_output_clock_frequency3</td>
@@ -3397,7 +3586,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">output_clock_frequency3</td>
-        <td class="parametervalue">0 MHz</td>
+        <td class="parametervalue">12.000000 MHz</td>
        </tr>
        <tr>
         <td class="parametername">phase_shift3</td>
@@ -3729,11 +3918,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">c_cnt_hi_div3</td>
-        <td class="parametervalue">1</td>
+        <td class="parametervalue">13</td>
        </tr>
        <tr>
         <td class="parametername">c_cnt_lo_div3</td>
-        <td class="parametervalue">1</td>
+        <td class="parametervalue">12</td>
        </tr>
        <tr>
         <td class="parametername">c_cnt_prst3</td>
@@ -3749,11 +3938,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">c_cnt_bypass_en3</td>
-        <td class="parametervalue">true</td>
+        <td class="parametervalue">false</td>
        </tr>
        <tr>
         <td class="parametername">c_cnt_odd_div_duty_en3</td>
-        <td class="parametervalue">false</td>
+        <td class="parametervalue">true</td>
        </tr>
        <tr>
         <td class="parametername">c_cnt_hi_div4</td>
@@ -4189,11 +4378,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">gui_parameter_list</td>
-        <td class="parametervalue">M-Counter Hi Divide,M-Counter Low Divide,N-Counter Hi Divide,N-Counter Low Divide,M-Counter Bypass Enable,N-Counter Bypass Enable,M-Counter Odd Divide Enable,N-Counter Odd Divide Enable,C-Counter-0 Hi Divide,C-Counter-0 Low Divide,C-Counter-0 Coarse Phase Shift,C-Counter-0 VCO Phase Tap,C-Counter-0 Input Source,C-Counter-0 Bypass Enable,C-Counter-0 Odd Divide Enable,C-Counter-1 Hi Divide,C-Counter-1 Low Divide,C-Counter-1 Coarse Phase Shift,C-Counter-1 VCO Phase Tap,C-Counter-1 Input Source,C-Counter-1 Bypass Enable,C-Counter-1 Odd Divide Enable,C-Counter-2 Hi Divide,C-Counter-2 Low Divide,C-Counter-2 Coarse Phase Shift,C-Counter-2 VCO Phase Tap,C-Counter-2 Input Source,C-Counter-2 Bypass Enable,C-Counter-2 Odd Divide Enable,VCO Post Divide Counter Enable,Charge Pump current (uA),Loop Filter Bandwidth Resistor (Ohms) ,PLL Output VCO Frequency,K-Fractional Division Value (DSM),Feedback Clock Type,Feedback Clock MUX 1,Feedback Clock MUX 2,M Counter Source MUX,PLL Auto Reset</td>
+        <td class="parametervalue">M-Counter Hi Divide,M-Counter Low Divide,N-Counter Hi Divide,N-Counter Low Divide,M-Counter Bypass Enable,N-Counter Bypass Enable,M-Counter Odd Divide Enable,N-Counter Odd Divide Enable,C-Counter-0 Hi Divide,C-Counter-0 Low Divide,C-Counter-0 Coarse Phase Shift,C-Counter-0 VCO Phase Tap,C-Counter-0 Input Source,C-Counter-0 Bypass Enable,C-Counter-0 Odd Divide Enable,C-Counter-1 Hi Divide,C-Counter-1 Low Divide,C-Counter-1 Coarse Phase Shift,C-Counter-1 VCO Phase Tap,C-Counter-1 Input Source,C-Counter-1 Bypass Enable,C-Counter-1 Odd Divide Enable,C-Counter-2 Hi Divide,C-Counter-2 Low Divide,C-Counter-2 Coarse Phase Shift,C-Counter-2 VCO Phase Tap,C-Counter-2 Input Source,C-Counter-2 Bypass Enable,C-Counter-2 Odd Divide Enable,C-Counter-3 Hi Divide,C-Counter-3 Low Divide,C-Counter-3 Coarse Phase Shift,C-Counter-3 VCO Phase Tap,C-Counter-3 Input Source,C-Counter-3 Bypass Enable,C-Counter-3 Odd Divide Enable,VCO Post Divide Counter Enable,Charge Pump current (uA),Loop Filter Bandwidth Resistor (Ohms) ,PLL Output VCO Frequency,K-Fractional Division Value (DSM),Feedback Clock Type,Feedback Clock MUX 1,Feedback Clock MUX 2,M Counter Source MUX,PLL Auto Reset</td>
        </tr>
        <tr>
         <td class="parametername">gui_parameter_values</td>
-        <td class="parametervalue">3,3,256,256,false,true,false,false,3,3,1,0,ph_mux_clk,false,false,10,10,1,0,ph_mux_clk,false,false,3,3,6,0,ph_mux_clk,false,false,2,30,2000,300.0 MHz,1,none,glb,m_cnt,ph_mux_clk,false</td>
+        <td class="parametervalue">3,3,256,256,false,true,false,false,3,3,1,0,ph_mux_clk,false,false,10,10,1,0,ph_mux_clk,false,false,3,3,6,0,ph_mux_clk,false,false,13,12,1,0,ph_mux_clk,false,true,2,30,2000,300.0 MHz,1,none,glb,m_cnt,ph_mux_clk,false</td>
        </tr>
        <tr>
         <td class="parametername">gui_mif_generate</td>
@@ -4358,7 +4547,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1594282733</td>
+        <td class="parametervalue">1594797876</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -4383,7 +4572,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1594282733</td>
+        <td class="parametervalue">1594797876</td>
        </tr>
       </table>
      </td>
@@ -5218,8 +5407,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </div>
   <table class="blueBar">
    <tr>
-    <td class="l">generation took 0.04 seconds</td>
-    <td class="r">rendering took 0.07 seconds</td>
+    <td class="l">generation took 0.01 seconds</td>
+    <td class="r">rendering took 0.08 seconds</td>
    </tr>
   </table>
  </body>

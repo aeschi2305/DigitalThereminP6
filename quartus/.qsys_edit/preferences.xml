@@ -3,13 +3,14 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="191" />
+   <connections preferredWidth="207" />
    <irq preferredWidth="34" />
    <export preferredWidth="232" />
-   <name preferredWidth="244" />
+   <name preferredWidth="220" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
- <window width="1920" height="1030" x="-2243" y="65" />
+ <library
+   expandedCategories="Library/University Program/Audio &amp; Video,Library/University Program,Project,Library" />
+ <window width="1920" height="1030" x="0" y="0" />
  <generation synthesis="VHDL" />
 </preferences>
