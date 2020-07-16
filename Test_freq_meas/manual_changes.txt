@@ -1,0 +1,11 @@
+//Changes in Test_freq_meas.vhd
+
+
+
+
+//altera_up_av_config_auto_init_ob_de1_soc
+
+localparam AUD_LINE_OUT_LC	= 9'h059;
+localparam AUD_LINE_OUT_RC	= 9'h059;
+
+localparam AUD_SAMPLE_CTRL	= 9'd001;
