@@ -19,6 +19,10 @@
 #include "altera_avalon_pio_regs.h"
 #include "LT24_Controller.h"
 #include "LT24_Controller_regs.h"
+#include "Pitch_dummy.h"
+#include "Pitch_dummy_regs.h"
+#include "Volume_dummy.h"
+#include "Volume_dummy_regs.h"
 #include "graphics.h"
 #include "alt_video_display.h"
 #include "simple_text.h"
@@ -77,7 +81,7 @@ int main()
   alt_u8 cali_enable = 1;
   alt_u8 vol_bar = 0;
   alt_u8 glissando_on_off = 0;
-  alt_u8  glissando_delay = 30;
+  alt_u8  glissando_delay = 1;
   touch_init(&xy);
   LCD_Init();
   LCD_Clear(WHITE);
@@ -104,7 +108,14 @@ if(xy.enable_xy == 1){
   			    LCD_Clear(WHITE);
   				draw_calibrating_screen();
   				cali_enable = 1;
+  				printf("cntrl Register nach Maskierung pitch %d\n", done_calibration_pitch());
+  		  		printf("cntrl Register nach Maskierung vol %d\n", done_calibration_vol());
+  				set_calibration_pitch();
+  				set_calibration_vol();
+  				printf("cntrl Register nach Maskierung pitch %d\n", done_calibration_pitch());
+  				printf("cntrl Register nach Maskierung vol %d\n", done_calibration_vol());
   				usleep(1000000);
+
   	  			LCD_Clear(WHITE);
   	  			draw_calibrating_screen_done();
   			}
@@ -132,15 +143,19 @@ if(xy.enable_xy == 1){
   			  vol_bar = 1;
   			}
   			vol_bar --;
+  			set_vol(vol_bar);
   			draw_update_volume_bar(vol_bar);
+  			printf("cntrl Register volume %d\n", read_cntrl_vol());
   		}else if((xy.y_coord <= 2050) && (xy.x_coord>=1300)){
   			vol_bar ++;
   			if(vol_bar >= 10){
   				vol_bar = 10;
   			}
+  			set_vol(vol_bar);
+  			printf("cntrl Register volume %d\n", read_cntrl_vol());
   			draw_update_volume_bar(vol_bar);
   		}
-
+  		printf("Frequenz volume %d\n", read_freq_vol());
 
   	  	break;
 
@@ -186,13 +201,19 @@ if(xy.enable_xy == 1){
   			draw_help_screen();
   			draw_glissando_on_off(glissando_on_off);
   		}else if((xy.y_coord <= 2050) && (xy.x_coord<=700)){
-  			if(glissando_delay <= 20){
-  				glissando_delay = 30;
+  			if(glissando_delay <= 0){
+  				glissando_delay = 1;
   			}
-  			glissando_delay = glissando_delay - 10;
+  			glissando_delay --;
+  			set_glissando_delay(glissando_delay);
   			draw_update_glissando_delay(glissando_delay);
+  			printf("freq pitch %d\n",read_freq_pitch());
   		}else if((xy.y_coord <= 2050) && (xy.x_coord>=1300)){
-  			glissando_delay = glissando_delay + 10;
+  			glissando_delay ++;
+  			if(glissando_delay >= 10){
+  			  glissando_delay = 10;
+  			}
+  			set_glissando_delay(glissando_delay);
   			draw_update_glissando_delay(glissando_delay);
   		}
   	  	break;

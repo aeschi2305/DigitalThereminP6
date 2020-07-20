@@ -26,6 +26,9 @@ entity system is
 		lcd_controller_conduit_end_lt24_wr               : out   std_logic;                                        --                                            .lt24_wr
 		lcd_controller_conduit_end_lt24_rs               : out   std_logic;                                        --                                            .lt24_rs
 		lcd_reset_n_external_connection_export           : out   std_logic;                                        --             lcd_reset_n_external_connection.export
+		led_delay_export                                 : out   std_logic;                                        --                                   led_delay.export
+		led_gli_export                                   : out   std_logic;                                        --                                     led_gli.export
+		led_vol_export                                   : out   std_logic;                                        --                                     led_vol.export
 		reset_reset_n                                    : in    std_logic                     := '0';             --                                       reset.reset_n
 		sdram_clk_clk                                    : out   std_logic;                                        --                                   sdram_clk.clk
 		touch_panel_busy_external_connection_export      : in    std_logic                     := '0';             --        touch_panel_busy_external_connection.export
@@ -66,6 +69,41 @@ architecture rtl of system is
 			out_port   : out std_logic                                         -- export
 		);
 	end component system_LCD_Reset_N;
+
+	component pitch_dummy is
+		generic (
+			dat_len_avl : natural                       := 31;
+			data_freq   : std_logic_vector(31 downto 0) := "00000000000000001111101000000000";
+			data_freq1  : std_logic_vector(31 downto 0) := "00000000000000000111110100000000"
+		);
+		port (
+			avs_sP_address   : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			avs_sP_readdata  : out std_logic_vector(31 downto 0);                    -- readdata
+			avs_sP_write     : in  std_logic                     := 'X';             -- write
+			avs_sP_writedata : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			coe_led_gli      : out std_logic;                                        -- export
+			rsi_reset_n      : in  std_logic                     := 'X';             -- reset_n
+			csi_clk          : in  std_logic                     := 'X';             -- clk
+			coe_led_delay    : out std_logic                                         -- export
+		);
+	end component pitch_dummy;
+
+	component volume_dummy is
+		generic (
+			dat_len_avl : natural                       := 31;
+			data_freq   : std_logic_vector(31 downto 0) := "00000000000000001111101000000000";
+			data_freq1  : std_logic_vector(31 downto 0) := "00000000000000000111110100000000"
+		);
+		port (
+			avs_sP_address   : in  std_logic                     := 'X';             -- address
+			avs_sP_readdata  : out std_logic_vector(31 downto 0);                    -- readdata
+			avs_sP_write     : in  std_logic                     := 'X';             -- write
+			avs_sP_writedata : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			coe_led_vol      : out std_logic;                                        -- export
+			rsi_reset_n      : in  std_logic                     := 'X';             -- reset_n
+			csi_clk          : in  std_logic                     := 'X'              -- clk
+		);
+	end component volume_dummy;
 
 	component system_audio_and_video_config_0 is
 		port (
@@ -295,6 +333,10 @@ architecture rtl of system is
 			LCD_Reset_N_s1_readdata                                     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			LCD_Reset_N_s1_writedata                                    : out std_logic_vector(31 downto 0);                    -- writedata
 			LCD_Reset_N_s1_chipselect                                   : out std_logic;                                        -- chipselect
+			Pitch_dummy_0_sp_address                                    : out std_logic_vector(1 downto 0);                     -- address
+			Pitch_dummy_0_sp_write                                      : out std_logic;                                        -- write
+			Pitch_dummy_0_sp_readdata                                   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			Pitch_dummy_0_sp_writedata                                  : out std_logic_vector(31 downto 0);                    -- writedata
 			sysid_control_slave_address                                 : out std_logic_vector(0 downto 0);                     -- address
 			sysid_control_slave_readdata                                : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			timer_s1_address                                            : out std_logic_vector(2 downto 0);                     -- address
@@ -314,7 +356,11 @@ architecture rtl of system is
 			touch_panel_spi_spi_control_port_read                       : out std_logic;                                        -- read
 			touch_panel_spi_spi_control_port_readdata                   : in  std_logic_vector(15 downto 0) := (others => 'X'); -- readdata
 			touch_panel_spi_spi_control_port_writedata                  : out std_logic_vector(15 downto 0);                    -- writedata
-			touch_panel_spi_spi_control_port_chipselect                 : out std_logic                                         -- chipselect
+			touch_panel_spi_spi_control_port_chipselect                 : out std_logic;                                        -- chipselect
+			Volume_dummy_0_sp_address                                   : out std_logic_vector(0 downto 0);                     -- address
+			Volume_dummy_0_sp_write                                     : out std_logic;                                        -- write
+			Volume_dummy_0_sp_readdata                                  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			Volume_dummy_0_sp_writedata                                 : out std_logic_vector(31 downto 0)                     -- writedata
 		);
 	end component system_mm_interconnect_0;
 
@@ -410,7 +456,7 @@ architecture rtl of system is
 		);
 	end component system_rst_controller;
 
-	component system_rst_controller_002 is
+	component system_rst_controller_001 is
 		generic (
 			NUM_RESET_INPUTS          : integer := 6;
 			OUTPUT_RESET_SYNC_EDGES   : string  := "deassert";
@@ -474,11 +520,11 @@ architecture rtl of system is
 			reset_req_in8  : in  std_logic := 'X';
 			reset_req_in9  : in  std_logic := 'X'
 		);
-	end component system_rst_controller_002;
+	end component system_rst_controller_001;
 
-	signal pll_outclk0_clk                                                               : std_logic;                     -- pll:outclk_0 -> [cpu:clk, dram_ctrl:clk, irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, jtag_uart:clk, mm_interconnect_0:pll_outclk0_clk, rst_controller_002:clk, sysid:clock, timer:clk]
+	signal pll_outclk0_clk                                                               : std_logic;                     -- pll:outclk_0 -> [Pitch_dummy_0:csi_clk, Volume_dummy_0:csi_clk, cpu:clk, dram_ctrl:clk, irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, jtag_uart:clk, mm_interconnect_0:pll_outclk0_clk, rst_controller_001:clk, sysid:clock, timer:clk]
 	signal pll_outclk1_clk                                                               : std_logic;                     -- pll:outclk_1 -> [LCD_Controller:clk, LCD_Reset_N:clk, irq_synchronizer:receiver_clk, irq_synchronizer_001:receiver_clk, mm_interconnect_0:pll_outclk1_clk, rst_controller:clk, touch_panel_busy:clk, touch_panel_pen_irq_n:clk, touch_panel_spi:clk]
-	signal pll_outclk3_clk                                                               : std_logic;                     -- pll:outclk_3 -> [audio_and_video_config_0:clk, mm_interconnect_0:pll_outclk3_clk, rst_controller_001:clk]
+	signal pll_outclk3_clk                                                               : std_logic;                     -- pll:outclk_3 -> [audio_and_video_config_0:clk, mm_interconnect_0:pll_outclk3_clk, rst_controller_002:clk]
 	signal cpu_debug_reset_request_reset                                                 : std_logic;                     -- cpu:debug_reset_request -> [cpu_debug_reset_request_reset:in, mm_interconnect_0:dram_ctrl_reset_reset_bridge_in_reset_reset]
 	signal cpu_data_master_readdata                                                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:cpu_data_master_readdata -> cpu:d_readdata
 	signal cpu_data_master_waitrequest                                                   : std_logic;                     -- mm_interconnect_0:cpu_data_master_waitrequest -> cpu:d_waitrequest
@@ -548,6 +594,14 @@ architecture rtl of system is
 	signal mm_interconnect_0_timer_s1_address                                            : std_logic_vector(2 downto 0);  -- mm_interconnect_0:timer_s1_address -> timer:address
 	signal mm_interconnect_0_timer_s1_write                                              : std_logic;                     -- mm_interconnect_0:timer_s1_write -> mm_interconnect_0_timer_s1_write:in
 	signal mm_interconnect_0_timer_s1_writedata                                          : std_logic_vector(15 downto 0); -- mm_interconnect_0:timer_s1_writedata -> timer:writedata
+	signal mm_interconnect_0_pitch_dummy_0_sp_readdata                                   : std_logic_vector(31 downto 0); -- Pitch_dummy_0:avs_sP_readdata -> mm_interconnect_0:Pitch_dummy_0_sp_readdata
+	signal mm_interconnect_0_pitch_dummy_0_sp_address                                    : std_logic_vector(1 downto 0);  -- mm_interconnect_0:Pitch_dummy_0_sp_address -> Pitch_dummy_0:avs_sP_address
+	signal mm_interconnect_0_pitch_dummy_0_sp_write                                      : std_logic;                     -- mm_interconnect_0:Pitch_dummy_0_sp_write -> Pitch_dummy_0:avs_sP_write
+	signal mm_interconnect_0_pitch_dummy_0_sp_writedata                                  : std_logic_vector(31 downto 0); -- mm_interconnect_0:Pitch_dummy_0_sp_writedata -> Pitch_dummy_0:avs_sP_writedata
+	signal mm_interconnect_0_volume_dummy_0_sp_readdata                                  : std_logic_vector(31 downto 0); -- Volume_dummy_0:avs_sP_readdata -> mm_interconnect_0:Volume_dummy_0_sp_readdata
+	signal mm_interconnect_0_volume_dummy_0_sp_address                                   : std_logic_vector(0 downto 0);  -- mm_interconnect_0:Volume_dummy_0_sp_address -> Volume_dummy_0:avs_sP_address
+	signal mm_interconnect_0_volume_dummy_0_sp_write                                     : std_logic;                     -- mm_interconnect_0:Volume_dummy_0_sp_write -> Volume_dummy_0:avs_sP_write
+	signal mm_interconnect_0_volume_dummy_0_sp_writedata                                 : std_logic_vector(31 downto 0); -- mm_interconnect_0:Volume_dummy_0_sp_writedata -> Volume_dummy_0:avs_sP_writedata
 	signal mm_interconnect_0_touch_panel_spi_spi_control_port_chipselect                 : std_logic;                     -- mm_interconnect_0:touch_panel_spi_spi_control_port_chipselect -> touch_panel_spi:spi_select
 	signal mm_interconnect_0_touch_panel_spi_spi_control_port_readdata                   : std_logic_vector(15 downto 0); -- touch_panel_spi:data_to_cpu -> mm_interconnect_0:touch_panel_spi_spi_control_port_readdata
 	signal mm_interconnect_0_touch_panel_spi_spi_control_port_address                    : std_logic_vector(2 downto 0);  -- mm_interconnect_0:touch_panel_spi_spi_control_port_address -> touch_panel_spi:mem_addr
@@ -562,9 +616,9 @@ architecture rtl of system is
 	signal irq_mapper_receiver2_irq                                                      : std_logic;                     -- irq_synchronizer_001:sender_irq -> irq_mapper:receiver2_irq
 	signal irq_synchronizer_001_receiver_irq                                             : std_logic_vector(0 downto 0);  -- touch_panel_spi:irq -> irq_synchronizer_001:receiver_irq
 	signal rst_controller_reset_out_reset                                                : std_logic;                     -- rst_controller:reset_out -> [irq_synchronizer:receiver_reset, irq_synchronizer_001:receiver_reset, mm_interconnect_0:LCD_Controller_reset_reset_bridge_in_reset_reset, rst_controller_reset_out_reset:in]
-	signal rst_controller_001_reset_out_reset                                            : std_logic;                     -- rst_controller_001:reset_out -> [audio_and_video_config_0:reset, mm_interconnect_0:audio_and_video_config_0_reset_reset_bridge_in_reset_reset]
-	signal rst_controller_002_reset_out_reset                                            : std_logic;                     -- rst_controller_002:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in, rst_translator:in_reset]
-	signal rst_controller_002_reset_out_reset_req                                        : std_logic;                     -- rst_controller_002:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
+	signal rst_controller_001_reset_out_reset                                            : std_logic;                     -- rst_controller_001:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in, rst_translator:in_reset]
+	signal rst_controller_001_reset_out_reset_req                                        : std_logic;                     -- rst_controller_001:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
+	signal rst_controller_002_reset_out_reset                                            : std_logic;                     -- rst_controller_002:reset_out -> [audio_and_video_config_0:reset, mm_interconnect_0:audio_and_video_config_0_reset_reset_bridge_in_reset_reset]
 	signal reset_reset_n_ports_inv                                                       : std_logic;                     -- reset_reset_n:inv -> [pll:rst, rst_controller:reset_in0, rst_controller_001:reset_in0, rst_controller_002:reset_in0]
 	signal cpu_debug_reset_request_reset_ports_inv                                       : std_logic;                     -- cpu_debug_reset_request_reset:inv -> dram_ctrl:reset_n
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_read_ports_inv                  : std_logic;                     -- mm_interconnect_0_jtag_uart_avalon_jtag_slave_read:inv -> jtag_uart:av_read_n
@@ -580,7 +634,7 @@ architecture rtl of system is
 	signal mm_interconnect_0_touch_panel_spi_spi_control_port_read_ports_inv             : std_logic;                     -- mm_interconnect_0_touch_panel_spi_spi_control_port_read:inv -> touch_panel_spi:read_n
 	signal mm_interconnect_0_touch_panel_spi_spi_control_port_write_ports_inv            : std_logic;                     -- mm_interconnect_0_touch_panel_spi_spi_control_port_write:inv -> touch_panel_spi:write_n
 	signal rst_controller_reset_out_reset_ports_inv                                      : std_logic;                     -- rst_controller_reset_out_reset:inv -> [LCD_Controller:reset_n, LCD_Reset_N:reset_n, touch_panel_busy:reset_n, touch_panel_pen_irq_n:reset_n, touch_panel_spi:reset_n]
-	signal rst_controller_002_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> [cpu:reset_n, jtag_uart:rst_n, sysid:reset_n, timer:reset_n]
+	signal rst_controller_001_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [Pitch_dummy_0:rsi_reset_n, Volume_dummy_0:rsi_reset_n, cpu:reset_n, jtag_uart:rst_n, sysid:reset_n, timer:reset_n]
 
 begin
 
@@ -611,10 +665,43 @@ begin
 			out_port   => lcd_reset_n_external_connection_export            -- external_connection.export
 		);
 
+	pitch_dummy_0 : component pitch_dummy
+		generic map (
+			dat_len_avl => 31,
+			data_freq   => "00000000000000001111101000000000",
+			data_freq1  => "00000000000000000111110100000000"
+		)
+		port map (
+			avs_sP_address   => mm_interconnect_0_pitch_dummy_0_sp_address,   --            sp.address
+			avs_sP_readdata  => mm_interconnect_0_pitch_dummy_0_sp_readdata,  --              .readdata
+			avs_sP_write     => mm_interconnect_0_pitch_dummy_0_sp_write,     --              .write
+			avs_sP_writedata => mm_interconnect_0_pitch_dummy_0_sp_writedata, --              .writedata
+			coe_led_gli      => led_gli_export,                               -- conduit_end_0.export
+			rsi_reset_n      => rst_controller_001_reset_out_reset_ports_inv, --         reset.reset_n
+			csi_clk          => pll_outclk0_clk,                              --         clock.clk
+			coe_led_delay    => led_delay_export                              --   conduit_end.export
+		);
+
+	volume_dummy_0 : component volume_dummy
+		generic map (
+			dat_len_avl => 31,
+			data_freq   => "00000000000000001111101000000000",
+			data_freq1  => "00000000000000000111110100000000"
+		)
+		port map (
+			avs_sP_address   => mm_interconnect_0_volume_dummy_0_sp_address(0), --            sp.address
+			avs_sP_readdata  => mm_interconnect_0_volume_dummy_0_sp_readdata,   --              .readdata
+			avs_sP_write     => mm_interconnect_0_volume_dummy_0_sp_write,      --              .write
+			avs_sP_writedata => mm_interconnect_0_volume_dummy_0_sp_writedata,  --              .writedata
+			coe_led_vol      => led_vol_export,                                 -- conduit_end_0.export
+			rsi_reset_n      => rst_controller_001_reset_out_reset_ports_inv,   --         reset.reset_n
+			csi_clk          => pll_outclk0_clk                                 --         clock.clk
+		);
+
 	audio_and_video_config_0 : component system_audio_and_video_config_0
 		port map (
 			clk         => pll_outclk3_clk,                                                               --                    clk.clk
-			reset       => rst_controller_001_reset_out_reset,                                            --                  reset.reset
+			reset       => rst_controller_002_reset_out_reset,                                            --                  reset.reset
 			address     => mm_interconnect_0_audio_and_video_config_0_avalon_av_config_slave_address,     -- avalon_av_config_slave.address
 			byteenable  => mm_interconnect_0_audio_and_video_config_0_avalon_av_config_slave_byteenable,  --                       .byteenable
 			read        => mm_interconnect_0_audio_and_video_config_0_avalon_av_config_slave_read,        --                       .read
@@ -629,8 +716,8 @@ begin
 	cpu : component system_cpu
 		port map (
 			clk                                 => pll_outclk0_clk,                                   --                       clk.clk
-			reset_n                             => rst_controller_002_reset_out_reset_ports_inv,      --                     reset.reset_n
-			reset_req                           => rst_controller_002_reset_out_reset_req,            --                          .reset_req
+			reset_n                             => rst_controller_001_reset_out_reset_ports_inv,      --                     reset.reset_n
+			reset_req                           => rst_controller_001_reset_out_reset_req,            --                          .reset_req
 			d_address                           => cpu_data_master_address,                           --               data_master.address
 			d_byteenable                        => cpu_data_master_byteenable,                        --                          .byteenable
 			d_read                              => cpu_data_master_read,                              --                          .read
@@ -685,7 +772,7 @@ begin
 	jtag_uart : component system_jtag_uart
 		port map (
 			clk            => pll_outclk0_clk,                                               --               clk.clk
-			rst_n          => rst_controller_002_reset_out_reset_ports_inv,                  --             reset.reset_n
+			rst_n          => rst_controller_001_reset_out_reset_ports_inv,                  --             reset.reset_n
 			av_chipselect  => mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect,      -- avalon_jtag_slave.chipselect
 			av_address     => mm_interconnect_0_jtag_uart_avalon_jtag_slave_address(0),      --                  .address
 			av_read_n      => mm_interconnect_0_jtag_uart_avalon_jtag_slave_read_ports_inv,  --                  .read_n
@@ -710,7 +797,7 @@ begin
 	sysid : component system_sysid
 		port map (
 			clock    => pll_outclk0_clk,                                  --           clk.clk
-			reset_n  => rst_controller_002_reset_out_reset_ports_inv,     --         reset.reset_n
+			reset_n  => rst_controller_001_reset_out_reset_ports_inv,     --         reset.reset_n
 			readdata => mm_interconnect_0_sysid_control_slave_readdata,   -- control_slave.readdata
 			address  => mm_interconnect_0_sysid_control_slave_address(0)  --              .address
 		);
@@ -718,7 +805,7 @@ begin
 	timer : component system_timer
 		port map (
 			clk        => pll_outclk0_clk,                              --   clk.clk
-			reset_n    => rst_controller_002_reset_out_reset_ports_inv, -- reset.reset_n
+			reset_n    => rst_controller_001_reset_out_reset_ports_inv, -- reset.reset_n
 			address    => mm_interconnect_0_timer_s1_address,           --    s1.address
 			writedata  => mm_interconnect_0_timer_s1_writedata,         --      .writedata
 			readdata   => mm_interconnect_0_timer_s1_readdata,          --      .readdata
@@ -771,8 +858,8 @@ begin
 			pll_outclk0_clk                                             => pll_outclk0_clk,                                                               --                                          pll_outclk0.clk
 			pll_outclk1_clk                                             => pll_outclk1_clk,                                                               --                                          pll_outclk1.clk
 			pll_outclk3_clk                                             => pll_outclk3_clk,                                                               --                                          pll_outclk3.clk
-			audio_and_video_config_0_reset_reset_bridge_in_reset_reset  => rst_controller_001_reset_out_reset,                                            -- audio_and_video_config_0_reset_reset_bridge_in_reset.reset
-			cpu_reset_reset_bridge_in_reset_reset                       => rst_controller_002_reset_out_reset,                                            --                      cpu_reset_reset_bridge_in_reset.reset
+			audio_and_video_config_0_reset_reset_bridge_in_reset_reset  => rst_controller_002_reset_out_reset,                                            -- audio_and_video_config_0_reset_reset_bridge_in_reset.reset
+			cpu_reset_reset_bridge_in_reset_reset                       => rst_controller_001_reset_out_reset,                                            --                      cpu_reset_reset_bridge_in_reset.reset
 			dram_ctrl_reset_reset_bridge_in_reset_reset                 => cpu_debug_reset_request_reset,                                                 --                dram_ctrl_reset_reset_bridge_in_reset.reset
 			LCD_Controller_reset_reset_bridge_in_reset_reset            => rst_controller_reset_out_reset,                                                --           LCD_Controller_reset_reset_bridge_in_reset.reset
 			cpu_data_master_address                                     => cpu_data_master_address,                                                       --                                      cpu_data_master.address
@@ -829,6 +916,10 @@ begin
 			LCD_Reset_N_s1_readdata                                     => mm_interconnect_0_lcd_reset_n_s1_readdata,                                     --                                                     .readdata
 			LCD_Reset_N_s1_writedata                                    => mm_interconnect_0_lcd_reset_n_s1_writedata,                                    --                                                     .writedata
 			LCD_Reset_N_s1_chipselect                                   => mm_interconnect_0_lcd_reset_n_s1_chipselect,                                   --                                                     .chipselect
+			Pitch_dummy_0_sp_address                                    => mm_interconnect_0_pitch_dummy_0_sp_address,                                    --                                     Pitch_dummy_0_sp.address
+			Pitch_dummy_0_sp_write                                      => mm_interconnect_0_pitch_dummy_0_sp_write,                                      --                                                     .write
+			Pitch_dummy_0_sp_readdata                                   => mm_interconnect_0_pitch_dummy_0_sp_readdata,                                   --                                                     .readdata
+			Pitch_dummy_0_sp_writedata                                  => mm_interconnect_0_pitch_dummy_0_sp_writedata,                                  --                                                     .writedata
 			sysid_control_slave_address                                 => mm_interconnect_0_sysid_control_slave_address,                                 --                                  sysid_control_slave.address
 			sysid_control_slave_readdata                                => mm_interconnect_0_sysid_control_slave_readdata,                                --                                                     .readdata
 			timer_s1_address                                            => mm_interconnect_0_timer_s1_address,                                            --                                             timer_s1.address
@@ -848,13 +939,17 @@ begin
 			touch_panel_spi_spi_control_port_read                       => mm_interconnect_0_touch_panel_spi_spi_control_port_read,                       --                                                     .read
 			touch_panel_spi_spi_control_port_readdata                   => mm_interconnect_0_touch_panel_spi_spi_control_port_readdata,                   --                                                     .readdata
 			touch_panel_spi_spi_control_port_writedata                  => mm_interconnect_0_touch_panel_spi_spi_control_port_writedata,                  --                                                     .writedata
-			touch_panel_spi_spi_control_port_chipselect                 => mm_interconnect_0_touch_panel_spi_spi_control_port_chipselect                  --                                                     .chipselect
+			touch_panel_spi_spi_control_port_chipselect                 => mm_interconnect_0_touch_panel_spi_spi_control_port_chipselect,                 --                                                     .chipselect
+			Volume_dummy_0_sp_address                                   => mm_interconnect_0_volume_dummy_0_sp_address,                                   --                                    Volume_dummy_0_sp.address
+			Volume_dummy_0_sp_write                                     => mm_interconnect_0_volume_dummy_0_sp_write,                                     --                                                     .write
+			Volume_dummy_0_sp_readdata                                  => mm_interconnect_0_volume_dummy_0_sp_readdata,                                  --                                                     .readdata
+			Volume_dummy_0_sp_writedata                                 => mm_interconnect_0_volume_dummy_0_sp_writedata                                  --                                                     .writedata
 		);
 
 	irq_mapper : component system_irq_mapper
 		port map (
 			clk           => pll_outclk0_clk,                    --       clk.clk
-			reset         => rst_controller_002_reset_out_reset, -- clk_reset.reset
+			reset         => rst_controller_001_reset_out_reset, -- clk_reset.reset
 			receiver0_irq => irq_mapper_receiver0_irq,           -- receiver0.irq
 			receiver1_irq => irq_mapper_receiver1_irq,           -- receiver1.irq
 			receiver2_irq => irq_mapper_receiver2_irq,           -- receiver2.irq
@@ -870,7 +965,7 @@ begin
 			receiver_clk   => pll_outclk1_clk,                    --       receiver_clk.clk
 			sender_clk     => pll_outclk0_clk,                    --         sender_clk.clk
 			receiver_reset => rst_controller_reset_out_reset,     -- receiver_clk_reset.reset
-			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
+			sender_reset   => rst_controller_001_reset_out_reset, --   sender_clk_reset.reset
 			receiver_irq   => irq_synchronizer_receiver_irq,      --           receiver.irq
 			sender_irq(0)  => irq_mapper_receiver0_irq            --             sender.irq
 		);
@@ -883,7 +978,7 @@ begin
 			receiver_clk   => pll_outclk1_clk,                    --       receiver_clk.clk
 			sender_clk     => pll_outclk0_clk,                    --         sender_clk.clk
 			receiver_reset => rst_controller_reset_out_reset,     -- receiver_clk_reset.reset
-			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
+			sender_reset   => rst_controller_001_reset_out_reset, --   sender_clk_reset.reset
 			receiver_irq   => irq_synchronizer_001_receiver_irq,  --           receiver.irq
 			sender_irq(0)  => irq_mapper_receiver2_irq            --             sender.irq
 		);
@@ -953,7 +1048,72 @@ begin
 			reset_req_in15 => '0'                             -- (terminated)
 		);
 
-	rst_controller_001 : component system_rst_controller
+	rst_controller_001 : component system_rst_controller_001
+		generic map (
+			NUM_RESET_INPUTS          => 1,
+			OUTPUT_RESET_SYNC_EDGES   => "deassert",
+			SYNC_DEPTH                => 2,
+			RESET_REQUEST_PRESENT     => 1,
+			RESET_REQ_WAIT_TIME       => 1,
+			MIN_RST_ASSERTION_TIME    => 3,
+			RESET_REQ_EARLY_DSRT_TIME => 1,
+			USE_RESET_REQUEST_IN0     => 0,
+			USE_RESET_REQUEST_IN1     => 0,
+			USE_RESET_REQUEST_IN2     => 0,
+			USE_RESET_REQUEST_IN3     => 0,
+			USE_RESET_REQUEST_IN4     => 0,
+			USE_RESET_REQUEST_IN5     => 0,
+			USE_RESET_REQUEST_IN6     => 0,
+			USE_RESET_REQUEST_IN7     => 0,
+			USE_RESET_REQUEST_IN8     => 0,
+			USE_RESET_REQUEST_IN9     => 0,
+			USE_RESET_REQUEST_IN10    => 0,
+			USE_RESET_REQUEST_IN11    => 0,
+			USE_RESET_REQUEST_IN12    => 0,
+			USE_RESET_REQUEST_IN13    => 0,
+			USE_RESET_REQUEST_IN14    => 0,
+			USE_RESET_REQUEST_IN15    => 0,
+			ADAPT_RESET_REQUEST       => 0
+		)
+		port map (
+			reset_in0      => reset_reset_n_ports_inv,                -- reset_in0.reset
+			clk            => pll_outclk0_clk,                        --       clk.clk
+			reset_out      => rst_controller_001_reset_out_reset,     -- reset_out.reset
+			reset_req      => rst_controller_001_reset_out_reset_req, --          .reset_req
+			reset_req_in0  => '0',                                    -- (terminated)
+			reset_in1      => '0',                                    -- (terminated)
+			reset_req_in1  => '0',                                    -- (terminated)
+			reset_in2      => '0',                                    -- (terminated)
+			reset_req_in2  => '0',                                    -- (terminated)
+			reset_in3      => '0',                                    -- (terminated)
+			reset_req_in3  => '0',                                    -- (terminated)
+			reset_in4      => '0',                                    -- (terminated)
+			reset_req_in4  => '0',                                    -- (terminated)
+			reset_in5      => '0',                                    -- (terminated)
+			reset_req_in5  => '0',                                    -- (terminated)
+			reset_in6      => '0',                                    -- (terminated)
+			reset_req_in6  => '0',                                    -- (terminated)
+			reset_in7      => '0',                                    -- (terminated)
+			reset_req_in7  => '0',                                    -- (terminated)
+			reset_in8      => '0',                                    -- (terminated)
+			reset_req_in8  => '0',                                    -- (terminated)
+			reset_in9      => '0',                                    -- (terminated)
+			reset_req_in9  => '0',                                    -- (terminated)
+			reset_in10     => '0',                                    -- (terminated)
+			reset_req_in10 => '0',                                    -- (terminated)
+			reset_in11     => '0',                                    -- (terminated)
+			reset_req_in11 => '0',                                    -- (terminated)
+			reset_in12     => '0',                                    -- (terminated)
+			reset_req_in12 => '0',                                    -- (terminated)
+			reset_in13     => '0',                                    -- (terminated)
+			reset_req_in13 => '0',                                    -- (terminated)
+			reset_in14     => '0',                                    -- (terminated)
+			reset_req_in14 => '0',                                    -- (terminated)
+			reset_in15     => '0',                                    -- (terminated)
+			reset_req_in15 => '0'                                     -- (terminated)
+		);
+
+	rst_controller_002 : component system_rst_controller
 		generic map (
 			NUM_RESET_INPUTS          => 1,
 			OUTPUT_RESET_SYNC_EDGES   => "deassert",
@@ -983,7 +1143,7 @@ begin
 		port map (
 			reset_in0      => reset_reset_n_ports_inv,            -- reset_in0.reset
 			clk            => pll_outclk3_clk,                    --       clk.clk
-			reset_out      => rst_controller_001_reset_out_reset, -- reset_out.reset
+			reset_out      => rst_controller_002_reset_out_reset, -- reset_out.reset
 			reset_req      => open,                               -- (terminated)
 			reset_req_in0  => '0',                                -- (terminated)
 			reset_in1      => '0',                                -- (terminated)
@@ -1018,71 +1178,6 @@ begin
 			reset_req_in15 => '0'                                 -- (terminated)
 		);
 
-	rst_controller_002 : component system_rst_controller_002
-		generic map (
-			NUM_RESET_INPUTS          => 1,
-			OUTPUT_RESET_SYNC_EDGES   => "deassert",
-			SYNC_DEPTH                => 2,
-			RESET_REQUEST_PRESENT     => 1,
-			RESET_REQ_WAIT_TIME       => 1,
-			MIN_RST_ASSERTION_TIME    => 3,
-			RESET_REQ_EARLY_DSRT_TIME => 1,
-			USE_RESET_REQUEST_IN0     => 0,
-			USE_RESET_REQUEST_IN1     => 0,
-			USE_RESET_REQUEST_IN2     => 0,
-			USE_RESET_REQUEST_IN3     => 0,
-			USE_RESET_REQUEST_IN4     => 0,
-			USE_RESET_REQUEST_IN5     => 0,
-			USE_RESET_REQUEST_IN6     => 0,
-			USE_RESET_REQUEST_IN7     => 0,
-			USE_RESET_REQUEST_IN8     => 0,
-			USE_RESET_REQUEST_IN9     => 0,
-			USE_RESET_REQUEST_IN10    => 0,
-			USE_RESET_REQUEST_IN11    => 0,
-			USE_RESET_REQUEST_IN12    => 0,
-			USE_RESET_REQUEST_IN13    => 0,
-			USE_RESET_REQUEST_IN14    => 0,
-			USE_RESET_REQUEST_IN15    => 0,
-			ADAPT_RESET_REQUEST       => 0
-		)
-		port map (
-			reset_in0      => reset_reset_n_ports_inv,                -- reset_in0.reset
-			clk            => pll_outclk0_clk,                        --       clk.clk
-			reset_out      => rst_controller_002_reset_out_reset,     -- reset_out.reset
-			reset_req      => rst_controller_002_reset_out_reset_req, --          .reset_req
-			reset_req_in0  => '0',                                    -- (terminated)
-			reset_in1      => '0',                                    -- (terminated)
-			reset_req_in1  => '0',                                    -- (terminated)
-			reset_in2      => '0',                                    -- (terminated)
-			reset_req_in2  => '0',                                    -- (terminated)
-			reset_in3      => '0',                                    -- (terminated)
-			reset_req_in3  => '0',                                    -- (terminated)
-			reset_in4      => '0',                                    -- (terminated)
-			reset_req_in4  => '0',                                    -- (terminated)
-			reset_in5      => '0',                                    -- (terminated)
-			reset_req_in5  => '0',                                    -- (terminated)
-			reset_in6      => '0',                                    -- (terminated)
-			reset_req_in6  => '0',                                    -- (terminated)
-			reset_in7      => '0',                                    -- (terminated)
-			reset_req_in7  => '0',                                    -- (terminated)
-			reset_in8      => '0',                                    -- (terminated)
-			reset_req_in8  => '0',                                    -- (terminated)
-			reset_in9      => '0',                                    -- (terminated)
-			reset_req_in9  => '0',                                    -- (terminated)
-			reset_in10     => '0',                                    -- (terminated)
-			reset_req_in10 => '0',                                    -- (terminated)
-			reset_in11     => '0',                                    -- (terminated)
-			reset_req_in11 => '0',                                    -- (terminated)
-			reset_in12     => '0',                                    -- (terminated)
-			reset_req_in12 => '0',                                    -- (terminated)
-			reset_in13     => '0',                                    -- (terminated)
-			reset_req_in13 => '0',                                    -- (terminated)
-			reset_in14     => '0',                                    -- (terminated)
-			reset_req_in14 => '0',                                    -- (terminated)
-			reset_in15     => '0',                                    -- (terminated)
-			reset_req_in15 => '0'                                     -- (terminated)
-		);
-
 	reset_reset_n_ports_inv <= not reset_reset_n;
 
 	cpu_debug_reset_request_reset_ports_inv <= not cpu_debug_reset_request_reset;
@@ -1113,6 +1208,6 @@ begin
 
 	rst_controller_reset_out_reset_ports_inv <= not rst_controller_reset_out_reset;
 
-	rst_controller_002_reset_out_reset_ports_inv <= not rst_controller_002_reset_out_reset;
+	rst_controller_001_reset_out_reset_ports_inv <= not rst_controller_001_reset_out_reset;
 
 end architecture rtl; -- of system

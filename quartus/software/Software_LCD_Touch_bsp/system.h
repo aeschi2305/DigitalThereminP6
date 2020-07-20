@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'system'
  * SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
  *
- * Generated: Thu Jul 09 10:31:14 CEST 2020
+ * Generated: Mon Jul 20 13:09:19 CEST 2020
  */
 
 /*
@@ -148,7 +148,10 @@
 #define __ALTERA_AVALON_SYSID_QSYS
 #define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2_GEN2
+#define __ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG
 #define __LT24_CONTROLLER
+#define __PITCH_DUMMY
+#define __VOLUME_DUMMY
 
 
 /*
@@ -157,7 +160,7 @@
  */
 
 #define ALT_MODULE_CLASS_LCD_Controller LT24_Controller
-#define LCD_CONTROLLER_BASE 0x8001058
+#define LCD_CONTROLLER_BASE 0x80010a8
 #define LCD_CONTROLLER_IRQ -1
 #define LCD_CONTROLLER_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define LCD_CONTROLLER_NAME "/dev/LCD_Controller"
@@ -171,7 +174,7 @@
  */
 
 #define ALT_MODULE_CLASS_LCD_Reset_N altera_avalon_pio
-#define LCD_RESET_N_BASE 0x8001040
+#define LCD_RESET_N_BASE 0x8001070
 #define LCD_RESET_N_BIT_CLEARING_EDGE_REGISTER 0
 #define LCD_RESET_N_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LCD_RESET_N_CAPTURE 0
@@ -193,6 +196,20 @@
 
 
 /*
+ * Pitch_dummy_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_Pitch_dummy_0 Pitch_dummy
+#define PITCH_DUMMY_0_BASE 0x8001040
+#define PITCH_DUMMY_0_IRQ -1
+#define PITCH_DUMMY_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PITCH_DUMMY_0_NAME "/dev/Pitch_dummy_0"
+#define PITCH_DUMMY_0_SPAN 16
+#define PITCH_DUMMY_0_TYPE "Pitch_dummy"
+
+
+/*
  * System configuration
  *
  */
@@ -208,24 +225,52 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart"
-#define ALT_STDERR_BASE 0x8001068
+#define ALT_STDERR_BASE 0x80010b0
 #define ALT_STDERR_DEV jtag_uart
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart"
-#define ALT_STDIN_BASE 0x8001068
+#define ALT_STDIN_BASE 0x80010b0
 #define ALT_STDIN_DEV jtag_uart
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart"
-#define ALT_STDOUT_BASE 0x8001068
+#define ALT_STDOUT_BASE 0x80010b0
 #define ALT_STDOUT_DEV jtag_uart
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
 #define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
 #define ALT_SYSTEM_NAME "system"
+
+
+/*
+ * Volume_dummy_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_Volume_dummy_0 Volume_dummy
+#define VOLUME_DUMMY_0_BASE 0x8001098
+#define VOLUME_DUMMY_0_IRQ -1
+#define VOLUME_DUMMY_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define VOLUME_DUMMY_0_NAME "/dev/Volume_dummy_0"
+#define VOLUME_DUMMY_0_SPAN 8
+#define VOLUME_DUMMY_0_TYPE "Volume_dummy"
+
+
+/*
+ * audio_and_video_config_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_audio_and_video_config_0 altera_up_avalon_audio_and_video_config
+#define AUDIO_AND_VIDEO_CONFIG_0_BASE 0x8001080
+#define AUDIO_AND_VIDEO_CONFIG_0_IRQ -1
+#define AUDIO_AND_VIDEO_CONFIG_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define AUDIO_AND_VIDEO_CONFIG_0_NAME "/dev/audio_and_video_config_0"
+#define AUDIO_AND_VIDEO_CONFIG_0_SPAN 16
+#define AUDIO_AND_VIDEO_CONFIG_0_TYPE "altera_up_avalon_audio_and_video_config"
 
 
 /*
@@ -284,7 +329,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
-#define JTAG_UART_BASE 0x8001068
+#define JTAG_UART_BASE 0x80010b0
 #define JTAG_UART_IRQ 0
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
@@ -302,13 +347,13 @@
  */
 
 #define ALT_MODULE_CLASS_sysid altera_avalon_sysid_qsys
-#define SYSID_BASE 0x8001060
+#define SYSID_BASE 0x80010a0
 #define SYSID_ID 1
 #define SYSID_IRQ -1
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1594282733
+#define SYSID_TIMESTAMP 1595242927
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -319,7 +364,7 @@
 
 #define ALT_MODULE_CLASS_timer altera_avalon_timer
 #define TIMER_ALWAYS_RUN 0
-#define TIMER_BASE 0x0
+#define TIMER_BASE 0x8001020
 #define TIMER_COUNTER_SIZE 32
 #define TIMER_FIXED_PERIOD 0
 #define TIMER_FREQ 50000000
@@ -344,7 +389,7 @@
  */
 
 #define ALT_MODULE_CLASS_touch_panel_busy altera_avalon_pio
-#define TOUCH_PANEL_BUSY_BASE 0x8001020
+#define TOUCH_PANEL_BUSY_BASE 0x8001050
 #define TOUCH_PANEL_BUSY_BIT_CLEARING_EDGE_REGISTER 0
 #define TOUCH_PANEL_BUSY_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define TOUCH_PANEL_BUSY_CAPTURE 0
@@ -371,7 +416,7 @@
  */
 
 #define ALT_MODULE_CLASS_touch_panel_pen_irq_n altera_avalon_pio
-#define TOUCH_PANEL_PEN_IRQ_N_BASE 0x8001030
+#define TOUCH_PANEL_PEN_IRQ_N_BASE 0x8001060
 #define TOUCH_PANEL_PEN_IRQ_N_BIT_CLEARING_EDGE_REGISTER 0
 #define TOUCH_PANEL_PEN_IRQ_N_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define TOUCH_PANEL_PEN_IRQ_N_CAPTURE 1

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'system'
  * SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
  *
- * Generated: Wed Jun 10 10:04:21 CEST 2020
+ * Generated: Mon Jul 20 13:09:19 CEST 2020
  */
 
 /*
@@ -60,10 +60,13 @@
 
 #include "altera_nios2_gen2_irq.h"
 #include "LT24_Controller.h"
+#include "Pitch_dummy.h"
+#include "Volume_dummy.h"
 #include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_spi.h"
 #include "altera_avalon_sysid_qsys.h"
 #include "altera_avalon_timer.h"
+#include "altera_up_avalon_audio_and_video_config.h"
 
 /*
  * Allocate the device storage
@@ -74,7 +77,10 @@ ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART, jtag_uart);
 ALTERA_AVALON_SPI_INSTANCE ( TOUCH_PANEL_SPI, touch_panel_spi);
 ALTERA_AVALON_SYSID_QSYS_INSTANCE ( SYSID, sysid);
 ALTERA_AVALON_TIMER_INSTANCE ( TIMER, timer);
+ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG_INSTANCE ( AUDIO_AND_VIDEO_CONFIG_0, audio_and_video_config_0);
 LT24_CONTROLLER_INSTANCE ( LCD_CONTROLLER, LCD_Controller);
+PITCH_DUMMY_INSTANCE ( PITCH_DUMMY_0, Pitch_dummy_0);
+VOLUME_DUMMY_INSTANCE ( VOLUME_DUMMY_0, Volume_dummy_0);
 
 /*
  * Initialize the interrupt controller devices
@@ -101,5 +107,8 @@ void alt_sys_init( void )
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART, jtag_uart);
     ALTERA_AVALON_SPI_INIT ( TOUCH_PANEL_SPI, touch_panel_spi);
     ALTERA_AVALON_SYSID_QSYS_INIT ( SYSID, sysid);
+    ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG_INIT ( AUDIO_AND_VIDEO_CONFIG_0, audio_and_video_config_0);
     LT24_CONTROLLER_INIT ( LCD_CONTROLLER, LCD_Controller);
+    PITCH_DUMMY_INIT ( PITCH_DUMMY, Pitch_dummy);
+    VOLUME_DUMMY_INIT ( VOLUME_DUMMY, Volume_dummy);
 }

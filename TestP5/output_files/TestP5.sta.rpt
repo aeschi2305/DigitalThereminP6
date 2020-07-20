@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for TestP5
-Fri May 15 17:46:23 2020
+Wed Jul 15 11:10:47 2020
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
 
 
@@ -99,15 +99,17 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.52        ;
-; Maximum used               ; 2           ;
+; Average used               ; 2.10        ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  52.1%      ;
+;     Processor 2            ;  36.8%      ;
+;     Processor 3            ;  36.7%      ;
+;     Processor 4            ;  36.6%      ;
 +----------------------------+-------------+
 
 
@@ -116,9 +118,9 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                           ; Status ; Read at                  ;
 +---------------------------------------------------------+--------+--------------------------+
-; TestP5.sdc                                              ; OK     ; Fri May 15 17:45:58 2020 ;
-; TestP5/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Fri May 15 17:45:58 2020 ;
-; TestP5/synthesis/submodules/altera_avalon_dc_fifo.sdc   ; OK     ; Fri May 15 17:45:58 2020 ;
+; TestP5.sdc                                              ; OK     ; Wed Jul 15 11:10:29 2020 ;
+; TestP5/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Wed Jul 15 11:10:29 2020 ;
+; TestP5/synthesis/submodules/altera_avalon_dc_fifo.sdc   ; OK     ; Wed Jul 15 11:10:30 2020 ;
 +---------------------------------------------------------+--------+--------------------------+
 
 
@@ -722,11 +724,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
-    Info: Processing started: Fri May 15 17:45:54 2020
+    Info: Processing started: Wed Jul 15 11:10:25 2020
 Info: Command: quartus_sta TestP5 -c TestP5
 Info: qsta_default_script.tcl version: #3
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Info (332164): Evaluating HDL-embedded SDC commands
@@ -963,9 +965,9 @@ Info (332114): Report Metastability: Found 58 synchronizer chains.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 5234 megabytes
-    Info: Processing ended: Fri May 15 17:46:23 2020
-    Info: Elapsed time: 00:00:29
+    Info: Peak virtual memory: 5287 megabytes
+    Info: Processing ended: Wed Jul 15 11:10:47 2020
+    Info: Elapsed time: 00:00:22
     Info: Total CPU time (on all processors): 00:00:42
 
 

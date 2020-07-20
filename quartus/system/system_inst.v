@@ -1,4 +1,6 @@
 	system u0 (
+		.audio_and_video_config_0_external_interface_SDAT (<connected-to-audio_and_video_config_0_external_interface_SDAT>), // audio_and_video_config_0_external_interface.SDAT
+		.audio_and_video_config_0_external_interface_SCLK (<connected-to-audio_and_video_config_0_external_interface_SCLK>), //                                            .SCLK
 		.clk_clk                                          (<connected-to-clk_clk>),                                          //                                         clk.clk
 		.dram_ctrl_wire_addr                              (<connected-to-dram_ctrl_wire_addr>),                              //                              dram_ctrl_wire.addr
 		.dram_ctrl_wire_ba                                (<connected-to-dram_ctrl_wire_ba>),                                //                                            .ba
@@ -23,7 +25,8 @@
 		.touch_panel_spi_external_MOSI                    (<connected-to-touch_panel_spi_external_MOSI>),                    //                                            .MOSI
 		.touch_panel_spi_external_SCLK                    (<connected-to-touch_panel_spi_external_SCLK>),                    //                                            .SCLK
 		.touch_panel_spi_external_SS_n                    (<connected-to-touch_panel_spi_external_SS_n>),                    //                                            .SS_n
-		.audio_and_video_config_0_external_interface_SDAT (<connected-to-audio_and_video_config_0_external_interface_SDAT>), // audio_and_video_config_0_external_interface.SDAT
-		.audio_and_video_config_0_external_interface_SCLK (<connected-to-audio_and_video_config_0_external_interface_SCLK>)  //                                            .SCLK
+		.led_delay_export                                 (<connected-to-led_delay_export>),                                 //                                   led_delay.export
+		.led_gli_export                                   (<connected-to-led_gli_export>),                                   //                                     led_gli.export
+		.led_vol_export                                   (<connected-to-led_vol_export>)                                    //                                     led_vol.export
 	);
 

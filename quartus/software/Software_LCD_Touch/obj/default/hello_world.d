@@ -8,6 +8,12 @@ obj/default/hello_world.o: hello_world.c \
  ../Software_LCD_Touch_bsp//drivers/inc/LT24_Controller_regs.h \
  ../Software_LCD_Touch_bsp//drivers/inc/altera_avalon_pio_regs.h \
  ../Software_LCD_Touch_bsp//drivers/inc/LT24_Controller_regs.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy_regs.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy_regs.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy_regs.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy_regs.h \
  graphics/graphics.h graphics/fonts.h graphics/alt_video_display.h \
  graphics/alt_video_display.h graphics/simple_text.h graphics/graphics.h \
  graphics/bahnschriftCondensed_22.h graphics/arial_24.h \
@@ -41,6 +47,18 @@ obj/default/hello_world.o: hello_world.c \
 ../Software_LCD_Touch_bsp//drivers/inc/altera_avalon_pio_regs.h:
 
 ../Software_LCD_Touch_bsp//drivers/inc/LT24_Controller_regs.h:
+
+../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy.h:
+
+../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy_regs.h:
+
+../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy_regs.h:
+
+../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy.h:
+
+../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy_regs.h:
+
+../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy_regs.h:
 
 graphics/graphics.h:
 

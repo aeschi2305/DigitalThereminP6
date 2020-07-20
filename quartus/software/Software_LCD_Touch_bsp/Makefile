@@ -208,12 +208,33 @@ GENERATED_C_LIB_SRCS += alt_sys_init.c
 # used to build each file.
 #-------------------------------------------------------------------------------
 
+# avalon_audio_and_video_driver sources root 
+Avalon_Audio_and_Video_driver_SRCS_ROOT := drivers
+
+# avalon_audio_and_video_driver sources 
+Avalon_Audio_and_Video_driver_C_LIB_SRCS := \
+	$(Avalon_Audio_and_Video_driver_SRCS_ROOT)/src/altera_up_avalon_audio_and_video_config.c
+
 # lt24_controller_driver sources root 
 LT24_Controller_driver_SRCS_ROOT := drivers
 
 # lt24_controller_driver sources 
 LT24_Controller_driver_C_LIB_SRCS := \
 	$(LT24_Controller_driver_SRCS_ROOT)/src/LT24_Controller.c
+
+# pitch_dummy_driver sources root 
+Pitch_dummy_driver_SRCS_ROOT := drivers
+
+# pitch_dummy_driver sources 
+Pitch_dummy_driver_C_LIB_SRCS := \
+	$(Pitch_dummy_driver_SRCS_ROOT)/src/Pitch_dummy.c
+
+# volume_dummy_driver sources root 
+Volume_dummy_driver_SRCS_ROOT := drivers
+
+# volume_dummy_driver sources 
+Volume_dummy_driver_C_LIB_SRCS := \
+	$(Volume_dummy_driver_SRCS_ROOT)/src/Volume_dummy.c
 
 # altera_avalon_jtag_uart_driver sources root 
 altera_avalon_jtag_uart_driver_SRCS_ROOT := drivers
@@ -352,7 +373,10 @@ hal_C_LIB_SRCS := \
 
 # Assemble all component C source files 
 COMPONENT_C_LIB_SRCS += \
+	$(Avalon_Audio_and_Video_driver_C_LIB_SRCS) \
 	$(LT24_Controller_driver_C_LIB_SRCS) \
+	$(Pitch_dummy_driver_C_LIB_SRCS) \
+	$(Volume_dummy_driver_C_LIB_SRCS) \
 	$(altera_avalon_jtag_uart_driver_C_LIB_SRCS) \
 	$(altera_avalon_spi_driver_C_LIB_SRCS) \
 	$(altera_avalon_sysid_qsys_driver_C_LIB_SRCS) \

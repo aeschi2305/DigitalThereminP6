@@ -1,5 +1,7 @@
 	component system is
 		port (
+			audio_and_video_config_0_external_interface_SDAT : inout std_logic                     := 'X';             -- SDAT
+			audio_and_video_config_0_external_interface_SCLK : out   std_logic;                                        -- SCLK
 			clk_clk                                          : in    std_logic                     := 'X';             -- clk
 			dram_ctrl_wire_addr                              : out   std_logic_vector(12 downto 0);                    -- addr
 			dram_ctrl_wire_ba                                : out   std_logic_vector(1 downto 0);                     -- ba
@@ -24,13 +26,16 @@
 			touch_panel_spi_external_MOSI                    : out   std_logic;                                        -- MOSI
 			touch_panel_spi_external_SCLK                    : out   std_logic;                                        -- SCLK
 			touch_panel_spi_external_SS_n                    : out   std_logic;                                        -- SS_n
-			audio_and_video_config_0_external_interface_SDAT : inout std_logic                     := 'X';             -- SDAT
-			audio_and_video_config_0_external_interface_SCLK : out   std_logic                                         -- SCLK
+			led_delay_export                                 : out   std_logic;                                        -- export
+			led_gli_export                                   : out   std_logic;                                        -- export
+			led_vol_export                                   : out   std_logic                                         -- export
 		);
 	end component system;
 
 	u0 : component system
 		port map (
+			audio_and_video_config_0_external_interface_SDAT => CONNECTED_TO_audio_and_video_config_0_external_interface_SDAT, -- audio_and_video_config_0_external_interface.SDAT
+			audio_and_video_config_0_external_interface_SCLK => CONNECTED_TO_audio_and_video_config_0_external_interface_SCLK, --                                            .SCLK
 			clk_clk                                          => CONNECTED_TO_clk_clk,                                          --                                         clk.clk
 			dram_ctrl_wire_addr                              => CONNECTED_TO_dram_ctrl_wire_addr,                              --                              dram_ctrl_wire.addr
 			dram_ctrl_wire_ba                                => CONNECTED_TO_dram_ctrl_wire_ba,                                --                                            .ba
@@ -55,7 +60,8 @@
 			touch_panel_spi_external_MOSI                    => CONNECTED_TO_touch_panel_spi_external_MOSI,                    --                                            .MOSI
 			touch_panel_spi_external_SCLK                    => CONNECTED_TO_touch_panel_spi_external_SCLK,                    --                                            .SCLK
 			touch_panel_spi_external_SS_n                    => CONNECTED_TO_touch_panel_spi_external_SS_n,                    --                                            .SS_n
-			audio_and_video_config_0_external_interface_SDAT => CONNECTED_TO_audio_and_video_config_0_external_interface_SDAT, -- audio_and_video_config_0_external_interface.SDAT
-			audio_and_video_config_0_external_interface_SCLK => CONNECTED_TO_audio_and_video_config_0_external_interface_SCLK  --                                            .SCLK
+			led_delay_export                                 => CONNECTED_TO_led_delay_export,                                 --                                   led_delay.export
+			led_gli_export                                   => CONNECTED_TO_led_gli_export,                                   --                                     led_gli.export
+			led_vol_export                                   => CONNECTED_TO_led_vol_export                                    --                                     led_vol.export
 		);
 

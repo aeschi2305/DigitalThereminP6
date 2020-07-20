@@ -10,7 +10,7 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/University Program/Audio &amp; Video,Library/University Program,Project,Library" />
+   expandedCategories="Project,Project/Terasic Technologies Inc.,Library" />
  <window width="1920" height="1030" x="0" y="0" />
  <generation synthesis="VHDL" />
 </preferences>

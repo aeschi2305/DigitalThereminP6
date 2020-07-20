@@ -1,5 +1,7 @@
 
 module system (
+	audio_and_video_config_0_external_interface_SDAT,
+	audio_and_video_config_0_external_interface_SCLK,
 	clk_clk,
 	dram_ctrl_wire_addr,
 	dram_ctrl_wire_ba,
@@ -24,9 +26,12 @@ module system (
 	touch_panel_spi_external_MOSI,
 	touch_panel_spi_external_SCLK,
 	touch_panel_spi_external_SS_n,
-	audio_and_video_config_0_external_interface_SDAT,
-	audio_and_video_config_0_external_interface_SCLK);	
+	led_delay_export,
+	led_gli_export,
+	led_vol_export);	
 
+	inout		audio_and_video_config_0_external_interface_SDAT;
+	output		audio_and_video_config_0_external_interface_SCLK;
 	input		clk_clk;
 	output	[12:0]	dram_ctrl_wire_addr;
 	output	[1:0]	dram_ctrl_wire_ba;
@@ -51,6 +56,7 @@ module system (
 	output		touch_panel_spi_external_MOSI;
 	output		touch_panel_spi_external_SCLK;
 	output		touch_panel_spi_external_SS_n;
-	inout		audio_and_video_config_0_external_interface_SDAT;
-	output		audio_and_video_config_0_external_interface_SCLK;
+	output		led_delay_export;
+	output		led_gli_export;
+	output		led_vol_export;
 endmodule

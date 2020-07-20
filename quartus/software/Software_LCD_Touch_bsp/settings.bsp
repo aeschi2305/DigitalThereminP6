@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>09.07.2020 10:31:13</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1594283473673</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>20.07.2020 13:23:42</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1595244222447</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\software\Software_LCD_Touch_bsp\</BspGeneratedLocation>
         <BspSettingsFile>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\software\Software_LCD_Touch_bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\system.sopcinfo</SopcDesignFile>
@@ -899,12 +899,6 @@
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
         <MemoryMap>
-                <slaveDescriptor>timer</slaveDescriptor>
-                <addressRange>0x00000000 - 0x0000001F</addressRange>
-                <addressSpan>32</addressSpan>
-                <attributes>timer</attributes>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>dram_ctrl</slaveDescriptor>
                 <addressRange>0x04000000 - 0x07FFFFFF</addressRange>
                 <addressSpan>67108864</addressSpan>
@@ -917,38 +911,62 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>touch_panel_busy</slaveDescriptor>
-                <addressRange>0x08001020 - 0x0800102F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
+                <slaveDescriptor>timer</slaveDescriptor>
+                <addressRange>0x08001020 - 0x0800103F</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>touch_panel_pen_irq_n</slaveDescriptor>
-                <addressRange>0x08001030 - 0x0800103F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>LCD_Reset_N</slaveDescriptor>
+                <slaveDescriptor>Pitch_dummy_0</slaveDescriptor>
                 <addressRange>0x08001040 - 0x0800104F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>LCD_Controller</slaveDescriptor>
-                <addressRange>0x08001058 - 0x0800105F</addressRange>
+                <slaveDescriptor>touch_panel_busy</slaveDescriptor>
+                <addressRange>0x08001050 - 0x0800105F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>touch_panel_pen_irq_n</slaveDescriptor>
+                <addressRange>0x08001060 - 0x0800106F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>LCD_Reset_N</slaveDescriptor>
+                <addressRange>0x08001070 - 0x0800107F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>audio_and_video_config_0</slaveDescriptor>
+                <addressRange>0x08001080 - 0x0800108F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>Volume_dummy_0</slaveDescriptor>
+                <addressRange>0x08001098 - 0x0800109F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>sysid</slaveDescriptor>
-                <addressRange>0x08001060 - 0x08001067</addressRange>
+                <addressRange>0x080010A0 - 0x080010A7</addressRange>
+                <addressSpan>8</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>LCD_Controller</slaveDescriptor>
+                <addressRange>0x080010A8 - 0x080010AF</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart</slaveDescriptor>
-                <addressRange>0x08001068 - 0x0800106F</addressRange>
+                <addressRange>0x080010B0 - 0x080010B7</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
