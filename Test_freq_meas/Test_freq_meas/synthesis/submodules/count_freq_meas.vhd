@@ -39,7 +39,8 @@ architecture rtl of count_freq_meas is
   ---------------------------------------------------------------------------
 
   constant ZERO :signed(sine_N-1 downto 0) := (others => '0');
-  signal sine_in_reg : t_reg_input(1 downto 0);
+  constant sine_in_length : natural := 6;
+  signal sine_in_reg : t_reg_input(sine_in_length-1 downto 0);
   signal count_reg : integer range 0 to max_per;
   signal count_cmb : integer range 0 to max_per+1;
   signal meas_en : boolean;
@@ -59,10 +60,12 @@ begin
      count_reg <= 0;
    elsif rising_edge(clk) then
      if enable_in = true then
-        sine_in_reg(1) <= sine_in_reg(0);
         sine_in_reg(0) <= filt_in;
+        l_buf : for ii in 1 to sine_in_length-1 loop
+          sine_in_reg(ii) <= sine_in_reg(ii-1);
+        end loop l_buf;        
         en_out <= false;
-        if ((sine_in_reg(1) <= ZERO) and (sine_in_reg(0) >= ZERO)) then
+        if ((sine_in_reg(5) < ZERO) and (sine_in_reg(4) < ZERO) and (sine_in_reg(3) < ZERO) and (sine_in_reg(2) < ZERO) and (sine_in_reg(1) < ZERO) and (sine_in_reg(0) >= ZERO)) then
           if meas_en = true then
             count_reg <= 0;
             meas_en <= false;
