@@ -43,8 +43,8 @@ architecture rtl of count_freq_meas is
   signal sine_in_reg : t_reg_input(sine_in_length-1 downto 0);
   signal count_reg : integer range 0 to max_per;
   signal count_cmb : integer range 0 to max_per+1;
-  signal meas_en : boolean;
-  signal en_out : boolean;
+  signal meas_en : std_ulogic;
+  signal en_out : std_ulogic;
 
 begin
 
@@ -56,25 +56,25 @@ begin
  begin
    if reset_n = '0' then
      sine_in_reg <= (others => (others => '0'));
-     meas_en <= true;
+     meas_en <= '1';
      count_reg <= 0;
    elsif rising_edge(clk) then
-     if enable_in = true then
+     if enable_in = '1' then
         sine_in_reg(0) <= filt_in;
         l_buf : for ii in 1 to sine_in_length-1 loop
           sine_in_reg(ii) <= sine_in_reg(ii-1);
         end loop l_buf;        
-        en_out <= false;
+        en_out <= '0';
         if ((sine_in_reg(5) < ZERO) and (sine_in_reg(4) < ZERO) and (sine_in_reg(3) < ZERO) and (sine_in_reg(2) < ZERO) and (sine_in_reg(1) < ZERO) and (sine_in_reg(0) >= ZERO)) then
-          if meas_en = true then
+          if meas_en = '1' then
             count_reg <= 0;
-            meas_en <= false;
+            meas_en <= '0';
           else
           	if count_reg < min_per then
           		count_reg <= min_per;
             else
-              meas_en <= true;
-              en_out <= true;
+              meas_en <= '1';
+              en_out <= '1';
           	end if;
           end if;
         else

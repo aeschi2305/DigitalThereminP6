@@ -14,7 +14,7 @@ use ieee.numeric_std.all;
 
 entity Tone_generation_top is
   generic (
-    dat_len_avl : natural := 24;   --Number of Bits of Avalon data w/r
+    dat_len_avl : natural := 32;   --Number of Bits of Avalon data w/r
     cic1Bits : natural := 21;
     cic2Bits : natural := 25;
     cic3Bits : natural := 28
@@ -24,11 +24,10 @@ entity Tone_generation_top is
     csi_clk           : in std_logic;
     rsi_reset_n       : in std_logic;
     -- Avalon Slave Port
- --   avs_sTG_write     : in std_logic;
- --   avs_sTG_address   : in std_logic;
- --   avs_sTG_writedata : in std_logic_vector(dat_len_avl downto 0);
- --   avs_sTG_read      : in std_logic;
- --   avs_sTG_readdata  : out std_logic_vector(dat_len_avl downto 0);
+    avs_sTG_write     : in std_logic;
+    avs_sTG_address   : in std_logic_vector(1 downto 0);
+    avs_sTG_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
+    avs_sTG_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
     -- Avalon Streaming Source Interface (for output data)
     aso_se_ready      : in std_logic;
     aso_se_valid     : out std_logic;
@@ -44,7 +43,7 @@ architecture struct of Tone_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 573000;
+  constant cordic_def_freq :natural := 578550;
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:
@@ -55,6 +54,7 @@ architecture struct of Tone_generation_top is
   signal audio_out            : std_logic_vector(23 downto 0);
   signal audio_meas           : signed(cic2Bits-1 downto 0);
   signal meas_enable         : boolean;
+  signal freq_diff            : signed(25 downto 0);
 
 component cordic_Control is
     generic (
@@ -130,17 +130,17 @@ component freq_meas is
     Qda    : natural := 0;  --Number for more precision
     Qprec  : natural := 5;  --Number of bits after decimal point of quotient
     sine_N : natural := 18; --Number of bits of the sine Wave to be measured
-    Coeffs : natural := 36  --Number of FIR Filter Coefficients
+    Coeffs : natural := 36;  --Number of FIR Filter Coefficients
+    dat_len_avl : natural := 32
   );
   port(
     reset_n       : in std_ulogic;
     clk           : in std_ulogic;
     -- Slave Port
-    --sTG_address   : in  std_logic;
-    --sTG_write     : in std_logic;
-    --sTG_writedata : in std_logic_vector(dat_len_avl downto 0);
-    --sTG_read      : in  std_logic;
-    --sTG_readdata  : out std_logic_vector(dat_len_avl downto 0);
+    avs_address   : in  std_logic_vector(1 downto 0);
+    avs_write     : in std_logic;
+    avs_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
+    avs_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
 
     audio_out     : in std_logic_vector(31 downto 0); 
     freq_diff     : out signed(N+Qprec-1 downto 0);
@@ -185,7 +185,7 @@ begin
       clk         => csi_clk,
       reset_n     => rsi_reset_n,
       phi         => phi,
-      freq_div    => "0000000000000000",
+      freq_dif    => freq_diff,
       sig_freq_up_down => coe_freq_up_down
     ); 
 
@@ -222,22 +222,21 @@ begin
       Qda    => 0,  --Number for more precision
       Qprec  => 5,  --Number of bits after decimal point of quotient
       sine_N => sine_N, --Number of bits of the sine Wave to be measured
-      Coeffs => 37  --Number of FIR Filter Coefficients
+      Coeffs => 37,  --Number of FIR Filter Coefficients
+      dat_len_avl => dat_len_avl
     )
     port map (
       reset_n       => rsi_reset_n,
       clk           => csi_clk,
       -- Slave Port
-      --sTG_address   =>
-      --sTG_write     =>
-      --sTG_writedata =>
-      --sTG_read      =>
-      --sTG_readdata  =>
+      avs_address   => avs_sTG_address,
+      avs_write     => avs_sTG_write,
+      avs_writedata => avs_sTG_writedata,
+      avs_readdata  => avs_sTG_readdata,
 
       audio_out     => audio_meas(cic2Bits-1 downto cic2Bits-sine_N),
-      freq_diff     => open,
-      meas_enable   => meas_enable,
-      enable_out    => open
+      freq_diff     => freq_diff,
+      meas_enable   => meas_enable
     ); 
   
 end architecture struct;

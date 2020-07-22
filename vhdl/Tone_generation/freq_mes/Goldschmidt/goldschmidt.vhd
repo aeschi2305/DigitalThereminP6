@@ -26,7 +26,7 @@ entity goldschmidt is
     num : in unsigned(N-1 downto 0);
     den : in unsigned(N-1 downto 0);
     quo : out unsigned(N+Qprec-1 downto 0);
-    done : out boolean
+    done : out std_ulogic
   );
 end entity goldschmidt;
 	
@@ -52,19 +52,19 @@ begin
             num_reg <= (others => '0');
             den_reg <= (others => '0');
             quo_reg <= (others => '0');
-            done <= false;
+            done <= '0';
         elsif rising_edge(clk) then
-            done <= false;
+            done <= '0';
             if init = '1' then
             	num_reg <= (N-1 downto 0 => '0') & num & (Qda-1 downto 0 => '0'); --(N+Qda-1 downto Qda => num, others => '0'); --"0000000000" & num;
             	den_reg <= '0' & den & (Qda-1 downto 0 => '0');--(N+Qda-1 downto Qda => den, others => '0');
             	quo_reg <= (others => '0');
-            elsif start = '1' then
+            elsif start = '1' and done = '0' then
             	if enable = true then
             		num_reg <= num_cmb(3*N+2*Qda-1 downto N+Qda);  --49 downto 20
             		den_reg <= den_cmb(2*N+2*Qda downto N+Qda);  --40 downto 20
             	else
-            		done <= true;
+            		done <= '1';
             		quo_reg	<= num_cmb(3*N+2*Qda-1 downto N+2*Qda);
             	end if;
             end if;

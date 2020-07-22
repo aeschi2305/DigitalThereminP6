@@ -17,22 +17,21 @@ entity freq_meas is
     Qda    : natural := 0;  --Number for more precision
     Qprec  : natural := 5;  --Number of bits after decimal point of quotient
     sine_N : natural := 18; --Number of bits of the sine Wave to be measured
-    Coeffs : natural := 36  --Number of FIR Filter Coefficients
+    Coeffs : natural := 36;  --Number of FIR Filter Coefficients
+    dat_len_avl : natural := 32
   );
   port(
     reset_n       : in std_ulogic;
     clk           : in std_ulogic;
     -- Slave Port
-    --sTG_address   : in  std_logic;
-    --sTG_write     : in std_logic;
-    --sTG_writedata : in std_logic_vector(dat_len_avl downto 0);
-    --sTG_read      : in  std_logic;
-    --sTG_readdata  : out std_logic_vector(dat_len_avl downto 0);
+    avs_address   : in  std_logic_vector(1 downto 0);
+    avs_write     : in std_logic;
+    avs_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
+    avs_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
 
     audio_out     : in signed(sine_N-1 downto 0); 
-    freq_diff     : out unsigned(N+Qprec-1 downto 0);
-    meas_enable  : in boolean;
-    enable_out    : out boolean
+    freq_diff     : out signed(N+Qprec-1 downto 0);
+    meas_enable  : in boolean
   );
 end entity freq_meas;
 
@@ -87,16 +86,35 @@ generic (
 );
 port (
   clk        : in  std_logic;
-  reset_n       : in  std_logic;
+  reset_n    : in  std_logic;
   -- enable
-  en_in        : in boolean;
-  en_out       : out boolean;
+  en_in      : in boolean;
+  en_out     : out boolean;
   -- data input
-  i_data       : in  signed( sine_N-1 downto 0);
+  i_data     : in  signed( sine_N-1 downto 0);
   -- filtered data 
-  o_data       : out signed( sine_N-1 downto 0));
+  o_data     : out signed( sine_N-1 downto 0));
 
 end component fir_filter;
+
+
+Component CalGlis is
+  generic (
+    freq_len    : natural := 21;   -- bits of the freq signal
+    glis_allow  : boolean        -- enables the glissando functionality
+  );
+  port(
+    reset_n     : in std_ulogic;
+    clk         : in std_ulogic;
+    freq        : in unsigned(freq_len-1 downto 0);
+    freq_diff   : out signed(freq_len-1 downto 0);
+    cal_enable  : in std_ulogic;
+    gli_enable  : in std_ulogic;
+    freq_enable : in std_ulogic;
+    cal_done    : out std_ulogic;
+    delay_index : in natural range 0 to 9
+  );
+end component CalGlis;
   ---------------------------------------------------------------------------
   -- Types         
   ---------------------------------------------------------------------------
@@ -110,40 +128,58 @@ end component fir_filter;
 
 
   
-  signal per_cnt  : unsigned(N-1 downto 0);
-  signal freq     : unsigned(N+Qprec-1 downto 0);
-  signal audio_filt : signed(sine_N-1 downto 0);
-  signal en_freq  : boolean;
-  signal en_per   : boolean;
-  signal en_meas  : boolean;
-  signal init     : std_ulogic;
-  signal start    : std_ulogic;
+  signal per_cnt      : unsigned(N-1 downto 0);
+  signal freq         : unsigned(N+Qprec-1 downto 0);
+  signal freq_diff_int: signed(N+Qprec-1 downto 0);
+  signal audio_filt   : signed(sine_N-1 downto 0);
+  signal en_freq      : std_ulogic;
+  signal en_per       : boolean;
+  signal en_meas      : boolean;
+  signal init         : std_ulogic;
+  signal start        : std_ulogic;
   signal enable_start : boolean;
+  signal enable_cal   : std_ulogic;
+  signal cal_done     : std_ulogic;
+
+  signal cntrl_reg       : std_logic_vector(dat_len_avl-1 downto 0);
+  signal freq_data_reg   : std_logic_vector(dat_len_avl-1 downto 0);
+  signal delay_reg       : std_logic_vector(dat_len_avl-1 downto 0);
+
+  signal delay : integer range 0 to 9;
 
 begin
   ------------------------------------------------------------------------------
   -- Registerd Process
   ------------------------------------------------------------------------------
-   -- 1. Avalon R/W Register
--- p_avs : process(clk, reset_n)
--- begin
---   if reset_n = '0' then
---     regs <= (others => (others => '0'));
---   elsif rising_edge(clk) then
---     if sTG_write = '1' then
---       case sTG_address is
---         when '0' =>
---           regs(0) <= sTG_writedata;
---         when others =>
---           regs(1) <= sTG_writedata;
---       end case;
---     end if;
---   end if;
--- end process p_avs;
+ p_wr : process(clk, reset_n)
+ begin
+   if reset_n = '0' then
+     cntrl_reg <= (others => '0');
+     delay_reg <= (others => '0');
+   elsif rising_edge(clk) then
+     if avs_write = '1' then
+       case avs_address is
+         when "00" => cntrl_reg <= avs_writedata;
+         when "10" => delay_reg <= avs_writedata;
+         when others => cntrl_reg <= cntrl_reg;
+       end case;
+     elsif(cntrl_reg(1) = '1') then
+        if cal_done = '1' then
+          cntrl_reg(1) <= '0';
+        end if;
+     end if;
+   end if;
+ end process p_wr;
 
--- with sTG_address select
---   sTG_readdata <= regs(0) when '0',
---   regs(1)                when others; 
+ p_rd : process(all)
+ begin
+    case avs_address is
+      when "00" => avs_readdata <= cntrl_reg;
+      when "01" => avs_readdata <= std_logic_vector(freq);
+      when others => avs_readdata <= (others => '0');
+    end case;
+ end process p_rd;
+
 
 
 p_reg : process(reset_n,clk)
@@ -159,13 +195,17 @@ p_reg : process(reset_n,clk)
         init <= '0';
         start <= '1'; 
         enable_start <= false; 
-      elsif en_freq = true then
+      elsif en_freq = '1' then
         init <= '0';
         start <= '0';
       end if;
 
+
+
     end if;
 end process p_reg;
+
+delay <= to_integer(unsigned(delay_reg));
 
   ------------------------------------------------------------------------------
   -- Combinatorial Process
@@ -224,10 +264,26 @@ end process p_reg;
       o_data   => audio_filt
     );
 
+  CalFlis : entity work.CalGlis
+  generic map(
+    freq_len => N+Qprec,   -- bits of the freq signal
+    glis_allow => true        -- enables the glissando functionality
+  )
+  port map(
+    reset_n => reset_n,
+    clk => clk,
+    freq => freq,
+    freq_diff => freq_diff_int,
+    cal_enable => cntrl_reg(1),
+    gli_enable => cntrl_reg(0),
+    freq_enable => en_freq,
+    cal_done   => cal_done,
+    delay_index => delay
+  );
+
   
   ------------------------------------------------------------------------------
   -- Output Assignments
   ------------------------------------------------------------------------------
-  freq_diff <= freq;
-  enable_out <= en_freq;
+  freq_diff <= freq_diff_int;
 end rtl;
