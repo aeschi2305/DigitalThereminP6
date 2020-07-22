@@ -153,6 +153,7 @@ C_SRCS += graphics/bahnschriftCondensed_22.c
 C_SRCS += graphics/touch_spi.c
 C_SRCS += touch/touch_isr.c
 C_SRCS += graphics/gui.c
+C_SRCS += audio/audio.c
 CXX_SRCS :=
 ASM_SRCS :=
 
@@ -192,6 +193,7 @@ BSP_ROOT_DIR := ../Software_LCD_Touch_bsp/
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS += graphics
 APP_INCLUDE_DIRS += touch
+APP_INCLUDE_DIRS += audio
 APP_LIBRARY_DIRS :=
 APP_LIBRARY_NAMES :=
 

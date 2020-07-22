@@ -24,6 +24,7 @@
 #include "Volume_dummy.h"
 #include "Volume_dummy_regs.h"
 #include "graphics.h"
+#include "audio.h"
 #include "alt_video_display.h"
 #include "simple_text.h"
 #include "arial_24.h"
@@ -85,6 +86,7 @@ int main()
   touch_init(&xy);
   LCD_Init();
   LCD_Clear(WHITE);
+  codec_wm8731_init();
   printf("Hello from Nios II!\n");
 
 
@@ -121,6 +123,7 @@ if(xy.enable_xy == 1){
   			}
   			else if (xy.y_coord<=2800){
   				state = ST_volume;
+  				printf("wm8731 init \n");
   				LCD_Clear(WHITE);
   				draw_volume_screen();
   				draw_update_volume_bar(vol_bar);
@@ -143,7 +146,7 @@ if(xy.enable_xy == 1){
   			  vol_bar = 1;
   			}
   			vol_bar --;
-  			set_vol(vol_bar);
+  			set_vol_test(vol_bar);
   			draw_update_volume_bar(vol_bar);
   			printf("cntrl Register volume %d\n", read_cntrl_vol());
   		}else if((xy.y_coord <= 2050) && (xy.x_coord>=1300)){
@@ -151,7 +154,7 @@ if(xy.enable_xy == 1){
   			if(vol_bar >= 10){
   				vol_bar = 10;
   			}
-  			set_vol(vol_bar);
+  			set_vol_test(vol_bar);
   			printf("cntrl Register volume %d\n", read_cntrl_vol());
   			draw_update_volume_bar(vol_bar);
   		}

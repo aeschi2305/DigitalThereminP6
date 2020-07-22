@@ -8,9 +8,13 @@ use IEEE.numeric_std.all;
 
 entity system is
 	port (
+		aud_xck_clk                                      : out   std_logic;                                        --                                     aud_xck.clk
 		audio_and_video_config_0_external_interface_SDAT : inout std_logic                     := '0';             -- audio_and_video_config_0_external_interface.SDAT
 		audio_and_video_config_0_external_interface_SCLK : out   std_logic;                                        --                                            .SCLK
+		bclk_export                                      : in    std_logic                     := '0';             --                                        bclk.export
 		clk_clk                                          : in    std_logic                     := '0';             --                                         clk.clk
+		dacdat_export                                    : out   std_logic;                                        --                                      dacdat.export
+		daclrck_export                                   : in    std_logic                     := '0';             --                                     daclrck.export
 		dram_ctrl_wire_addr                              : out   std_logic_vector(12 downto 0);                    --                              dram_ctrl_wire.addr
 		dram_ctrl_wire_ba                                : out   std_logic_vector(1 downto 0);                     --                                            .ba
 		dram_ctrl_wire_cas_n                             : out   std_logic;                                        --                                            .cas_n
@@ -202,6 +206,8 @@ architecture rtl of system is
 			outclk_1 : out std_logic;        -- clk
 			outclk_2 : out std_logic;        -- clk
 			outclk_3 : out std_logic;        -- clk
+			outclk_4 : out std_logic;        -- clk
+			outclk_5 : out std_logic;        -- clk
 			locked   : out std_logic         -- export
 		);
 	end component system_pll;
@@ -227,6 +233,16 @@ architecture rtl of system is
 			irq        : out std_logic                                         -- irq
 		);
 	end component system_timer;
+
+	component sine1kHz is
+		port (
+			reset_n          : in  std_logic := 'X'; -- reset_n
+			clk              : in  std_logic := 'X'; -- clk
+			coe_AUD2_DACDAT  : out std_logic;        -- export
+			coe_AUD1_BCLK    : in  std_logic := 'X'; -- export
+			coe_AUD3_DACLRCK : in  std_logic := 'X'  -- export
+		);
+	end component sine1kHz;
 
 	component system_touch_panel_busy is
 		port (
@@ -525,6 +541,7 @@ architecture rtl of system is
 	signal pll_outclk0_clk                                                               : std_logic;                     -- pll:outclk_0 -> [Pitch_dummy_0:csi_clk, Volume_dummy_0:csi_clk, cpu:clk, dram_ctrl:clk, irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, jtag_uart:clk, mm_interconnect_0:pll_outclk0_clk, rst_controller_001:clk, sysid:clock, timer:clk]
 	signal pll_outclk1_clk                                                               : std_logic;                     -- pll:outclk_1 -> [LCD_Controller:clk, LCD_Reset_N:clk, irq_synchronizer:receiver_clk, irq_synchronizer_001:receiver_clk, mm_interconnect_0:pll_outclk1_clk, rst_controller:clk, touch_panel_busy:clk, touch_panel_pen_irq_n:clk, touch_panel_spi:clk]
 	signal pll_outclk3_clk                                                               : std_logic;                     -- pll:outclk_3 -> [audio_and_video_config_0:clk, mm_interconnect_0:pll_outclk3_clk, rst_controller_002:clk]
+	signal pll_outclk4_clk                                                               : std_logic;                     -- pll:outclk_4 -> [rst_controller_003:clk, ton_generation_dummy_0:clk]
 	signal cpu_debug_reset_request_reset                                                 : std_logic;                     -- cpu:debug_reset_request -> [cpu_debug_reset_request_reset:in, mm_interconnect_0:dram_ctrl_reset_reset_bridge_in_reset_reset]
 	signal cpu_data_master_readdata                                                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:cpu_data_master_readdata -> cpu:d_readdata
 	signal cpu_data_master_waitrequest                                                   : std_logic;                     -- mm_interconnect_0:cpu_data_master_waitrequest -> cpu:d_waitrequest
@@ -619,7 +636,8 @@ architecture rtl of system is
 	signal rst_controller_001_reset_out_reset                                            : std_logic;                     -- rst_controller_001:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in, rst_translator:in_reset]
 	signal rst_controller_001_reset_out_reset_req                                        : std_logic;                     -- rst_controller_001:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
 	signal rst_controller_002_reset_out_reset                                            : std_logic;                     -- rst_controller_002:reset_out -> [audio_and_video_config_0:reset, mm_interconnect_0:audio_and_video_config_0_reset_reset_bridge_in_reset_reset]
-	signal reset_reset_n_ports_inv                                                       : std_logic;                     -- reset_reset_n:inv -> [pll:rst, rst_controller:reset_in0, rst_controller_001:reset_in0, rst_controller_002:reset_in0]
+	signal rst_controller_003_reset_out_reset                                            : std_logic;                     -- rst_controller_003:reset_out -> rst_controller_003_reset_out_reset:in
+	signal reset_reset_n_ports_inv                                                       : std_logic;                     -- reset_reset_n:inv -> [pll:rst, rst_controller:reset_in0, rst_controller_001:reset_in0, rst_controller_002:reset_in0, rst_controller_003:reset_in0]
 	signal cpu_debug_reset_request_reset_ports_inv                                       : std_logic;                     -- cpu_debug_reset_request_reset:inv -> dram_ctrl:reset_n
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_read_ports_inv                  : std_logic;                     -- mm_interconnect_0_jtag_uart_avalon_jtag_slave_read:inv -> jtag_uart:av_read_n
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_write_ports_inv                 : std_logic;                     -- mm_interconnect_0_jtag_uart_avalon_jtag_slave_write:inv -> jtag_uart:av_write_n
@@ -635,6 +653,7 @@ architecture rtl of system is
 	signal mm_interconnect_0_touch_panel_spi_spi_control_port_write_ports_inv            : std_logic;                     -- mm_interconnect_0_touch_panel_spi_spi_control_port_write:inv -> touch_panel_spi:write_n
 	signal rst_controller_reset_out_reset_ports_inv                                      : std_logic;                     -- rst_controller_reset_out_reset:inv -> [LCD_Controller:reset_n, LCD_Reset_N:reset_n, touch_panel_busy:reset_n, touch_panel_pen_irq_n:reset_n, touch_panel_spi:reset_n]
 	signal rst_controller_001_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [Pitch_dummy_0:rsi_reset_n, Volume_dummy_0:rsi_reset_n, cpu:reset_n, jtag_uart:rst_n, sysid:reset_n, timer:reset_n]
+	signal rst_controller_003_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_003_reset_out_reset:inv -> ton_generation_dummy_0:reset_n
 
 begin
 
@@ -791,6 +810,8 @@ begin
 			outclk_1 => pll_outclk1_clk,         -- outclk1.clk
 			outclk_2 => sdram_clk_clk,           -- outclk2.clk
 			outclk_3 => pll_outclk3_clk,         -- outclk3.clk
+			outclk_4 => pll_outclk4_clk,         -- outclk4.clk
+			outclk_5 => aud_xck_clk,             -- outclk5.clk
 			locked   => open                     -- (terminated)
 		);
 
@@ -812,6 +833,15 @@ begin
 			chipselect => mm_interconnect_0_timer_s1_chipselect,        --      .chipselect
 			write_n    => mm_interconnect_0_timer_s1_write_ports_inv,   --      .write_n
 			irq        => irq_mapper_receiver1_irq                      --   irq.irq
+		);
+
+	ton_generation_dummy_0 : component sine1kHz
+		port map (
+			reset_n          => rst_controller_003_reset_out_reset_ports_inv, --         reset.reset_n
+			clk              => pll_outclk4_clk,                              --         clock.clk
+			coe_AUD2_DACDAT  => dacdat_export,                                -- conduit_end_0.export
+			coe_AUD1_BCLK    => bclk_export,                                  --   conduit_end.export
+			coe_AUD3_DACLRCK => daclrck_export                                -- conduit_end_1.export
 		);
 
 	touch_panel_busy : component system_touch_panel_busy
@@ -1178,6 +1208,71 @@ begin
 			reset_req_in15 => '0'                                 -- (terminated)
 		);
 
+	rst_controller_003 : component system_rst_controller
+		generic map (
+			NUM_RESET_INPUTS          => 1,
+			OUTPUT_RESET_SYNC_EDGES   => "deassert",
+			SYNC_DEPTH                => 2,
+			RESET_REQUEST_PRESENT     => 0,
+			RESET_REQ_WAIT_TIME       => 1,
+			MIN_RST_ASSERTION_TIME    => 3,
+			RESET_REQ_EARLY_DSRT_TIME => 1,
+			USE_RESET_REQUEST_IN0     => 0,
+			USE_RESET_REQUEST_IN1     => 0,
+			USE_RESET_REQUEST_IN2     => 0,
+			USE_RESET_REQUEST_IN3     => 0,
+			USE_RESET_REQUEST_IN4     => 0,
+			USE_RESET_REQUEST_IN5     => 0,
+			USE_RESET_REQUEST_IN6     => 0,
+			USE_RESET_REQUEST_IN7     => 0,
+			USE_RESET_REQUEST_IN8     => 0,
+			USE_RESET_REQUEST_IN9     => 0,
+			USE_RESET_REQUEST_IN10    => 0,
+			USE_RESET_REQUEST_IN11    => 0,
+			USE_RESET_REQUEST_IN12    => 0,
+			USE_RESET_REQUEST_IN13    => 0,
+			USE_RESET_REQUEST_IN14    => 0,
+			USE_RESET_REQUEST_IN15    => 0,
+			ADAPT_RESET_REQUEST       => 0
+		)
+		port map (
+			reset_in0      => reset_reset_n_ports_inv,            -- reset_in0.reset
+			clk            => pll_outclk4_clk,                    --       clk.clk
+			reset_out      => rst_controller_003_reset_out_reset, -- reset_out.reset
+			reset_req      => open,                               -- (terminated)
+			reset_req_in0  => '0',                                -- (terminated)
+			reset_in1      => '0',                                -- (terminated)
+			reset_req_in1  => '0',                                -- (terminated)
+			reset_in2      => '0',                                -- (terminated)
+			reset_req_in2  => '0',                                -- (terminated)
+			reset_in3      => '0',                                -- (terminated)
+			reset_req_in3  => '0',                                -- (terminated)
+			reset_in4      => '0',                                -- (terminated)
+			reset_req_in4  => '0',                                -- (terminated)
+			reset_in5      => '0',                                -- (terminated)
+			reset_req_in5  => '0',                                -- (terminated)
+			reset_in6      => '0',                                -- (terminated)
+			reset_req_in6  => '0',                                -- (terminated)
+			reset_in7      => '0',                                -- (terminated)
+			reset_req_in7  => '0',                                -- (terminated)
+			reset_in8      => '0',                                -- (terminated)
+			reset_req_in8  => '0',                                -- (terminated)
+			reset_in9      => '0',                                -- (terminated)
+			reset_req_in9  => '0',                                -- (terminated)
+			reset_in10     => '0',                                -- (terminated)
+			reset_req_in10 => '0',                                -- (terminated)
+			reset_in11     => '0',                                -- (terminated)
+			reset_req_in11 => '0',                                -- (terminated)
+			reset_in12     => '0',                                -- (terminated)
+			reset_req_in12 => '0',                                -- (terminated)
+			reset_in13     => '0',                                -- (terminated)
+			reset_req_in13 => '0',                                -- (terminated)
+			reset_in14     => '0',                                -- (terminated)
+			reset_req_in14 => '0',                                -- (terminated)
+			reset_in15     => '0',                                -- (terminated)
+			reset_req_in15 => '0'                                 -- (terminated)
+		);
+
 	reset_reset_n_ports_inv <= not reset_reset_n;
 
 	cpu_debug_reset_request_reset_ports_inv <= not cpu_debug_reset_request_reset;
@@ -1209,5 +1304,7 @@ begin
 	rst_controller_reset_out_reset_ports_inv <= not rst_controller_reset_out_reset;
 
 	rst_controller_001_reset_out_reset_ports_inv <= not rst_controller_001_reset_out_reset;
+
+	rst_controller_003_reset_out_reset_ports_inv <= not rst_controller_003_reset_out_reset;
 
 end architecture rtl; -- of system

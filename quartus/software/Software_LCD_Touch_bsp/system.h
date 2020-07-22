@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'system'
  * SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
  *
- * Generated: Mon Jul 20 13:09:19 CEST 2020
+ * Generated: Tue Jul 21 18:05:44 CEST 2020
  */
 
 /*
@@ -353,7 +353,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1595242927
+#define SYSID_TIMESTAMP 1595347056
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 

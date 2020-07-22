@@ -201,6 +201,14 @@
          type = "String";
       }
    }
+   element ton_generation_dummy_0
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+   }
    element touch_panel_busy
    {
       datum _sortIndex
@@ -270,12 +278,28 @@
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
+ <interface name="aud_xck" internal="pll.outclk5" type="clock" dir="start" />
  <interface
    name="audio_and_video_config_0_external_interface"
    internal="audio_and_video_config_0.external_interface"
    type="conduit"
    dir="end" />
+ <interface
+   name="bclk"
+   internal="ton_generation_dummy_0.conduit_end"
+   type="conduit"
+   dir="end" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface
+   name="dacdat"
+   internal="ton_generation_dummy_0.conduit_end_0"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="daclrck"
+   internal="ton_generation_dummy_0.conduit_end_1"
+   type="conduit"
+   dir="end" />
  <interface
    name="dram_ctrl_wire"
    internal="dram_ctrl.wire"
@@ -385,8 +409,8 @@
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
  <module name="cpu" kind="altera_nios2_gen2" version="17.1" enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="5" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="5" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="6" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="6" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -727,7 +751,7 @@
   <parameter name="gui_fractional_cout" value="32" />
   <parameter name="gui_mif_generate" value="false" />
   <parameter name="gui_multiply_factor" value="1" />
-  <parameter name="gui_number_of_clocks" value="4" />
+  <parameter name="gui_number_of_clocks" value="6" />
   <parameter name="gui_operation_mode" value="direct" />
   <parameter name="gui_output_clock_frequency0" value="50.0" />
   <parameter name="gui_output_clock_frequency1" value="15.0" />
@@ -741,8 +765,8 @@
   <parameter name="gui_output_clock_frequency17" value="100.0" />
   <parameter name="gui_output_clock_frequency2" value="50.0" />
   <parameter name="gui_output_clock_frequency3" value="12.0" />
-  <parameter name="gui_output_clock_frequency4" value="100.0" />
-  <parameter name="gui_output_clock_frequency5" value="100.0" />
+  <parameter name="gui_output_clock_frequency4" value="24.0" />
+  <parameter name="gui_output_clock_frequency5" value="12.0" />
   <parameter name="gui_output_clock_frequency6" value="100.0" />
   <parameter name="gui_output_clock_frequency7" value="100.0" />
   <parameter name="gui_output_clock_frequency8" value="100.0" />
@@ -832,6 +856,11 @@
   <parameter name="timeoutPulseOutput" value="false" />
   <parameter name="watchdogPulse" value="2" />
  </module>
+ <module
+   name="ton_generation_dummy_0"
+   kind="ton_generation_dummy"
+   version="1.0"
+   enabled="1" />
  <module
    name="touch_panel_busy"
    kind="altera_avalon_pio"
@@ -1071,6 +1100,11 @@
    start="pll.outclk3"
    end="audio_and_video_config_0.clk" />
  <connection
+   kind="clock"
+   version="17.1"
+   start="pll.outclk4"
+   end="ton_generation_dummy_0.clock" />
+ <connection
    kind="interrupt"
    version="17.1"
    start="cpu.irq"
@@ -1139,6 +1173,11 @@
    version="17.1"
    start="clk_0.clk_reset"
    end="Volume_dummy_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="ton_generation_dummy_0.reset" />
  <connection
    kind="reset"
    version="17.1"

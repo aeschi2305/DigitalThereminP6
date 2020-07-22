@@ -1,8 +1,12 @@
 	component system is
 		port (
+			aud_xck_clk                                      : out   std_logic;                                        -- clk
 			audio_and_video_config_0_external_interface_SDAT : inout std_logic                     := 'X';             -- SDAT
 			audio_and_video_config_0_external_interface_SCLK : out   std_logic;                                        -- SCLK
+			bclk_export                                      : in    std_logic                     := 'X';             -- export
 			clk_clk                                          : in    std_logic                     := 'X';             -- clk
+			dacdat_export                                    : out   std_logic;                                        -- export
+			daclrck_export                                   : in    std_logic                     := 'X';             -- export
 			dram_ctrl_wire_addr                              : out   std_logic_vector(12 downto 0);                    -- addr
 			dram_ctrl_wire_ba                                : out   std_logic_vector(1 downto 0);                     -- ba
 			dram_ctrl_wire_cas_n                             : out   std_logic;                                        -- cas_n

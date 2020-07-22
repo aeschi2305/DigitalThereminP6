@@ -29,6 +29,23 @@ extern "C"
 {
 #endif /* __cplusplus */
 
+/*
+ * Macros used by alt_sys_init
+ */
+#define PITCH_DUMMY_INSTANCE(name, device) extern int alt_no_storage
+#define PITCH_DUMMY_INIT(name, device) while (0)
+
+
+void set_glissando_delay(alt_u8 delay);
+
+void set_glissando(alt_u8 glissando_on_off);
+
+void set_calibration_pitch(void);
+
+alt_u32 done_calibration_pitch(void);
+
+alt_u32 read_freq_pitch(void);
+
 
 
 #ifdef __cplusplus

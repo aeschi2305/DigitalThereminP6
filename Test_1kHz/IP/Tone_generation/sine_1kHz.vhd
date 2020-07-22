@@ -14,7 +14,7 @@ use IEEE.numeric_std.all;
 entity sine1kHz is
 	
   	port (
-  	 reset  	    : in  std_logic; -- asynchronous reset
+  	 reset_n  	    : in  std_logic; -- asynchronous reset_n
      clk      	    : in  std_logic; -- clock
    
      -- Streaming Source
@@ -95,9 +95,9 @@ begin
   -- Comb Registerd Process 
   -- Also handles the communication with the STEAMING SOURCE INTERFACE
   ------------------------------------------------------------------------------
-  p_reg : process (reset, clk)
+  p_reg : process (reset_n, clk)
   begin
-    if reset = '0' then
+    if reset_n = '0' then
       audio_reg <= (others => '0');
       DACLRCK_reg <= (others => '0');
       BCLK_reg <= (others => '0');
