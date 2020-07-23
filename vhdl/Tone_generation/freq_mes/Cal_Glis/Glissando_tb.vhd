@@ -10,10 +10,10 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity Calibration_tb is
-end entity Calibration_tb;
+entity Glissando_tb is
+end entity Glissando_tb;
 
-architecture struct of Calibration_tb is
+architecture struct of Glissando_tb is
   
   constant N       : natural := 16; 
   constant dat_len_avl : natural := 32;
@@ -50,7 +50,7 @@ architecture struct of Calibration_tb is
       );
   end component Calibration_verify;
 
-  component Tone_generation_top is
+  component pitch_generation_top is
   generic (
     dat_len_avl : natural := 24;   --Number of Bits of Avalon data w/r
     cic1Bits : natural := 23;
@@ -75,7 +75,7 @@ architecture struct of Calibration_tb is
     coe_square_freq   : in std_logic;
     coe_freq_up_down  : in std_logic_vector(1 downto 0)
   );
-end component Tone_generation_top;
+end component pitch_generation_top;
 
   
 begin
@@ -98,7 +98,7 @@ begin
 
     ); 
 
-  Tone_generation_pm : entity work.Tone_generation_top
+  pitch_generation_pm : entity work.pitch_generation_top
     generic map(
       dat_len_avl => dat_len_avl,   --Number of Bits of Avalon data w/r
       cic1Bits    => 23,

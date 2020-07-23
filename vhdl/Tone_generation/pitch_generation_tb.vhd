@@ -1,7 +1,7 @@
 -----------------------------------------------------
 -- Project : Digital Theremin
 -----------------------------------------------------
--- File    : Theremin_tb.vhd
+-- File    : pitch_generation_tb.vhd
 -- Author  : dennis.aeschbacher@students.fhnw.ch
 -----------------------------------------------------
 -- Description : Testbench for complete setup excluding codec
@@ -10,10 +10,10 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity Theremin_tb is
-end entity Theremin_tb;
+entity pitch_generation_tb is
+end entity pitch_generation_tb;
 
-architecture struct of Theremin_tb is
+architecture struct of pitch_generation_tb is
   
   constant N       : natural := 16; 
   -- Internal signal declarations:
@@ -26,7 +26,7 @@ architecture struct of Theremin_tb is
 
   
   -- Component Declarations
-  component Theremin_verify is
+  component pitch_generation_verify is
     generic (
       N : natural := 16  --Number of Bits of the sine wave (precision)
       );
@@ -36,9 +36,9 @@ architecture struct of Theremin_tb is
         square_freq    : out  std_ulogic; -- asynchronous reset, active low
         DACLRCK        : out std_ulogic
       );
-  end component Theremin_verify;
+  end component pitch_generation_verify;
 
-  component Tone_generation_top is
+  component pitch_generation_top is
   generic (
     dat_len_avl : natural := 24;   --Number of Bits of Avalon data w/r
     cic1Bits : natural := 23;
@@ -64,13 +64,13 @@ architecture struct of Theremin_tb is
     coe_square_freq   : in std_logic;
     coe_freq_up_down  : in std_logic_vector(1 downto 0)
   );
-end component Tone_generation_top;
+end component pitch_generation_top;
 
   
 begin
   
   -- Instance port mappings.
-  verify_pm : entity work.Theremin_verify
+  verify_pm : entity work.pitch_generation_verify
     generic map (
       N => N
     )
@@ -81,7 +81,7 @@ begin
 
     ); 
 
-  Tone_generation_pm : entity work.Tone_generation_top
+  pitch_generation_pm : entity work.pitch_generation_top
     generic map(
       dat_len_avl => 24,   --Number of Bits of Avalon data w/r
       cic1Bits    => 23,

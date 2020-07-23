@@ -1,7 +1,7 @@
 -----------------------------------------------------
 -- Project : Digital Theremin
 -----------------------------------------------------
--- File    : theremin_verify.vhd
+-- File    : pitch_generation_verify.vhd
 -- Author  : andreas.frei@students.fhnw.ch
 -----------------------------------------------------
 -- Description : Stimulus and Monitor 
@@ -15,7 +15,7 @@ use ieee.numeric_std.all;
 library std;
 use std.textio.all;
 
-entity Theremin_verify is
+entity pitch_generation_verify is
   generic (
     N : natural := 16  --Number of Bits of the sine wave (precision)
     );
@@ -25,9 +25,9 @@ entity Theremin_verify is
       square_freq    : out  std_ulogic -- asynchronous reset, active low
     --  DACLRCK        : out std_logic
     );
-end entity Theremin_verify;
+end entity pitch_generation_verify;
 
-architecture stimuli_and_monitor of Theremin_verify is
+architecture stimuli_and_monitor of pitch_generation_verify is
   constant c_cycle_time       : time := 18.51851852 ns; -- 54MHZ
   constant c_cycle_time_rect  : time := 1.727711 us; --579kHz --1.7301038 us; --578kHz
   --constant c_cycle_time_DACLRCK  : time := 20.83333 us; --48kHz

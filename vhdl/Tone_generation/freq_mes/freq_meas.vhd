@@ -55,8 +55,9 @@ component count_freq_meas is
     clk         : in std_ulogic;
     filt_in     : in signed(sine_N-1 downto 0); 
     per_cnt     : out unsigned(N-1 downto 0);
-    enable_in   : in boolean;
-    enable_out  : out boolean
+    enable_in   : in std_ulogic;
+    enable_out  : out std_ulogic;
+    freq_meas    : out std_ulogic
   );
 end component count_freq_meas;
 
@@ -89,7 +90,7 @@ port (
   reset_n    : in  std_logic;
   -- enable
   en_in      : in boolean;
-  en_out     : out boolean;
+  en_out     : out std_ulogic;
   -- data input
   i_data     : in  signed( sine_N-1 downto 0);
   -- filtered data 
@@ -112,14 +113,14 @@ Component CalGlis is
     gli_enable  : in std_ulogic;
     freq_enable : in std_ulogic;
     cal_done    : out std_ulogic;
-    delay_index : in natural range 0 to 9
+    delay_index : in natural range 0 to 9;
+    freq_meas    : in std_ulogic
   );
 end component CalGlis;
   ---------------------------------------------------------------------------
   -- Types         
   ---------------------------------------------------------------------------
   type t_reg is array(integer range <>) of std_logic_vector(31 downto 0);
-  type t_digit is array(integer range <>) of std_logic_vector(6 downto 0);
   ---------------------------------------------------------------------------
   -- Signals         
   ---------------------------------------------------------------------------
@@ -133,13 +134,14 @@ end component CalGlis;
   signal freq_diff_int: signed(N+Qprec-1 downto 0);
   signal audio_filt   : signed(sine_N-1 downto 0);
   signal en_freq      : std_ulogic;
-  signal en_per       : boolean;
-  signal en_meas      : boolean;
+  signal en_per       : std_ulogic;
+  signal en_meas      : std_ulogic;
   signal init         : std_ulogic;
   signal start        : std_ulogic;
   signal enable_start : boolean;
   signal enable_cal   : std_ulogic;
   signal cal_done     : std_ulogic;
+  signal freq_meas     : std_ulogic;
 
   signal cntrl_reg       : std_logic_vector(dat_len_avl-1 downto 0);
   signal freq_data_reg   : std_logic_vector(dat_len_avl-1 downto 0);
@@ -188,7 +190,7 @@ p_reg : process(reset_n,clk)
       init <= '0';
       start<= '0';
     elsif rising_edge(clk) then
-      if en_per = true then
+      if en_per = '1' then
         init <= '1';
         enable_start <= true;
       elsif enable_start = true then
@@ -227,7 +229,8 @@ delay <= to_integer(unsigned(delay_reg));
     filt_in   => audio_filt,
     per_cnt     => per_cnt,
     enable_in   => en_meas,
-    enable_out  => en_per
+    enable_out  => en_per,
+    freq_meas    => freq_meas
   );
 
 
@@ -264,7 +267,7 @@ delay <= to_integer(unsigned(delay_reg));
       o_data   => audio_filt
     );
 
-  CalFlis : entity work.CalGlis
+  CalGlis_1 : entity work.CalGlis
   generic map(
     freq_len => N+Qprec,   -- bits of the freq signal
     glis_allow => true        -- enables the glissando functionality
@@ -278,7 +281,8 @@ delay <= to_integer(unsigned(delay_reg));
     gli_enable => cntrl_reg(0),
     freq_enable => en_freq,
     cal_done   => cal_done,
-    delay_index => delay
+    delay_index => delay,
+    freq_meas => freq_meas
   );
 
   

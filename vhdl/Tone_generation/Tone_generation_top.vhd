@@ -14,28 +14,27 @@ use ieee.numeric_std.all;
 
 entity Tone_generation_top is
   generic (
-    dat_len_avl : natural := 32;   --Number of Bits of Avalon data w/r
-    cic1Bits : natural := 21;
-    cic2Bits : natural := 25;
-    cic3Bits : natural := 28
+    dat_len_avl : natural := 31   --Number of Bits of Avalon data w/r
   );
   port( 
     -- Avalon Clock Reset Interfaces
     csi_clk           : in std_logic;
     rsi_reset_n       : in std_logic;
     -- Avalon Slave Port
-    avs_sTG_write     : in std_logic;
-    avs_sTG_address   : in std_logic_vector(1 downto 0);
-    avs_sTG_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
-    avs_sTG_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
+ --   avs_sTG_write     : in std_logic;
+ --   avs_sTG_address   : in std_logic;
+ --   avs_sTG_writedata : in std_logic_vector(dat_len_avl downto 0);
+ --   avs_sTG_read      : in std_logic;
+ --   avs_sTG_readdata  : out std_logic_vector(dat_len_avl downto 0);
     -- Avalon Streaming Source Interface (for output data)
-    aso_se_ready      : in std_logic;
-    aso_se_valid     : out std_logic;
-    aso_se_data       : out std_logic_vector(23 downto 0);
-
+    aso_seR_ready      : in std_logic;
+    aso_seR_valid     : out std_logic;
+    aso_seR_data       : out std_logic_vector(31 downto 0);
+    aso_seL_ready      : in std_logic;
+    aso_seL_valid      : out std_logic;
+    aso_seL_data       : out std_logic_vector(31 downto 0);
     -- Avalon conduit Interfaces
-    coe_square_freq   : in std_logic;
-    coe_freq_up_down  : in std_logic_vector(1 downto 0)
+    coe_square_freq   : in std_logic
   );
 end entity Tone_generation_top;
 
@@ -43,18 +42,13 @@ architecture struct of Tone_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 578550;
-  constant sine_N : natural := 18;
-
+  constant cordic_def_freq :natural := 577000;
   -- Internal signal declarations:
   signal sine                 : signed(N-1 downto 0);
   signal phi                  : signed(N-1 downto 0);
   signal mixer_out            : signed(N-1 downto 0);
-  signal freq_dif             : signed(N-1 downto 0);
-  signal audio_out            : std_logic_vector(23 downto 0);
-  signal audio_meas           : signed(cic2Bits-1 downto 0);
-  signal meas_enable         : boolean;
-  signal freq_diff            : signed(25 downto 0);
+  signal freq_div             : signed(N-1 downto 0);
+  signal audio_out            : std_logic_vector(31 downto 0);
 
 component cordic_Control is
     generic (
@@ -65,36 +59,26 @@ component cordic_Control is
     reset_n : in std_ulogic;
     clk : in std_ulogic;
     phi : out signed(N-1 downto 0);      --calculated angle for cordic processor
-    freq_dif : in signed(N-1 downto 0);
-    sig_freq_up_down : in std_logic_vector(1 downto 0)
+    freq_div : in signed(N-1 downto 0)
   );
 end component cordic_Control;
 
-component filter is
+component cic is
   generic (
-   N : natural := 16;  --Number of Bits of the sine wave (precision)
-   cic1Bits : natural := 23;
-   cic2Bits : natural := 26;
-   cic3Bits : natural := 29
+   N : natural := 16  --Number of Bits of the sine wave (precision)
   );
     port (
      reset_n        : in  std_ulogic; -- asynchronous reset
      clk            : in  std_ulogic; -- clock
      mixer_out      : in signed(N-1 downto 0);        --Input signal
      -- Streaming Source
-     audio_out      : out std_logic_vector(23 downto 0);  --Output signal
-     valid          : out std_logic;  --Control Signals
-     ready          : in std_logic;
-
-     cic1o          : out signed(cic1Bits-1 downto 0);
-     cic2o          : out signed(cic2Bits-1 downto 0);
-     cic3o          : out signed(cic3Bits-1 downto 0);
-
-     cic1_en        : out boolean;
-     cic2_en        : out boolean;
-     cic3_en        : out boolean
+     audio_out      : out std_logic_vector(31 downto 0);  --Output signal
+     valid_R        : out std_logic;  --Control Signals
+     valid_L        : out std_logic;  --Control Signals
+     ready_R        : in std_logic;   
+     ready_L        : in std_logic
   );
-end component filter;
+end component cic;
 
 
 component cordic_pipelined is
@@ -123,35 +107,29 @@ component mixer is
   );
 end component mixer;
 
-component freq_meas is
-  generic (
-    fsamp  : natural := 1200000;  --sampling frequency of the sine wave to be measured
-    N      : natural := 21; --Number of numerator and denominator bits
-    Qda    : natural := 0;  --Number for more precision
-    Qprec  : natural := 5;  --Number of bits after decimal point of quotient
-    sine_N : natural := 18; --Number of bits of the sine Wave to be measured
-    Coeffs : natural := 36;  --Number of FIR Filter Coefficients
-    dat_len_avl : natural := 32
-  );
+component freq_mes is
+    generic (
+     N : natural := 16;  --Number of Bits of the sine wave (precision)
+     dat_len_avl : natural := 31   --Number of Bits of Avalon data w/r
+    );
   port(
-    reset_n       : in std_ulogic;
-    clk           : in std_ulogic;
+    reset_n : in std_ulogic;
+    clk : in std_ulogic;
     -- Slave Port
-    avs_address   : in  std_logic_vector(1 downto 0);
-    avs_write     : in std_logic;
-    avs_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
-    avs_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
+--    sTG_address   : in std_logic;
+--    sTG_write     : in std_logic;
+--    sTG_writedata : in std_logic_vector(dat_len_avl downto 0);
+--    sTG_read      : in  std_logic;
+--    sTG_readdata  : out std_logic_vector(dat_len_avl downto 0);
 
     audio_out     : in std_logic_vector(31 downto 0); 
-    freq_diff     : out signed(N+Qprec-1 downto 0);
-    meas_enable  : in boolean
+    freq_div      : out signed(N-1 downto 0)  
   );
-end component freq_meas;
+end component freq_mes;
 
 begin
-
-
-  aso_se_data <= audio_out;
+  aso_seR_data <= audio_out;
+  aso_seL_data <= audio_out;
   -- user design: mixer
   mixer_1 : entity work.mixer
     port map (
@@ -185,58 +163,41 @@ begin
       clk         => csi_clk,
       reset_n     => rsi_reset_n,
       phi         => phi,
-      freq_dif    => freq_diff,
-      sig_freq_up_down => coe_freq_up_down
+      freq_div    => freq_div
     ); 
 
   -- user design: cic
-  cic_1 : entity work.filter
+  cic_1 : entity work.cic
     generic map (
-      N => N,
-      cic1Bits => cic1Bits,
-      cic2Bits => cic2Bits,
-      cic3Bits => cic3Bits
+      N => N
     )
     port map (
       reset_n     => rsi_reset_n,
       clk         => csi_clk,
       mixer_out   => mixer_out,
       audio_out   => audio_out,
-      valid       => aso_se_valid,
-      ready       => aso_se_ready,
-
-      cic1o       => open,
-      cic2o       => audio_meas,
-      cic3o       => open,
-
-      cic1_en     => open,
-      cic2_en     => meas_enable,
-      cic3_en     => open
+      valid_R     => aso_seR_valid,
+      ready_R     => aso_seR_ready,
+      valid_L     => aso_seL_valid,
+      ready_L     => aso_seL_ready
     ); 
 
   -- user design: freq_mes
-  freq_meas_1 : entity work.freq_meas
+  freq_mes_1 : entity work.freq_mes
     generic map (
-      fsamp  => 1200000, --sampling frequency of the sine wave to be measured
-      N      => 21, --Number of numerator and denominator bits
-      Qda    => 0,  --Number for more precision
-      Qprec  => 5,  --Number of bits after decimal point of quotient
-      sine_N => sine_N, --Number of bits of the sine Wave to be measured
-      Coeffs => 37,  --Number of FIR Filter Coefficients
+      N => N,
       dat_len_avl => dat_len_avl
     )
     port map (
       reset_n       => rsi_reset_n,
       clk           => csi_clk,
-      -- Slave Port
-      avs_address   => avs_sTG_address,
-      avs_write     => avs_sTG_write,
-      avs_writedata => avs_sTG_writedata,
-      avs_readdata  => avs_sTG_readdata,
-
-      audio_out     => audio_meas(cic2Bits-1 downto cic2Bits-sine_N),
-      freq_diff     => freq_diff,
-      meas_enable   => meas_enable
+  --    sTG_address   => avs_sTG_address,  
+  --    sTG_write     => avs_sTG_write,
+  --    sTG_writedata => avs_sTG_writedata,
+  --    sTG_read      => avs_sTG_read,
+  --    sTG_readdata  => avs_sTG_readdata,
+      audio_out     => audio_out,
+      freq_div      => freq_div
     ); 
   
 end architecture struct;

@@ -44,7 +44,6 @@ architecture rtl of count_freq_meas is
   signal sine_in_reg : t_reg_input(sine_in_length-1 downto 0);
   signal count_reg : integer range 0 to max_per;
   signal count_cmb : integer range 0 to max_per+1;
-  signal per_reg : integer range 0 to max_per;
   signal meas_en : std_ulogic;
   signal en_out : std_ulogic;
 
@@ -60,7 +59,6 @@ begin
      sine_in_reg <= (others => (others => '0'));
      meas_en <= '1';
      count_reg <= 0;
-     freq_meas <= '0';
    elsif rising_edge(clk) then
      if enable_in = '1' then
         sine_in_reg(0) <= filt_in;
@@ -69,14 +67,19 @@ begin
         end loop l_buf;        
         en_out <= '0';
         if ((sine_in_reg(5) < ZERO) and (sine_in_reg(4) < ZERO) and (sine_in_reg(3) < ZERO) and (sine_in_reg(2) < ZERO) and (sine_in_reg(1) < ZERO) and (sine_in_reg(0) >= ZERO)) then
-          freq_meas <= not freq_meas;
-        	if count_reg < min_per then
-        		per_reg <= min_per;
+          if meas_en = '1' then
+            count_reg <= 0;
+            meas_en <= '0';
+            freq_meas <= '1';
           else
-            per_reg <= count_reg;
-        	end if;
-          en_out <= '1';
-          count_reg <= 0;
+            freq_meas <= '0';
+          	if count_reg < min_per then
+          		count_reg <= min_per;
+            else
+              meas_en <= '1';
+              en_out <= '1';
+          	end if;
+          end if;
         else
           if count_reg = max_per then
             count_reg <= max_per;
@@ -104,7 +107,7 @@ begin
   -- Output Assignments
   ------------------------------------------------------------------------------
 
-  per_cnt <= to_unsigned(per_reg,per_cnt'length);
+  per_cnt <= to_unsigned(count_reg,per_cnt'length);
   enable_out <= en_out;
  
 end rtl;

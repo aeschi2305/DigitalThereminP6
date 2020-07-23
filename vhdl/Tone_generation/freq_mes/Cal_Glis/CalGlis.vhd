@@ -25,7 +25,8 @@ entity CalGlis is
     gli_enable : in std_ulogic;
     freq_enable : in std_ulogic;
     cal_done   : out std_ulogic;
-    delay_index : in natural range 0 to 9
+    delay_index : in natural range 0 to 9;
+    freq_meas	: in std_ulogic
   );
 end entity CalGlis;
 	
@@ -133,58 +134,60 @@ constant freq_threas  : t_threas_array :=   ("00000000000000111111100011",   --t
                                             "00000000001110001001110010",
                                             "00000000001110111111101001",
                                             "00000000001111111000101110",
-                                            "00000000010000110101001011");
+                                            "00000000010000110101001011");--values for when the frequency is approximated enough
 
 
-constant tolerance_values : t_freq_array := ("00000000000000000000100010",     --values for when the frequency is approximated enough
-                                            "00000000000000000000100100",
-                                            "00000000000000000000100110",
-                                            "00000000000000000000101000",
-                                            "00000000000000000000101011",
-                                            "00000000000000000000101101",
-                                            "00000000000000000000110000",
-                                            "00000000000000000000110011",
-                                            "00000000000000000000110110",
-                                            "00000000000000000000111001",
-                                            "00000000000000000000111101",
-                                            "00000000000000000001000000",
-                                            "00000000000000000001000100",
-                                            "00000000000000000001001000",
-                                            "00000000000000000001001100",
-                                            "00000000000000000001010001",
-                                            "00000000000000000001010110",
-                                            "00000000000000000001011011",
-                                            "00000000000000000001100000",
-                                            "00000000000000000001100110",
-                                            "00000000000000000001101100",
-                                            "00000000000000000001110010",
-                                            "00000000000000000001111001",
-                                            "00000000000000000010000000",
-                                            "00000000000000000010001000",
-                                            "00000000000000000010010000",
-                                            "00000000000000000010011001",
-                                            "00000000000000000010100010",
-                                            "00000000000000000010101011",
-                                            "00000000000000000010110101",
-                                            "00000000000000000011000000",
-                                            "00000000000000000011001100",
-                                            "00000000000000000011011000",
-                                            "00000000000000000011100101",
-                                            "00000000000000000011110010",
-                                            "00000000000000000100000001",
-                                            "00000000000000000100010000",
-                                            "00000000000000000100100000",
-                                            "00000000000000000100110001",
-                                            "00000000000000000101000011",
-                                            "00000000000000000101010111",
-                                            "00000000000000000101101011",
-                                            "00000000000000000110000001",
-                                            "00000000000000000110010111",
-                                            "00000000000000000110110000",
-                                            "00000000000000000111001001",
-                                            "00000000000000000111100100",
-                                            "00000000000000001000000001",
-                                            "00000000000000001000100000");
+constant tolerance_values : t_freq_array := ("00000000000000000000001111",
+    										"00000000000000000000001111",
+    										"00000000000000000000010000",
+    										"00000000000000000000010001",
+    										"00000000000000000000010010",
+    										"00000000000000000000010011",
+    										"00000000000000000000010101",
+    										"00000000000000000000010110",
+    										"00000000000000000000010111",
+    										"00000000000000000000011000",
+    										"00000000000000000000011010",
+    										"00000000000000000000011011",
+    										"00000000000000000000011101",
+    										"00000000000000000000011111",
+    										"00000000000000000000100001",
+    										"00000000000000000000100011",
+    										"00000000000000000000100101",
+    										"00000000000000000000100111",
+    										"00000000000000000000101001",
+    										"00000000000000000000101100",
+    										"00000000000000000000101110",
+    										"00000000000000000000110001",
+    										"00000000000000000000110100",
+    										"00000000000000000000110111",
+    										"00000000000000000000111010",
+    										"00000000000000000000111110",
+    										"00000000000000000001000001",
+    										"00000000000000000001000101",
+    										"00000000000000000001001001",
+    										"00000000000000000001001110",
+    										"00000000000000000001010010",
+    										"00000000000000000001010111",
+    										"00000000000000000001011100",
+    										"00000000000000000001100010",
+    										"00000000000000000001101000",
+    										"00000000000000000001101110",
+    										"00000000000000000001110100",
+    										"00000000000000000001111011",
+    										"00000000000000000010000010",
+    										"00000000000000000010001010",
+    										"00000000000000000010010010",
+    										"00000000000000000010011011",
+    										"00000000000000000010100100",
+    										"00000000000000000010101110",
+    										"00000000000000000010111001",
+    										"00000000000000000011000100",
+    										"00000000000000000011001111",
+    										"00000000000000000011011011",
+    										"00000000000000000011101001");
+
+
 
 
 constant freq_step  : t_freq_array :=       ("00000000000000000000000010",  -- values for the frequency steps for the glissando effect (1 cent of the desired frequency)
@@ -238,7 +241,7 @@ constant freq_step  : t_freq_array :=       ("00000000000000000000000010",  -- v
                                             "00000000000000000000100111");
 
 
-type t_max_count_array is array(integer range <>) of natural range 0 to 1048576;
+type t_max_count_array is array(integer range 0 to 9) of natural range 0 to 1048576;
 
 constant max_count : t_max_count_array := (100,     --kein Delay
                                            27000,   --ca. 50ms Delay
@@ -269,15 +272,22 @@ signal freq_sign_chn    : signed(freq_len-1 downto 0);
 signal freq_gli_reg     : signed(freq_len-1 downto 0);
 signal freq_gli_cmb     : signed(freq_len-1 downto 0);
 signal freq_old         : signed(freq_len-1 downto 0);
+signal freq_actual_reg  : signed(freq_len-1 downto 0);
+signal freq_actual_cmb  : signed(freq_len-1 downto 0);
 signal gli_diff_reg     : signed(freq_len-1 downto 0);
 signal gli_diff_cmb     : signed(freq_len-1 downto 0);
+signal gli_diff_neg_reg : signed(freq_len-1 downto 0);
+signal gli_diff_neg_cmb : signed(freq_len-1 downto 0);
 signal gli_diff_cmb_n   : signed(freq_len-1 downto 0);
+signal gli_diff_neg_cmb_n   : signed(freq_len-1 downto 0);
 signal gli_step         : signed(freq_len-1 downto 0);
+signal gli_step_cmb     : signed(freq_len-1 downto 0);
 signal meas             : std_ulogic;
 signal done             : std_ulogic;
 signal done_old         : std_ulogic;
 signal gli_fast         : std_ulogic;
 signal approx_done		: std_ulogic;
+signal delay 			: std_ulogic;
 
 signal gli_index_reg : integer range 0 to pitch_values'length;
 signal gli_index_cmb : integer range 0 to pitch_values'length;
@@ -320,21 +330,20 @@ begin
                 end if;
 
             when s_freq_range => 
-                if done = '1' and done_old = '0' then
-                    if (signed(freq) >= freq_threas(freq_threas'high)) or (signed(freq) <= freq_threas(freq_threas'low)) then
-                        state_ns <= s_idle;
-                    else
-                        state_ns <= s_step;
-                    end if;
-                end if;
-
+            	if done = '1' and done_old = '0' then
+            	    if (signed(freq) >= freq_threas(freq_threas'high)) or (signed(freq) <= freq_threas(freq_threas'low)) then
+            	        state_ns <= s_idle;
+            	    else
+            	        state_ns <= s_step;
+            	    end if;
+            	end if;
             when s_step => 
                 state_ns <= s_step_cnt;
 
             when s_step_cnt => 
                 if gli_enable = '0' then
                     state_ns <= s_idle;
-                elsif freq_enable = '1' then
+                elsif freq_enable = '1' and freq_meas = '0' then
                     state_ns <= s_freq_range;
                 end if;
 
@@ -345,13 +354,16 @@ begin
     end process p_fsm_nxt;
 
     p_fsm_reg : process(reset_n,clk)
+    
     begin
         if reset_n = '0' then
             freq_diff_reg   <= (others => '0');
             freq_cal_reg    <= (others => '0');
             freq_gli_reg    <= (others => '0');
             freq_old        <= (others => '0');
+            freq_actual_reg <= (others => '0');
             gli_diff_reg    <= (others => '0');
+            gli_diff_neg_reg<= (others => '0');
             gli_index_reg   <= 0;
             gli_step        <= (others => '0');
             delay_count_reg <= 0;
@@ -360,12 +372,14 @@ begin
             cal_done		<= '0';
             meas            <= '0';
             state_cs        <= s_idle;
+            delay 			<= '0';
         elsif rising_edge(clk) then
             freq_diff_reg <= freq_diff_cmb;
             state_cs  <= state_ns;
             done_old <= done;
             cal_done <= '0';
             approx_done <= '0';
+
             case state_ns is
 
                 when s_idle =>          --idle state where no effect or calibration is happening
@@ -413,28 +427,39 @@ begin
                     end if;
 
                 when s_freq_range =>                --Calculates the nearest note and its index
-                    gli_diff_reg <= gli_diff_cmb;
-                    gli_index_reg <= gli_index_cmb;
+                	delay <= '1';
+                	done <= '0';
+                	if delay = '1' then
+                    	gli_diff_reg <= gli_diff_cmb;
+                    	gli_diff_neg_reg <= gli_diff_neg_cmb;
+                    	gli_index_reg <= gli_index_cmb;
+                    	delay <= '0';
+                    	done <= '1';
+                    else
+                    	freq_actual_reg <= freq_actual_cmb;
+                    end if;
 
 
                 when s_step =>                                             --calculates the frequency steps
                     if gli_diff_reg(gli_diff_reg'high) = '1' then
                         gli_step <= freq_step(gli_index_reg);
                     else
-                        gli_step <= not(freq_step(gli_index_reg)) + (freq_len-1 downto 1 => '0') & '1';
+                         gli_step <= gli_step_cmb;
                     end if;
                     
                 when s_step_cnt =>                                          --converges the actual pitch to the nearest note
-                    if gli_diff_reg > tolerance_values(gli_index_reg) then
+                    if ((gli_diff_reg > tolerance_values(gli_index_reg)) or (gli_diff_neg_reg > tolerance_values(gli_index_reg))) and freq_meas = '0' then
                         if delay_count_reg /= max_count(delay_index) then
                             delay_count_reg <= delay_count_cmb;
                         else
                             freq_gli_reg <= freq_gli_cmb;
                             gli_diff_reg <= gli_diff_cmb_n;
+                            gli_diff_neg_reg <= gli_diff_neg_cmb_n;
                             delay_count_reg <= 0;
                         end if;
-                    else
+                    elsif ((gli_diff_reg < tolerance_values(gli_index_reg)) and (gli_diff_neg_reg < tolerance_values(gli_index_reg))) and freq_meas = '0' then
                     	approx_done <= '1';
+
                     end if;
                     
                 when others => 
@@ -447,24 +472,31 @@ begin
 
     p_fsm_cmb : process(all)
     variable gli_index : integer range 0 to pitch_values'length;
-
+    variable step_tmp : signed(freq_len downto 0);
+    variable freq_gli_cmb_tmp : signed(freq_len-1 downto 0);
     begin
         --freq_check <= signed(freq(freq_len-2 downto 0)) + min_freq_val(freq_len-3 downto 0) & "00";           --freq + 400Hz
         freq_sign  <= freq_cal_reg + min_freq_val;                               --freq_cal_reg + 100Hz
         freq_sign_chn <= freq_cal_reg + signed(freq(freq_len-2 downto 0) & '0'); --freq_cal_reg + 2 * freq
         freq_cal_cmb <= freq_cal_reg - cal_stp;
 
+
         l_freq_range : for ii in 0 to pitch_values'length-1 loop
-            if freq_threas(ii) < signed(freq) and freq_threas(ii+1) > signed(freq) then
+            if freq_threas(ii) < freq_actual_reg and freq_threas(ii+1) > freq_actual_reg then
                 gli_index := ii;
             end if;
         end loop l_freq_range;
         gli_diff_cmb <= pitch_values(gli_index) - signed(freq);
+        gli_diff_neg_cmb <= signed(freq) - pitch_values(gli_index);
         gli_index_cmb <= gli_index;
-
-        freq_gli_cmb <= freq_gli_reg + gli_step; 
+        step_tmp := not(freq_step(gli_index_reg)) + (freq_len-1 downto 1 => '0') & '1';
+        gli_step_cmb <= step_tmp(freq_len-1 downto 0);
+        freq_gli_cmb_tmp := freq_gli_reg - gli_step; 
+        freq_gli_cmb <= freq_gli_cmb_tmp;
         gli_diff_cmb_n <= gli_diff_reg + gli_step;
+        gli_diff_neg_cmb_n <= gli_diff_neg_reg - gli_step;
         delay_count_cmb <= delay_count_reg + 1;
+        freq_actual_cmb <= signed(freq) - freq_gli_cmb_tmp;
 
         freq_diff_cmb <= freq_cal_reg + freq_gli_reg;
     end process p_fsm_cmb;

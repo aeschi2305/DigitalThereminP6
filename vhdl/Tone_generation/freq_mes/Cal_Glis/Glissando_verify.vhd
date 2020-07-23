@@ -15,7 +15,7 @@ use ieee.numeric_std.all;
 library std;
 use std.textio.all;
 
-entity Calibration_verify is
+entity Glissando_verify is
   generic (
     N : natural := 16;  --Number of Bits of the sine wave (precision)
     dat_len_avl : natural := 32
@@ -32,14 +32,31 @@ entity Calibration_verify is
       avs_readdata  : in std_logic_vector(dat_len_avl-1 downto 0)
       
     );
-end entity Calibration_verify;
+end entity Glissando_verify;
 
-architecture stimuli_and_monitor of Calibration_verify is
+architecture stimuli_and_monitor of Glissando_verify is
+  type t_time is array(integer range 0 to 11) of time range 1.72702622 us to 1.72711572 us;
+
+  constant c_cycle_time_rect  : t_time := (1.72711571 us,
+                                          1.72710676 us,
+                                          1.72709782 us,
+                                          1.72708887 us,
+                                          1.72707992 us,
+                                          1.72707097 us,
+                                          1.72706202 us,
+                                          1.72705308 us,
+                                          1.72704413 us,
+                                          1.72703518 us,
+                                          1.72702623 us,
+                                          1.72702623 us);
   constant c_cycle_time       : time := 18.51851852 ns; -- 54MHZ
-  constant c_cycle_time_rect_1  : time := 1.72771157 us; --579kHz 
-  constant c_cycle_time_rect_1  : time := 1.72771008 us; --579.005kHz 
-  --constant c_cycle_time_DACLRCK  : time := 20.83333 us; --48kHz
+  constant c_cycle_time_rect_1  : time := 1.72711571 us; --579kHz 
+  constant c_cycle_time_rect_2  : time := 1.72702921 us; --579.029kHz 
+  --constant c_cycle_time_rect_2  : time := 1.727414061 us; --578.9kHz
+  --constant c_cycle_time_rect_2  : time := 1.72681747 us; --578.9kHz
   signal enable : boolean   := true;
+  signal enable_toggle : boolean   := true;
+  signal count : integer range 0 to 11;
 begin
   
 
@@ -63,9 +80,9 @@ begin
     wait for 2*c_cycle_time;
     while enable loop
       square_freq <= '0';
-      wait for c_cycle_time_rect/2;
+      wait for c_cycle_time_rect(count)/2;
       square_freq <= '1';
-      wait for c_cycle_time_rect/2;
+      wait for c_cycle_time_rect(count)/2;
     end loop;
     wait;  -- don't do it again
   end process p_clk_rect;
@@ -73,22 +90,42 @@ begin
 
     p_control : process
   begin
+    count <= 0;
     enable <= true;
     avs_writedata <= (others => '0');
     avs_address <= "00";
     avs_write <= '0';
+    --enable_toggle <= false;
+
 
     wait for 20*c_cycle_time;
-    
+
+    avs_writedata <= (dat_len_avl-1 downto 2 => '0') & "00";
+    avs_address <= "10";
+    avs_write <= '1';
+    wait for c_cycle_time;
+    avs_write <= '0';
+
+    wait for c_cycle_time;
+
     avs_writedata <= (dat_len_avl-1 downto 2 => '0') & "01";
     avs_address <= "00";
     avs_write <= '1';
     wait for c_cycle_time;
     avs_write <= '0';
+
+
     
-    wait until rising_edge(<<Signal .Glissando_tb.Tone_generation_pm.freq_meas_1.CalGlis)
-    
-    enable <= false;
+    wait until rising_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_1.CalGlis_1.approx_done : std_ulogic>>);
+    wait for 2 ms;
+   
+    while count < 11 loop
+      wait until falling_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_1.freq_meas : std_ulogic>>);
+      count <= count + 1;
+    end loop;
+
+    wait until rising_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_1.CalGlis_1.approx_done : std_ulogic>>);
+
     wait;
   end process p_control;
 

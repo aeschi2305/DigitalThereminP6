@@ -17,10 +17,10 @@ generic (
     O : natural := 27 --Number of Output Bits
 );
 port (
-  clk        : in  std_logic;
-  reset_n       : in  std_logic;
+  clk        : in  std_ulogic;
+  reset_n       : in  std_ulogic;
   en_in        : in boolean;                  -- input enable
-  en_out       : out boolean;                 -- output enable
+  en_out       : out std_ulogic;                 -- output enable
   i_data       : in  signed( M-1 downto 0);   -- data input
   o_data       : out signed( O-1 downto 0));  -- data output
 end entity fir_filter;
@@ -87,13 +87,13 @@ begin
               p_data_in_reg(ii) <= (others => '0');
             end loop l_mult;
             p_data_out_reg <= (others => '0');
-            en_out <= false;
+            en_out <= '0';
         elsif rising_edge(clk) then
-            en_out <= false;
+            en_out <= '0';
             if en_in = true then 
               p_data_in_reg <= p_data_in_cmb;
               p_data_out_reg <= p_data_out_cmb;
-              en_out <= true;
+              en_out <= '1';
             end if;
         end if;
     end process p_reg;
