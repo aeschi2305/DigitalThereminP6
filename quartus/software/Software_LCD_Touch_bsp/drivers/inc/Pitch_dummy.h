@@ -46,6 +46,8 @@ alt_u32 done_calibration_pitch(void);
 
 alt_u32 read_freq_pitch(void);
 
+alt_u32 read_delay_gli(void);
+
 
 
 #ifdef __cplusplus

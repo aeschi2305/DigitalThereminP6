@@ -14,6 +14,7 @@ entity pitch_dummy is
     generic (
      dat_len_avl  : natural := 31;  --data length
      data_freq    : std_logic_vector(31 downto 0) := (31 downto 16 => '0') &"1111101000000000";
+     delay_thres  : std_logic_vector(31 downto 0) := (31 downto 2 => '0') &"11";
      data_freq1   : std_logic_vector(31 downto 0) := (31 downto 16 => '0') &"0111110100000000"
     );
   port(
@@ -75,7 +76,7 @@ begin
      if avs_sP_write = '1' then
        case avs_sP_address is
          when "00" => cntrl_reg <= avs_sP_writedata;
-         when "10" => delay_reg <= avs_sP_writedata;
+         when "11" => delay_reg <= avs_sP_writedata;
          when others => cntrl_reg <= cntrl_reg;
        end case;
      elsif(cntrl_reg(0) = '1') then
@@ -93,6 +94,7 @@ begin
     case avs_sP_address is
       when "00" => avs_sP_readdata <= cntrl_reg;
       when "01" => avs_sP_readdata <= freq_data_reg;
+      when "11" => avs_sP_readdata <= delay_reg;
       when others => avs_sP_readdata <= (others => '0');
     end case;
  end process p_rd;
@@ -112,7 +114,7 @@ begin
         freq_data_reg <= data_freq1;
         enable <= true;
       end if;
-      if(unsigned(delay_reg) > to_unsigned(delay_ms,delay_reg'length)) then
+      if(delay_reg >= delay_thres) then
           led_delay <= '1';
       else
           led_delay <= '0';

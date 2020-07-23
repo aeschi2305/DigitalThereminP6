@@ -22,9 +22,9 @@
 			lcd_controller_conduit_end_lt24_wr               : out   std_logic;                                        -- lt24_wr
 			lcd_controller_conduit_end_lt24_rs               : out   std_logic;                                        -- lt24_rs
 			lcd_reset_n_external_connection_export           : out   std_logic;                                        -- export
+			led_cntrl_export                                 : out   std_logic;                                        -- export
 			led_delay_export                                 : out   std_logic;                                        -- export
 			led_gli_export                                   : out   std_logic;                                        -- export
-			led_vol_export                                   : out   std_logic;                                        -- export
 			reset_reset_n                                    : in    std_logic                     := 'X';             -- reset_n
 			sdram_clk_clk                                    : out   std_logic;                                        -- clk
 			touch_panel_busy_external_connection_export      : in    std_logic                     := 'X';             -- export

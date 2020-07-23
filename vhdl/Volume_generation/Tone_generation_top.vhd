@@ -52,8 +52,8 @@ architecture struct of Tone_generation_top is
   signal mixer_out            : signed(N-1 downto 0);
   signal freq_dif             : signed(N-1 downto 0);
   signal audio_out            : std_logic_vector(23 downto 0);
-  signal audio_meas           : signed(cic2Bits-1 downto 0);
-  signal meas_enable         : boolean;
+  signal audio_meas           : signed(cic3Bits-1 downto cic3Bits-sine_N);
+  signal meas_enable          : boolean;
   signal freq_diff            : signed(25 downto 0);
 
 component cordic_Control is
@@ -206,12 +206,12 @@ begin
       ready       => aso_se_ready,
 
       cic1o       => open,
-      cic2o       => audio_meas,
-      cic3o       => open,
+      cic2o       => open,
+      cic3o       => audio_meas,
 
       cic1_en     => open,
-      cic2_en     => meas_enable,
-      cic3_en     => open
+      cic2_en     => open,
+      cic3_en     => meas_enable
     ); 
 
   -- user design: freq_mes
@@ -234,7 +234,7 @@ begin
       avs_writedata => avs_sTG_writedata,
       avs_readdata  => avs_sTG_readdata,
 
-      audio_out     => audio_meas(cic2Bits-1 downto cic2Bits-sine_N),
+      audio_out     => audio_meas(cic3Bits-1 downto cic3Bits-sine_N),
       freq_diff     => freq_diff,
       meas_enable   => meas_enable
     ); 

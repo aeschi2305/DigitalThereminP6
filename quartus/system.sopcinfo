@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="system" kind="system" version="1.0" fabric="QSYS">
  <!-- Format version 17.1 590 (Future versions may contain additional information.) -->
- <!-- 2020.07.21.17:57:37 -->
+ <!-- 2020.07.23.10:46:04 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1595347056</value>
+  <value>1595493964</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -1438,6 +1438,14 @@ the requested settings for a module instance. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
+  <parameter name="delay_thres">
+   <type>java.math.BigInteger</type>
+   <value>3</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
   <parameter name="data_freq1">
    <type>java.math.BigInteger</type>
    <value>32000</value>
@@ -1827,7 +1835,7 @@ particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
    <parameter name="associatedClock">
     <type>java.lang.String</type>
-    <value></value>
+    <value>clock</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -1835,7 +1843,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="associatedReset">
     <type>java.lang.String</type>
-    <value></value>
+    <value>reset</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -1970,7 +1978,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="associatedReset">
     <type>java.lang.String</type>
-    <value></value>
+    <value>reset</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -2020,6 +2028,14 @@ the requested settings for a module instance. -->
   <parameter name="data_freq">
    <type>java.math.BigInteger</type>
    <value>64000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="vol_thres">
+   <type>java.math.BigInteger</type>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -2087,7 +2103,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>8</value>
+    <value>16</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -2386,7 +2402,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>avs_sP_address</name>
     <direction>Input</direction>
-    <width>1</width>
+    <width>2</width>
     <role>address</role>
    </port>
    <port>
@@ -2447,7 +2463,7 @@ parameters are a RESULT of the module parameters. -->
    <type>conduit</type>
    <isStart>false</isStart>
    <port>
-    <name>coe_led_vol</name>
+    <name>coe_led_cntrl</name>
     <direction>Output</direction>
     <width>1</width>
     <role>export</role>
@@ -5169,7 +5185,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="instSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80010B0' end='0x80010B8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80010B8' end='0x80010C0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -5189,7 +5205,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /><slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /><slave name='Pitch_dummy_0.sp' start='0x8001040' end='0x8001050' type='Pitch_dummy.sp' /><slave name='touch_panel_busy.s1' start='0x8001050' end='0x8001060' type='altera_avalon_pio.s1' /><slave name='touch_panel_pen_irq_n.s1' start='0x8001060' end='0x8001070' type='altera_avalon_pio.s1' /><slave name='LCD_Reset_N.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /><slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x8001080' end='0x8001090' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='Volume_dummy_0.sp' start='0x8001098' end='0x80010A0' type='Volume_dummy.sp' /><slave name='sysid.control_slave' start='0x80010A0' end='0x80010A8' type='altera_avalon_sysid_qsys.control_slave' /><slave name='LCD_Controller.avalon_slave_0' start='0x80010A8' end='0x80010B0' type='LT24_Controller.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80010B0' end='0x80010B8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /><slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /><slave name='Volume_dummy_0.sp' start='0x8001040' end='0x8001050' type='Volume_dummy.sp' /><slave name='Pitch_dummy_0.sp' start='0x8001050' end='0x8001060' type='Pitch_dummy.sp' /><slave name='touch_panel_busy.s1' start='0x8001060' end='0x8001070' type='altera_avalon_pio.s1' /><slave name='touch_panel_pen_irq_n.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /><slave name='LCD_Reset_N.s1' start='0x8001080' end='0x8001090' type='altera_avalon_pio.s1' /><slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x8001090' end='0x80010A0' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='sysid.control_slave' start='0x80010A8' end='0x80010B0' type='altera_avalon_sysid_qsys.control_slave' /><slave name='LCD_Controller.avalon_slave_0' start='0x80010B0' end='0x80010B8' type='LT24_Controller.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80010B8' end='0x80010C0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -5866,7 +5882,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>audio_and_video_config_0</moduleName>
     <slaveName>avalon_av_config_slave</slaveName>
     <name>audio_and_video_config_0.avalon_av_config_slave</name>
-    <baseAddress>134221952</baseAddress>
+    <baseAddress>134221968</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -5874,7 +5890,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>jtag_uart</moduleName>
     <slaveName>avalon_jtag_slave</slaveName>
     <name>jtag_uart.avalon_jtag_slave</name>
-    <baseAddress>134222000</baseAddress>
+    <baseAddress>134222008</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -5882,7 +5898,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LCD_Controller</moduleName>
     <slaveName>avalon_slave_0</slaveName>
     <name>LCD_Controller.avalon_slave_0</name>
-    <baseAddress>134221992</baseAddress>
+    <baseAddress>134222000</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -5890,7 +5906,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>sysid</moduleName>
     <slaveName>control_slave</slaveName>
     <name>sysid.control_slave</name>
-    <baseAddress>134221984</baseAddress>
+    <baseAddress>134221992</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -5914,7 +5930,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>LCD_Reset_N</moduleName>
     <slaveName>s1</slaveName>
     <name>LCD_Reset_N.s1</name>
-    <baseAddress>134221936</baseAddress>
+    <baseAddress>134221952</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -5922,7 +5938,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>touch_panel_pen_irq_n</moduleName>
     <slaveName>s1</slaveName>
     <name>touch_panel_pen_irq_n.s1</name>
-    <baseAddress>134221920</baseAddress>
+    <baseAddress>134221936</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -5930,7 +5946,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>touch_panel_busy</moduleName>
     <slaveName>s1</slaveName>
     <name>touch_panel_busy.s1</name>
-    <baseAddress>134221904</baseAddress>
+    <baseAddress>134221920</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -5946,7 +5962,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>Pitch_dummy_0</moduleName>
     <slaveName>sp</slaveName>
     <name>Pitch_dummy_0.sp</name>
-    <baseAddress>134221888</baseAddress>
+    <baseAddress>134221904</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -5954,8 +5970,8 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>Volume_dummy_0</moduleName>
     <slaveName>sp</slaveName>
     <name>Volume_dummy_0.sp</name>
-    <baseAddress>134221976</baseAddress>
-    <span>8</span>
+    <baseAddress>134221888</baseAddress>
+    <span>16</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -6263,7 +6279,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>jtag_uart</moduleName>
     <slaveName>avalon_jtag_slave</slaveName>
     <name>jtag_uart.avalon_jtag_slave</name>
-    <baseAddress>134222000</baseAddress>
+    <baseAddress>134222008</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -12986,7 +13002,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1595347056</value>
+   <value>1595493964</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -13006,7 +13022,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1595347056</value>
+   <value>1595493964</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -13022,7 +13038,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1595347056</value>
+   <value>1595493964</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -17029,7 +17045,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x08001080</value>
+   <value>0x08001090</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17080,7 +17096,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x080010b0</value>
+   <value>0x080010b8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17131,7 +17147,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x080010a8</value>
+   <value>0x080010b0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17182,7 +17198,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x080010a0</value>
+   <value>0x080010a8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17335,7 +17351,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x08001070</value>
+   <value>0x08001080</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17386,7 +17402,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x08001060</value>
+   <value>0x08001070</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17437,7 +17453,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x08001050</value>
+   <value>0x08001060</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17539,7 +17555,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x08001040</value>
+   <value>0x08001050</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17590,7 +17606,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x08001098</value>
+   <value>0x08001040</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17692,7 +17708,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x080010b0</value>
+   <value>0x080010b8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

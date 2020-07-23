@@ -37,6 +37,8 @@ alt_u32 read_freq_vol(void);
 
 alt_u32 read_cntrl_vol(void);
 
+alt_u32 read_vol_gain(void);
+
 
 #ifdef __cplusplus
 }

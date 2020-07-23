@@ -74,42 +74,6 @@ component cic_calc is
   );
 end component cic_calc;
 
-component fir_filter_dec is
-generic (
-    N : natural := 11; --Number of Filter Coefficients
-    M : natural := 29; --Number of Input Bits
-    O : natural := 27; --Number of Output Bits
-    dec : natural := 5);   --Decimation Factor);
-port (
-  clk        : in  std_logic;
-  reset_n       : in  std_logic;
-  -- enable
-  en_in        : in boolean;
-  en_out       : out boolean;
-  -- data input
-  i_data       : in  signed( N-1 downto 0);
-  -- filtered data 
-  o_data       : out signed( N-1 downto 0));
-
-end component fir_filter_dec;
-
-component filter_streaming is
-  generic (
-   N : natural := 27; --Input Bits
-   M : natural := 24  --Output Bits
-  );
-    port (
-     reset_n        : in  std_ulogic; -- asynchronous reset
-     clk            : in  std_ulogic; -- clock
-     cic_out      : in signed(N-1 downto 0);        --Input signal
-     -- Streaming Source
-     streaming     : out std_logic_vector(M-1 downto 0);  --Output signal
-     valid        : out std_logic;  --Control Signals
-     ready        : in std_logic;
-
-     enable         : boolean
-  );
-end component filter_streaming;
 
 
 begin
@@ -160,38 +124,6 @@ begin
       cic_out    =>  cic3out,
       enable_out =>  enable3,
       enable_in  =>  enable2
-    ); 
-
-  fir_1 : entity work.fir_filter_dec
-    generic map (
-      N => 22, --Number of Filter Coefficients
-      M => cic3Bits, --Number of Input Bits
-      O => 27, --Number of Output Bits
-      dec => 5
-    )
-    port map (
-      clk         =>  clk,
-      reset_n     =>  reset_n,
-      en_in       =>  enable3,
-      en_out      =>  enable4,
-      i_data      =>  cic3out,
-      o_data      =>  FIRout
-    ); 
-
-  cic_streaming1 : entity work.filter_streaming
-    generic map (
-      N => 27,
-      M => 24
-          )
-    port map (
-      reset_n       =>  reset_n, 
-      clk           =>  clk,
-      cic_out       =>  FIRout,
-      streaming     =>  audio_out, 
-      valid         =>  valid,
-      ready         =>  ready,
-
-      enable        =>  enable4
     ); 
 
     cic1_en <= enable1;

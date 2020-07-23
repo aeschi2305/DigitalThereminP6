@@ -30,9 +30,9 @@ entity system is
 		lcd_controller_conduit_end_lt24_wr               : out   std_logic;                                        --                                            .lt24_wr
 		lcd_controller_conduit_end_lt24_rs               : out   std_logic;                                        --                                            .lt24_rs
 		lcd_reset_n_external_connection_export           : out   std_logic;                                        --             lcd_reset_n_external_connection.export
+		led_cntrl_export                                 : out   std_logic;                                        --                                   led_cntrl.export
 		led_delay_export                                 : out   std_logic;                                        --                                   led_delay.export
 		led_gli_export                                   : out   std_logic;                                        --                                     led_gli.export
-		led_vol_export                                   : out   std_logic;                                        --                                     led_vol.export
 		reset_reset_n                                    : in    std_logic                     := '0';             --                                       reset.reset_n
 		sdram_clk_clk                                    : out   std_logic;                                        --                                   sdram_clk.clk
 		touch_panel_busy_external_connection_export      : in    std_logic                     := '0';             --        touch_panel_busy_external_connection.export
@@ -78,6 +78,7 @@ architecture rtl of system is
 		generic (
 			dat_len_avl : natural                       := 31;
 			data_freq   : std_logic_vector(31 downto 0) := "00000000000000001111101000000000";
+			delay_thres : std_logic_vector(31 downto 0) := "00000000000000000000000000000011";
 			data_freq1  : std_logic_vector(31 downto 0) := "00000000000000000111110100000000"
 		);
 		port (
@@ -96,14 +97,15 @@ architecture rtl of system is
 		generic (
 			dat_len_avl : natural                       := 31;
 			data_freq   : std_logic_vector(31 downto 0) := "00000000000000001111101000000000";
+			vol_thres   : std_logic_vector(31 downto 0) := "00000000000000000000000000000010";
 			data_freq1  : std_logic_vector(31 downto 0) := "00000000000000000111110100000000"
 		);
 		port (
-			avs_sP_address   : in  std_logic                     := 'X';             -- address
+			avs_sP_address   : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
 			avs_sP_readdata  : out std_logic_vector(31 downto 0);                    -- readdata
 			avs_sP_write     : in  std_logic                     := 'X';             -- write
 			avs_sP_writedata : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			coe_led_vol      : out std_logic;                                        -- export
+			coe_led_cntrl    : out std_logic;                                        -- export
 			rsi_reset_n      : in  std_logic                     := 'X';             -- reset_n
 			csi_clk          : in  std_logic                     := 'X'              -- clk
 		);
@@ -373,7 +375,7 @@ architecture rtl of system is
 			touch_panel_spi_spi_control_port_readdata                   : in  std_logic_vector(15 downto 0) := (others => 'X'); -- readdata
 			touch_panel_spi_spi_control_port_writedata                  : out std_logic_vector(15 downto 0);                    -- writedata
 			touch_panel_spi_spi_control_port_chipselect                 : out std_logic;                                        -- chipselect
-			Volume_dummy_0_sp_address                                   : out std_logic_vector(0 downto 0);                     -- address
+			Volume_dummy_0_sp_address                                   : out std_logic_vector(1 downto 0);                     -- address
 			Volume_dummy_0_sp_write                                     : out std_logic;                                        -- write
 			Volume_dummy_0_sp_readdata                                  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			Volume_dummy_0_sp_writedata                                 : out std_logic_vector(31 downto 0)                     -- writedata
@@ -616,7 +618,7 @@ architecture rtl of system is
 	signal mm_interconnect_0_pitch_dummy_0_sp_write                                      : std_logic;                     -- mm_interconnect_0:Pitch_dummy_0_sp_write -> Pitch_dummy_0:avs_sP_write
 	signal mm_interconnect_0_pitch_dummy_0_sp_writedata                                  : std_logic_vector(31 downto 0); -- mm_interconnect_0:Pitch_dummy_0_sp_writedata -> Pitch_dummy_0:avs_sP_writedata
 	signal mm_interconnect_0_volume_dummy_0_sp_readdata                                  : std_logic_vector(31 downto 0); -- Volume_dummy_0:avs_sP_readdata -> mm_interconnect_0:Volume_dummy_0_sp_readdata
-	signal mm_interconnect_0_volume_dummy_0_sp_address                                   : std_logic_vector(0 downto 0);  -- mm_interconnect_0:Volume_dummy_0_sp_address -> Volume_dummy_0:avs_sP_address
+	signal mm_interconnect_0_volume_dummy_0_sp_address                                   : std_logic_vector(1 downto 0);  -- mm_interconnect_0:Volume_dummy_0_sp_address -> Volume_dummy_0:avs_sP_address
 	signal mm_interconnect_0_volume_dummy_0_sp_write                                     : std_logic;                     -- mm_interconnect_0:Volume_dummy_0_sp_write -> Volume_dummy_0:avs_sP_write
 	signal mm_interconnect_0_volume_dummy_0_sp_writedata                                 : std_logic_vector(31 downto 0); -- mm_interconnect_0:Volume_dummy_0_sp_writedata -> Volume_dummy_0:avs_sP_writedata
 	signal mm_interconnect_0_touch_panel_spi_spi_control_port_chipselect                 : std_logic;                     -- mm_interconnect_0:touch_panel_spi_spi_control_port_chipselect -> touch_panel_spi:spi_select
@@ -688,6 +690,7 @@ begin
 		generic map (
 			dat_len_avl => 31,
 			data_freq   => "00000000000000001111101000000000",
+			delay_thres => "00000000000000000000000000000011",
 			data_freq1  => "00000000000000000111110100000000"
 		)
 		port map (
@@ -705,16 +708,17 @@ begin
 		generic map (
 			dat_len_avl => 31,
 			data_freq   => "00000000000000001111101000000000",
+			vol_thres   => "00000000000000000000000000000010",
 			data_freq1  => "00000000000000000111110100000000"
 		)
 		port map (
-			avs_sP_address   => mm_interconnect_0_volume_dummy_0_sp_address(0), --            sp.address
-			avs_sP_readdata  => mm_interconnect_0_volume_dummy_0_sp_readdata,   --              .readdata
-			avs_sP_write     => mm_interconnect_0_volume_dummy_0_sp_write,      --              .write
-			avs_sP_writedata => mm_interconnect_0_volume_dummy_0_sp_writedata,  --              .writedata
-			coe_led_vol      => led_vol_export,                                 -- conduit_end_0.export
-			rsi_reset_n      => rst_controller_001_reset_out_reset_ports_inv,   --         reset.reset_n
-			csi_clk          => pll_outclk0_clk                                 --         clock.clk
+			avs_sP_address   => mm_interconnect_0_volume_dummy_0_sp_address,   --            sp.address
+			avs_sP_readdata  => mm_interconnect_0_volume_dummy_0_sp_readdata,  --              .readdata
+			avs_sP_write     => mm_interconnect_0_volume_dummy_0_sp_write,     --              .write
+			avs_sP_writedata => mm_interconnect_0_volume_dummy_0_sp_writedata, --              .writedata
+			coe_led_cntrl    => led_cntrl_export,                              -- conduit_end_0.export
+			rsi_reset_n      => rst_controller_001_reset_out_reset_ports_inv,  --         reset.reset_n
+			csi_clk          => pll_outclk0_clk                                --         clock.clk
 		);
 
 	audio_and_video_config_0 : component system_audio_and_video_config_0

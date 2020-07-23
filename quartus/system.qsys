@@ -21,7 +21,7 @@
    {
       datum baseAddress
       {
-         value = "134221992";
+         value = "134222000";
          type = "String";
       }
    }
@@ -37,7 +37,7 @@
    {
       datum baseAddress
       {
-         value = "134221936";
+         value = "134221952";
          type = "String";
       }
    }
@@ -53,7 +53,7 @@
    {
       datum baseAddress
       {
-         value = "134221888";
+         value = "134221904";
          type = "String";
       }
    }
@@ -69,7 +69,7 @@
    {
       datum baseAddress
       {
-         value = "134221976";
+         value = "134221888";
          type = "String";
       }
    }
@@ -85,7 +85,7 @@
    {
       datum baseAddress
       {
-         value = "134221952";
+         value = "134221968";
          type = "String";
       }
    }
@@ -141,7 +141,7 @@
    {
       datum baseAddress
       {
-         value = "134222000";
+         value = "134222008";
          type = "String";
       }
    }
@@ -165,7 +165,15 @@
    {
       datum baseAddress
       {
-         value = "134221984";
+         value = "134221992";
+         type = "String";
+      }
+   }
+   element system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
          type = "String";
       }
    }
@@ -221,7 +229,7 @@
    {
       datum baseAddress
       {
-         value = "134221904";
+         value = "134221920";
          type = "String";
       }
    }
@@ -237,7 +245,7 @@
    {
       datum baseAddress
       {
-         value = "134221920";
+         value = "134221936";
          type = "String";
       }
    }
@@ -316,6 +324,11 @@
    type="conduit"
    dir="end" />
  <interface
+   name="led_cntrl"
+   internal="Volume_dummy_0.conduit_end_0"
+   type="conduit"
+   dir="end" />
+ <interface
    name="led_delay"
    internal="Pitch_dummy_0.conduit_end"
    type="conduit"
@@ -327,7 +340,7 @@
    dir="end" />
  <interface
    name="led_vol"
-   internal="Volume_dummy_0.conduit_end_0"
+   internal="Volume_dummy_0.conduit_end"
    type="conduit"
    dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
@@ -379,6 +392,7 @@
   <parameter name="dat_len_avl" value="31" />
   <parameter name="data_freq" value="64000" />
   <parameter name="data_freq1" value="32000" />
+  <parameter name="vol_thres" value="2" />
  </module>
  <module
    name="audio_and_video_config_0"
@@ -428,7 +442,7 @@
   <parameter name="dataAddrWidth" value="28" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /><slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /><slave name='Pitch_dummy_0.sp' start='0x8001040' end='0x8001050' type='Pitch_dummy.sp' /><slave name='touch_panel_busy.s1' start='0x8001050' end='0x8001060' type='altera_avalon_pio.s1' /><slave name='touch_panel_pen_irq_n.s1' start='0x8001060' end='0x8001070' type='altera_avalon_pio.s1' /><slave name='LCD_Reset_N.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /><slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x8001080' end='0x8001090' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='Volume_dummy_0.sp' start='0x8001098' end='0x80010A0' type='Volume_dummy.sp' /><slave name='sysid.control_slave' start='0x80010A0' end='0x80010A8' type='altera_avalon_sysid_qsys.control_slave' /><slave name='LCD_Controller.avalon_slave_0' start='0x80010A8' end='0x80010B0' type='LT24_Controller.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80010B0' end='0x80010B8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /><slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /><slave name='Volume_dummy_0.sp' start='0x8001040' end='0x8001050' type='Volume_dummy.sp' /><slave name='Pitch_dummy_0.sp' start='0x8001050' end='0x8001060' type='Pitch_dummy.sp' /><slave name='touch_panel_busy.s1' start='0x8001060' end='0x8001070' type='altera_avalon_pio.s1' /><slave name='touch_panel_pen_irq_n.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /><slave name='LCD_Reset_N.s1' start='0x8001080' end='0x8001090' type='altera_avalon_pio.s1' /><slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x8001090' end='0x80010A0' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='sysid.control_slave' start='0x80010A8' end='0x80010B0' type='altera_avalon_sysid_qsys.control_slave' /><slave name='LCD_Controller.avalon_slave_0' start='0x80010B0' end='0x80010B8' type='LT24_Controller.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80010B8' end='0x80010C0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -467,7 +481,7 @@
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Fast" />
   <parameter name="instAddrWidth" value="28" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80010B0' end='0x80010B8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80010B8' end='0x80010C0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
@@ -923,7 +937,7 @@
    start="cpu.data_master"
    end="audio_and_video_config_0.avalon_av_config_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001080" />
+  <parameter name="baseAddress" value="0x08001090" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -932,7 +946,7 @@
    start="cpu.data_master"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080010b0" />
+  <parameter name="baseAddress" value="0x080010b8" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -941,7 +955,7 @@
    start="cpu.data_master"
    end="LCD_Controller.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080010a8" />
+  <parameter name="baseAddress" value="0x080010b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -950,7 +964,7 @@
    start="cpu.data_master"
    end="sysid.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080010a0" />
+  <parameter name="baseAddress" value="0x080010a8" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -977,7 +991,7 @@
    start="cpu.data_master"
    end="LCD_Reset_N.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001070" />
+  <parameter name="baseAddress" value="0x08001080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -986,7 +1000,7 @@
    start="cpu.data_master"
    end="touch_panel_pen_irq_n.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001060" />
+  <parameter name="baseAddress" value="0x08001070" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -995,7 +1009,7 @@
    start="cpu.data_master"
    end="touch_panel_busy.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001050" />
+  <parameter name="baseAddress" value="0x08001060" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="17.1" start="cpu.data_master" end="timer.s1">
@@ -1009,7 +1023,7 @@
    start="cpu.data_master"
    end="Pitch_dummy_0.sp">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001040" />
+  <parameter name="baseAddress" value="0x08001050" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1018,7 +1032,7 @@
    start="cpu.data_master"
    end="Volume_dummy_0.sp">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001098" />
+  <parameter name="baseAddress" value="0x08001040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1036,7 +1050,7 @@
    start="cpu.instruction_master"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080010b0" />
+  <parameter name="baseAddress" value="0x080010b8" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection

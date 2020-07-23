@@ -41,3 +41,9 @@ alt_u32 read_freq_pitch(void)
 {
 	return IORD_PITCH_DUMMY_AVALON_PITCH_RD_freq(PITCH_DUMMY_0_BASE);
 }
+
+alt_u32 read_delay_gli(void)
+{
+	return IORD_PITCH_DUMMY_AVALON_PITCH_RD_gli_delay(PITCH_DUMMY_0_BASE);
+}
+

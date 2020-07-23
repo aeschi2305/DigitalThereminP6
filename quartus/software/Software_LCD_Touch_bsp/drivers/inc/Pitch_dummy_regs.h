@@ -13,6 +13,7 @@
 
 #define  IORD_PITCH_DUMMY_AVALON_PITCH_RD_CNTRL(base)			IORD(base,0x00)
 #define  IORD_PITCH_DUMMY_AVALON_PITCH_RD_freq(base)			IORD(base,0x01)
+#define  IORD_PITCH_DUMMY_AVALON_PITCH_RD_gli_delay(base)		IORD(base,0x02)
 
 #define  IOWR_PITCH_DUMMY_AVALON_PITCH_WR_CNTRL(base,value)  	IOWR(base,0x00,value)
 #define  IOWR_PITCH_DUMMY_AVALON_PITCH_WR_DELAY(base,value)  	IOWR(base,0x02,value)

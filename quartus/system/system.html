@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2020.07.21.17:57:37</td>
+    <td class="l">2020.07.23.10:46:04</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -155,7 +155,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">avalon_slave_0&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>080010a8</td>
+    <td class="addr"><span style="color:#989898">0x</span>080010b0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -168,7 +168,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001070</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001080</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -181,7 +181,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">sp&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001040</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001050</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -194,7 +194,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">sp&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001098</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001040</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -207,7 +207,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">avalon_av_config_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001080</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001090</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -246,8 +246,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">avalon_jtag_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>080010b0</td>
-    <td class="addr"><span style="color:#989898">0x</span>080010b0</td>
+    <td class="addr"><span style="color:#989898">0x</span>080010b8</td>
+    <td class="addr"><span style="color:#989898">0x</span>080010b8</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -259,7 +259,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">control_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>080010a0</td>
+    <td class="addr"><span style="color:#989898">0x</span>080010a8</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -285,7 +285,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001050</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001060</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -298,7 +298,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08001060</td>
+    <td class="addr"><span style="color:#989898">0x</span>08001070</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -647,6 +647,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
         <td class="parametervalue">64000</td>
        </tr>
        <tr>
+        <td class="parametername">delay_thres</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
         <td class="parametername">data_freq1</td>
         <td class="parametervalue">32000</td>
        </tr>
@@ -726,6 +730,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <tr>
         <td class="parametername">data_freq</td>
         <td class="parametervalue">64000</td>
+       </tr>
+       <tr>
+        <td class="parametername">vol_thres</td>
+        <td class="parametervalue">2</td>
        </tr>
        <tr>
         <td class="parametername">data_freq1</td>
@@ -1917,7 +1925,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">instSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x80010B0' end='0x80010B8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x80010B8' end='0x80010C0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">faSlaveMapParam</td>
@@ -1925,7 +1933,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /&gt;&lt;slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /&gt;&lt;slave name='Pitch_dummy_0.sp' start='0x8001040' end='0x8001050' type='Pitch_dummy.sp' /&gt;&lt;slave name='touch_panel_busy.s1' start='0x8001050' end='0x8001060' type='altera_avalon_pio.s1' /&gt;&lt;slave name='touch_panel_pen_irq_n.s1' start='0x8001060' end='0x8001070' type='altera_avalon_pio.s1' /&gt;&lt;slave name='LCD_Reset_N.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x8001080' end='0x8001090' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='Volume_dummy_0.sp' start='0x8001098' end='0x80010A0' type='Volume_dummy.sp' /&gt;&lt;slave name='sysid.control_slave' start='0x80010A0' end='0x80010A8' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='LCD_Controller.avalon_slave_0' start='0x80010A8' end='0x80010B0' type='LT24_Controller.avalon_slave_0' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x80010B0' end='0x80010B8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /&gt;&lt;slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /&gt;&lt;slave name='Volume_dummy_0.sp' start='0x8001040' end='0x8001050' type='Volume_dummy.sp' /&gt;&lt;slave name='Pitch_dummy_0.sp' start='0x8001050' end='0x8001060' type='Pitch_dummy.sp' /&gt;&lt;slave name='touch_panel_busy.s1' start='0x8001060' end='0x8001070' type='altera_avalon_pio.s1' /&gt;&lt;slave name='touch_panel_pen_irq_n.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /&gt;&lt;slave name='LCD_Reset_N.s1' start='0x8001080' end='0x8001090' type='altera_avalon_pio.s1' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x8001090' end='0x80010A0' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='sysid.control_slave' start='0x80010A8' end='0x80010B0' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='LCD_Controller.avalon_slave_0' start='0x80010B0' end='0x80010B8' type='LT24_Controller.avalon_slave_0' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x80010B8' end='0x80010C0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -4821,7 +4829,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1595347056</td>
+        <td class="parametervalue">1595493964</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -4846,7 +4854,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1595347056</td>
+        <td class="parametervalue">1595493964</td>
        </tr>
       </table>
      </td>
@@ -5738,8 +5746,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </div>
   <table class="blueBar">
    <tr>
-    <td class="l">generation took 0.01 seconds</td>
-    <td class="r">rendering took 0.17 seconds</td>
+    <td class="l">generation took 0.00 seconds</td>
+    <td class="r">rendering took 0.05 seconds</td>
    </tr>
   </table>
  </body>

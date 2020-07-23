@@ -92,7 +92,7 @@ module system_mm_interconnect_0 (
 		input  wire [15:0] touch_panel_spi_spi_control_port_readdata,                   //                                                     .readdata
 		output wire [15:0] touch_panel_spi_spi_control_port_writedata,                  //                                                     .writedata
 		output wire        touch_panel_spi_spi_control_port_chipselect,                 //                                                     .chipselect
-		output wire [0:0]  Volume_dummy_0_sp_address,                                   //                                    Volume_dummy_0_sp.address
+		output wire [1:0]  Volume_dummy_0_sp_address,                                   //                                    Volume_dummy_0_sp.address
 		output wire        Volume_dummy_0_sp_write,                                     //                                                     .write
 		input  wire [31:0] Volume_dummy_0_sp_readdata,                                  //                                                     .readdata
 		output wire [31:0] Volume_dummy_0_sp_writedata                                  //                                                     .writedata
@@ -1892,7 +1892,7 @@ module system_mm_interconnect_0 (
 	);
 
 	altera_merlin_slave_translator #(
-		.AV_ADDRESS_W                   (1),
+		.AV_ADDRESS_W                   (2),
 		.AV_DATA_W                      (32),
 		.UAV_DATA_W                     (32),
 		.AV_BURSTCOUNT_W                (1),

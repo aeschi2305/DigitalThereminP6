@@ -12,13 +12,14 @@ use IEEE.STD_LOGIC_1164.all;
 use IEEE.numeric_std.all;
 entity freq_meas is
   generic (
-    fsamp  : natural := 1200000;  --sampling frequency of the sine wave to be measured
+    fsamp  : natural := 240000;  --sampling frequency of the sine wave to be measured
     N      : natural := 21; --Number of numerator and denominator bits
     Qda    : natural := 0;  --Number for more precision
     Qprec  : natural := 5;  --Number of bits after decimal point of quotient
     sine_N : natural := 18; --Number of bits of the sine Wave to be measured
-    Coeffs : natural := 36;  --Number of FIR Filter Coefficients
+    Coeffs : natural := 16;  --Number of FIR Filter Coefficients
     dat_len_avl : natural := 32
+
   );
   port(
     reset_n       : in std_ulogic;
@@ -120,14 +121,105 @@ end component CalGlis;
   ---------------------------------------------------------------------------
   type t_reg is array(integer range <>) of std_logic_vector(31 downto 0);
   type t_digit is array(integer range <>) of std_logic_vector(6 downto 0);
+  type t_vol_array is array(integer range 0 to 78) of signed(6 downto 0);
+  type t_vol_gain_array is array(integer range 0 to 9) of signed(6 downto 0);
+
+  constant vol_values : t_vol_array :=     (  "0010011001101001",
+                                               "0010011101011000",
+                                               "0010100001001101",
+                                               "0010100101001000",
+                                               "0010101001001001",
+                                               "0010101101010000",
+                                               "0010110001011101",
+                                               "0010110101110001",
+                                               "0010111010001100",
+                                               "0010111110101110",
+                                               "0011000011010110",
+                                               "0011001000000110",
+                                               "0011001100111110",
+                                               "0011010001111100",
+                                               "0011010111000011",
+                                               "0011011100010001",
+                                               "0011100001101000",
+                                               "0011100111000111",
+                                               "0011101100101110",
+                                               "0011110010011111",
+                                               "0011111000011000",
+                                               "0011111110011010",
+                                               "0100000100100110",
+                                               "0100001010111011",
+                                               "0100010001011011",
+                                               "0100011000000100",
+                                               "0100011110110111",
+                                               "0100100101110110",
+                                               "0100101100111111",
+                                               "0100110100010011",
+                                               "0100111011110011",
+                                               "0101000011011110",
+                                               "0101001011010101",
+                                               "0101010011011000",
+                                               "0101011011101000",
+                                               "0101100100000101",
+                                               "0101101100101111",
+                                               "0101110101100110",
+                                               "0101111110101011",
+                                               "0110000111111111",
+                                               "0110010001100000",
+                                               "0110011011010001",
+                                               "0110100101010000",
+                                               "0110101111100000",
+                                               "0110111001111111",
+                                               "0111000100101110",
+                                               "0111001111101111",
+                                               "0111011011000000",
+                                               "0111100110100011",
+                                               "0111110010011000",
+                                               "0111111110011111",
+                                               "1000001010111001",
+                                               "1000010111100110",
+                                               "1000100100100111",
+                                               "1000110001111101",
+                                               "1000111111100111",
+                                               "1001001101100110",
+                                               "1001011011111011",
+                                               "1001101010100111",
+                                               "1001111001101001",
+                                               "1010001001000011",
+                                               "1010011000110100",
+                                               "1010101000111111",
+                                               "1010111001100010",
+                                               "1011001010011111",
+                                               "1011011011110110",
+                                               "1011101101101001",
+                                               "1011111111110111",
+                                               "1100010010100001",
+                                               "1100100101101000",
+                                               "1100111001001110",
+                                               "1101001101010001",
+                                               "1101100001110100",
+                                               "1101110110110111",
+                                               "1110001100011010",
+                                               "1110100010011111",
+                                               "1110111001000111",
+                                               "1111010000010001",
+                                               "1111101000000000");
+
+  constant vol_gain : t_vol_gain_array :=     ( "0001101",
+                                                "0011001",
+                                                "0100110",
+                                                "0110011",
+                                                "1000000",
+                                                "1001100",
+                                                "1011001",
+                                                "1100110",
+                                                "1110010",
+                                                "1111111");
+                                                                                                                                                        
   ---------------------------------------------------------------------------
   -- Signals         
   ---------------------------------------------------------------------------
   signal regs    : t_reg(0 to 2);
 
-
-
-  
   signal per_cnt      : unsigned(N-1 downto 0);
   signal freq         : unsigned(N+Qprec-1 downto 0);
   signal freq_diff_int: signed(N+Qprec-1 downto 0);
@@ -146,6 +238,10 @@ end component CalGlis;
   signal delay_reg       : std_logic_vector(dat_len_avl-1 downto 0);
 
   signal delay : integer range 0 to 9;
+
+  signal vol_mult_reg : integer range 0 to vol_values'length;
+  signal vol_mult_cmb : integer range 0 to vol_values'length;
+
 
 begin
   ------------------------------------------------------------------------------
@@ -174,8 +270,8 @@ begin
  p_rd : process(all)
  begin
     case avs_address is
-      when "00" => avs_readdata <= cntrl_reg;
-      when "01" => avs_readdata <= std_logic_vector(freq);
+      when '0' => avs_readdata <= cntrl_reg;
+      when '1' => avs_readdata <= vol_mult_reg;
       when others => avs_readdata <= (others => '0');
     end case;
  end process p_rd;
@@ -200,10 +296,26 @@ p_reg : process(reset_n,clk)
         start <= '0';
       end if;
 
+      vol_mult_reg <= vol_mult_cmb;
+
 
 
     end if;
 end process p_reg;
+
+p_cmb : process(all)
+  variable vol_index : integer range 0 to vol_values'length;
+  variable vol_mult : unsigned(13 downto 0);
+  begin
+    l_freq_range : for ii in 0 to vol_values'length-1 loop
+        if vol_values(ii) < signed(freq) and vol_values(ii+1) > signed(freq) then
+            vol_index := ii;
+        end if;
+    end loop l_freq_range;
+    vol_index_cmb <= vol_index;
+    vol_mult := to_unsigned(vol_index,7) *  vol_gain(cntrl_reg(cntrl_reg'length downto 1));
+    vol_mult_cmb <= vol_mult(13 downto 7) + (6 downto 1 => '0') & vol_mult(6)
+end process p_cmb
 
 delay <= to_integer(unsigned(delay_reg));
 

@@ -80,7 +80,7 @@ int main()
   xy.enable_xy = 0;
   xy.next_active_time= 0;
   alt_u8 cali_enable = 1;
-  alt_u8 vol_bar = 0;
+  alt_u8 vol_bar = 1;
   alt_u8 glissando_on_off = 0;
   alt_u8  glissando_delay = 1;
   touch_init(&xy);
@@ -146,16 +146,20 @@ if(xy.enable_xy == 1){
   			  vol_bar = 1;
   			}
   			vol_bar --;
-  			set_vol_test(vol_bar);
+  			//set_vol_test(vol_bar);
+  			set_vol(vol_bar);
+  			printf("vol_gain Register %d\n", read_vol_gain());
   			draw_update_volume_bar(vol_bar);
-  			printf("cntrl Register volume %d\n", read_cntrl_vol());
+  			//printf("cntrl Register volume %d\n", read_cntrl_vol());
   		}else if((xy.y_coord <= 2050) && (xy.x_coord>=1300)){
   			vol_bar ++;
   			if(vol_bar >= 10){
   				vol_bar = 10;
   			}
-  			set_vol_test(vol_bar);
-  			printf("cntrl Register volume %d\n", read_cntrl_vol());
+  			//set_vol_test(vol_bar);
+  			set_vol(vol_bar);
+  			printf("vol_gain Register %d\n", read_vol_gain());
+  			//printf("cntrl Register volume %d\n", read_cntrl_vol());
   			draw_update_volume_bar(vol_bar);
   		}
   		printf("Frequenz volume %d\n", read_freq_vol());
@@ -211,6 +215,7 @@ if(xy.enable_xy == 1){
   			set_glissando_delay(glissando_delay);
   			draw_update_glissando_delay(glissando_delay);
   			printf("freq pitch %d\n",read_freq_pitch());
+  			printf("gli_delay register %d\n",read_delay_gli());
   		}else if((xy.y_coord <= 2050) && (xy.x_coord>=1300)){
   			glissando_delay ++;
   			if(glissando_delay >= 10){
@@ -218,6 +223,7 @@ if(xy.enable_xy == 1){
   			}
   			set_glissando_delay(glissando_delay);
   			draw_update_glissando_delay(glissando_delay);
+  			printf("gli_delay register %d\n",read_delay_gli());
   		}
   	  	break;
 

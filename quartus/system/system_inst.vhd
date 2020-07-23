@@ -3,10 +3,10 @@
 			aud_xck_clk                                      : out   std_logic;                                        -- clk
 			audio_and_video_config_0_external_interface_SDAT : inout std_logic                     := 'X';             -- SDAT
 			audio_and_video_config_0_external_interface_SCLK : out   std_logic;                                        -- SCLK
-			bclk_export                                      : inout std_logic                     := 'X';             -- export
+			bclk_export                                      : in    std_logic                     := 'X';             -- export
 			clk_clk                                          : in    std_logic                     := 'X';             -- clk
 			dacdat_export                                    : out   std_logic;                                        -- export
-			daclrck_export                                   : inout std_logic                     := 'X';             -- export
+			daclrck_export                                   : in    std_logic                     := 'X';             -- export
 			dram_ctrl_wire_addr                              : out   std_logic_vector(12 downto 0);                    -- addr
 			dram_ctrl_wire_ba                                : out   std_logic_vector(1 downto 0);                     -- ba
 			dram_ctrl_wire_cas_n                             : out   std_logic;                                        -- cas_n
@@ -24,7 +24,7 @@
 			lcd_reset_n_external_connection_export           : out   std_logic;                                        -- export
 			led_delay_export                                 : out   std_logic;                                        -- export
 			led_gli_export                                   : out   std_logic;                                        -- export
-			led_vol_export                                   : out   std_logic;                                        -- export
+			led_cntrl_export                                 : out   std_logic;                                        -- export
 			reset_reset_n                                    : in    std_logic                     := 'X';             -- reset_n
 			sdram_clk_clk                                    : out   std_logic;                                        -- clk
 			touch_panel_busy_external_connection_export      : in    std_logic                     := 'X';             -- export
@@ -32,7 +32,8 @@
 			touch_panel_spi_external_MISO                    : in    std_logic                     := 'X';             -- MISO
 			touch_panel_spi_external_MOSI                    : out   std_logic;                                        -- MOSI
 			touch_panel_spi_external_SCLK                    : out   std_logic;                                        -- SCLK
-			touch_panel_spi_external_SS_n                    : out   std_logic                                         -- SS_n
+			touch_panel_spi_external_SS_n                    : out   std_logic;                                        -- SS_n
+			led_vol_export                                   : inout std_logic                     := 'X'              -- export
 		);
 	end component system;
 
@@ -62,7 +63,7 @@
 			lcd_reset_n_external_connection_export           => CONNECTED_TO_lcd_reset_n_external_connection_export,           --             lcd_reset_n_external_connection.export
 			led_delay_export                                 => CONNECTED_TO_led_delay_export,                                 --                                   led_delay.export
 			led_gli_export                                   => CONNECTED_TO_led_gli_export,                                   --                                     led_gli.export
-			led_vol_export                                   => CONNECTED_TO_led_vol_export,                                   --                                     led_vol.export
+			led_cntrl_export                                 => CONNECTED_TO_led_cntrl_export,                                 --                                   led_cntrl.export
 			reset_reset_n                                    => CONNECTED_TO_reset_reset_n,                                    --                                       reset.reset_n
 			sdram_clk_clk                                    => CONNECTED_TO_sdram_clk_clk,                                    --                                   sdram_clk.clk
 			touch_panel_busy_external_connection_export      => CONNECTED_TO_touch_panel_busy_external_connection_export,      --        touch_panel_busy_external_connection.export
@@ -70,6 +71,7 @@
 			touch_panel_spi_external_MISO                    => CONNECTED_TO_touch_panel_spi_external_MISO,                    --                    touch_panel_spi_external.MISO
 			touch_panel_spi_external_MOSI                    => CONNECTED_TO_touch_panel_spi_external_MOSI,                    --                                            .MOSI
 			touch_panel_spi_external_SCLK                    => CONNECTED_TO_touch_panel_spi_external_SCLK,                    --                                            .SCLK
-			touch_panel_spi_external_SS_n                    => CONNECTED_TO_touch_panel_spi_external_SS_n                     --                                            .SS_n
+			touch_panel_spi_external_SS_n                    => CONNECTED_TO_touch_panel_spi_external_SS_n,                    --                                            .SS_n
+			led_vol_export                                   => CONNECTED_TO_led_vol_export                                    --                                     led_vol.export
 		);
 
