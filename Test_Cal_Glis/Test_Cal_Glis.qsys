@@ -107,6 +107,11 @@
    internal="audio_serializer_0.conduit_end"
    type="conduit"
    dir="end" />
+ <interface
+   name="cal_glis"
+   internal="pitch_generation_0.conduit_end_1"
+   type="conduit"
+   dir="end" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface
    name="dacdat"

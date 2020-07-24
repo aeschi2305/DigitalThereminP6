@@ -25,6 +25,7 @@ entity CalGlis is
     freq_diff : out signed(freq_len-1 downto 0);
     cal_enable : in std_ulogic;
     gli_enable : in std_ulogic;
+    mus_scale  : in std_ulogic;
     freq_enable : in std_ulogic;
     cal_done   : out std_ulogic;
     delay_index : in natural range 0 to 9;
@@ -241,6 +242,29 @@ constant freq_step  : t_freq_array :=       ("00000000000000000000000010",  -- v
                                             "00000000000000000000100010",
                                             "00000000000000000000100101",
                                             "00000000000000000000100111");
+
+type t_penta_index is array(integer range 0 to 19) of natural range 1 to 45;
+
+constant penta_index : t_penta_index := (1,
+                                        3,
+                                        6,
+                                        8,
+                                        10,
+                                        13,
+                                        15,
+                                        18,
+                                        20,
+                                        22,
+                                        25,
+                                        27,
+                                        30,
+                                        32,
+                                        34,
+                                        37,
+                                        39,
+                                        42,
+                                        44,
+                                        46);
 
 
 type t_max_count_array is array(integer range 0 to 9) of natural range 0 to 1048576;
@@ -483,12 +507,19 @@ begin
         freq_sign_chn <= freq_cal_reg + signed(freq(freq_len-2 downto 0) & '0'); --freq_cal_reg + 2 * freq
         freq_cal_cmb <= freq_cal_reg - cal_stp;
 
-
-        l_freq_range : for ii in 0 to pitch_values'length-1 loop
-            if freq_threas(ii) < freq_actual_reg and freq_threas(ii+1) > freq_actual_reg then
-                gli_index := ii;
-            end if;
-        end loop l_freq_range;
+        if mus_scale = '0' then
+            l_freq_range : for ii in 0 to pitch_values'length-1 loop
+                if freq_threas(ii) < freq_actual_reg and freq_threas(ii+1) > freq_actual_reg then
+                    gli_index := ii;
+                end if;
+            end loop l_freq_range;
+        else
+            l_freq_range_2 : for ii in 0 to penta_index'length-1 loop
+                if freq_threas(penta_index(ii)) < freq_actual_reg and freq_threas(penta_index(ii+1) > freq_actual_reg then
+                    gli_index := penta_index;
+                end if;
+            end loop l_freq_range_2;
+        end if;
         gli_diff_cmb <= pitch_values(gli_index) - signed(freq);
         gli_diff_neg_cmb <= signed(freq) - pitch_values(gli_index);
         gli_index_cmb <= gli_index;

@@ -35,7 +35,8 @@ entity pitch_generation_top is
 
     -- Avalon conduit Interfaces
     coe_square_freq   : in std_logic;
-    coe_freq_up_down  : in std_logic_vector(1 downto 0)
+    coe_freq_up_down  : in std_logic_vector(1 downto 0);
+    coe_Cal_Glis      : in std_logic_vector(1 downto 0)
   );
 end entity pitch_generation_top;
 
@@ -43,7 +44,7 @@ architecture struct of pitch_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 579000;
+  constant cordic_def_freq :natural := 573000;
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:
@@ -144,7 +145,8 @@ component freq_meas is
 
     audio_out     : in std_logic_vector(31 downto 0); 
     freq_diff     : out signed(N+Qprec-1 downto 0);
-    meas_enable  : in boolean
+    meas_enable   : in boolean;
+    Cal_Glis_enable : in std_logic_vector(1 downto 0)
   );
 end component freq_meas;
 
@@ -236,7 +238,8 @@ begin
 
       audio_out     => audio_meas(cic2Bits-1 downto cic2Bits-sine_N),
       freq_diff     => freq_diff,
-      meas_enable   => meas_enable
+      meas_enable   => meas_enable,
+      Cal_Glis_enable => coe_Cal_Glis
     ); 
   
 end architecture struct;

@@ -9,6 +9,7 @@ use IEEE.numeric_std.all;
 entity Test_Cal_Glis is
 	port (
 		bclk_export         : in    std_logic                    := '0';             --         bclk.export
+		cal_glis_export     : inout std_logic_vector(1 downto 0) := (others => '0'); --     cal_glis.export
 		clk_clk             : in    std_logic                    := '0';             --          clk.clk
 		dacdat_export       : out   std_logic;                                       --       dacdat.export
 		daclrc_export       : in    std_logic                    := '0';             --       daclrc.export
@@ -107,17 +108,18 @@ architecture rtl of Test_Cal_Glis is
 			cic3Bits    : natural := 28
 		);
 		port (
-			csi_clk           : in  std_logic                     := 'X';             -- clk
-			rsi_reset_n       : in  std_logic                     := 'X';             -- reset_n
-			avs_sTG_write     : in  std_logic                     := 'X';             -- write
-			avs_sTG_address   : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
-			avs_sTG_writedata : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			avs_sTG_readdata  : out std_logic_vector(31 downto 0);                    -- readdata
-			coe_freq_up_down  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- export
-			coe_square_freq   : in  std_logic                     := 'X';             -- export
-			aso_se_ready      : in  std_logic                     := 'X';             -- ready
-			aso_se_valid      : out std_logic;                                        -- valid
-			aso_se_data       : out std_logic_vector(23 downto 0)                     -- data
+			csi_clk           : in    std_logic                     := 'X';             -- clk
+			rsi_reset_n       : in    std_logic                     := 'X';             -- reset_n
+			avs_sTG_write     : in    std_logic                     := 'X';             -- write
+			avs_sTG_address   : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			avs_sTG_writedata : in    std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			avs_sTG_readdata  : out   std_logic_vector(31 downto 0);                    -- readdata
+			coe_freq_up_down  : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- export
+			coe_square_freq   : in    std_logic                     := 'X';             -- export
+			aso_se_ready      : in    std_logic                     := 'X';             -- ready
+			aso_se_valid      : out   std_logic;                                        -- valid
+			aso_se_data       : out   std_logic_vector(23 downto 0);                    -- data
+			coe_Cal_Glis      : inout std_logic_vector(1 downto 0)  := (others => 'X')  -- export
 		);
 	end component pitch_generation_top;
 
@@ -309,7 +311,8 @@ begin
 			coe_square_freq   => square_freq_export,                           --   conduit_end.export
 			aso_se_ready      => pitch_generation_0_se_ready,                  --            se.ready
 			aso_se_valid      => pitch_generation_0_se_valid,                  --              .valid
-			aso_se_data       => pitch_generation_0_se_data                    --              .data
+			aso_se_data       => pitch_generation_0_se_data,                   --              .data
+			coe_Cal_Glis      => cal_glis_export                               -- conduit_end_1.export
 		);
 
 	pll_0 : component Test_Cal_Glis_pll_0

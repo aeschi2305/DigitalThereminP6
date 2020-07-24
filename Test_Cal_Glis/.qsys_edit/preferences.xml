@@ -8,7 +8,7 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/University Program/Audio &amp; Video,Library/Interface Protocols,Library/Interface Protocols/Audio &amp; Video,Library/University Program,Library,Library/University Program/Clock,Library/University Program/Audio &amp; Video/Video,Project" />
- <window width="2418" height="1318" x="2391" y="-9" />
+   expandedCategories="Library/University Program/Clock,Library/Interface Protocols/Audio &amp; Video,Library/University Program/Audio &amp; Video,Library/University Program/Audio &amp; Video/Video,Library/University Program,Library,Project,Library/Interface Protocols" />
+ <window width="1938" height="1048" x="-9" y="-9" />
  <generation synthesis="VHDL" />
 </preferences>

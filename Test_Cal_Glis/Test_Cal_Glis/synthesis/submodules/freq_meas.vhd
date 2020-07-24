@@ -32,7 +32,7 @@ entity freq_meas is
     audio_out     : in signed(sine_N-1 downto 0); 
     freq_diff     : out signed(N+Qprec-1 downto 0);
     meas_enable  : in boolean;
-    Cal_Glis_enable : in std_ulogic_vector(1 downto 0)
+    Cal_Glis_enable : in std_logic_vector(1 downto 0)
   );
 end entity freq_meas;
 
@@ -112,6 +112,7 @@ Component CalGlis is
     freq_diff   : out signed(freq_len-1 downto 0);
     cal_enable  : in std_ulogic;
     gli_enable  : in std_ulogic;
+    mus_scale   : in std_ulogic;
     freq_enable : in std_ulogic;
     cal_done    : out std_ulogic;
     delay_index : in natural range 0 to 9;
@@ -161,8 +162,8 @@ begin
  p_wr : process(reset_n,clk)
  begin
    if reset_n = '0' then
-     cntrl_reg <= (others => '0');
-     delay_reg <= (others => '0');
+     cntrl_reg <= (31 downto 3 => '0') & "100"; --default calibration off, glissando off, penattonic sclae on
+     delay_reg <= (31 downto 1 => '0') & '1';
    elsif rising_edge(clk) then
      Cal_Glis_1 <= Cal_Glis_enable;
      Cal_Glis_2 <= Cal_Glis_1;
@@ -176,11 +177,11 @@ begin
      elsif(cntrl_reg(1) = '1') then
         if cal_done = '1' then
           cntrl_reg(1) <= '0';
-        elsif Cal_Glis_3(0) = '1' then
-          cntrl_reg(1) <= '1';
-        elsif Cal_Glis_3(1) = '1' then
-          cntrl_reg(0) <= not cntrl_reg(0);
         end if;
+     elsif Cal_Glis_3(0) = '1' then
+       cntrl_reg(1) <= '1';
+     elsif Cal_Glis_3(1) = '1' then
+       cntrl_reg(0) <= not cntrl_reg(0);
      end if;
    end if;
  end process p_wr;
@@ -291,6 +292,7 @@ delay <= to_integer(unsigned(delay_reg));
     freq_diff => freq_diff_int,
     cal_enable => cntrl_reg(1),
     gli_enable => cntrl_reg(0),
+    mus_scale  => cntrl_reg(2),
     freq_enable => en_freq,
     cal_done   => cal_done,
     delay_index => delay,
