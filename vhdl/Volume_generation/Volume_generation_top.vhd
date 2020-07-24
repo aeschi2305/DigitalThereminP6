@@ -12,7 +12,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 
-entity Tone_generation_top is
+entity Volume_generation_top is
   generic (
     dat_len_avl : natural := 32;   --Number of Bits of Avalon data w/r
     cic1Bits : natural := 21;
@@ -24,26 +24,21 @@ entity Tone_generation_top is
     csi_clk           : in std_logic;
     rsi_reset_n       : in std_logic;
     -- Avalon Slave Port
-    avs_sTG_write     : in std_logic;
-    avs_sTG_address   : in std_logic_vector(1 downto 0);
-    avs_sTG_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
-    avs_sTG_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
-    -- Avalon Streaming Source Interface (for output data)
-    aso_se_ready      : in std_logic;
-    aso_se_valid     : out std_logic;
-    aso_se_data       : out std_logic_vector(23 downto 0);
-
+    avs_sVG_write     : in std_logic;
+    avs_sVG_address   : in std_logic_vector(1 downto 0);
+    avs_sVG_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
+    avs_sVG_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
     -- Avalon conduit Interfaces
     coe_square_freq   : in std_logic;
     coe_freq_up_down  : in std_logic_vector(1 downto 0)
   );
-end entity Tone_generation_top;
+end entity Volume_generation_top;
 
-architecture struct of Tone_generation_top is
+architecture struct of Volume_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 578550;
+  constant cordic_def_freq :natural := 577000;
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:
@@ -52,9 +47,11 @@ architecture struct of Tone_generation_top is
   signal mixer_out            : signed(N-1 downto 0);
   signal freq_dif             : signed(N-1 downto 0);
   signal audio_out            : std_logic_vector(23 downto 0);
-  signal audio_meas           : signed(cic3Bits-1 downto cic3Bits-sine_N);
+  signal audio_meas           : signed(cic3Bits-1 downto 0);
   signal meas_enable          : boolean;
   signal freq_diff            : signed(25 downto 0);
+  signal clk                  : std_logic;
+  signal reset_n              : std_logic;
 
 component cordic_Control is
     generic (
@@ -130,17 +127,17 @@ component freq_meas is
     Qda    : natural := 0;  --Number for more precision
     Qprec  : natural := 5;  --Number of bits after decimal point of quotient
     sine_N : natural := 18; --Number of bits of the sine Wave to be measured
-    Coeffs : natural := 36;  --Number of FIR Filter Coefficients
+    Coeffs : natural := 16;  --Number of FIR Filter Coefficients
     dat_len_avl : natural := 32
   );
   port(
     reset_n       : in std_ulogic;
     clk           : in std_ulogic;
     -- Slave Port
-    avs_address   : in  std_logic_vector(1 downto 0);
-    avs_write     : in std_logic;
-    avs_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
-    avs_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
+    sfm_address   : in  std_logic_vector(1 downto 0);
+    sfm_write     : in std_logic;
+    sfm_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
+    sfm_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
 
     audio_out     : in std_logic_vector(31 downto 0); 
     freq_diff     : out signed(N+Qprec-1 downto 0);
@@ -150,13 +147,13 @@ end component freq_meas;
 
 begin
 
-
-  aso_se_data <= audio_out;
+  clk <= csi_clk;
+  reset_n <= rsi_reset_n;
   -- user design: mixer
   mixer_1 : entity work.mixer
     port map (
-      clk         => csi_clk,
-      reset_n     => rsi_reset_n,
+      clk         => clk,
+      reset_n     => reset_n,
       square_freq => coe_square_freq,
       sine        => sine,
       mixer_out   => mixer_out
@@ -169,8 +166,8 @@ begin
       stages => stages
     )
     port map (
-      clk         => csi_clk,
-      reset_n     => rsi_reset_n,
+      clk         => clk,
+      reset_n     => reset_n,
       phi         => phi,
       sine        => sine
     ); 
@@ -182,8 +179,8 @@ begin
       cordic_def_freq => cordic_def_freq
     )
     port map (
-      clk         => csi_clk,
-      reset_n     => rsi_reset_n,
+      clk         => clk,
+      reset_n     => reset_n,
       phi         => phi,
       freq_dif    => freq_diff,
       sig_freq_up_down => coe_freq_up_down
@@ -198,12 +195,12 @@ begin
       cic3Bits => cic3Bits
     )
     port map (
-      reset_n     => rsi_reset_n,
-      clk         => csi_clk,
+      reset_n     => reset_n,
+      clk         => clk,
       mixer_out   => mixer_out,
-      audio_out   => audio_out,
-      valid       => aso_se_valid,
-      ready       => aso_se_ready,
+      audio_out   => open,
+      valid       => open,
+      ready       => '0',
 
       cic1o       => open,
       cic2o       => open,
@@ -217,22 +214,22 @@ begin
   -- user design: freq_mes
   freq_meas_1 : entity work.freq_meas
     generic map (
-      fsamp  => 1200000, --sampling frequency of the sine wave to be measured
+      fsamp  => 240000, --sampling frequency of the sine wave to be measured
       N      => 21, --Number of numerator and denominator bits
       Qda    => 0,  --Number for more precision
       Qprec  => 5,  --Number of bits after decimal point of quotient
       sine_N => sine_N, --Number of bits of the sine Wave to be measured
-      Coeffs => 37,  --Number of FIR Filter Coefficients
+      Coeffs => 16,  --Number of FIR Filter Coefficients
       dat_len_avl => dat_len_avl
     )
     port map (
-      reset_n       => rsi_reset_n,
-      clk           => csi_clk,
+      reset_n       => reset_n,
+      clk           => clk,
       -- Slave Port
-      avs_address   => avs_sTG_address,
-      avs_write     => avs_sTG_write,
-      avs_writedata => avs_sTG_writedata,
-      avs_readdata  => avs_sTG_readdata,
+      sfm_address   => avs_sVG_address,
+      sfm_write     => avs_sVG_write,
+      sfm_writedata => avs_sVG_writedata,
+      sfm_readdata  => avs_sVG_readdata,
 
       audio_out     => audio_meas(cic3Bits-1 downto cic3Bits-sine_N),
       freq_diff     => freq_diff,

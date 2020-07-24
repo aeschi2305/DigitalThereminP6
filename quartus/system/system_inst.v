@@ -21,9 +21,9 @@
 		.lcd_controller_conduit_end_lt24_wr               (<connected-to-lcd_controller_conduit_end_lt24_wr>),               //                                            .lt24_wr
 		.lcd_controller_conduit_end_lt24_rs               (<connected-to-lcd_controller_conduit_end_lt24_rs>),               //                                            .lt24_rs
 		.lcd_reset_n_external_connection_export           (<connected-to-lcd_reset_n_external_connection_export>),           //             lcd_reset_n_external_connection.export
+		.led_cntrl_export                                 (<connected-to-led_cntrl_export>),                                 //                                   led_cntrl.export
 		.led_delay_export                                 (<connected-to-led_delay_export>),                                 //                                   led_delay.export
 		.led_gli_export                                   (<connected-to-led_gli_export>),                                   //                                     led_gli.export
-		.led_cntrl_export                                 (<connected-to-led_cntrl_export>),                                 //                                   led_cntrl.export
 		.reset_reset_n                                    (<connected-to-reset_reset_n>),                                    //                                       reset.reset_n
 		.sdram_clk_clk                                    (<connected-to-sdram_clk_clk>),                                    //                                   sdram_clk.clk
 		.touch_panel_busy_external_connection_export      (<connected-to-touch_panel_busy_external_connection_export>),      //        touch_panel_busy_external_connection.export
@@ -32,6 +32,7 @@
 		.touch_panel_spi_external_MOSI                    (<connected-to-touch_panel_spi_external_MOSI>),                    //                                            .MOSI
 		.touch_panel_spi_external_SCLK                    (<connected-to-touch_panel_spi_external_SCLK>),                    //                                            .SCLK
 		.touch_panel_spi_external_SS_n                    (<connected-to-touch_panel_spi_external_SS_n>),                    //                                            .SS_n
-		.led_vol_export                                   (<connected-to-led_vol_export>)                                    //                                     led_vol.export
+		.square_freq_export                               (<connected-to-square_freq_export>),                               //                                 square_freq.export
+		.freq_up_down_export                              (<connected-to-freq_up_down_export>)                               //                                freq_up_down.export
 	);
 
