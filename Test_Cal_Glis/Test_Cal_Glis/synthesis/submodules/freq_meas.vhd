@@ -31,7 +31,8 @@ entity freq_meas is
 
     audio_out     : in signed(sine_N-1 downto 0); 
     freq_diff     : out signed(N+Qprec-1 downto 0);
-    meas_enable  : in boolean
+    meas_enable  : in boolean;
+    Cal_Glis_enable : in std_ulogic_vector(1 downto 0)
   );
 end entity freq_meas;
 
@@ -147,18 +148,25 @@ end component CalGlis;
   signal freq_data_reg   : std_logic_vector(dat_len_avl-1 downto 0);
   signal delay_reg       : std_logic_vector(dat_len_avl-1 downto 0);
 
+  signal Cal_Glis_1 : std_logic_vector(1 downto 0);
+  signal Cal_Glis_2 : std_logic_vector(1 downto 0);
+  signal Cal_Glis_3 : std_logic_vector(1 downto 0);
+
   signal delay : integer range 0 to 9;
 
 begin
   ------------------------------------------------------------------------------
   -- Registerd Process
   ------------------------------------------------------------------------------
- p_wr : process(clk, reset_n)
+ p_wr : process(reset_n,clk)
  begin
    if reset_n = '0' then
      cntrl_reg <= (others => '0');
      delay_reg <= (others => '0');
    elsif rising_edge(clk) then
+     Cal_Glis_1 <= Cal_Glis_enable;
+     Cal_Glis_2 <= Cal_Glis_1;
+     Cal_Glis_3 <= Cal_Glis_1 and not Cal_Glis_2;
      if avs_write = '1' then
        case avs_address is
          when "00" => cntrl_reg <= avs_writedata;
@@ -168,6 +176,10 @@ begin
      elsif(cntrl_reg(1) = '1') then
         if cal_done = '1' then
           cntrl_reg(1) <= '0';
+        elsif Cal_Glis_3(0) = '1' then
+          cntrl_reg(1) <= '1';
+        elsif Cal_Glis_3(1) = '1' then
+          cntrl_reg(0) <= not cntrl_reg(0);
         end if;
      end if;
    end if;
@@ -177,7 +189,7 @@ begin
  begin
     case avs_address is
       when "00" => avs_readdata <= cntrl_reg;
-      when "01" => avs_readdata <= std_logic_vector(freq);
+      when "01" => avs_readdata <= "000000" & std_logic_vector(freq);
       when others => avs_readdata <= (others => '0');
     end case;
  end process p_rd;

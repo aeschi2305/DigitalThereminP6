@@ -119,9 +119,13 @@ begin
     wait until rising_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_1.CalGlis_1.approx_done : std_ulogic>>);
     wait for 2 ms;
    
-    while count < 11 loop
+    while count /= 11 loop
       wait until falling_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_1.freq_meas : std_ulogic>>);
-      count <= count + 1;
+      if count = 11 then
+        count <= 11;
+      else
+        count <= count + 1;
+      end if;
     end loop;
 
     wait until rising_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_1.CalGlis_1.approx_done : std_ulogic>>);

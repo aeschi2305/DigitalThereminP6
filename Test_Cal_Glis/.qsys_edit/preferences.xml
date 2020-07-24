@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="159" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Library/University Program/Audio &amp; Video,Library/Interface Protocols,Library/Interface Protocols/Audio &amp; Video,Library/University Program,Library,Library/University Program/Clock,Library/University Program/Audio &amp; Video/Video,Project" />
+ <window width="2418" height="1318" x="2391" y="-9" />
+ <generation synthesis="VHDL" />
+</preferences>

@@ -1,3 +1,5 @@
+
+-- altera vhdl_input_version vhdl_2008
 -----------------------------------------------------
 -- Project : Digital Theremin
 -----------------------------------------------------
@@ -288,6 +290,7 @@ signal done_old         : std_ulogic;
 signal gli_fast         : std_ulogic;
 signal approx_done		: std_ulogic;
 signal delay 			: std_ulogic;
+
 
 signal gli_index_reg : integer range 0 to pitch_values'length;
 signal gli_index_cmb : integer range 0 to pitch_values'length;

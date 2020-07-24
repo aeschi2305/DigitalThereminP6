@@ -36,6 +36,7 @@ architecture behavioral of cordic_Control is
 
 constant clk_Period : signed(20 downto 0) := "000010011111000100101";       -- clk_Period multiplied with 2**20 here 54MHz ("000010110010111101010" for 48Mhz)
 constant invert     : signed(46 downto 0) := '0'&(45 downto 0 => '1');          -- used to invert sawtooth angle to triangle angle
+constant hundred    : signed(25 downto 0) := "00000000000000110010000000";
 
 signal sig_Freq_reg     : signed(25 downto 0);      -- interpreted as cordic_def_freq/2**20
 signal sig_Freq_cmb     : signed(25 downto 0);
@@ -92,13 +93,15 @@ begin
 
     --Combinatorial process to calibrate Sine frequency
     p_cmb_sig_freq : process(all)
+    
     begin
         sig_Freq_cmb <= to_signed(cordic_def_freq,21) & "00000" + freq_dif + manual_freq_reg;
         
         if freq_up_down_3(1) = '1' then
-            manual_freq_cmb <= manual_freq_reg + to_signed(100,21) & "00000";
+
+            manual_freq_cmb <= manual_freq_reg + hundred;
         elsif freq_up_down_3(0) = '1' then
-            manual_freq_cmb <= manual_freq_reg + to_signed(100,21) & "00000";
+            manual_freq_cmb <= manual_freq_reg - hundred;
         else
             manual_freq_cmb <= manual_freq_reg;
         end if;
