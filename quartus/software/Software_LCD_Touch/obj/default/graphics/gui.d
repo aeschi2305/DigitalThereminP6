@@ -10,8 +10,7 @@ obj/default/graphics/gui.o: graphics/gui.c graphics/gui.h \
  ../Software_LCD_Touch_bsp//drivers/inc/altera_avalon_pio_regs.h \
  graphics/simple_text.h \
  ../Software_LCD_Touch_bsp//drivers/inc/LT24_Controller_regs.h \
- graphics/graphics.h graphics/fonts.h graphics/alt_video_display.h \
- graphics/bahnschriftCondensed_22.h graphics/arial_24.h
+ graphics/bahnschriftCondensed_22.h
 
 graphics/gui.h:
 
@@ -39,12 +38,4 @@ graphics/simple_text.h:
 
 ../Software_LCD_Touch_bsp//drivers/inc/LT24_Controller_regs.h:
 
-graphics/graphics.h:
-
-graphics/fonts.h:
-
-graphics/alt_video_display.h:
-
 graphics/bahnschriftCondensed_22.h:
-
-graphics/arial_24.h:

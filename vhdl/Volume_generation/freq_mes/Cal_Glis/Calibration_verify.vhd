@@ -36,7 +36,7 @@ end entity Calibration_verify;
 
 architecture stimuli_and_monitor of Calibration_verify is
   constant c_cycle_time       : time := 18.51851852 ns; -- 54MHZ
-  constant c_cycle_time_rect  : time := 1.727711 us; --579kHz --1.7301038 us; --578kHz
+  constant c_cycle_time_rect  : time := 1.7271157 us; --579kHz --1.7301038 us; --578kHz
   --constant c_cycle_time_DACLRCK  : time := 20.83333 us; --48kHz
   signal enable : boolean   := true;
 begin
@@ -76,6 +76,8 @@ begin
     avs_writedata <= (others => '0');
     avs_address <= "00";
     avs_write <= '0';
+
+    wait until rising_edge(<<Signal .calibration_tb.Volume_generation_pm.freq_meas_1.en_freq : std_ulogic>>);
 
     wait for 20*c_cycle_time;
     

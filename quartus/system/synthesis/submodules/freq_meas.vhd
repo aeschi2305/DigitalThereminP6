@@ -205,7 +205,7 @@ end component CalGlis;
                                                "00000000001111010000010001",
                                                "00000000001111101000000000",
                                                "11111111111111111111111111");
-
+--"11111111111111111111111111"
   constant vol_gain : t_vol_gain_array :=     ( "0001101",
                                                 "0011001",
                                                 "0100110",
@@ -318,7 +318,7 @@ p_cmb : process(all)
   variable vol_mult : unsigned(13 downto 0);
   variable vol_mult_temp : unsigned(7 downto 0);
   begin
-    l_freq_range : for ii in 0 to vol_values'length-1 loop
+    l_freq_range : for ii in 0 to vol_values'length-2 loop
         if vol_values(ii) < freq and vol_values(ii+1) > freq then
             vol_index := ii;
         end if;
@@ -392,7 +392,7 @@ end process p_cmb;
   CalGlis_1 : entity work.CalGlis
   generic map(
     freq_len => N+Qprec,   -- bits of the freq signal
-    glis_allow => true        -- enables the glissando functionality
+    glis_allow => false        -- enables the glissando functionality
   )
   port map(
     reset_n => reset_n,
@@ -400,10 +400,10 @@ end process p_cmb;
     freq => freq,
     freq_diff => freq_diff_int,
     cal_enable => cntrl_reg(1),
-    gli_enable => cntrl_reg(0),
+    gli_enable => '0',
     freq_enable => en_freq,
     cal_done   => cal_done,
-    delay_index => delay,
+    delay_index => 0,
     freq_meas => freq_meas
   );
 

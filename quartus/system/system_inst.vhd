@@ -16,6 +16,7 @@
 			dram_ctrl_wire_dqm                               : out   std_logic_vector(1 downto 0);                     -- dqm
 			dram_ctrl_wire_ras_n                             : out   std_logic;                                        -- ras_n
 			dram_ctrl_wire_we_n                              : out   std_logic;                                        -- we_n
+			freq_up_down_export                              : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- export
 			lcd_controller_conduit_end_lt24_cs               : out   std_logic;                                        -- lt24_cs
 			lcd_controller_conduit_end_lt24_data             : out   std_logic_vector(15 downto 0);                    -- lt24_data
 			lcd_controller_conduit_end_lt24_rd               : out   std_logic;                                        -- lt24_rd
@@ -27,14 +28,13 @@
 			led_gli_export                                   : out   std_logic;                                        -- export
 			reset_reset_n                                    : in    std_logic                     := 'X';             -- reset_n
 			sdram_clk_clk                                    : out   std_logic;                                        -- clk
+			square_freq_export                               : in    std_logic                     := 'X';             -- export
 			touch_panel_busy_external_connection_export      : in    std_logic                     := 'X';             -- export
 			touch_panel_pen_irq_n_external_connection_export : in    std_logic                     := 'X';             -- export
 			touch_panel_spi_external_MISO                    : in    std_logic                     := 'X';             -- MISO
 			touch_panel_spi_external_MOSI                    : out   std_logic;                                        -- MOSI
 			touch_panel_spi_external_SCLK                    : out   std_logic;                                        -- SCLK
-			touch_panel_spi_external_SS_n                    : out   std_logic;                                        -- SS_n
-			square_freq_export                               : in    std_logic                     := 'X';             -- export
-			freq_up_down_export                              : inout std_logic_vector(1 downto 0)  := (others => 'X')  -- export
+			touch_panel_spi_external_SS_n                    : out   std_logic                                         -- SS_n
 		);
 	end component system;
 
@@ -56,6 +56,7 @@
 			dram_ctrl_wire_dqm                               => CONNECTED_TO_dram_ctrl_wire_dqm,                               --                                            .dqm
 			dram_ctrl_wire_ras_n                             => CONNECTED_TO_dram_ctrl_wire_ras_n,                             --                                            .ras_n
 			dram_ctrl_wire_we_n                              => CONNECTED_TO_dram_ctrl_wire_we_n,                              --                                            .we_n
+			freq_up_down_export                              => CONNECTED_TO_freq_up_down_export,                              --                                freq_up_down.export
 			lcd_controller_conduit_end_lt24_cs               => CONNECTED_TO_lcd_controller_conduit_end_lt24_cs,               --                  lcd_controller_conduit_end.lt24_cs
 			lcd_controller_conduit_end_lt24_data             => CONNECTED_TO_lcd_controller_conduit_end_lt24_data,             --                                            .lt24_data
 			lcd_controller_conduit_end_lt24_rd               => CONNECTED_TO_lcd_controller_conduit_end_lt24_rd,               --                                            .lt24_rd
@@ -67,13 +68,12 @@
 			led_gli_export                                   => CONNECTED_TO_led_gli_export,                                   --                                     led_gli.export
 			reset_reset_n                                    => CONNECTED_TO_reset_reset_n,                                    --                                       reset.reset_n
 			sdram_clk_clk                                    => CONNECTED_TO_sdram_clk_clk,                                    --                                   sdram_clk.clk
+			square_freq_export                               => CONNECTED_TO_square_freq_export,                               --                                 square_freq.export
 			touch_panel_busy_external_connection_export      => CONNECTED_TO_touch_panel_busy_external_connection_export,      --        touch_panel_busy_external_connection.export
 			touch_panel_pen_irq_n_external_connection_export => CONNECTED_TO_touch_panel_pen_irq_n_external_connection_export, --   touch_panel_pen_irq_n_external_connection.export
 			touch_panel_spi_external_MISO                    => CONNECTED_TO_touch_panel_spi_external_MISO,                    --                    touch_panel_spi_external.MISO
 			touch_panel_spi_external_MOSI                    => CONNECTED_TO_touch_panel_spi_external_MOSI,                    --                                            .MOSI
 			touch_panel_spi_external_SCLK                    => CONNECTED_TO_touch_panel_spi_external_SCLK,                    --                                            .SCLK
-			touch_panel_spi_external_SS_n                    => CONNECTED_TO_touch_panel_spi_external_SS_n,                    --                                            .SS_n
-			square_freq_export                               => CONNECTED_TO_square_freq_export,                               --                                 square_freq.export
-			freq_up_down_export                              => CONNECTED_TO_freq_up_down_export                               --                                freq_up_down.export
+			touch_panel_spi_external_SS_n                    => CONNECTED_TO_touch_panel_spi_external_SS_n                     --                                            .SS_n
 		);
 

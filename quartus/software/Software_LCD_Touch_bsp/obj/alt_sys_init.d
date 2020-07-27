@@ -14,7 +14,9 @@ obj/alt_sys_init.o: alt_sys_init.c system.h linker.h \
  drivers/inc/altera_avalon_spi.h drivers/inc/altera_avalon_sysid_qsys.h \
  drivers/inc/altera_avalon_timer.h \
  drivers/inc/altera_up_avalon_audio_and_video_config.h \
- drivers/inc/altera_up_avalon_audio_and_video_config_regs.h
+ drivers/inc/altera_up_avalon_audio_and_video_config_regs.h \
+ drivers/inc/volume_generation_top.h \
+ drivers/inc/volume_generation_top_regs.h
 
 system.h:
 
@@ -83,3 +85,7 @@ drivers/inc/altera_avalon_timer.h:
 drivers/inc/altera_up_avalon_audio_and_video_config.h:
 
 drivers/inc/altera_up_avalon_audio_and_video_config_regs.h:
+
+drivers/inc/volume_generation_top.h:
+
+drivers/inc/volume_generation_top_regs.h:

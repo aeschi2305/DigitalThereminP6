@@ -16,6 +16,7 @@ module system (
 	dram_ctrl_wire_dqm,
 	dram_ctrl_wire_ras_n,
 	dram_ctrl_wire_we_n,
+	freq_up_down_export,
 	lcd_controller_conduit_end_lt24_cs,
 	lcd_controller_conduit_end_lt24_data,
 	lcd_controller_conduit_end_lt24_rd,
@@ -27,14 +28,13 @@ module system (
 	led_gli_export,
 	reset_reset_n,
 	sdram_clk_clk,
+	square_freq_export,
 	touch_panel_busy_external_connection_export,
 	touch_panel_pen_irq_n_external_connection_export,
 	touch_panel_spi_external_MISO,
 	touch_panel_spi_external_MOSI,
 	touch_panel_spi_external_SCLK,
-	touch_panel_spi_external_SS_n,
-	square_freq_export,
-	freq_up_down_export);	
+	touch_panel_spi_external_SS_n);	
 
 	output		aud_xck_clk;
 	inout		audio_and_video_config_0_external_interface_SDAT;
@@ -52,6 +52,7 @@ module system (
 	output	[1:0]	dram_ctrl_wire_dqm;
 	output		dram_ctrl_wire_ras_n;
 	output		dram_ctrl_wire_we_n;
+	input	[1:0]	freq_up_down_export;
 	output		lcd_controller_conduit_end_lt24_cs;
 	output	[15:0]	lcd_controller_conduit_end_lt24_data;
 	output		lcd_controller_conduit_end_lt24_rd;
@@ -63,12 +64,11 @@ module system (
 	output		led_gli_export;
 	input		reset_reset_n;
 	output		sdram_clk_clk;
+	input		square_freq_export;
 	input		touch_panel_busy_external_connection_export;
 	input		touch_panel_pen_irq_n_external_connection_export;
 	input		touch_panel_spi_external_MISO;
 	output		touch_panel_spi_external_MOSI;
 	output		touch_panel_spi_external_SCLK;
 	output		touch_panel_spi_external_SS_n;
-	input		square_freq_export;
-	inout	[1:0]	freq_up_down_export;
 endmodule

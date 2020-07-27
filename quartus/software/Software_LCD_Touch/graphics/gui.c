@@ -119,12 +119,6 @@ void draw_glissando_set(void)
 
 void draw_update_glissando_delay(alt_u8 gli_delay)
 {
-	/*
-	LCD_DrawRect(55,195,115,310,GREY_SOFT);
-	char gli_delay_str[3];
-	sprintf(gli_delay_str,"%d ms",gli_delay);
-	vid_print_string(15,74,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,gli_delay_str);
-	*/
 	alt_u8 i;
 	LCD_DrawRect(55,195,115,310,GREY_SOFT);
 	for(i = 0; i < gli_delay; i++){

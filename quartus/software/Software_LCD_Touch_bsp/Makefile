@@ -236,6 +236,13 @@ Volume_dummy_driver_SRCS_ROOT := drivers
 Volume_dummy_driver_C_LIB_SRCS := \
 	$(Volume_dummy_driver_SRCS_ROOT)/src/Volume_dummy.c
 
+# volume_generation_top_driver sources root 
+Volume_generation_top_driver_SRCS_ROOT := drivers
+
+# volume_generation_top_driver sources 
+Volume_generation_top_driver_C_LIB_SRCS := \
+	$(Volume_generation_top_driver_SRCS_ROOT)/src/Volume_generation_top.c
+
 # altera_avalon_jtag_uart_driver sources root 
 altera_avalon_jtag_uart_driver_SRCS_ROOT := drivers
 
@@ -377,6 +384,7 @@ COMPONENT_C_LIB_SRCS += \
 	$(LT24_Controller_driver_C_LIB_SRCS) \
 	$(Pitch_dummy_driver_C_LIB_SRCS) \
 	$(Volume_dummy_driver_C_LIB_SRCS) \
+	$(Volume_generation_top_driver_C_LIB_SRCS) \
 	$(altera_avalon_jtag_uart_driver_C_LIB_SRCS) \
 	$(altera_avalon_spi_driver_C_LIB_SRCS) \
 	$(altera_avalon_sysid_qsys_driver_C_LIB_SRCS) \

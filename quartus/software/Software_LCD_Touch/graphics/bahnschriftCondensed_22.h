@@ -17,8 +17,7 @@ extern "C"
 
 const alt_u8 arial_22ptBitmaps[5404];
 const alt_u16 arial_22ptDescriptors[95][2];
-//const alt_u8 bahnschriftCondensed_24ptBitmaps[6016];//Arial 9024 bahnschrift 2*32*94=6016
-//const alt_u8 arial_24ptBitmaps[11656];//10560
+
 
 #ifdef __cplusplus
 }

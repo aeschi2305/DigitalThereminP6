@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'system'
  * SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
  *
- * Generated: Thu Jul 23 10:53:24 CEST 2020
+ * Generated: Sat Jul 25 10:18:34 CEST 2020
  */
 
 /*
@@ -152,6 +152,7 @@
 #define __LT24_CONTROLLER
 #define __PITCH_DUMMY
 #define __VOLUME_DUMMY
+#define __VOLUME_GENERATION_TOP
 
 
 /*
@@ -160,7 +161,7 @@
  */
 
 #define ALT_MODULE_CLASS_LCD_Controller LT24_Controller
-#define LCD_CONTROLLER_BASE 0x80010b0
+#define LCD_CONTROLLER_BASE 0x80010c0
 #define LCD_CONTROLLER_IRQ -1
 #define LCD_CONTROLLER_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define LCD_CONTROLLER_NAME "/dev/LCD_Controller"
@@ -174,7 +175,7 @@
  */
 
 #define ALT_MODULE_CLASS_LCD_Reset_N altera_avalon_pio
-#define LCD_RESET_N_BASE 0x8001080
+#define LCD_RESET_N_BASE 0x8001090
 #define LCD_RESET_N_BIT_CLEARING_EDGE_REGISTER 0
 #define LCD_RESET_N_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LCD_RESET_N_CAPTURE 0
@@ -201,7 +202,7 @@
  */
 
 #define ALT_MODULE_CLASS_Pitch_dummy_0 Pitch_dummy
-#define PITCH_DUMMY_0_BASE 0x8001050
+#define PITCH_DUMMY_0_BASE 0x8001060
 #define PITCH_DUMMY_0_IRQ -1
 #define PITCH_DUMMY_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PITCH_DUMMY_0_NAME "/dev/Pitch_dummy_0"
@@ -225,19 +226,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart"
-#define ALT_STDERR_BASE 0x80010b8
+#define ALT_STDERR_BASE 0x80010c8
 #define ALT_STDERR_DEV jtag_uart
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart"
-#define ALT_STDIN_BASE 0x80010b8
+#define ALT_STDIN_BASE 0x80010c8
 #define ALT_STDIN_DEV jtag_uart
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart"
-#define ALT_STDOUT_BASE 0x80010b8
+#define ALT_STDOUT_BASE 0x80010c8
 #define ALT_STDOUT_DEV jtag_uart
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -251,7 +252,7 @@
  */
 
 #define ALT_MODULE_CLASS_Volume_dummy_0 Volume_dummy
-#define VOLUME_DUMMY_0_BASE 0x8001040
+#define VOLUME_DUMMY_0_BASE 0x8001050
 #define VOLUME_DUMMY_0_IRQ -1
 #define VOLUME_DUMMY_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define VOLUME_DUMMY_0_NAME "/dev/Volume_dummy_0"
@@ -265,7 +266,7 @@
  */
 
 #define ALT_MODULE_CLASS_audio_and_video_config_0 altera_up_avalon_audio_and_video_config
-#define AUDIO_AND_VIDEO_CONFIG_0_BASE 0x8001090
+#define AUDIO_AND_VIDEO_CONFIG_0_BASE 0x80010a0
 #define AUDIO_AND_VIDEO_CONFIG_0_IRQ -1
 #define AUDIO_AND_VIDEO_CONFIG_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define AUDIO_AND_VIDEO_CONFIG_0_NAME "/dev/audio_and_video_config_0"
@@ -329,7 +330,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
-#define JTAG_UART_BASE 0x80010b8
+#define JTAG_UART_BASE 0x80010c8
 #define JTAG_UART_IRQ 0
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
@@ -347,13 +348,13 @@
  */
 
 #define ALT_MODULE_CLASS_sysid altera_avalon_sysid_qsys
-#define SYSID_BASE 0x80010a8
+#define SYSID_BASE 0x80010b8
 #define SYSID_ID 1
 #define SYSID_IRQ -1
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1595493964
+#define SYSID_TIMESTAMP 1595664430
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -389,7 +390,7 @@
  */
 
 #define ALT_MODULE_CLASS_touch_panel_busy altera_avalon_pio
-#define TOUCH_PANEL_BUSY_BASE 0x8001060
+#define TOUCH_PANEL_BUSY_BASE 0x8001070
 #define TOUCH_PANEL_BUSY_BIT_CLEARING_EDGE_REGISTER 0
 #define TOUCH_PANEL_BUSY_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define TOUCH_PANEL_BUSY_CAPTURE 0
@@ -416,7 +417,7 @@
  */
 
 #define ALT_MODULE_CLASS_touch_panel_pen_irq_n altera_avalon_pio
-#define TOUCH_PANEL_PEN_IRQ_N_BASE 0x8001070
+#define TOUCH_PANEL_PEN_IRQ_N_BASE 0x8001080
 #define TOUCH_PANEL_PEN_IRQ_N_BIT_CLEARING_EDGE_REGISTER 0
 #define TOUCH_PANEL_PEN_IRQ_N_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define TOUCH_PANEL_PEN_IRQ_N_CAPTURE 1
@@ -466,5 +467,19 @@
 #define TOUCH_PANEL_SPI_TARGETCLOCK 32000u
 #define TOUCH_PANEL_SPI_TARGETSSDELAY "0.0"
 #define TOUCH_PANEL_SPI_TYPE "altera_avalon_spi"
+
+
+/*
+ * volume_generation_top_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_volume_generation_top_0 volume_generation_top
+#define VOLUME_GENERATION_TOP_0_BASE 0x8001040
+#define VOLUME_GENERATION_TOP_0_IRQ -1
+#define VOLUME_GENERATION_TOP_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define VOLUME_GENERATION_TOP_0_NAME "/dev/volume_generation_top_0"
+#define VOLUME_GENERATION_TOP_0_SPAN 16
+#define VOLUME_GENERATION_TOP_0_TYPE "volume_generation_top"
 
 #endif /* __SYSTEM_H_ */

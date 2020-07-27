@@ -143,14 +143,8 @@ ELF := Software_LCD_Touch.elf
 
 # Paths to C, C++, and assembly source files.
 C_SRCS += hello_world.c
-C_SRCS += graphics/graphics.c
 C_SRCS += graphics/simple_text.c
-C_SRCS += graphics/tahomabold_20.c
-C_SRCS += graphics/tahomabold_32.c
-C_SRCS += graphics/arial_24.c
-C_SRCS += graphics/bahnschriftCondensed_24.c
 C_SRCS += graphics/bahnschriftCondensed_22.c
-C_SRCS += graphics/touch_spi.c
 C_SRCS += touch/touch_isr.c
 C_SRCS += graphics/gui.c
 C_SRCS += audio/audio.c

@@ -50,7 +50,7 @@ architecture struct of Calibration_tb is
       );
   end component Calibration_verify;
 
-  component Tone_generation_top is
+  component Volume_generation_top is
   generic (
     dat_len_avl : natural := 24;   --Number of Bits of Avalon data w/r
     cic1Bits : natural := 23;
@@ -61,21 +61,18 @@ architecture struct of Calibration_tb is
     -- Avalon Clock Reset Interfaces
     csi_clk           : in std_logic;
     rsi_reset_n       : in std_logic;
-    -- Avalon Slave Port
-    avs_sTG_write     : in std_logic;
-    avs_sTG_address   : in std_logic_vector(1 downto 0);
-    avs_sTG_writedata : in std_logic_vector(dat_len_avl downto 0);
-    avs_sTG_readdata  : out std_logic_vector(dat_len_avl downto 0);
-    -- Avalon Streaming Source Interface (for output data)
-    aso_se_ready      : in std_logic;
-    aso_se_valid     : out std_logic;
-    aso_se_data       : out std_logic_vector(23 downto 0);
+
+  -- Avalon Slave Port
+    avs_sVG_write     : in std_logic;
+    avs_sVG_address   : in std_logic_vector(1 downto 0);
+    avs_sVG_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
+    avs_sVG_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
 
     -- Avalon conduit Interfaces
     coe_square_freq   : in std_logic;
     coe_freq_up_down  : in std_logic_vector(1 downto 0)
   );
-end component Tone_generation_top;
+end component Volume_generation_top;
 
   
 begin
@@ -98,7 +95,7 @@ begin
 
     ); 
 
-  Tone_generation_pm : entity work.Tone_generation_top
+  Volume_generation_pm : entity work.Volume_generation_top
     generic map(
       dat_len_avl => dat_len_avl,   --Number of Bits of Avalon data w/r
       cic1Bits    => 23,
@@ -110,14 +107,10 @@ begin
     csi_clk           => clk,
     rsi_reset_n       => reset_n,
     -- Avalon Slave Port
-    avs_sTG_write     => avs_write,
-    avs_sTG_address   => avs_address,
-    avs_sTG_writedata => avs_writedata,
-    avs_sTG_readdata  => avs_readdata,
-    -- Avalon Streaming Source Interface (for output data)
-    aso_se_ready      => '1',
-    aso_se_valid      => open,
-    aso_se_data       => open,
+    avs_sVG_write     => avs_write,
+    avs_sVG_address   => avs_address,
+    avs_sVG_writedata => avs_writedata,
+    avs_sVG_readdata  => avs_readdata,
 
     -- Avalon conduit Interfaces
     coe_square_freq   => square_freq,

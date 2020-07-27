@@ -38,7 +38,7 @@ architecture struct of Volume_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 577000;
+  constant cordic_def_freq :natural := 578500;
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:

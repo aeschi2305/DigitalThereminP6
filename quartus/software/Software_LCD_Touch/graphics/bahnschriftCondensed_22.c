@@ -1,7 +1,7 @@
 /* 
 **  Font data for Arial 22pt
 */
-#include "bahnschriftCondensed_24.h"
+#include "bahnschriftCondensed_22.h"
 /* Character bitmaps for Arial 22pt */
 const alt_u8 arial_22ptBitmaps[] = 
 {
