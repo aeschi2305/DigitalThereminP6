@@ -15,21 +15,22 @@ use ieee.numeric_std.all;
 
 entity CalGlis is
   generic (
-    freq_len : natural := 26;   -- bits of the freq signal
-    glis_allow : boolean        -- enables the glissando functionality
+    freq_len    : natural := 26;   -- bits of the freq signal
+    glis_allow  : boolean        -- enables the glissando functionality
   );
   port(
-    reset_n : in std_ulogic;
-    clk : in std_ulogic;
-    freq : in unsigned(freq_len-1 downto 0);
-    freq_diff : out signed(freq_len-1 downto 0);
-    cal_enable : in std_ulogic;
-    gli_enable : in std_ulogic;
-    mus_scale  : in std_ulogic;
+    reset_n     : in std_ulogic;
+    clk         : in std_ulogic;
+    freq        : in unsigned(freq_len-1 downto 0);
+    freq_diff   : out signed(freq_len-1 downto 0);
+    cal_enable  : in std_ulogic;
+    gli_enable  : in std_ulogic;
+    mus_scale   : in std_ulogic;
     freq_enable : in std_ulogic;
-    cal_done   : out std_ulogic;
+    cal_done    : out std_ulogic;
     delay_index : in natural range 0 to 9;
-    freq_meas	: in std_ulogic
+    freq_meas	: in std_ulogic;
+    freq_disp   : out std_logic_vector(31 downto 0)
   );
 end entity CalGlis;
 	
@@ -139,6 +140,33 @@ constant freq_threas  : t_threas_array :=   ("00000000000000111111100011",   --t
                                             "00000000001111111000101110",
                                             "00000000010000110101001011");--values for when the frequency is approximated enough
 
+type t_threas_penta_array is array(integer range 0 to 21) of signed(freq_len-1 downto 0);
+
+constant freq_threas_penta  : t_threas_penta_array :=  
+                                            ("00000000000000111111100011",
+                                            "00000000000001001001011011",
+                                            "00000000000001010100110101",
+                                            "00000000000001100010000000",
+                                            "00000000000001101110000000",
+                                            "00000000000001111111000110",
+                                            "00000000000010010010110101",
+                                            "00000000000010101001101001",
+                                            "00000000000011000100000000",
+                                            "00000000000011011100000000",
+                                            "00000000000011111110001011",
+                                            "00000000000100100101101011",
+                                            "00000000000101010011010010",
+                                            "00000000000110001000000000",
+                                            "00000000000110111000000000",
+                                            "00000000000111111100010111",
+                                            "00000000001001001011010101",
+                                            "00000000001010100110100101",
+                                            "00000000001100001111111111",
+                                            "00000000001101110000000000",
+                                            "00000000001111111000101101",
+                                            "00000000010010010110101010");
+
+
 
 constant tolerance_values : t_freq_array := ("00000000000000000000001111",
     										"00000000000000000000001111",
@@ -243,7 +271,7 @@ constant freq_step  : t_freq_array :=       ("00000000000000000000000010",  -- v
                                             "00000000000000000000100101",
                                             "00000000000000000000100111");
 
-type t_penta_index is array(integer range 0 to 19) of natural range 1 to 45;
+type t_penta_index is array(integer range 0 to 20) of integer range 1 to 48;
 
 constant penta_index : t_penta_index := (1,
                                         3,
@@ -264,7 +292,8 @@ constant penta_index : t_penta_index := (1,
                                         39,
                                         42,
                                         44,
-                                        46);
+                                        46,
+                                        48);
 
 
 type t_max_count_array is array(integer range 0 to 9) of natural range 0 to 1048576;
@@ -300,6 +329,11 @@ signal freq_gli_cmb     : signed(freq_len-1 downto 0);
 signal freq_old         : signed(freq_len-1 downto 0);
 signal freq_actual_reg  : signed(freq_len-1 downto 0);
 signal freq_actual_cmb  : signed(freq_len-1 downto 0);
+signal freq_display_reg : signed(freq_len-1 downto 0);
+signal freq_display_cmb : signed(freq_len-1 downto 0);
+signal freq_display_ref_reg : signed(freq_len-1 downto 0);
+signal freq_display_ref_cmb : signed(freq_len-1 downto 0);
+
 signal gli_diff_reg     : signed(freq_len-1 downto 0);
 signal gli_diff_cmb     : signed(freq_len-1 downto 0);
 signal gli_diff_neg_reg : signed(freq_len-1 downto 0);
@@ -315,13 +349,23 @@ signal gli_fast         : std_ulogic;
 signal approx_done		: std_ulogic;
 signal delay 			: std_ulogic;
 
+signal disp_index : std_logic_vector(5 downto 0);
 
 signal gli_index_reg : integer range 0 to pitch_values'length;
 signal gli_index_cmb : integer range 0 to pitch_values'length;
 
-type state_type is (s_idle, s_check, s_sign, s_diff, s_freq_range, s_step, s_step_cnt);
-signal state_ns : state_type; -- next state
-signal state_cs : state_type; -- current state
+signal gli_penta_index_reg : integer range 0 to penta_index'length;
+signal gli_penta_index_cmb : integer range 0 to penta_index'length;
+
+
+type state_type_calgli is (s_idle, s_check, s_sign, s_diff, s_freq_range, s_step, s_step_cnt);
+signal state_ns : state_type_calgli; -- next state
+signal state_cs : state_type_calgli; -- current state
+
+type state_type_display is (s_idle, s_precalc, s_init, s_calc);
+signal state_disp_ns : state_type_display; -- next state
+signal state_disp_cs : state_type_display; -- current state
+
 
 
 begin
@@ -337,7 +381,7 @@ begin
             when s_idle => 
                 if cal_enable = '1' and freq_enable = '1' then
                     state_ns <= s_check;
-                elsif gli_enable = '1' and glis_allow = true and freq_enable = '1' then
+                elsif glis_allow = true and freq_enable = '1' then
                     state_ns <= s_freq_range;
                 end if;
 
@@ -358,7 +402,7 @@ begin
 
             when s_freq_range => 
             	if done = '1' and done_old = '0' then
-            	    if (signed(freq) >= freq_threas(freq_threas'high)) or (signed(freq) <= freq_threas(freq_threas'low)) then
+            	    if (((signed(freq) >= pitch_values(pitch_values'high)) or (signed(freq) <= pitch_values(pitch_values'low))) and mus_scale = '0') or (((signed(freq) >= pitch_values(pitch_values'high)) or (signed(freq) <= pitch_values(pitch_values'low+1))) and mus_scale = '1') or cal_enable = '1' then
             	        state_ns <= s_idle;
             	    else
             	        state_ns <= s_step;
@@ -460,6 +504,7 @@ begin
                     	gli_diff_reg <= gli_diff_cmb;
                     	gli_diff_neg_reg <= gli_diff_neg_cmb;
                     	gli_index_reg <= gli_index_cmb;
+                        gli_penta_index_reg <= gli_penta_index_cmb;
                     	delay <= '0';
                     	done <= '1';
                     else
@@ -475,20 +520,24 @@ begin
                     end if;
                     
                 when s_step_cnt =>                                          --converges the actual pitch to the nearest note
-                    if ((gli_diff_reg > tolerance_values(gli_index_reg)) or (gli_diff_neg_reg > tolerance_values(gli_index_reg))) and freq_meas = '0' then
-                        if delay_count_reg /= max_count(delay_index) then
-                            delay_count_reg <= delay_count_cmb;
-                        else
-                            freq_gli_reg <= freq_gli_cmb;
-                            gli_diff_reg <= gli_diff_cmb_n;
-                            gli_diff_neg_reg <= gli_diff_neg_cmb_n;
-                            delay_count_reg <= 0;
+                    if gli_enable = '1' then
+                        if ((gli_diff_reg > tolerance_values(gli_index_reg)) or (gli_diff_neg_reg > tolerance_values(gli_index_reg))) and freq_meas = '0' then
+                            if delay_count_reg /= max_count(delay_index) then
+                                delay_count_reg <= delay_count_cmb;
+                            else
+                                freq_gli_reg <= freq_gli_cmb;
+                                gli_diff_reg <= gli_diff_cmb_n;
+                                gli_diff_neg_reg <= gli_diff_neg_cmb_n;
+                                delay_count_reg <= 0;
+                            end if;
+                        elsif ((gli_diff_reg < tolerance_values(gli_index_reg)) and (gli_diff_neg_reg < tolerance_values(gli_index_reg))) and freq_meas = '0' then
+                        	approx_done <= '1';
+    
                         end if;
-                    elsif ((gli_diff_reg < tolerance_values(gli_index_reg)) and (gli_diff_neg_reg < tolerance_values(gli_index_reg))) and freq_meas = '0' then
-                    	approx_done <= '1';
-
+                    else 
+                        gli_diff_reg <= (others => '0');
                     end if;
-                    
+
                 when others => 
                     null;
             end case;
@@ -496,6 +545,19 @@ begin
     end process p_fsm_reg;
 
 
+    p_reg : process(reset_n,clk)
+    
+    begin
+        if reset_n = '0' then
+            disp_index <= (others => '0');
+        elsif rising_edge(clk) then
+            if mus_scale = '1' then
+                disp_index <= std_logic_vector(to_unsigned(gli_index_reg,6));
+            else 
+                disp_index <= std_logic_vector(to_unsigned(gli_penta_index_reg,6));
+            end if;
+        end if;
+    end process p_reg;
 
     p_fsm_cmb : process(all)
     variable gli_index : integer range 0 to pitch_values'length;
@@ -515,8 +577,9 @@ begin
             end loop l_freq_range;
         else
             l_freq_range_2 : for ii in 0 to penta_index'length-1 loop
-                if freq_threas(penta_index(ii)) < freq_actual_reg and freq_threas(penta_index(ii+1) > freq_actual_reg then
-                    gli_index := penta_index;
+                if freq_threas_penta(ii) < freq_actual_reg and freq_threas_penta(ii+1) > freq_actual_reg then
+                    gli_index := penta_index(ii);
+                    gli_penta_index_cmb <= ii;
                 end if;
             end loop l_freq_range_2;
         end if;
@@ -535,7 +598,7 @@ begin
         freq_diff_cmb <= freq_cal_reg + freq_gli_reg;
     end process p_fsm_cmb;
 
-freq_diff <= freq_diff_reg;
- 
+    freq_diff <= freq_diff_reg;
+    freq_disp <= disp_index & std_logic_vector(freq_actual_reg);
 
 end architecture behavioral;

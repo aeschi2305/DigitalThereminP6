@@ -116,7 +116,8 @@ Component CalGlis is
     freq_enable : in std_ulogic;
     cal_done    : out std_ulogic;
     delay_index : in natural range 0 to 9;
-    freq_meas    : in std_ulogic
+    freq_meas    : in std_ulogic;
+    freq_disp   : out std_logic_vector(31 downto 0)
   );
 end component CalGlis;
   ---------------------------------------------------------------------------
@@ -163,7 +164,7 @@ begin
  begin
    if reset_n = '0' then
      cntrl_reg <= (31 downto 3 => '0') & "100"; --default calibration off, glissando off, penattonic sclae on
-     delay_reg <= (31 downto 1 => '0') & '1';
+     delay_reg <= (31 downto 3 => '0') & "010"; 
    elsif rising_edge(clk) then
      Cal_Glis_1 <= Cal_Glis_enable;
      Cal_Glis_2 <= Cal_Glis_1;
@@ -178,7 +179,8 @@ begin
         if cal_done = '1' then
           cntrl_reg(1) <= '0';
         end if;
-     elsif Cal_Glis_3(0) = '1' then
+     end if;
+     if Cal_Glis_3(0) = '1' then
        cntrl_reg(1) <= '1';
      elsif Cal_Glis_3(1) = '1' then
        cntrl_reg(0) <= not cntrl_reg(0);
@@ -190,7 +192,7 @@ begin
  begin
     case avs_address is
       when "00" => avs_readdata <= cntrl_reg;
-      when "01" => avs_readdata <= "000000" & std_logic_vector(freq);
+      when "01" => avs_readdata <= freq_data_reg;
       when others => avs_readdata <= (others => '0');
     end case;
  end process p_rd;
@@ -296,7 +298,8 @@ delay <= to_integer(unsigned(delay_reg));
     freq_enable => en_freq,
     cal_done   => cal_done,
     delay_index => delay,
-    freq_meas => freq_meas
+    freq_meas => freq_meas,
+    freq_disp   => freq_data_reg
   );
 
   

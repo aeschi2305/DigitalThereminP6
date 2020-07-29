@@ -100,7 +100,7 @@ begin
 
     wait for 20*c_cycle_time;
 
-    avs_writedata <= (dat_len_avl-1 downto 2 => '0') & "00";
+    avs_writedata <= (dat_len_avl-1 downto 2 => '0') & "01";
     avs_address <= "10";
     avs_write <= '1';
     wait for c_cycle_time;
@@ -108,7 +108,7 @@ begin
 
     wait for c_cycle_time;
 
-    avs_writedata <= (dat_len_avl-1 downto 2 => '0') & "01";
+    avs_writedata <= (dat_len_avl-1 downto 3 => '0') & "101";
     avs_address <= "00";
     avs_write <= '1';
     wait for c_cycle_time;
@@ -128,7 +128,11 @@ begin
       end if;
     end loop;
 
-    wait until rising_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_1.CalGlis_1.approx_done : std_ulogic>>);
+    --wait until rising_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_1.CalGlis_1.approx_done : std_ulogic>>);
+    --wait until rising_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_1.freq_meas : std_ulogic>>);
+    --wait for 100*c_cycle_time;
+
+    --enable <= false;
 
     wait;
   end process p_control;
