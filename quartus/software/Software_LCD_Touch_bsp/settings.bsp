@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>25.07.2020 10:33:57</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1595666037242</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>29.07.2020 16:09:27</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1596031767079</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\software\Software_LCD_Touch_bsp\</BspGeneratedLocation>
         <BspSettingsFile>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\software\Software_LCD_Touch_bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\system.sopcinfo</SopcDesignFile>

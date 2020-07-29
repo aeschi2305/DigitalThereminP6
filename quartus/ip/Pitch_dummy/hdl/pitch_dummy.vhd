@@ -13,9 +13,9 @@ use IEEE.numeric_std.all;
 entity pitch_dummy is
     generic (
      dat_len_avl  : natural := 31;  --data length
-     data_freq    : std_logic_vector(31 downto 0) := (31 downto 16 => '0') &"1111101000000000";
+     data_freq    : std_logic_vector(31 downto 0) := "000111" & (25 downto 16 => '0') & "0001100000000000"; --0001100000000000 (192)
      delay_thres  : std_logic_vector(31 downto 0) := (31 downto 2 => '0') &"11";
-     data_freq1   : std_logic_vector(31 downto 0) := (31 downto 16 => '0') &"0111110100000000"
+     data_freq1   : std_logic_vector(31 downto 0) := "101000" & (25 downto 16 => '0') & "1010001001100000"  --1010001001100000 (1299)
     );
   port(
     rsi_reset_n       : in std_logic;

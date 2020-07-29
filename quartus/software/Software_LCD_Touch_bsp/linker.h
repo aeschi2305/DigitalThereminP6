@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'system'
  * SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
  *
- * Generated: Wed Jun 10 10:04:21 CEST 2020
+ * Generated: Tue Jul 28 15:37:23 CEST 2020
  */
 
 /*

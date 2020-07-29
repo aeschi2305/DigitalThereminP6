@@ -13,6 +13,7 @@
 #include <sys/alt_irq.h>
 #include "LT24_Controller.h"
 #include "simple_text.h"
+#include "pitch_dummy.h"
 
 
 
@@ -51,9 +52,11 @@ void draw_glissando_set(void);
 
 void draw_update_glissando_delay(alt_u8 gli_delay);
 
+void draw_penta_on_off(alt_u8 on_off);
+
 void draw_display_ton(void);
 
-void draw_display_ton_update(void);
+void draw_display_ton_update(alt_u8 penta_on_off);
 
 
 

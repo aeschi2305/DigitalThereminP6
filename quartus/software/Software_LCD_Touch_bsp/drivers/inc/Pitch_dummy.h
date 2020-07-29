@@ -48,6 +48,8 @@ alt_u32 read_freq_pitch(void);
 
 alt_u32 read_delay_gli(void);
 
+alt_16 get_pixel_pitch_accuracy(alt_u8 penta_on_off, alt_u32 tmp);
+
 
 
 #ifdef __cplusplus

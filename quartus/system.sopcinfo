@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="system" kind="system" version="1.0" fabric="QSYS">
  <!-- Format version 17.1 590 (Future versions may contain additional information.) -->
- <!-- 2020.07.25.10:07:11 -->
+ <!-- 2020.07.29.15:58:59 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1595664430</value>
+  <value>1596031138</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -1432,7 +1432,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="data_freq">
    <type>java.math.BigInteger</type>
-   <value>64000</value>
+   <value>469768192</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -1448,7 +1448,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="data_freq1">
    <type>java.math.BigInteger</type>
-   <value>32000</value>
+   <value>2684396128</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -16979,7 +16979,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1595664430</value>
+   <value>1596031138</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -16999,7 +16999,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1595664430</value>
+   <value>1596031138</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -17015,7 +17015,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1595664430</value>
+   <value>1596031138</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>

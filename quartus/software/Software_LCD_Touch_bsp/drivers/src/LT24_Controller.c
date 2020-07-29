@@ -108,7 +108,7 @@ void LCD_DrawRect(alt_u16 xs,alt_u16 ys,alt_u16 xe,alt_u16 ye,alt_u16 color )
         for(int i = 0; i < (xe-xs+2)*(ye-ys+2);i++){
         	IOWR_LT24_AVALON_LCD_WR_DATA(LCD_CONTROLLER_BASE,color);
         }
-
+        LCD_SetRect(0,0,240,320);
 }
 
 

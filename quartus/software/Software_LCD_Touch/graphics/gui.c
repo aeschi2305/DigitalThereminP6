@@ -10,7 +10,9 @@
 #define GREY 0xBDBD
 #define GREY_SOFT 0xCCCC
 
-alt_u8 cnt_ton = 0;
+alt_16 pixel_accuracy_old = 0;
+
+
 /*----------------------------------------------------
  * Function:
  * Purpose :
@@ -106,26 +108,35 @@ void draw_glissando_on_off(alt_u8 on_off){
  *--------------------------------------------------*/
 void draw_glissando_set(void)
 {
-	vid_print_string(10,25,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
-	LCD_DrawRect(55,195,115,310,GREY_SOFT);
-	LCD_DrawRect(55,10,115,90,GREY);
-	vid_print_string(260,60,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
-	LCD_DrawRect(55,100,115,180,GREY);
-	vid_print_string(175,74,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+	vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
+	LCD_DrawRect(40,195,100,310,GREY_SOFT);
+	LCD_DrawRect(40,10,100,90,GREY);
+	vid_print_string(260,45,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+	LCD_DrawRect(40,100,100,180,GREY);
+	vid_print_string(175,59,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
 
-	LCD_DrawRect(170,10,230,110,GREY);
-	vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	LCD_DrawRect(175,10,235,110,GREY);
+	vid_print_string(244,194,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
 
 void draw_update_glissando_delay(alt_u8 gli_delay)
 {
 	alt_u8 i;
-	LCD_DrawRect(55,195,115,310,GREY_SOFT);
+	LCD_DrawRect(40,195,100,310,GREY_SOFT);
 	for(i = 0; i < gli_delay; i++){
-		LCD_DrawRect(60,(299-i*6-i*5),110,(299-i*6-i*5+6),GREEN);
+		LCD_DrawRect(45,(299-i*6-i*5),95,(299-i*6-i*5+6),GREEN);
 	}
 }
 
+void draw_penta_on_off(alt_u8 on_off){
+	if(on_off == 1){
+		LCD_DrawRect(110,100,170,310,GREEN);
+		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonik on");
+	}else{
+		LCD_DrawRect(110,100,170,310,GREY);
+		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonik off");
+	}
+}
 /*----------------------------------------------------
  * Function:
  * Purpose :
@@ -136,19 +147,37 @@ void draw_display_ton(void)
 	LCD_DrawRect(153,10,155,310,BLACK);
 	LCD_DrawRect(60,159,155,161,BLACK);
 	LCD_DrawRect(10,130,60,180,WHITE);
-	vid_print_string(149,38,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"C#");
 	LCD_DrawRect(170,10,230,110,GREY);
 	vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
-void draw_display_ton_update(void)
+void draw_display_ton_update(alt_u8 penta_on_off)
 {
-	//char gli_delay_str[3];
-	//sprintf(gli_delay_str,"%d ms",cnt_ton);
-	LCD_DrawRect(10,130,60,180,WHITE);
-	vid_print_string(149,38,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"AH");
-	cnt_ton ++;
-	if(cnt_ton>=6){
-		cnt_ton = 0;
+	alt_u32 tmp = read_freq_pitch();
+	alt_32 index = (alt_32)((tmp & 0xFC000000)>>26);
+	alt_16 pixel_accuracy=0;
+	char penta_string[21][4] = {{"C#3\0"},{"D#3\0"},{"F#3\0"},{"G#3\0"},{"A#3\0"},{"C#4\0"},{"D#4\0"},{"F#4\0"},{"G#4\0"},{"A#4\0"},{"C#5\0"},{"D#5\0"},{"F#5\0"},{"G#5\0"},{"A#5\0"},{"C#6\0"},{"D#6\0"},{"F#6\0"},{"G#6\0"},{"A#6\0"},{"C#7\0"}};
+	char ton_string[49][4] = {{"C3 \0"},{"C#3\0"},{"D3 \0"},{"D#3\0"},{"E3 \0"},{"F3 \0"},{"F#3\0"},{"G3 \0"},{"G#3\0"},{"A3 \0"},{"A#3\0"},{"B3 \0"},{"C4 \0"},{"C#4\0"},{"D4 \0"},{"D#4\0"},{"E4 \0"},{"F4 \0"},{"F#4\0"},{"G4 \0"},{"G#4\0"},{"A4 \0"},{"A#4\0"},{"B4 \0"},{"C5 \0"},{"C#5\0"},{"D5 \0"},{"D#5\0"},{"E5 \0"},{"F5 \0"},{"F#5\0"},{"G5 \0"},{"G#5\0"},{"A5 \0"},{"A#5\0"},{"B5 \0"},{"C6 \0"},{"C#6\0"},{"D6 \0"},{"D#6\0"},{"E6 \0"},{"F6 \0"},{"F#6\0"},{"G6 \0"},{"G#6\0"},{"A6 \0"},{"A#6\0"},{"B6 \0"},{"C7 \0"}};
+	char display_string[4];
+	LCD_DrawRect(10,90,60,180,WHITE);
+
+	if (penta_on_off == 1 ){
+		for(int i = 0; i < 4;i++){
+			display_string[i] = penta_string[index][i];
+		}
+		vid_print_string(149,38,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+	}else{
+		for(int i = 0; i < 4;i++){
+				display_string[i] = ton_string[index][i];
+			}
+		vid_print_string(149,38,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
 	}
-	printf ("ton update\n");
+	pixel_accuracy = get_pixel_pitch_accuracy(penta_on_off,tmp);
+	//clear cursor
+	LCD_DrawRect(133,(160 -pixel_accuracy_old),152,(160 - pixel_accuracy_old+2),WHITE);
+
+	LCD_DrawRect(60,159,155,161,BLACK);
+	//draw cursor
+	LCD_DrawRect(133,(160 - pixel_accuracy),152,(160 - pixel_accuracy+2),BLACK);
+
+	pixel_accuracy_old = pixel_accuracy;
 }

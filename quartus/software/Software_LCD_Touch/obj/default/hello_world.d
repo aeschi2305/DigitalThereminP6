@@ -31,7 +31,8 @@ obj/default/hello_world.o: hello_world.c \
  ../Software_LCD_Touch_bsp//HAL/inc/sys/alt_alarm.h \
  ../Software_LCD_Touch_bsp//HAL/inc/sys/alt_llist.h \
  ../Software_LCD_Touch_bsp//HAL/inc/priv/alt_alarm.h graphics/gui.h \
- graphics/simple_text.h
+ graphics/simple_text.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/pitch_dummy.h
 
 ../Software_LCD_Touch_bsp/system.h:
 
@@ -108,3 +109,5 @@ touch/touch_isr.h:
 graphics/gui.h:
 
 graphics/simple_text.h:
+
+../Software_LCD_Touch_bsp//drivers/inc/pitch_dummy.h:

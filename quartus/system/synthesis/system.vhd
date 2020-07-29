@@ -732,9 +732,9 @@ begin
 	pitch_dummy_0 : component pitch_dummy
 		generic map (
 			dat_len_avl => 31,
-			data_freq   => "00000000000000001111101000000000",
+			data_freq   => "00011100000000000001100000000000",
 			delay_thres => "00000000000000000000000000000011",
-			data_freq1  => "00000000000000000111110100000000"
+			data_freq1  => "10100000000000001010001001100000"
 		)
 		port map (
 			avs_sP_address   => mm_interconnect_0_pitch_dummy_0_sp_address,   --            sp.address

@@ -42,6 +42,8 @@
 
 alt_alarm my_alarm, vol_alarm;
 alt_u32 ton_delay = 0;
+alt_u8 penta_on_off = 0;
+
 
 typedef enum {
 	ST_main, ST_cali, ST_volume, ST_play_help, ST_glissando_set, ST_display_ton
@@ -57,15 +59,18 @@ typedef struct {
 //  callback function for alarm
 alt_u32 alarm_callback(void* context) {
 	//Set alarm flag
-	printf("ALARM!!!\n");
-	draw_display_ton_update();
+	printf("ALARM ton !!!\n");
+	printf("freq data\n");
+	alt_u32 tmp = read_freq_pitch();
+	printf("freq data %ld\n", tmp);
+	draw_display_ton_update(penta_on_off);
 	return context = 1000;
 }
 //  callback function for alarm
 alt_u32 alarm_callback_vol(void* context) {
 	//Set alarm flag
 	printf("ALARM vol!!!\n");
-	printf("freq pitch %d\n", read_freq_vol_gen());
+	printf("freq vol gen %d\n", read_freq_vol_gen());
 	return context = 2000;
 }
 int main() {
@@ -182,6 +187,7 @@ int main() {
 					LCD_Clear(WHITE);
 					draw_glissando_set();
 					draw_update_glissando_delay(glissando_delay);
+					draw_penta_on_off(penta_on_off);
 				} else if ((xy.y_coord >= 1200) && (xy.x_coord >= 1300)) { //Coordinates for display ton
 					state = ST_display_ton;
 					//Configure alarm for 1 seconds
@@ -216,6 +222,10 @@ int main() {
 					set_glissando_delay(glissando_delay);
 					draw_update_glissando_delay(glissando_delay);
 					printf("gli_delay register %d\n", read_delay_gli());
+				} else if ((xy.y_coord > 1900) && (xy.x_coord >= 1800)){
+					draw_penta_on_off(penta_on_off^ 0x01);
+					penta_on_off = penta_on_off^ 0x01;
+
 				}
 				break;
 			//******display ton state****************************************************
