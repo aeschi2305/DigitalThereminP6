@@ -551,7 +551,7 @@ begin
         if reset_n = '0' then
             disp_index <= (others => '0');
         elsif rising_edge(clk) then
-            if mus_scale = '1' then
+            if mus_scale = '0' then
                 disp_index <= std_logic_vector(to_unsigned(gli_index_reg,6));
             else 
                 disp_index <= std_logic_vector(to_unsigned(gli_penta_index_reg,6));
