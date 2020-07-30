@@ -3,7 +3,7 @@
 -----------------------------------------------------
 -- Project : Digital Theremin
 -----------------------------------------------------
--- File    : CalGlis.vhd
+-- File    : CalGlis_vol.vhd
 -- Author  : dennis.aeschbacher@students.fhnw.ch
 -----------------------------------------------------
 -- Description : controls the calibration process and the glissando effect
@@ -13,7 +13,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity CalGlis is
+entity CalGlis_vol is
   generic (
     freq_len : natural := 26;   -- bits of the freq signal
     glis_allow : boolean        -- enables the glissando functionality
@@ -30,9 +30,9 @@ entity CalGlis is
     delay_index : in natural range 0 to 9;
     freq_meas	: in std_ulogic
   );
-end entity CalGlis;
+end entity CalGlis_vol;
 	
-architecture behavioral of CalGlis is
+architecture behavioral of CalGlis_vol is
 
 type t_freq_array is array(integer range 0 to 48) of signed(freq_len-1 downto 0);
 type t_threas_array is array(integer range 0 to 49) of signed(freq_len-1 downto 0);

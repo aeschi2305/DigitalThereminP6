@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2020.07.29.15:58:59</td>
+    <td class="l">2020.07.30.08:56:50</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -114,6 +114,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <br/>&#160;&#160;
      <a href="#module_jtag_uart"><b>jtag_uart</b>
      </a> altera_avalon_jtag_uart 17.1
+     <br/>&#160;&#160;
+     <a href="#module_pitch_generation_top_0"><b>pitch_generation_top_0</b>
+     </a> pitch_generation_top 1.0
      <br/>&#160;&#160;
      <a href="#module_sysid"><b>sysid</b>
      </a> altera_avalon_sysid_qsys 17.1
@@ -251,6 +254,19 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">avalon_jtag_slave&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>080010c8</td>
     <td class="addr"><span style="color:#989898">0x</span>080010c8</td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_pitch_generation_top_0"><b>pitch_generation_top_0</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">stg&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>00000000</td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -974,7 +990,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_pll">pll</a>
       </td>
       <td class="from">outclk0&#160;&#160;</td>
-      <td class="main" rowspan="57">cpu</td>
+      <td class="main" rowspan="60">cpu</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -1249,6 +1265,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;irq</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_pitch_generation_top_0">pitch_generation_top_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;stg</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -1965,7 +1997,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /&gt;&lt;slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /&gt;&lt;slave name='volume_generation_top_0.svg' start='0x8001040' end='0x8001050' type='volume_generation_top.svg' /&gt;&lt;slave name='Volume_dummy_0.sp' start='0x8001050' end='0x8001060' type='Volume_dummy.sp' /&gt;&lt;slave name='Pitch_dummy_0.sp' start='0x8001060' end='0x8001070' type='Pitch_dummy.sp' /&gt;&lt;slave name='touch_panel_busy.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /&gt;&lt;slave name='touch_panel_pen_irq_n.s1' start='0x8001080' end='0x8001090' type='altera_avalon_pio.s1' /&gt;&lt;slave name='LCD_Reset_N.s1' start='0x8001090' end='0x80010A0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x80010A0' end='0x80010B0' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='sysid.control_slave' start='0x80010B8' end='0x80010C0' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='LCD_Controller.avalon_slave_0' start='0x80010C0' end='0x80010C8' type='LT24_Controller.avalon_slave_0' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x80010C8' end='0x80010D0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='pitch_generation_top_0.stg' start='0x0' end='0x10' type='pitch_generation_top.stg' /&gt;&lt;slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /&gt;&lt;slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /&gt;&lt;slave name='volume_generation_top_0.svg' start='0x8001040' end='0x8001050' type='volume_generation_top.svg' /&gt;&lt;slave name='Volume_dummy_0.sp' start='0x8001050' end='0x8001060' type='Volume_dummy.sp' /&gt;&lt;slave name='Pitch_dummy_0.sp' start='0x8001060' end='0x8001070' type='Pitch_dummy.sp' /&gt;&lt;slave name='touch_panel_busy.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /&gt;&lt;slave name='touch_panel_pen_irq_n.s1' start='0x8001080' end='0x8001090' type='altera_avalon_pio.s1' /&gt;&lt;slave name='LCD_Reset_N.s1' start='0x8001090' end='0x80010A0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x80010A0' end='0x80010B0' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='sysid.control_slave' start='0x80010B8' end='0x80010C0' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='LCD_Controller.avalon_slave_0' start='0x80010C0' end='0x80010C8' type='LT24_Controller.avalon_slave_0' /&gt;&lt;slave name='jtag_uart.avalon_jtag_slave' start='0x80010C8' end='0x80010D0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -2642,6 +2674,91 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
       </table>
      </td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_pitch_generation_top_0"> </a>
+  <div>
+   <hr/>
+   <h2>pitch_generation_top_0</h2>pitch_generation_top v1.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_cpu">cpu</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="8">pitch_generation_top_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;stg</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_pll_0">pll_0</a>
+      </td>
+      <td class="from">outclk0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clock</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clk_0">clk_0</a>
+      </td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">dat_len_avl</td>
+        <td class="parametervalue">32</td>
+       </tr>
+       <tr>
+        <td class="parametername">cic1Bits</td>
+        <td class="parametervalue">21</td>
+       </tr>
+       <tr>
+        <td class="parametername">cic2Bits</td>
+        <td class="parametervalue">25</td>
+       </tr>
+       <tr>
+        <td class="parametername">cic3Bits</td>
+        <td class="parametervalue">28</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
     </tr>
    </table>
   </div>
@@ -4817,7 +4934,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="6">pll_0</td>
+      <td class="main" rowspan="9">pll_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;refclk</td>
@@ -4834,6 +4951,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td class="from">outclk0&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
        <a href="#module_volume_generation_top_0">volume_generation_top_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clock</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">outclk0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_pitch_generation_top_0">pitch_generation_top_0</a>
       </td>
      </tr>
      <tr>
@@ -6813,7 +6946,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1596031138</td>
+        <td class="parametervalue">1596092209</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -6838,7 +6971,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1596031138</td>
+        <td class="parametervalue">1596092209</td>
        </tr>
       </table>
      </td>

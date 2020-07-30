@@ -34,7 +34,10 @@ module system (
 	touch_panel_spi_external_MISO,
 	touch_panel_spi_external_MOSI,
 	touch_panel_spi_external_SCLK,
-	touch_panel_spi_external_SS_n);	
+	touch_panel_spi_external_SS_n,
+	pitch_generation_top_0_conduit_end_0_coe_square_freq,
+	pitch_generation_top_0_conduit_end_0_coe_freq_up_down,
+	pitch_generation_top_0_conduit_end_0_coe_cal_glis);	
 
 	output		aud_xck_clk;
 	inout		audio_and_video_config_0_external_interface_SDAT;
@@ -71,4 +74,7 @@ module system (
 	output		touch_panel_spi_external_MOSI;
 	output		touch_panel_spi_external_SCLK;
 	output		touch_panel_spi_external_SS_n;
+	input		pitch_generation_top_0_conduit_end_0_coe_square_freq;
+	input	[1:0]	pitch_generation_top_0_conduit_end_0_coe_freq_up_down;
+	input	[1:0]	pitch_generation_top_0_conduit_end_0_coe_cal_glis;
 endmodule

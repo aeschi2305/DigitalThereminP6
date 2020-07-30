@@ -10,7 +10,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-entity fir_filter is
+entity fir_filter_vol is
 generic (
     N : natural := 16; --Number of Filter Coefficients
     M : natural := 29; --Number of Input Bits
@@ -23,9 +23,9 @@ port (
   en_out       : out std_ulogic;                 -- output enable
   i_data       : in  signed( M-1 downto 0);   -- data input
   o_data       : out signed( O-1 downto 0));  -- data output
-end entity fir_filter;
+end entity fir_filter_vol;
 
-architecture rtl of fir_filter is
+architecture rtl of fir_filter_vol is
 type coeff_type is array (0 to N-1) of signed (O-1 downto 0);
 constant addstages : natural := N-1; -- Number of summation stages
 constant coeffs : coeff_type :=  ("000001000010110111",

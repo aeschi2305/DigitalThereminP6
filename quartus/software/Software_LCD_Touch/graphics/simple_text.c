@@ -48,6 +48,24 @@ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 
 }
 
 /******************************************************************
+*  Function: get_string_width
+*
+*  Purpose: returns the pixel width of the given string
+*
+******************************************************************/
+
+int get_string_width(char string[])
+{
+	int width = 0;
+
+	width = 4*(strlen(string)-1);
+	for(int i = 0; i < strlen(string);i++){
+		width += arial_22ptDescriptors[string[i]-0x21][0];
+	}
+	return (width >> 1);
+}
+
+/******************************************************************
 *  Function: vid_print_char
 *
 *  Purpose: Prints a character to the specified location of the

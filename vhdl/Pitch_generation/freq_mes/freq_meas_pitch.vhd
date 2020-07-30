@@ -10,7 +10,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.numeric_std.all;
-entity freq_meas is
+entity freq_meas_pitch is
   generic (
     fsamp  : natural := 1200000;  --sampling frequency of the sine wave to be measured
     N      : natural := 21; --Number of numerator and denominator bits
@@ -34,11 +34,11 @@ entity freq_meas is
     meas_enable  : in boolean;
     Cal_Glis_enable : in std_logic_vector(1 downto 0)
   );
-end entity freq_meas;
+end entity freq_meas_pitch;
 
 
 
-architecture rtl of freq_meas is
+architecture rtl of freq_meas_pitch is
 
   ---------------------------------------------------------------------------
   -- Components        
@@ -58,7 +58,7 @@ component count_freq_meas is
     per_cnt     : out unsigned(N-1 downto 0);
     enable_in   : in std_ulogic;
     enable_out  : out std_ulogic;
-    freq_meas    : out std_ulogic
+    freq_meas   : out std_ulogic
   );
 end component count_freq_meas;
 
@@ -80,7 +80,7 @@ component goldschmidt is
   );
 end component goldschmidt;
 
-component fir_filter is
+component fir_filter_pitch is
 generic (
     N : natural := 36; --Number of Filter Coefficients
     M : natural := 29; --Number of Input Bits
@@ -97,7 +97,7 @@ port (
   -- filtered data 
   o_data     : out signed( sine_N-1 downto 0));
 
-end component fir_filter;
+end component fir_filter_pitch;
 
 
 Component CalGlis is
@@ -116,7 +116,7 @@ Component CalGlis is
     freq_enable : in std_ulogic;
     cal_done    : out std_ulogic;
     delay_index : in natural range 0 to 9;
-    freq_meas    : in std_ulogic;
+    freq_meas   : in std_ulogic;
     freq_disp   : out std_logic_vector(31 downto 0)
   );
 end component CalGlis;
@@ -144,7 +144,7 @@ end component CalGlis;
   signal enable_start : boolean;
   signal enable_cal   : std_ulogic;
   signal cal_done     : std_ulogic;
-  signal freq_meas     : std_ulogic;
+  signal freq_meas    : std_ulogic;
 
   signal cntrl_reg       : std_logic_vector(dat_len_avl-1 downto 0);
   signal freq_data_reg   : std_logic_vector(dat_len_avl-1 downto 0);
@@ -245,7 +245,7 @@ delay <= to_integer(unsigned(delay_reg));
     per_cnt     => per_cnt,
     enable_in   => en_meas,
     enable_out  => en_per,
-    freq_meas    => freq_meas
+    freq_meas   => freq_meas
   );
 
 
@@ -267,7 +267,7 @@ delay <= to_integer(unsigned(delay_reg));
   );
 
 
-  fir : entity work.fir_filter
+  fir_pitch : entity work.fir_filter_pitch
     generic map(
       N => Coeffs, --Number of Filter Coefficients
       M => sine_N, --Number of Input Bits

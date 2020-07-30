@@ -10,61 +10,40 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-entity fir_filter is
+entity fir_filter_vol is
 generic (
-    N : natural := 13; --Number of Filter Coefficients
+    N : natural := 16; --Number of Filter Coefficients
     M : natural := 29; --Number of Input Bits
     O : natural := 27 --Number of Output Bits
 );
 port (
-  clk        : in  std_ulogic;
-  reset_n       : in  std_ulogic;
+  clk        : in  std_logic;
+  reset_n       : in  std_logic;
   en_in        : in boolean;                  -- input enable
   en_out       : out std_ulogic;                 -- output enable
   i_data       : in  signed( M-1 downto 0);   -- data input
   o_data       : out signed( O-1 downto 0));  -- data output
-end entity fir_filter;
+end entity fir_filter_vol;
 
-architecture rtl of fir_filter is
+architecture rtl of fir_filter_vol is
 type coeff_type is array (0 to N-1) of signed (O-1 downto 0);
 constant addstages : natural := N-1; -- Number of summation stages
-constant coeffs : coeff_type :=  ("000001101001110110",
-                                  "000000101001101010",
-                                  "000000110001001100",
-                                  "000000111001000011",
-                                  "000001000001001100",
-                                  "000001001001100100",
-                                  "000001010001111100",
-                                  "000001011010010000",
-                                  "000001100010010111",
-                                  "000001101010001101",
-                                  "000001110001100111",
-                                  "000001111000011111",
-                                  "000001111110101010",
-                                  "000010000100000101",
-                                  "000010001000101000",
-                                  "000010001100010010",
-                                  "000010001110111011",
-                                  "000010010000100011",
-                                  "000010010001000101",
-                                  "000010010000100011",
-                                  "000010001110111011",
-                                  "000010001100010010",
-                                  "000010001000101000",
-                                  "000010000100000101",
-                                  "000001111110101010",
-                                  "000001111000011111",
-                                  "000001110001100111",
-                                  "000001101010001101",
-                                  "000001100010010111",
-                                  "000001011010010000",
-                                  "000001010001111100",
-                                  "000001001001100100",
-                                  "000001000001001100",
-                                  "000000111001000011",
-                                  "000000110001001100",
-                                  "000000101001101010",
-                                  "000001101001110110");
+constant coeffs : coeff_type :=  ("000001000010110111",
+                                  "000001011111110011",
+                                  "000010010110101010",
+                                  "000011010100011011",
+                                  "000100010010110001",
+                                  "000101001010100001",
+                                  "000101110100011110",
+                                  "000110001010111110",
+                                  "000110001010111110",
+                                  "000101110100011110",
+                                  "000101001010100001",
+                                  "000100010010110001",
+                                  "000011010100011011",
+                                  "000010010110101010",
+                                  "000001011111110011",
+                                  "000001000010110111");
 type t_data_pipe      is array (0 to N-1) of signed(O-1  downto 0);
 type t_mult           is array (0 to N-1) of signed(O*2-1    downto 0);
 signal p_data_in_reg               : t_data_pipe;

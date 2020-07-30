@@ -10,7 +10,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.numeric_std.all;
-entity freq_meas is
+entity freq_meas_vol is
   generic (
     fsamp  : natural := 2400000;  --sampling frequency of the sine wave to be measured
     N      : natural := 21; --Number of numerator and denominator bits
@@ -33,11 +33,11 @@ entity freq_meas is
     freq_diff     : out signed(N+Qprec-1 downto 0);
     meas_enable  : in boolean
   );
-end entity freq_meas;
+end entity freq_meas_vol;
 
 
 
-architecture rtl of freq_meas is
+architecture rtl of freq_meas_vol is
 
   ---------------------------------------------------------------------------
   -- Components        
@@ -57,7 +57,7 @@ component count_freq_meas is
     per_cnt     : out unsigned(N-1 downto 0);
     enable_in   : in std_ulogic;
     enable_out  : out std_ulogic;
-    freq_meas    : out std_ulogic
+    freq_meas   : out std_ulogic
   );
 end component count_freq_meas;
 
@@ -79,7 +79,7 @@ component goldschmidt is
   );
 end component goldschmidt;
 
-component fir_filter is
+component fir_filter_vol is
 generic (
     N : natural := 36; --Number of Filter Coefficients
     M : natural := 29; --Number of Input Bits
@@ -96,10 +96,10 @@ port (
   -- filtered data 
   o_data     : out signed( sine_N-1 downto 0));
 
-end component fir_filter;
+end component fir_filter_vol;
 
 
-Component CalGlis is
+Component CalGlis_vol is
   generic (
     freq_len    : natural := 21;   -- bits of the freq signal
     glis_allow  : boolean        -- enables the glissando functionality
@@ -114,9 +114,9 @@ Component CalGlis is
     freq_enable : in std_ulogic;
     cal_done    : out std_ulogic;
     delay_index : in natural range 0 to 9;
-    freq_meas    : in std_ulogic
+    freq_meas   : in std_ulogic
   );
-end component CalGlis;
+end component CalGlis_vol;
   ---------------------------------------------------------------------------
   -- Types         
   ---------------------------------------------------------------------------
@@ -236,7 +236,7 @@ end component CalGlis;
   signal enable_start : boolean;
   signal enable_cal   : std_ulogic;
   signal cal_done     : std_ulogic;
-  signal freq_meas     : std_ulogic;
+  signal freq_meas    : std_ulogic;
 
   signal cntrl_reg       : std_logic_vector(dat_len_avl-1 downto 0);
   signal vol_data_reg    : std_logic_vector(dat_len_avl-1 downto 0);
@@ -374,7 +374,7 @@ end process p_cmb;
   );
 
 
-  fir : entity work.fir_filter
+  fir_vol : entity work.fir_filter_vol
     generic map(
       N => Coeffs, --Number of Filter Coefficients
       M => sine_N, --Number of Input Bits
@@ -389,7 +389,7 @@ end process p_cmb;
       o_data   => audio_filt
     );
 
-  CalGlis_1 : entity work.CalGlis
+  CalGlis_vol_1 : entity work.CalGlis_vol
   generic map(
     freq_len => N+Qprec,   -- bits of the freq signal
     glis_allow => false        -- enables the glissando functionality

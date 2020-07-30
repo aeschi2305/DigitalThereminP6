@@ -158,18 +158,18 @@ void draw_display_ton_update(alt_u8 penta_on_off)
 	char penta_string[21][4] = {{"C#3\0"},{"D#3\0"},{"F#3\0"},{"G#3\0"},{"A#3\0"},{"C#4\0"},{"D#4\0"},{"F#4\0"},{"G#4\0"},{"A#4\0"},{"C#5\0"},{"D#5\0"},{"F#5\0"},{"G#5\0"},{"A#5\0"},{"C#6\0"},{"D#6\0"},{"F#6\0"},{"G#6\0"},{"A#6\0"},{"C#7\0"}};
 	char ton_string[49][4] = {{"C3 \0"},{"C#3\0"},{"D3 \0"},{"D#3\0"},{"E3 \0"},{"F3 \0"},{"F#3\0"},{"G3 \0"},{"G#3\0"},{"A3 \0"},{"A#3\0"},{"B3 \0"},{"C4 \0"},{"C#4\0"},{"D4 \0"},{"D#4\0"},{"E4 \0"},{"F4 \0"},{"F#4\0"},{"G4 \0"},{"G#4\0"},{"A4 \0"},{"A#4\0"},{"B4 \0"},{"C5 \0"},{"C#5\0"},{"D5 \0"},{"D#5\0"},{"E5 \0"},{"F5 \0"},{"F#5\0"},{"G5 \0"},{"G#5\0"},{"A5 \0"},{"A#5\0"},{"B5 \0"},{"C6 \0"},{"C#6\0"},{"D6 \0"},{"D#6\0"},{"E6 \0"},{"F6 \0"},{"F#6\0"},{"G6 \0"},{"G#6\0"},{"A6 \0"},{"A#6\0"},{"B6 \0"},{"C7 \0"}};
 	char display_string[4];
-	LCD_DrawRect(10,90,60,180,WHITE);
+	LCD_DrawRect(10,90,60,200,WHITE);
 
 	if (penta_on_off == 1 ){
 		for(int i = 0; i < 4;i++){
 			display_string[i] = penta_string[index][i];
 		}
-		vid_print_string(149,38,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+		vid_print_string(160 - get_string_width(penta_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
 	}else{
 		for(int i = 0; i < 4;i++){
 				display_string[i] = ton_string[index][i];
 			}
-		vid_print_string(149,38,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+		vid_print_string(160 - get_string_width(ton_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
 	}
 	pixel_accuracy = get_pixel_pitch_accuracy(penta_on_off,tmp);
 	//clear cursor

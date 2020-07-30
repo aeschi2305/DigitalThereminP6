@@ -30,7 +30,8 @@ extern "C"
 #endif /* __cplusplus */
 
 
-// functions used by vid_print_string_alpha
+int get_string_width(char string[]);
+
 int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
 
 int vid_print_char (int horiz_offset, int vert_offset, int color, char character, const alt_u8 *font, const alt_u16 (*font_descriptor)[2]);

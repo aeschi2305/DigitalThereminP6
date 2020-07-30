@@ -120,7 +120,7 @@ component mixer is
   );
 end component mixer;
 
-component freq_meas is
+component freq_meas_vol is
   generic (
     fsamp  : natural := 1200000;  --sampling frequency of the sine wave to be measured
     N      : natural := 21; --Number of numerator and denominator bits
@@ -143,7 +143,7 @@ component freq_meas is
     freq_diff     : out signed(N+Qprec-1 downto 0);
     meas_enable  : in boolean
   );
-end component freq_meas;
+end component freq_meas_vol;
 
 begin
 
@@ -212,7 +212,7 @@ begin
     ); 
 
   -- user design: freq_mes
-  freq_meas_1 : entity work.freq_meas
+  freq_meas_vol_1 : entity work.freq_meas_vol
     generic map (
       fsamp  => 240000, --sampling frequency of the sine wave to be measured
       N      => 21, --Number of numerator and denominator bits

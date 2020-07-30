@@ -1,5 +1,5 @@
 Flow report for DigitalThereminP6
-Tue May 12 21:11:21 2020
+Thu Jul 30 09:03:36 2020
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
 
 
@@ -40,25 +40,25 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Tue May 12 21:10:39 2020           ;
+; Flow Status                     ; Successful - Thu Jul 30 09:03:36 2020           ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Standard Edition ;
 ; Revision Name                   ; DigitalThereminP6                               ;
 ; Top-level Entity Name           ; system                                          ;
 ; Family                          ; Cyclone V                                       ;
 ; Device                          ; 5CSEMA5F31C6                                    ;
 ; Timing Models                   ; Final                                           ;
-; Logic utilization (in ALMs)     ; 1,872 / 32,070 ( 6 % )                          ;
-; Total registers                 ; 3330                                            ;
-; Total pins                      ; 68 / 457 ( 15 % )                               ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 7796                                            ;
+; Total pins                      ; 85                                              ;
 ; Total virtual pins              ; 0                                               ;
-; Total block memory bits         ; 65,600 / 4,065,280 ( 2 % )                      ;
-; Total DSP Blocks                ; 3 / 87 ( 3 % )                                  ;
+; Total block memory bits         ; 376,896                                         ;
+; Total DSP Blocks                ; 65                                              ;
 ; Total HSSI RX PCSs              ; 0                                               ;
 ; Total HSSI PMA RX Deserializers ; 0                                               ;
 ; Total HSSI TX PCSs              ; 0                                               ;
 ; Total HSSI PMA TX Serializers   ; 0                                               ;
-; Total PLLs                      ; 1 / 6 ( 17 % )                                  ;
-; Total DLLs                      ; 0 / 4 ( 0 % )                                   ;
+; Total PLLs                      ; 2                                               ;
+; Total DLLs                      ; 0                                               ;
 +---------------------------------+-------------------------------------------------+
 
 
@@ -67,69 +67,92 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/12/2020 21:04:45 ;
+; Start date & time ; 07/30/2020 09:01:18 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DigitalThereminP6   ;
 +-------------------+---------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                              ;
-+-------------------------------------+----------------------------------------------------------+-------------------+-------------+------------+
-; Assignment Name                     ; Value                                                    ; Default Value     ; Entity Name ; Section Id ;
-+-------------------------------------+----------------------------------------------------------+-------------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 24062491136.158931028422456                              ; --                ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                                       ; --                ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                                        ; --                ; --          ; --         ;
-; MISC_FILE                           ; system/synthesis/../system.cmp                           ; --                ; --          ; --         ;
-; MISC_FILE                           ; system/synthesis/../../system.qsys                       ; --                ; --          ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family)                   ; --                ; system      ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                   ; --                ; system      ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                   ; --                ; system      ; Top        ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                      ; --                ; --          ; --         ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                    ; --                ; --          ; --         ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                                             ; --                ; --          ; --         ;
-; SLD_FILE                            ; system/synthesis/system.regmap                           ; --                ; --          ; --         ;
-; SLD_FILE                            ; system/synthesis/system.debuginfo                        ; --                ; --          ; --         ;
-; SLD_INFO                            ; QSYS_NAME system HAS_SOPCINFO 1 GENERATION_ID 1589310199 ; --                ; system      ; --         ;
-; SOPCINFO_FILE                       ; system/synthesis/../../system.sopcinfo                   ; --                ; --          ; --         ;
-; SYNTHESIS_ONLY_QIP                  ; On                                                       ; --                ; --          ; --         ;
-; TOP_LEVEL_ENTITY                    ; system                                                   ; DigitalThereminP6 ; --          ; --         ;
-+-------------------------------------+----------------------------------------------------------+-------------------+-------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                                                                                                            ;
++-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+-------------+------------------+
+; Assignment Name                     ; Value                                                                                                                                                            ; Default Value     ; Entity Name ; Section Id       ;
++-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+-------------+------------------+
+; COMPILER_SIGNATURE_ID               ; 138719683587202.159609247712804                                                                                                                                  ; --                ; --          ; --               ;
+; ENABLE_SIGNALTAP                    ; On                                                                                                                                                               ; --                ; --          ; --               ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                                                                                                                               ; --                ; --          ; --               ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                                                                                                                                ; --                ; --          ; --               ;
+; MISC_FILE                           ; system/synthesis/../system.cmp                                                                                                                                   ; --                ; --          ; --               ;
+; MISC_FILE                           ; system/synthesis/../../system.qsys                                                                                                                               ; --                ; --          ; --               ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                                                                                                                           ; --                ; system      ; Top              ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                                                                                                                           ; --                ; system      ; Top              ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                                                                                                                           ; --                ; system      ; Top              ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                                                                                                              ; --                ; --          ; --               ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                                                                                                            ; --                ; --          ; --               ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                                                                                                                     ; --                ; --          ; --               ;
+; SLD_FILE                            ; system/synthesis/system.regmap                                                                                                                                   ; --                ; --          ; --               ;
+; SLD_FILE                            ; system/synthesis/system.debuginfo                                                                                                                                ; --                ; --          ; --               ;
+; SLD_FILE                            ; db/stp2_auto_stripped.stp                                                                                                                                        ; --                ; --          ; --               ;
+; SLD_INFO                            ; QSYS_NAME system HAS_SOPCINFO 1 GENERATION_ID 1596092209                                                                                                         ; --                ; system      ; --               ;
+; SLD_NODE_CREATOR_ID                 ; 110                                                                                                                                                              ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_ENTITY_NAME                ; sld_signaltap                                                                                                                                                    ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_RAM_BLOCK_TYPE=AUTO                                                                                                                                          ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_NODE_INFO=805334528                                                                                                                                          ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_POWER_UP_TRIGGER=0                                                                                                                                           ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0                                                                                                                    ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_SEGMENT_SIZE=8192                                                                                                                                            ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ATTRIBUTE_MEM_MODE=OFF                                                                                                                                       ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STATE_FLOW_USE_GENERATED=0                                                                                                                                   ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STATE_BITS=11                                                                                                                                                ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_BUFFER_FULL_STOP=1                                                                                                                                           ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_CURRENT_RESOURCE_WIDTH=1                                                                                                                                     ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INCREMENTAL_ROUTING=1                                                                                                                                        ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_LEVEL=1                                                                                                                                              ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_SAMPLE_DEPTH=8192                                                                                                                                            ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_IN_ENABLED=0                                                                                                                                         ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_PIPELINE=0                                                                                                                                           ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_RAM_PIPELINE=0                                                                                                                                               ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_COUNTER_PIPELINE=0                                                                                                                                           ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ADVANCED_TRIGGER_ENTITY=basic,1,                                                                                                                             ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_LEVEL_PIPELINE=1                                                                                                                                     ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ENABLE_ADVANCED_TRIGGER=0                                                                                                                                    ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_DATA_BITS=38                                                                                                                                                 ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_BITS=38                                                                                                                                              ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STORAGE_QUALIFIER_BITS=38                                                                                                                                    ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INVERSION_MASK=000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 ; --                ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INVERSION_MASK_LENGTH=141                                                                                                                                    ; --                ; --          ; auto_signaltap_0 ;
+; SOPCINFO_FILE                       ; system/synthesis/../../system.sopcinfo                                                                                                                           ; --                ; --          ; --               ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                                                                                                                               ; --                ; --          ; --               ;
+; TOP_LEVEL_ENTITY                    ; system                                                                                                                                                           ; DigitalThereminP6 ; --          ; --               ;
+; USE_SIGNALTAP_FILE                  ; stp2.stp                                                                                                                                                         ; --                ; --          ; --               ;
+; VHDL_INPUT_VERSION                  ; VHDL_2008                                                                                                                                                        ; VHDL_1993         ; --          ; --               ;
+; VHDL_SHOW_LMF_MAPPING_MESSAGES      ; Off                                                                                                                                                              ; --                ; --          ; --               ;
++-------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+-------------+------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                             ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:01:54     ; 1.0                     ; 5093 MB             ; 00:02:33                           ;
-; Fitter                    ; 00:03:21     ; 1.2                     ; 7069 MB             ; 00:07:01                           ;
-; Assembler                 ; 00:00:24     ; 1.0                     ; 4890 MB             ; 00:00:18                           ;
-; TimeQuest Timing Analyzer ; 00:00:41     ; 1.8                     ; 5415 MB             ; 00:00:59                           ;
-; Total                     ; 00:06:20     ; --                      ; --                  ; 00:10:51                           ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:02:06     ; 1.5                     ; 5204 MB             ; 00:03:11                           ;
+; Total                ; 00:02:06     ; --                      ; --                  ; 00:03:11                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                         ;
-+---------------------------+------------------+------------+------------+----------------+
-; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+---------------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis      ; DESKTOP-8C7A2EJ  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter                    ; DESKTOP-8C7A2EJ  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler                 ; DESKTOP-8C7A2EJ  ; Windows 10 ; 10.0       ; x86_64         ;
-; TimeQuest Timing Analyzer ; DESKTOP-8C7A2EJ  ; Windows 10 ; 10.0       ; x86_64         ;
-+---------------------------+------------------+------------+------------+----------------+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; DESKTOP-8C7A2EJ  ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off DigitalThereminP6 -c DigitalThereminP6
-quartus_fit --read_settings_files=off --write_settings_files=off DigitalThereminP6 -c DigitalThereminP6
-quartus_asm --read_settings_files=off --write_settings_files=off DigitalThereminP6 -c DigitalThereminP6
-quartus_sta DigitalThereminP6 -c DigitalThereminP6
 
 
 

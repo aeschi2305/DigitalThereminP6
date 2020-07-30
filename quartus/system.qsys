@@ -145,6 +145,14 @@
          type = "String";
       }
    }
+   element pitch_generation_top_0
+   {
+      datum _sortIndex
+      {
+         value = "18";
+         type = "int";
+      }
+   }
    element pll
    {
       datum _sortIndex
@@ -392,6 +400,11 @@
    type="conduit"
    dir="end" />
  <interface name="led_vol" internal="Volume_dummy_0.conduit_end" />
+ <interface
+   name="pitch_generation_top_0_conduit_end_0"
+   internal="pitch_generation_top_0.conduit_end_0"
+   type="conduit"
+   dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <interface name="sdram_clk" internal="pll.outclk2" type="clock" dir="start" />
  <interface
@@ -497,7 +510,7 @@
   <parameter name="dataAddrWidth" value="28" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /><slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /><slave name='volume_generation_top_0.svg' start='0x8001040' end='0x8001050' type='volume_generation_top.svg' /><slave name='Volume_dummy_0.sp' start='0x8001050' end='0x8001060' type='Volume_dummy.sp' /><slave name='Pitch_dummy_0.sp' start='0x8001060' end='0x8001070' type='Pitch_dummy.sp' /><slave name='touch_panel_busy.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /><slave name='touch_panel_pen_irq_n.s1' start='0x8001080' end='0x8001090' type='altera_avalon_pio.s1' /><slave name='LCD_Reset_N.s1' start='0x8001090' end='0x80010A0' type='altera_avalon_pio.s1' /><slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x80010A0' end='0x80010B0' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='sysid.control_slave' start='0x80010B8' end='0x80010C0' type='altera_avalon_sysid_qsys.control_slave' /><slave name='LCD_Controller.avalon_slave_0' start='0x80010C0' end='0x80010C8' type='LT24_Controller.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80010C8' end='0x80010D0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='pitch_generation_top_0.stg' start='0x0' end='0x10' type='pitch_generation_top.stg' /><slave name='dram_ctrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='touch_panel_spi.spi_control_port' start='0x8001000' end='0x8001020' type='altera_avalon_spi.spi_control_port' /><slave name='timer.s1' start='0x8001020' end='0x8001040' type='altera_avalon_timer.s1' /><slave name='volume_generation_top_0.svg' start='0x8001040' end='0x8001050' type='volume_generation_top.svg' /><slave name='Volume_dummy_0.sp' start='0x8001050' end='0x8001060' type='Volume_dummy.sp' /><slave name='Pitch_dummy_0.sp' start='0x8001060' end='0x8001070' type='Pitch_dummy.sp' /><slave name='touch_panel_busy.s1' start='0x8001070' end='0x8001080' type='altera_avalon_pio.s1' /><slave name='touch_panel_pen_irq_n.s1' start='0x8001080' end='0x8001090' type='altera_avalon_pio.s1' /><slave name='LCD_Reset_N.s1' start='0x8001090' end='0x80010A0' type='altera_avalon_pio.s1' /><slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x80010A0' end='0x80010B0' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='sysid.control_slave' start='0x80010B8' end='0x80010C0' type='altera_avalon_sysid_qsys.control_slave' /><slave name='LCD_Controller.avalon_slave_0' start='0x80010C0' end='0x80010C8' type='LT24_Controller.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80010C8' end='0x80010D0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -702,6 +715,16 @@
   <parameter name="useRelativePathForSimFile" value="false" />
   <parameter name="writeBufferDepth" value="64" />
   <parameter name="writeIRQThreshold" value="8" />
+ </module>
+ <module
+   name="pitch_generation_top_0"
+   kind="pitch_generation_top"
+   version="1.0"
+   enabled="1">
+  <parameter name="cic1Bits" value="21" />
+  <parameter name="cic2Bits" value="25" />
+  <parameter name="cic3Bits" value="28" />
+  <parameter name="dat_len_avl" value="32" />
  </module>
  <module name="pll" kind="altera_pll" version="17.1" enabled="1">
   <parameter name="debug_print_output" value="false" />
@@ -1316,6 +1339,15 @@
    kind="avalon"
    version="17.1"
    start="cpu.data_master"
+   end="pitch_generation_top_0.stg">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="cpu.data_master"
    end="volume_generation_top_0.svg">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x08001040" />
@@ -1370,6 +1402,11 @@
    version="17.1"
    start="pll_0.outclk0"
    end="volume_generation_top_0.clock" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="pll_0.outclk0"
+   end="pitch_generation_top_0.clock" />
  <connection kind="clock" version="17.1" start="pll.outclk1" end="LCD_Reset_N.clk" />
  <connection
    kind="clock"
@@ -1481,6 +1518,11 @@
    start="clk_0.clk_reset"
    end="volume_generation_top_0.reset" />
  <connection kind="reset" version="17.1" start="clk_0.clk_reset" end="pll_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="pitch_generation_top_0.reset" />
  <connection
    kind="reset"
    version="17.1"
