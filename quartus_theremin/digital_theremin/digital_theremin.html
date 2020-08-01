@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2020.07.30.13:01:53</td>
+    <td class="l">2020.07.31.16:54:33</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -106,7 +106,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <a href="#module_dram_cntrl"><b>dram_cntrl</b>
      </a> altera_avalon_new_sdram_controller 17.1
      <br/>&#160;&#160;
-     <a href="#module_epcq_controller_0"><b>epcq_controller_0</b>
+     <a href="#module_epcs_cntl"><b>epcs_cntl</b>
      </a> altera_epcq_controller 17.1
      <br/>&#160;&#160;
      <a href="#module_jtag"><b>jtag</b>
@@ -215,7 +215,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slavemodule">&#160;
-     <a href="#module_epcq_controller_0"><b>epcq_controller_0</b>
+     <a href="#module_epcs_cntl"><b>epcs_cntl</b>
      </a>
     </td>
     <td class="empty"></td>
@@ -968,7 +968,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
       <td class="neighbor" rowspan="8">
-       <a href="#module_epcq_controller_0">epcq_controller_0</a>
+       <a href="#module_epcs_cntl">epcs_cntl</a>
       </td>
      </tr>
      <tr>
@@ -1415,7 +1415,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetSlave</td>
-        <td class="parametervalue">epcq_controller_0.avl_mem</td>
+        <td class="parametervalue">epcs_cntl.avl_mem</td>
        </tr>
        <tr>
         <td class="parametername">mmu_TLBMissExcSlave</td>
@@ -1891,7 +1891,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">instSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_cntrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='epcq_controller_0.avl_mem' start='0x9000000' end='0xA000000' type='altera_epcq_controller.avl_mem' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0xA000800' end='0xA001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='jtag.avalon_jtag_slave' start='0xA0010D8' end='0xA0010E0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_cntrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='epcs_cntl.avl_mem' start='0x9000000' end='0xA000000' type='altera_epcq_controller.avl_mem' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0xA000800' end='0xA001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='jtag.avalon_jtag_slave' start='0xA0010D8' end='0xA0010E0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">faSlaveMapParam</td>
@@ -1899,7 +1899,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_cntrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='epcq_controller_0.avl_mem' start='0x9000000' end='0xA000000' type='altera_epcq_controller.avl_mem' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0xA000800' end='0xA001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='epcq_controller_0.avl_csr' start='0xA001000' end='0xA001020' type='altera_epcq_controller.avl_csr' /&gt;&lt;slave name='touch_panel_spi.spi_control_port' start='0xA001020' end='0xA001040' type='altera_avalon_spi.spi_control_port' /&gt;&lt;slave name='timer.s1' start='0xA001040' end='0xA001060' type='altera_avalon_timer.s1' /&gt;&lt;slave name='volume_generation_0.svg' start='0xA001060' end='0xA001070' type='volume_generation.svg' /&gt;&lt;slave name='pitch_generation_0.stg' start='0xA001070' end='0xA001080' type='pitch_generation.stg' /&gt;&lt;slave name='touch_panel_busy.s1' start='0xA001080' end='0xA001090' type='altera_avalon_pio.s1' /&gt;&lt;slave name='touch_panel_pen_irq_n.s1' start='0xA001090' end='0xA0010A0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='LCD_reset_n.s1' start='0xA0010A0' end='0xA0010B0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0xA0010B0' end='0xA0010C0' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='sysid.control_slave' start='0xA0010C8' end='0xA0010D0' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='LCD_Controller.avalon_slave_0' start='0xA0010D0' end='0xA0010D8' type='LT24_Controller.avalon_slave_0' /&gt;&lt;slave name='jtag.avalon_jtag_slave' start='0xA0010D8' end='0xA0010E0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='dram_cntrl.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='epcs_cntl.avl_mem' start='0x9000000' end='0xA000000' type='altera_epcq_controller.avl_mem' /&gt;&lt;slave name='cpu.debug_mem_slave' start='0xA000800' end='0xA001000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='epcs_cntl.avl_csr' start='0xA001000' end='0xA001020' type='altera_epcq_controller.avl_csr' /&gt;&lt;slave name='touch_panel_spi.spi_control_port' start='0xA001020' end='0xA001040' type='altera_avalon_spi.spi_control_port' /&gt;&lt;slave name='timer.s1' start='0xA001040' end='0xA001060' type='altera_avalon_timer.s1' /&gt;&lt;slave name='volume_generation_0.svg' start='0xA001060' end='0xA001070' type='volume_generation.svg' /&gt;&lt;slave name='pitch_generation_0.stg' start='0xA001070' end='0xA001080' type='pitch_generation.stg' /&gt;&lt;slave name='touch_panel_busy.s1' start='0xA001080' end='0xA001090' type='altera_avalon_pio.s1' /&gt;&lt;slave name='touch_panel_pen_irq_n.s1' start='0xA001090' end='0xA0010A0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='LCD_reset_n.s1' start='0xA0010A0' end='0xA0010B0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0xA0010B0' end='0xA0010C0' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='sysid.control_slave' start='0xA0010C8' end='0xA0010D0' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='LCD_Controller.avalon_slave_0' start='0xA0010D0' end='0xA0010D8' type='LT24_Controller.avalon_slave_0' /&gt;&lt;slave name='jtag.avalon_jtag_slave' start='0xA0010D8' end='0xA0010E0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -2561,10 +2561,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
-  <a name="module_epcq_controller_0"> </a>
+  <a name="module_epcs_cntl"> </a>
   <div>
    <hr/>
-   <h2>epcq_controller_0</h2>altera_epcq_controller v17.1
+   <h2>epcs_cntl</h2>altera_epcq_controller v17.1
    <br/>
    <div class="greydiv">
     <table class="connectionboxes">
@@ -2573,7 +2573,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_cpu">cpu</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="14">epcq_controller_0</td>
+      <td class="main" rowspan="14">epcs_cntl</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avl_csr</td>
@@ -2635,7 +2635,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">UNIQUE_ID</td>
-        <td class="parametervalue">digital_theremin_epcq_controller_0</td>
+        <td class="parametervalue">digital_theremin_epcs_cntl</td>
        </tr>
        <tr>
         <td class="parametername">ASI_WIDTH</td>
@@ -3177,7 +3177,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">outclk3&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
-       <a href="#module_epcq_controller_0">epcq_controller_0</a>
+       <a href="#module_epcs_cntl">epcs_cntl</a>
       </td>
      </tr>
      <tr>
@@ -7183,7 +7183,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1596106912</td>
+        <td class="parametervalue">1596207273</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -7208,7 +7208,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1596106912</td>
+        <td class="parametervalue">1596207273</td>
        </tr>
       </table>
      </td>
@@ -8128,8 +8128,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </div>
   <table class="blueBar">
    <tr>
-    <td class="l">generation took 0.02 seconds</td>
-    <td class="r">rendering took 0.23 seconds</td>
+    <td class="l">generation took 0.00 seconds</td>
+    <td class="r">rendering took 0.06 seconds</td>
    </tr>
   </table>
  </body>

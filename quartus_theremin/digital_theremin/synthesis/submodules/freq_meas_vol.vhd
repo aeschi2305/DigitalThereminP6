@@ -43,7 +43,7 @@ architecture rtl of freq_meas_vol is
   -- Components        
   ---------------------------------------------------------------------------
 
-component count_freq_meas is
+component count_freq_vol is
   generic (
     N : natural := 12;  --Number of Bits of the frequency value
     sine_N : natural:= 24;  --Number of Bits of the input sine wave
@@ -59,7 +59,7 @@ component count_freq_meas is
     enable_out  : out std_ulogic;
     freq_meas   : out std_ulogic
   );
-end component count_freq_meas;
+end component count_freq_vol;
 
 component goldschmidt is
   generic (
@@ -204,7 +204,7 @@ end component CalGlis_vol;
                                                "00000000001110111001000111",
                                                "00000000001111010000010001",
                                                "00000000001111101000000000",
-                                               "11111111111111111111111111");
+                                               "00000001001110001000000000");
 --"11111111111111111111111111"
   constant vol_gain : t_vol_gain_array :=     ( "0001101",
                                                 "0011001",
@@ -259,8 +259,8 @@ begin
      cntrl_reg <= (others => '0');
      vol_gain_reg <= (others => '0');
    elsif rising_edge(clk) then
-     Cal_Glis_2 <= Cal_Glis_1;
-     Cal_Glis_3 <= Cal_Glis_1 and not Cal_Glis_2;
+    --Cal_Glis_2 <= Cal_Glis_1;
+    --Cal_Glis_3 <= Cal_Glis_1 and not Cal_Glis_2;
      if sfm_write = '1' then
        case sfm_address is
          when "00" => cntrl_reg <= sfm_writedata;
@@ -270,10 +270,10 @@ begin
      elsif(cntrl_reg(1) = '1') then
         if cal_done = '1' then
           cntrl_reg(1) <= '0';
-        elsif Cal_Glis_3(0) = '1' then
-          cntrl_reg(1) <= '1';
-        elsif Cal_Glis_3(1) = '1' then
-          cntrl_reg(0) <= not cntrl_reg(0);
+        --elsif Cal_Glis_3(0) = '1' then
+        --  cntrl_reg(1) <= '1';
+        --elsif Cal_Glis_3(1) = '1' then
+        --  cntrl_reg(0) <= not cntrl_reg(0);
         end if;
      end if;
    end if;
@@ -318,11 +318,17 @@ p_cmb : process(all)
   variable vol_mult : unsigned(13 downto 0);
   variable vol_mult_temp : unsigned(7 downto 0);
   begin
+    if vol_values(vol_values'low) > freq or vol_values(vol_values'high) < freq then
+      vol_index := 0;
+    elsif vol_values(vol_values'high) > freq then
+      vol_index := vol_values'length-1;
+    end if;
     l_freq_range : for ii in 0 to vol_values'length-2 loop
         if vol_values(ii) < freq and vol_values(ii+1) > freq then
             vol_index := ii;
         end if;
     end loop l_freq_range;
+
     vol_mult := to_unsigned(vol_index,7) *  vol_gain(to_integer(unsigned(vol_gain_reg)));
     vol_mult := shift_right(vol_mult,1);
     vol_mult_temp := vol_mult(13 downto 7) + (6 downto 1 => '0') & vol_mult(6);
@@ -340,7 +346,7 @@ end process p_cmb;
   ------------------------------------------------------------------------------
 
 
-  count_meas : entity work.count_freq_meas
+  count_meas : entity work.count_freq_vol
        generic map (
      N        => N,  --Number of Bits of the frequency value
      sine_N   => sine_N

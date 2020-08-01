@@ -314,7 +314,7 @@ signal delay_count_cmb : natural range 0 to 1048576;
 
 constant min_freq_val      : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "110010000000";  -- corresponds to 100Hz
 constant cal_val        : unsigned(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "111100000000";  -- corresponds to 120Hz
-constant cal_stp        : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "001000000000";  -- corresponds to 16Hz (for simulation purposes)
+constant cal_stp        : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "000001000000";  -- corresponds to 2Hz 
 --constant cal_stp        : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "000001000000";  -- corresponds to 2Hz
 
 signal freq_diff_reg    : signed(freq_len-1 downto 0);
@@ -551,7 +551,7 @@ begin
         if reset_n = '0' then
             disp_index <= (others => '0');
         elsif rising_edge(clk) then
-            if mus_scale = '1' then
+            if mus_scale = '0' then
                 disp_index <= std_logic_vector(to_unsigned(gli_index_reg,6));
             else 
                 disp_index <= std_logic_vector(to_unsigned(gli_penta_index_reg,6));

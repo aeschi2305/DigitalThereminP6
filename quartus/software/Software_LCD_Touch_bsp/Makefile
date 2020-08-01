@@ -222,12 +222,12 @@ LT24_Controller_driver_SRCS_ROOT := drivers
 LT24_Controller_driver_C_LIB_SRCS := \
 	$(LT24_Controller_driver_SRCS_ROOT)/src/LT24_Controller.c
 
-# pitch_dummy_driver sources root 
-Pitch_dummy_driver_SRCS_ROOT := drivers
+# pitch_generation_top_driver sources root 
+Pitch_generation_top_driver_SRCS_ROOT := drivers
 
-# pitch_dummy_driver sources 
-Pitch_dummy_driver_C_LIB_SRCS := \
-	$(Pitch_dummy_driver_SRCS_ROOT)/src/Pitch_dummy.c
+# pitch_generation_top_driver sources 
+Pitch_generation_top_driver_C_LIB_SRCS := \
+	$(Pitch_generation_top_driver_SRCS_ROOT)/src/Pitch_generation_top.c
 
 # volume_dummy_driver sources root 
 Volume_dummy_driver_SRCS_ROOT := drivers
@@ -382,7 +382,7 @@ hal_C_LIB_SRCS := \
 COMPONENT_C_LIB_SRCS += \
 	$(Avalon_Audio_and_Video_driver_C_LIB_SRCS) \
 	$(LT24_Controller_driver_C_LIB_SRCS) \
-	$(Pitch_dummy_driver_C_LIB_SRCS) \
+	$(Pitch_generation_top_driver_C_LIB_SRCS) \
 	$(Volume_dummy_driver_C_LIB_SRCS) \
 	$(Volume_generation_top_driver_C_LIB_SRCS) \
 	$(altera_avalon_jtag_uart_driver_C_LIB_SRCS) \

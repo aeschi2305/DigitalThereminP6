@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'system'
  * SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
  *
- * Generated: Wed Jul 29 16:01:30 CEST 2020
+ * Generated: Thu Jul 30 15:20:00 CEST 2020
  */
 
 /*
@@ -150,7 +150,7 @@
 #define __ALTERA_NIOS2_GEN2
 #define __ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG
 #define __LT24_CONTROLLER
-#define __PITCH_DUMMY
+#define __PITCH_GENERATION_TOP
 #define __VOLUME_DUMMY
 #define __VOLUME_GENERATION_TOP
 
@@ -197,20 +197,6 @@
 
 
 /*
- * Pitch_dummy_0 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_Pitch_dummy_0 Pitch_dummy
-#define PITCH_DUMMY_0_BASE 0x8001060
-#define PITCH_DUMMY_0_IRQ -1
-#define PITCH_DUMMY_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define PITCH_DUMMY_0_NAME "/dev/Pitch_dummy_0"
-#define PITCH_DUMMY_0_SPAN 16
-#define PITCH_DUMMY_0_TYPE "Pitch_dummy"
-
-
-/*
  * System configuration
  *
  */
@@ -252,7 +238,7 @@
  */
 
 #define ALT_MODULE_CLASS_Volume_dummy_0 Volume_dummy
-#define VOLUME_DUMMY_0_BASE 0x8001050
+#define VOLUME_DUMMY_0_BASE 0x8001060
 #define VOLUME_DUMMY_0_IRQ -1
 #define VOLUME_DUMMY_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define VOLUME_DUMMY_0_NAME "/dev/Volume_dummy_0"
@@ -343,6 +329,20 @@
 
 
 /*
+ * pitch_generation_top_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pitch_generation_top_0 pitch_generation_top
+#define PITCH_GENERATION_TOP_0_BASE 0x8001050
+#define PITCH_GENERATION_TOP_0_IRQ -1
+#define PITCH_GENERATION_TOP_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PITCH_GENERATION_TOP_0_NAME "/dev/pitch_generation_top_0"
+#define PITCH_GENERATION_TOP_0_SPAN 16
+#define PITCH_GENERATION_TOP_0_TYPE "pitch_generation_top"
+
+
+/*
  * sysid configuration
  *
  */
@@ -354,7 +354,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1596031138
+#define SYSID_TIMESTAMP 1596114605
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 

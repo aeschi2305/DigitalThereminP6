@@ -23,8 +23,6 @@
 			lcd_controller_conduit_end_lt24_rs                    : out   std_logic;                                        -- lt24_rs
 			lcd_reset_n_external_connection_export                : out   std_logic;                                        -- export
 			led_cntrl_export                                      : out   std_logic;                                        -- export
-			led_delay_export                                      : out   std_logic;                                        -- export
-			led_gli_export                                        : out   std_logic;                                        -- export
 			pitch_generation_top_0_conduit_end_0_coe_square_freq  : in    std_logic                     := 'X';             -- coe_square_freq
 			pitch_generation_top_0_conduit_end_0_coe_freq_up_down : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- coe_freq_up_down
 			pitch_generation_top_0_conduit_end_0_coe_cal_glis     : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- coe_cal_glis

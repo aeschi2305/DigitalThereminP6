@@ -44,7 +44,7 @@ architecture rtl of freq_meas_pitch is
   -- Components        
   ---------------------------------------------------------------------------
 
-component count_freq_meas is
+component count_freq_pitch is
   generic (
     N : natural := 12;  --Number of Bits of the frequency value
     sine_N : natural:= 24;  --Number of Bits of the input sine wave
@@ -60,7 +60,7 @@ component count_freq_meas is
     enable_out  : out std_ulogic;
     freq_meas   : out std_ulogic
   );
-end component count_freq_meas;
+end component count_freq_pitch;
 
 component goldschmidt is
   generic (
@@ -150,9 +150,9 @@ end component CalGlis;
   signal freq_data_reg   : std_logic_vector(dat_len_avl-1 downto 0);
   signal delay_reg       : std_logic_vector(dat_len_avl-1 downto 0);
 
-  signal Cal_Glis_1 : std_logic_vector(1 downto 0);
-  signal Cal_Glis_2 : std_logic_vector(1 downto 0);
-  signal Cal_Glis_3 : std_logic_vector(1 downto 0);
+  --signal Cal_Glis_1 : std_logic_vector(1 downto 0);
+  --signal Cal_Glis_2 : std_logic_vector(1 downto 0);
+  --signal Cal_Glis_3 : std_logic_vector(1 downto 0);
 
   signal delay : integer range 0 to 9;
 
@@ -166,9 +166,9 @@ begin
      cntrl_reg <= (31 downto 3 => '0') & "100"; --default calibration off, glissando off, penattonic sclae on
      delay_reg <= (31 downto 3 => '0') & "010"; 
    elsif rising_edge(clk) then
-     Cal_Glis_1 <= Cal_Glis_enable;
-     Cal_Glis_2 <= Cal_Glis_1;
-     Cal_Glis_3 <= Cal_Glis_1 and not Cal_Glis_2;
+    --Cal_Glis_1 <= Cal_Glis_enable;
+    --Cal_Glis_2 <= Cal_Glis_1;
+    --Cal_Glis_3 <= Cal_Glis_1 and not Cal_Glis_2;
      if avs_write = '1' then
        case avs_address is
          when "00" => cntrl_reg <= avs_writedata;
@@ -180,11 +180,11 @@ begin
           cntrl_reg(1) <= '0';
         end if;
      end if;
-     if Cal_Glis_3(0) = '1' then
-       cntrl_reg(1) <= '1';
-     elsif Cal_Glis_3(1) = '1' then
-       cntrl_reg(0) <= not cntrl_reg(0);
-     end if;
+     --if Cal_Glis_3(0) = '1' then
+     --  cntrl_reg(1) <= '1';
+     --elsif Cal_Glis_3(1) = '1' then
+     --  cntrl_reg(0) <= not cntrl_reg(0);
+     --end if;
    end if;
  end process p_wr;
 
@@ -233,7 +233,7 @@ delay <= to_integer(unsigned(delay_reg));
   ------------------------------------------------------------------------------
 
 
-  count_meas : entity work.count_freq_meas
+  count_meas : entity work.count_freq_pitch
        generic map (
      N        => N,  --Number of Bits of the frequency value
      sine_N   => sine_N

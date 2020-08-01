@@ -35,8 +35,27 @@ void draw_main_screen(void)
  *--------------------------------------------------*/
 void draw_calibrating_screen(void)
 {
-	vid_print_string(80,50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibrating");
-	vid_print_string(150,100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"...");
+	alt_u8 cnt_point = 0;
+	vid_print_string(10,50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Bitte Hände platzieren");
+	usleep(2000000);
+	set_calibration_pitch();
+	set_calibration_vol_gen();
+	LCD_Clear(WHITE);
+
+	while(done_calibration_pitch()!= 2 && done_calibration_vol_gen()!= 2){
+		vid_print_string(80,50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibrating");
+		for(int i = 0; i < cnt_point; i++){
+			vid_print_string((150+i*10),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,".");
+		}
+		usleep(1000000);
+		cnt_point += 1;
+		if (cnt_point > 10){
+			cnt_point = 0;
+		}
+	}
+	LCD_Clear(WHITE);
+	draw_calibrating_screen_done();
+
 }
 
 void draw_calibrating_screen_done(void)
@@ -68,7 +87,7 @@ void draw_update_volume_bar(alt_u8 vol_bar)
 {
 	alt_u8 i;
 	LCD_DrawRect(55,195,115,310,GREY_SOFT);
-	for(i = 0; i < vol_bar; i++){
+	for(i = 0; i < vol_bar+1; i++){
 		LCD_DrawRect(60,(299-i*6-i*5),110,(299-i*6-i*5+6),GREEN);
 	}
 }

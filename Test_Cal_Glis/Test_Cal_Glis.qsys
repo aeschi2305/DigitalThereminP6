@@ -6,7 +6,7 @@
    version="1.0"
    description=""
    tags=""
-   categories="" />
+   categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
    element Test_Cal_Glis
@@ -72,6 +72,11 @@
          value = "2";
          type = "int";
       }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
    }
    element pll_0
    {
@@ -95,7 +100,7 @@
  <parameter name="hideFromIPCatalog" value="false" />
  <parameter name="lockedInterfaceDefinition" value="" />
  <parameter name="maxAdditionalLatency" value="1" />
- <parameter name="projectName" value="" />
+ <parameter name="projectName" value="Test_Cal_Glis.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="0" />
  <parameter name="testBenchDutName" value="" />
@@ -107,11 +112,7 @@
    internal="audio_serializer_0.conduit_end"
    type="conduit"
    dir="end" />
- <interface
-   name="cal_glis"
-   internal="pitch_generation_0.conduit_end_1"
-   type="conduit"
-   dir="end" />
+ <interface name="cal_glis" internal="pitch_generation_0.conduit_end_1" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface
    name="dacdat"
@@ -123,22 +124,14 @@
    internal="audio_serializer_0.conduit_end_1"
    type="conduit"
    dir="end" />
- <interface
-   name="freq_up_down"
-   internal="pitch_generation_0.conduit_end_0"
-   type="conduit"
-   dir="end" />
+ <interface name="freq_up_down" internal="pitch_generation_0.conduit_end_0" />
  <interface
    name="i2c"
    internal="audio_and_video_config_0.external_interface"
    type="conduit"
    dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
- <interface
-   name="square_freq"
-   internal="pitch_generation_0.conduit_end"
-   type="conduit"
-   dir="end" />
+ <interface name="square_freq" internal="pitch_generation_0.conduit_end" />
  <interface name="xck" internal="pll_0.outclk3" type="clock" dir="start" />
  <module
    name="audio_and_video_config_0"
@@ -195,12 +188,7 @@
    name="pitch_generation_0"
    kind="pitch_generation"
    version="1.0"
-   enabled="1">
-  <parameter name="cic1Bits" value="21" />
-  <parameter name="cic2Bits" value="25" />
-  <parameter name="cic3Bits" value="28" />
-  <parameter name="dat_len_avl" value="32" />
- </module>
+   enabled="1" />
  <module name="pll_0" kind="altera_pll" version="17.1" enabled="1">
   <parameter name="debug_print_output" value="false" />
   <parameter name="debug_use_rbc_taf_method" value="false" />

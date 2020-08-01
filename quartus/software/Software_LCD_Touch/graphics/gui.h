@@ -13,7 +13,8 @@
 #include <sys/alt_irq.h>
 #include "LT24_Controller.h"
 #include "simple_text.h"
-#include "pitch_dummy.h"
+//#include "pitch_dummy.h"
+#include "pitch_generation_top.h"
 
 
 

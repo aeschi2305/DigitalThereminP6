@@ -1,50 +1,54 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst system.touch_panel_pen_irq_n -pg 1 -lvl 4 -y 870
-preplace inst system.touch_panel_busy -pg 1 -lvl 4 -y 1110
+preplace inst system.touch_panel_pen_irq_n -pg 1 -lvl 4 -y 1180
+preplace inst system.touch_panel_busy -pg 1 -lvl 4 -y 1420
 preplace inst system.cpu.reset_bridge -pg 1
 preplace inst system.cpu.cpu -pg 1
-preplace inst system.jtag_uart -pg 1 -lvl 4 -y 590
-preplace inst system.touch_panel_spi -pg 1 -lvl 4 -y 990
-preplace inst system.cpu -pg 1 -lvl 3 -y 580
-preplace inst system.pll -pg 1 -lvl 2 -y 410
-preplace inst system.LCD_Reset_N -pg 1 -lvl 4 -y 1210
-preplace inst system.sysid -pg 1 -lvl 4 -y 690
-preplace inst system.LCD_Controller -pg 1 -lvl 4 -y 350
-preplace inst system.dram_ctrl -pg 1 -lvl 4 -y 470
-preplace inst system.audio_and_video_config_0 -pg 1 -lvl 4 -y 250
-preplace inst system.ton_generation_dummy_0 -pg 1 -lvl 3 -y 210
-preplace inst system.Volume_dummy_0 -pg 1 -lvl 4 -y 150
-preplace inst system.Pitch_dummy_0 -pg 1 -lvl 4 -y 30
+preplace inst system.pll_0 -pg 1 -lvl 2 -y 560
+preplace inst system.jtag_uart -pg 1 -lvl 4 -y 900
+preplace inst system.volume_generation_top_0 -pg 1 -lvl 4 -y 30
+preplace inst system.touch_panel_spi -pg 1 -lvl 4 -y 1300
+preplace inst system.cpu -pg 1 -lvl 3 -y 890
+preplace inst system.pll -pg 1 -lvl 2 -y 700
+preplace inst system.LCD_Reset_N -pg 1 -lvl 4 -y 1520
+preplace inst system.sysid -pg 1 -lvl 4 -y 1000
+preplace inst system.LCD_Controller -pg 1 -lvl 4 -y 670
+preplace inst system.dram_ctrl -pg 1 -lvl 4 -y 780
+preplace inst system.audio_and_video_config_0 -pg 1 -lvl 4 -y 550
+preplace inst system.ton_generation_dummy_0 -pg 1 -lvl 3 -y 400
+preplace inst system.Volume_dummy_0 -pg 1 -lvl 4 -y 450
+preplace inst system.Pitch_dummy_0 -pg 1 -lvl 4 -y 340
 preplace inst system -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst system.timer -pg 1 -lvl 4 -y 770
+preplace inst system.timer -pg 1 -lvl 4 -y 1080
+preplace inst system.pitch_generation_top_0 -pg 1 -lvl 4 -y 130
 preplace inst system.cpu.clock_bridge -pg 1
-preplace inst system.clk_0 -pg 1 -lvl 1 -y 420
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)ton_generation_dummy_0.conduit_end_1,(SLAVE)system.daclrck) 1 0 3 NJ 280 NJ 280 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)touch_panel_spi.external,(SLAVE)system.touch_panel_spi_external) 1 0 4 NJ 1020 NJ 1020 NJ 1020 NJ
+preplace inst system.clk_0 -pg 1 -lvl 1 -y 730
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)Volume_dummy_0.conduit_end_0,(SLAVE)system.led_cntrl) 1 0 4 NJ 550 NJ 550 NJ 530 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)ton_generation_dummy_0.conduit_end_1,(SLAVE)system.daclrck) 1 0 3 NJ 530 NJ 530 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.touch_panel_spi_external,(SLAVE)touch_panel_spi.external) 1 0 4 NJ 1330 NJ 1330 NJ 1330 NJ
 preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.lcd_controller_conduit_end,(SLAVE)LCD_Controller.conduit_end) 1 0 4 NJ 360 NJ 360 NJ 360 NJ
-preplace netloc FAN_OUT<net_container>system</net_container>(MASTER)clk_0.clk_reset,(SLAVE)pll.reset,(SLAVE)cpu.reset,(SLAVE)sysid.reset,(SLAVE)touch_panel_spi.reset,(SLAVE)Pitch_dummy_0.reset,(SLAVE)jtag_uart.reset,(SLAVE)timer.reset,(SLAVE)LCD_Reset_N.reset,(SLAVE)ton_generation_dummy_0.reset,(SLAVE)LCD_Controller.reset,(SLAVE)touch_panel_busy.reset,(SLAVE)audio_and_video_config_0.reset,(SLAVE)Volume_dummy_0.reset,(SLAVE)touch_panel_pen_irq_n.reset) 1 1 3 410 580 710 540 1170
-preplace netloc FAN_OUT<net_container>system</net_container>(MASTER)cpu.irq,(SLAVE)timer.irq,(SLAVE)jtag_uart.irq,(SLAVE)touch_panel_pen_irq_n.irq,(SLAVE)touch_panel_spi.irq) 1 3 1 1310
-preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)timer.clk,(SLAVE)sysid.clk,(SLAVE)Volume_dummy_0.clock,(SLAVE)dram_ctrl.clk,(SLAVE)Pitch_dummy_0.clock,(MASTER)pll.outclk0,(SLAVE)jtag_uart.clk,(SLAVE)cpu.clk) 1 2 2 670 460 1230
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)Pitch_dummy_0.conduit_end,(SLAVE)system.led_delay) 1 0 4 NJ 60 NJ 60 NJ 60 NJ
-preplace netloc POINT_TO_POINT<net_container>system</net_container>(SLAVE)ton_generation_dummy_0.clock,(MASTER)pll.outclk4) 1 2 1 590
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)audio_and_video_config_0.external_interface,(SLAVE)system.audio_and_video_config_0_external_interface) 1 0 4 NJ 340 NJ 340 NJ 340 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)dram_ctrl.wire,(SLAVE)system.dram_ctrl_wire) 1 0 4 NJ 600 NJ 600 NJ 500 NJ
-preplace netloc EXPORT<net_container>system</net_container>(MASTER)system.aud_xck,(MASTER)pll.outclk5) 1 2 3 NJ 520 NJ 580 NJ
-preplace netloc POINT_TO_POINT<net_container>system</net_container>(MASTER)cpu.debug_reset_request,(SLAVE)dram_ctrl.reset) 1 3 1 1210
-preplace netloc POINT_TO_POINT<net_container>system</net_container>(MASTER)pll.outclk3,(SLAVE)audio_and_video_config_0.clk) 1 2 2 NJ 420 1130
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)touch_panel_pen_irq_n.external_connection,(SLAVE)system.touch_panel_pen_irq_n_external_connection) 1 0 4 NJ 900 NJ 900 NJ 900 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)Pitch_dummy_0.conduit_end_0,(SLAVE)system.led_gli) 1 0 4 NJ 80 NJ 80 NJ 80 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.dacdat,(SLAVE)ton_generation_dummy_0.conduit_end_0) 1 0 3 NJ 560 NJ 560 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)clk_0.clk_in,(SLAVE)system.clk) 1 0 1 NJ
-preplace netloc INTERCONNECT<net_container>system</net_container>(SLAVE)touch_panel_pen_irq_n.s1,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)Pitch_dummy_0.sp,(SLAVE)dram_ctrl.s1,(SLAVE)timer.s1,(SLAVE)LCD_Controller.avalon_slave_0,(SLAVE)touch_panel_busy.s1,(MASTER)cpu.data_master,(SLAVE)LCD_Reset_N.s1,(SLAVE)Volume_dummy_0.sp,(SLAVE)audio_and_video_config_0.avalon_av_config_slave,(SLAVE)touch_panel_spi.spi_control_port,(SLAVE)sysid.control_slave,(SLAVE)cpu.debug_mem_slave,(MASTER)cpu.instruction_master) 1 2 2 730 480 1290
-preplace netloc EXPORT<net_container>system</net_container>(MASTER)pll.outclk2,(MASTER)system.sdram_clk) 1 2 3 NJ 400 NJ 460 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)Volume_dummy_0.conduit_end_0,(SLAVE)system.led_vol) 1 0 4 NJ 180 NJ 180 NJ 180 NJ
-preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)touch_panel_spi.clk,(MASTER)pll.outclk1,(SLAVE)touch_panel_pen_irq_n.clk,(SLAVE)LCD_Reset_N.clk,(SLAVE)touch_panel_busy.clk,(SLAVE)LCD_Controller.clock) 1 2 2 NJ 380 1110
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)LCD_Reset_N.external_connection,(SLAVE)system.lcd_reset_n_external_connection) 1 0 4 NJ 1240 NJ 1240 NJ 1240 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)ton_generation_dummy_0.conduit_end,(SLAVE)system.bclk) 1 0 3 NJ 240 NJ 240 NJ
-preplace netloc EXPORT<net_container>system</net_container>(SLAVE)touch_panel_busy.external_connection,(SLAVE)system.touch_panel_busy_external_connection) 1 0 4 NJ 1140 NJ 1140 NJ 1140 NJ
-preplace netloc POINT_TO_POINT<net_container>system</net_container>(MASTER)clk_0.clk,(SLAVE)pll.refclk) 1 1 1 430
-levelinfo -pg 1 0 200 1600
-levelinfo -hier system 210 240 460 850 1340 1510
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.lcd_controller_conduit_end,(SLAVE)LCD_Controller.conduit_end) 1 0 4 NJ 650 NJ 650 NJ 650 NJ
+preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)jtag_uart.reset,(SLAVE)LCD_Reset_N.reset,(SLAVE)volume_generation_top_0.reset,(SLAVE)touch_panel_spi.reset,(SLAVE)pll.reset,(SLAVE)touch_panel_busy.reset,(SLAVE)audio_and_video_config_0.reset,(SLAVE)pll_0.reset,(SLAVE)touch_panel_pen_irq_n.reset,(MASTER)clk_0.clk_reset,(SLAVE)sysid.reset,(SLAVE)LCD_Controller.reset,(SLAVE)cpu.reset,(SLAVE)ton_generation_dummy_0.reset,(SLAVE)Volume_dummy_0.reset,(SLAVE)pitch_generation_top_0.reset,(SLAVE)timer.reset) 1 1 3 410 850 710 670 1290
+preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)timer.clk,(SLAVE)dram_ctrl.clk,(SLAVE)Volume_dummy_0.clock,(MASTER)pll.outclk0,(SLAVE)cpu.clk,(SLAVE)sysid.clk,(SLAVE)jtag_uart.clk) 1 2 2 750 690 1190
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.pitch_generation_top_0_conduit_end_0,(SLAVE)pitch_generation_top_0.conduit_end_0) 1 0 4 NJ 160 NJ 160 NJ 160 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.audio_and_video_config_0_external_interface,(SLAVE)audio_and_video_config_0.external_interface) 1 0 4 NJ 630 NJ 630 NJ 600 NJ
+preplace netloc POINT_TO_POINT<net_container>system</net_container>(SLAVE)ton_generation_dummy_0.clock,(MASTER)pll.outclk4) 1 2 1 630
+preplace netloc EXPORT<net_container>system</net_container>(MASTER)system.sdram_clk,(MASTER)pll.outclk2) 1 2 3 NJ 630 NJ 660 NJ
+preplace netloc EXPORT<net_container>system</net_container>(MASTER)system.aud_xck,(MASTER)pll.outclk5) 1 2 3 NJ 810 NJ 890 NJ
+preplace netloc POINT_TO_POINT<net_container>system</net_container>(MASTER)cpu.debug_reset_request,(SLAVE)dram_ctrl.reset) 1 3 1 1170
+preplace netloc POINT_TO_POINT<net_container>system</net_container>(MASTER)pll.outclk3,(SLAVE)audio_and_video_config_0.clk) 1 2 2 NJ 730 1150
+preplace netloc FAN_OUT<net_container>system</net_container>(MASTER)pll.outclk1,(SLAVE)touch_panel_spi.clk,(SLAVE)touch_panel_busy.clk,(SLAVE)LCD_Reset_N.clk,(SLAVE)touch_panel_pen_irq_n.clk,(SLAVE)LCD_Controller.clock) 1 2 2 NJ 710 1230
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.dacdat,(SLAVE)ton_generation_dummy_0.conduit_end_0) 1 0 3 NJ 870 NJ 870 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.bclk,(SLAVE)ton_generation_dummy_0.conduit_end) 1 0 3 NJ 430 NJ 430 NJ
+preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)touch_panel_spi.irq,(MASTER)cpu.irq,(SLAVE)timer.irq,(SLAVE)jtag_uart.irq,(SLAVE)touch_panel_pen_irq_n.irq) 1 3 1 1330
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)volume_generation_top_0.conduit_end_0,(SLAVE)system.square_freq) 1 0 4 NJ 60 NJ 60 NJ 60 NJ
+preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)pitch_generation_top_0.clock,(MASTER)pll_0.outclk0,(SLAVE)volume_generation_top_0.clock) 1 2 2 NJ 550 1150
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.touch_panel_pen_irq_n_external_connection,(SLAVE)touch_panel_pen_irq_n.external_connection) 1 0 4 NJ 1210 NJ 1210 NJ 1210 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)LCD_Reset_N.external_connection,(SLAVE)system.lcd_reset_n_external_connection) 1 0 4 NJ 1550 NJ 1550 NJ 1550 NJ
+preplace netloc INTERCONNECT<net_container>system</net_container>(SLAVE)dram_ctrl.s1,(MASTER)cpu.instruction_master,(SLAVE)sysid.control_slave,(SLAVE)Volume_dummy_0.sp,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)LCD_Controller.avalon_slave_0,(SLAVE)touch_panel_pen_irq_n.s1,(SLAVE)LCD_Reset_N.s1,(SLAVE)touch_panel_busy.s1,(SLAVE)volume_generation_top_0.svg,(MASTER)cpu.data_master,(SLAVE)touch_panel_spi.spi_control_port,(SLAVE)pitch_generation_top_0.stg,(SLAVE)audio_and_video_config_0.avalon_av_config_slave,(SLAVE)cpu.debug_mem_slave,(SLAVE)timer.s1) 1 2 2 790 1050 1310
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)touch_panel_busy.external_connection,(SLAVE)system.touch_panel_busy_external_connection) 1 0 4 NJ 1450 NJ 1450 NJ 1450 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.dram_ctrl_wire,(SLAVE)dram_ctrl.wire) 1 0 4 NJ 1030 NJ 1030 NJ 1030 NJ
+preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)pll.refclk,(SLAVE)pll_0.refclk,(MASTER)clk_0.clk) 1 1 1 430
+levelinfo -pg 1 0 200 1640
+levelinfo -hier system 210 240 460 910 1380 1550

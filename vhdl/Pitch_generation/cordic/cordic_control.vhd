@@ -69,7 +69,7 @@ begin
             sig_Freq_reg <= sig_Freq_cmb;
             manual_freq_reg <= manual_freq_cmb;
 
-            freq_up_down_1 <= sig_freq_up_down;
+            --freq_up_down_1 <= sig_freq_up_down;
             freq_up_down_2 <= freq_up_down_1;
             freq_up_down_3 <= freq_up_down_1 and not freq_up_down_2;
         end if;
@@ -93,12 +93,10 @@ begin
 
     --Combinatorial process to calibrate Sine frequency
     p_cmb_sig_freq : process(all)
-    
     begin
         sig_Freq_cmb <= to_signed(cordic_def_freq,21) & "00000" + freq_dif + manual_freq_reg;
         
         if freq_up_down_3(1) = '1' then
-
             manual_freq_cmb <= manual_freq_reg + hundred;
         elsif freq_up_down_3(0) = '1' then
             manual_freq_cmb <= manual_freq_reg - hundred;

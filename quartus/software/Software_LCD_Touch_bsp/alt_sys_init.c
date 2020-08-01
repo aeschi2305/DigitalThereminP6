@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'system'
  * SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
  *
- * Generated: Tue Jul 28 15:37:23 CEST 2020
+ * Generated: Thu Jul 30 13:22:08 CEST 2020
  */
 
 /*
@@ -60,13 +60,13 @@
 
 #include "altera_nios2_gen2_irq.h"
 #include "LT24_Controller.h"
-#include "Pitch_dummy.h"
 #include "Volume_dummy.h"
 #include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_spi.h"
 #include "altera_avalon_sysid_qsys.h"
 #include "altera_avalon_timer.h"
 #include "altera_up_avalon_audio_and_video_config.h"
+#include "pitch_generation_top.h"
 #include "volume_generation_top.h"
 
 /*
@@ -80,7 +80,7 @@ ALTERA_AVALON_SYSID_QSYS_INSTANCE ( SYSID, sysid);
 ALTERA_AVALON_TIMER_INSTANCE ( TIMER, timer);
 ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG_INSTANCE ( AUDIO_AND_VIDEO_CONFIG_0, audio_and_video_config_0);
 LT24_CONTROLLER_INSTANCE ( LCD_CONTROLLER, LCD_Controller);
-PITCH_DUMMY_INSTANCE ( PITCH_DUMMY_0, Pitch_dummy_0);
+PITCH_GENERATION_TOP_INSTANCE ( PITCH_GENERATION_TOP_0, pitch_generation_top_0);
 VOLUME_DUMMY_INSTANCE ( VOLUME_DUMMY_0, Volume_dummy_0);
 VOLUME_GENERATION_TOP_INSTANCE ( VOLUME_GENERATION_TOP_0, volume_generation_top_0);
 
@@ -111,7 +111,7 @@ void alt_sys_init( void )
     ALTERA_AVALON_SYSID_QSYS_INIT ( SYSID, sysid);
     ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG_INIT ( AUDIO_AND_VIDEO_CONFIG_0, audio_and_video_config_0);
     LT24_CONTROLLER_INIT ( LCD_CONTROLLER, LCD_Controller);
-    PITCH_DUMMY_INIT ( PITCH_DUMMY_0, Pitch_dummy_0);
+    PITCH_GENERATION_TOP_INIT ( PITCH_GENERATION_TOP_0, pitch_generation_top_0);
     VOLUME_DUMMY_INIT ( VOLUME_DUMMY_0, Volume_dummy_0);
     VOLUME_GENERATION_TOP_INIT ( VOLUME_GENERATION_TOP_0, volume_generation_top_0);
 }

@@ -211,7 +211,7 @@ architecture rtl of digital_theremin is
 		);
 	end component digital_theremin_dram_cntrl;
 
-	component digital_theremin_epcq_controller_0 is
+	component digital_theremin_epcs_cntl is
 		generic (
 			DEVICE_FAMILY     : string  := "";
 			ASI_WIDTH         : integer := 1;
@@ -242,7 +242,7 @@ architecture rtl of digital_theremin is
 			avl_mem_byteenable   : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
 			irq                  : out std_logic                                         -- irq
 		);
-	end component digital_theremin_epcq_controller_0;
+	end component digital_theremin_epcs_cntl;
 
 	component digital_theremin_jtag is
 		port (
@@ -399,7 +399,7 @@ architecture rtl of digital_theremin is
 			audio_and_video_config_0_reset_reset_bridge_in_reset_reset  : in  std_logic                     := 'X';             -- reset
 			cpu_reset_reset_bridge_in_reset_reset                       : in  std_logic                     := 'X';             -- reset
 			dram_cntrl_reset_reset_bridge_in_reset_reset                : in  std_logic                     := 'X';             -- reset
-			epcq_controller_0_reset_reset_bridge_in_reset_reset         : in  std_logic                     := 'X';             -- reset
+			epcs_cntl_reset_reset_bridge_in_reset_reset                 : in  std_logic                     := 'X';             -- reset
 			LCD_Controller_reset_reset_bridge_in_reset_reset            : in  std_logic                     := 'X';             -- reset
 			pitch_generation_0_reset_reset_bridge_in_reset_reset        : in  std_logic                     := 'X';             -- reset
 			cpu_data_master_address                                     : in  std_logic_vector(27 downto 0) := (others => 'X'); -- address
@@ -440,22 +440,22 @@ architecture rtl of digital_theremin is
 			dram_cntrl_s1_readdatavalid                                 : in  std_logic                     := 'X';             -- readdatavalid
 			dram_cntrl_s1_waitrequest                                   : in  std_logic                     := 'X';             -- waitrequest
 			dram_cntrl_s1_chipselect                                    : out std_logic;                                        -- chipselect
-			epcq_controller_0_avl_csr_address                           : out std_logic_vector(2 downto 0);                     -- address
-			epcq_controller_0_avl_csr_write                             : out std_logic;                                        -- write
-			epcq_controller_0_avl_csr_read                              : out std_logic;                                        -- read
-			epcq_controller_0_avl_csr_readdata                          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			epcq_controller_0_avl_csr_writedata                         : out std_logic_vector(31 downto 0);                    -- writedata
-			epcq_controller_0_avl_csr_readdatavalid                     : in  std_logic                     := 'X';             -- readdatavalid
-			epcq_controller_0_avl_csr_waitrequest                       : in  std_logic                     := 'X';             -- waitrequest
-			epcq_controller_0_avl_mem_address                           : out std_logic_vector(21 downto 0);                    -- address
-			epcq_controller_0_avl_mem_write                             : out std_logic;                                        -- write
-			epcq_controller_0_avl_mem_read                              : out std_logic;                                        -- read
-			epcq_controller_0_avl_mem_readdata                          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			epcq_controller_0_avl_mem_writedata                         : out std_logic_vector(31 downto 0);                    -- writedata
-			epcq_controller_0_avl_mem_burstcount                        : out std_logic_vector(6 downto 0);                     -- burstcount
-			epcq_controller_0_avl_mem_byteenable                        : out std_logic_vector(3 downto 0);                     -- byteenable
-			epcq_controller_0_avl_mem_readdatavalid                     : in  std_logic                     := 'X';             -- readdatavalid
-			epcq_controller_0_avl_mem_waitrequest                       : in  std_logic                     := 'X';             -- waitrequest
+			epcs_cntl_avl_csr_address                                   : out std_logic_vector(2 downto 0);                     -- address
+			epcs_cntl_avl_csr_write                                     : out std_logic;                                        -- write
+			epcs_cntl_avl_csr_read                                      : out std_logic;                                        -- read
+			epcs_cntl_avl_csr_readdata                                  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			epcs_cntl_avl_csr_writedata                                 : out std_logic_vector(31 downto 0);                    -- writedata
+			epcs_cntl_avl_csr_readdatavalid                             : in  std_logic                     := 'X';             -- readdatavalid
+			epcs_cntl_avl_csr_waitrequest                               : in  std_logic                     := 'X';             -- waitrequest
+			epcs_cntl_avl_mem_address                                   : out std_logic_vector(21 downto 0);                    -- address
+			epcs_cntl_avl_mem_write                                     : out std_logic;                                        -- write
+			epcs_cntl_avl_mem_read                                      : out std_logic;                                        -- read
+			epcs_cntl_avl_mem_readdata                                  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			epcs_cntl_avl_mem_writedata                                 : out std_logic_vector(31 downto 0);                    -- writedata
+			epcs_cntl_avl_mem_burstcount                                : out std_logic_vector(6 downto 0);                     -- burstcount
+			epcs_cntl_avl_mem_byteenable                                : out std_logic_vector(3 downto 0);                     -- byteenable
+			epcs_cntl_avl_mem_readdatavalid                             : in  std_logic                     := 'X';             -- readdatavalid
+			epcs_cntl_avl_mem_waitrequest                               : in  std_logic                     := 'X';             -- waitrequest
 			jtag_avalon_jtag_slave_address                              : out std_logic_vector(0 downto 0);                     -- address
 			jtag_avalon_jtag_slave_write                                : out std_logic;                                        -- write
 			jtag_avalon_jtag_slave_read                                 : out std_logic;                                        -- read
@@ -673,7 +673,7 @@ architecture rtl of digital_theremin is
 	signal pll_cpu_outclk1_clk                                                           : std_logic;                     -- pll_cpu:outclk_1 -> [LCD_Controller:clk, LCD_reset_n:clk, irq_synchronizer_001:receiver_clk, irq_synchronizer_002:receiver_clk, mm_interconnect_0:pll_cpu_outclk1_clk, rst_controller:clk, touch_panel_busy:clk, touch_panel_pen_irq_n:clk, touch_panel_spi:clk]
 	signal pll_sig_proc_outclk1_clk                                                      : std_logic;                     -- pll_sig_proc:outclk_1 -> [audio_serializer_0:clk, dc_fifo_0:out_clk, rst_controller_002:clk]
 	signal pll_sig_proc_outclk2_clk                                                      : std_logic;                     -- pll_sig_proc:outclk_2 -> [audio_and_video_config_0:clk, mm_interconnect_0:pll_sig_proc_outclk2_clk, rst_controller_001:clk]
-	signal pll_cpu_outclk3_clk                                                           : std_logic;                     -- pll_cpu:outclk_3 -> [epcq_controller_0:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:pll_cpu_outclk3_clk, rst_controller_005:clk]
+	signal pll_cpu_outclk3_clk                                                           : std_logic;                     -- pll_cpu:outclk_3 -> [epcs_cntl:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:pll_cpu_outclk3_clk, rst_controller_005:clk]
 	signal cpu_debug_reset_request_reset                                                 : std_logic;                     -- cpu:debug_reset_request -> [cpu_debug_reset_request_reset:in, mm_interconnect_0:dram_cntrl_reset_reset_bridge_in_reset_reset]
 	signal cpu_data_master_readdata                                                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:cpu_data_master_readdata -> cpu:d_readdata
 	signal cpu_data_master_waitrequest                                                   : std_logic;                     -- mm_interconnect_0:cpu_data_master_waitrequest -> cpu:d_waitrequest
@@ -707,22 +707,22 @@ architecture rtl of digital_theremin is
 	signal mm_interconnect_0_lcd_controller_avalon_slave_0_address                       : std_logic_vector(0 downto 0);  -- mm_interconnect_0:LCD_Controller_avalon_slave_0_address -> LCD_Controller:s_address
 	signal mm_interconnect_0_lcd_controller_avalon_slave_0_write                         : std_logic;                     -- mm_interconnect_0:LCD_Controller_avalon_slave_0_write -> mm_interconnect_0_lcd_controller_avalon_slave_0_write:in
 	signal mm_interconnect_0_lcd_controller_avalon_slave_0_writedata                     : std_logic_vector(31 downto 0); -- mm_interconnect_0:LCD_Controller_avalon_slave_0_writedata -> LCD_Controller:s_writedata
-	signal mm_interconnect_0_epcq_controller_0_avl_csr_readdata                          : std_logic_vector(31 downto 0); -- epcq_controller_0:avl_csr_rddata -> mm_interconnect_0:epcq_controller_0_avl_csr_readdata
-	signal mm_interconnect_0_epcq_controller_0_avl_csr_waitrequest                       : std_logic;                     -- epcq_controller_0:avl_csr_waitrequest -> mm_interconnect_0:epcq_controller_0_avl_csr_waitrequest
-	signal mm_interconnect_0_epcq_controller_0_avl_csr_address                           : std_logic_vector(2 downto 0);  -- mm_interconnect_0:epcq_controller_0_avl_csr_address -> epcq_controller_0:avl_csr_addr
-	signal mm_interconnect_0_epcq_controller_0_avl_csr_read                              : std_logic;                     -- mm_interconnect_0:epcq_controller_0_avl_csr_read -> epcq_controller_0:avl_csr_read
-	signal mm_interconnect_0_epcq_controller_0_avl_csr_readdatavalid                     : std_logic;                     -- epcq_controller_0:avl_csr_rddata_valid -> mm_interconnect_0:epcq_controller_0_avl_csr_readdatavalid
-	signal mm_interconnect_0_epcq_controller_0_avl_csr_write                             : std_logic;                     -- mm_interconnect_0:epcq_controller_0_avl_csr_write -> epcq_controller_0:avl_csr_write
-	signal mm_interconnect_0_epcq_controller_0_avl_csr_writedata                         : std_logic_vector(31 downto 0); -- mm_interconnect_0:epcq_controller_0_avl_csr_writedata -> epcq_controller_0:avl_csr_wrdata
-	signal mm_interconnect_0_epcq_controller_0_avl_mem_readdata                          : std_logic_vector(31 downto 0); -- epcq_controller_0:avl_mem_rddata -> mm_interconnect_0:epcq_controller_0_avl_mem_readdata
-	signal mm_interconnect_0_epcq_controller_0_avl_mem_waitrequest                       : std_logic;                     -- epcq_controller_0:avl_mem_waitrequest -> mm_interconnect_0:epcq_controller_0_avl_mem_waitrequest
-	signal mm_interconnect_0_epcq_controller_0_avl_mem_address                           : std_logic_vector(21 downto 0); -- mm_interconnect_0:epcq_controller_0_avl_mem_address -> epcq_controller_0:avl_mem_addr
-	signal mm_interconnect_0_epcq_controller_0_avl_mem_read                              : std_logic;                     -- mm_interconnect_0:epcq_controller_0_avl_mem_read -> epcq_controller_0:avl_mem_read
-	signal mm_interconnect_0_epcq_controller_0_avl_mem_byteenable                        : std_logic_vector(3 downto 0);  -- mm_interconnect_0:epcq_controller_0_avl_mem_byteenable -> epcq_controller_0:avl_mem_byteenable
-	signal mm_interconnect_0_epcq_controller_0_avl_mem_readdatavalid                     : std_logic;                     -- epcq_controller_0:avl_mem_rddata_valid -> mm_interconnect_0:epcq_controller_0_avl_mem_readdatavalid
-	signal mm_interconnect_0_epcq_controller_0_avl_mem_write                             : std_logic;                     -- mm_interconnect_0:epcq_controller_0_avl_mem_write -> epcq_controller_0:avl_mem_write
-	signal mm_interconnect_0_epcq_controller_0_avl_mem_writedata                         : std_logic_vector(31 downto 0); -- mm_interconnect_0:epcq_controller_0_avl_mem_writedata -> epcq_controller_0:avl_mem_wrdata
-	signal mm_interconnect_0_epcq_controller_0_avl_mem_burstcount                        : std_logic_vector(6 downto 0);  -- mm_interconnect_0:epcq_controller_0_avl_mem_burstcount -> epcq_controller_0:avl_mem_burstcount
+	signal mm_interconnect_0_epcs_cntl_avl_csr_readdata                                  : std_logic_vector(31 downto 0); -- epcs_cntl:avl_csr_rddata -> mm_interconnect_0:epcs_cntl_avl_csr_readdata
+	signal mm_interconnect_0_epcs_cntl_avl_csr_waitrequest                               : std_logic;                     -- epcs_cntl:avl_csr_waitrequest -> mm_interconnect_0:epcs_cntl_avl_csr_waitrequest
+	signal mm_interconnect_0_epcs_cntl_avl_csr_address                                   : std_logic_vector(2 downto 0);  -- mm_interconnect_0:epcs_cntl_avl_csr_address -> epcs_cntl:avl_csr_addr
+	signal mm_interconnect_0_epcs_cntl_avl_csr_read                                      : std_logic;                     -- mm_interconnect_0:epcs_cntl_avl_csr_read -> epcs_cntl:avl_csr_read
+	signal mm_interconnect_0_epcs_cntl_avl_csr_readdatavalid                             : std_logic;                     -- epcs_cntl:avl_csr_rddata_valid -> mm_interconnect_0:epcs_cntl_avl_csr_readdatavalid
+	signal mm_interconnect_0_epcs_cntl_avl_csr_write                                     : std_logic;                     -- mm_interconnect_0:epcs_cntl_avl_csr_write -> epcs_cntl:avl_csr_write
+	signal mm_interconnect_0_epcs_cntl_avl_csr_writedata                                 : std_logic_vector(31 downto 0); -- mm_interconnect_0:epcs_cntl_avl_csr_writedata -> epcs_cntl:avl_csr_wrdata
+	signal mm_interconnect_0_epcs_cntl_avl_mem_readdata                                  : std_logic_vector(31 downto 0); -- epcs_cntl:avl_mem_rddata -> mm_interconnect_0:epcs_cntl_avl_mem_readdata
+	signal mm_interconnect_0_epcs_cntl_avl_mem_waitrequest                               : std_logic;                     -- epcs_cntl:avl_mem_waitrequest -> mm_interconnect_0:epcs_cntl_avl_mem_waitrequest
+	signal mm_interconnect_0_epcs_cntl_avl_mem_address                                   : std_logic_vector(21 downto 0); -- mm_interconnect_0:epcs_cntl_avl_mem_address -> epcs_cntl:avl_mem_addr
+	signal mm_interconnect_0_epcs_cntl_avl_mem_read                                      : std_logic;                     -- mm_interconnect_0:epcs_cntl_avl_mem_read -> epcs_cntl:avl_mem_read
+	signal mm_interconnect_0_epcs_cntl_avl_mem_byteenable                                : std_logic_vector(3 downto 0);  -- mm_interconnect_0:epcs_cntl_avl_mem_byteenable -> epcs_cntl:avl_mem_byteenable
+	signal mm_interconnect_0_epcs_cntl_avl_mem_readdatavalid                             : std_logic;                     -- epcs_cntl:avl_mem_rddata_valid -> mm_interconnect_0:epcs_cntl_avl_mem_readdatavalid
+	signal mm_interconnect_0_epcs_cntl_avl_mem_write                                     : std_logic;                     -- mm_interconnect_0:epcs_cntl_avl_mem_write -> epcs_cntl:avl_mem_write
+	signal mm_interconnect_0_epcs_cntl_avl_mem_writedata                                 : std_logic_vector(31 downto 0); -- mm_interconnect_0:epcs_cntl_avl_mem_writedata -> epcs_cntl:avl_mem_wrdata
+	signal mm_interconnect_0_epcs_cntl_avl_mem_burstcount                                : std_logic_vector(6 downto 0);  -- mm_interconnect_0:epcs_cntl_avl_mem_burstcount -> epcs_cntl:avl_mem_burstcount
 	signal mm_interconnect_0_sysid_control_slave_readdata                                : std_logic_vector(31 downto 0); -- sysid:readdata -> mm_interconnect_0:sysid_control_slave_readdata
 	signal mm_interconnect_0_sysid_control_slave_address                                 : std_logic_vector(0 downto 0);  -- mm_interconnect_0:sysid_control_slave_address -> sysid:address
 	signal mm_interconnect_0_cpu_debug_mem_slave_readdata                                : std_logic_vector(31 downto 0); -- cpu:debug_mem_slave_readdata -> mm_interconnect_0:cpu_debug_mem_slave_readdata
@@ -777,7 +777,7 @@ architecture rtl of digital_theremin is
 	signal irq_mapper_receiver2_irq                                                      : std_logic;                     -- timer:irq -> irq_mapper:receiver2_irq
 	signal cpu_irq_irq                                                                   : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> cpu:irq
 	signal irq_mapper_receiver0_irq                                                      : std_logic;                     -- irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
-	signal irq_synchronizer_receiver_irq                                                 : std_logic_vector(0 downto 0);  -- epcq_controller_0:irq -> irq_synchronizer:receiver_irq
+	signal irq_synchronizer_receiver_irq                                                 : std_logic_vector(0 downto 0);  -- epcs_cntl:irq -> irq_synchronizer:receiver_irq
 	signal irq_mapper_receiver3_irq                                                      : std_logic;                     -- irq_synchronizer_001:sender_irq -> irq_mapper:receiver3_irq
 	signal irq_synchronizer_001_receiver_irq                                             : std_logic_vector(0 downto 0);  -- touch_panel_pen_irq_n:irq -> irq_synchronizer_001:receiver_irq
 	signal irq_mapper_receiver4_irq                                                      : std_logic;                     -- irq_synchronizer_002:sender_irq -> irq_mapper:receiver4_irq
@@ -788,7 +788,7 @@ architecture rtl of digital_theremin is
 	signal rst_controller_003_reset_out_reset                                            : std_logic;                     -- rst_controller_003:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, irq_synchronizer_002:sender_reset, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_controller_003_reset_out_reset:in, rst_translator:in_reset]
 	signal rst_controller_003_reset_out_reset_req                                        : std_logic;                     -- rst_controller_003:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
 	signal rst_controller_004_reset_out_reset                                            : std_logic;                     -- rst_controller_004:reset_out -> [mm_interconnect_0:pitch_generation_0_reset_reset_bridge_in_reset_reset, rst_controller_004_reset_out_reset:in]
-	signal rst_controller_005_reset_out_reset                                            : std_logic;                     -- rst_controller_005:reset_out -> [irq_synchronizer:receiver_reset, mm_interconnect_0:epcq_controller_0_reset_reset_bridge_in_reset_reset, rst_controller_005_reset_out_reset:in]
+	signal rst_controller_005_reset_out_reset                                            : std_logic;                     -- rst_controller_005:reset_out -> [irq_synchronizer:receiver_reset, mm_interconnect_0:epcs_cntl_reset_reset_bridge_in_reset_reset, rst_controller_005_reset_out_reset:in]
 	signal reset_reset_n_ports_inv                                                       : std_logic;                     -- reset_reset_n:inv -> [pll_cpu:rst, pll_sig_proc:rst, rst_controller:reset_in0, rst_controller_001:reset_in0, rst_controller_002:reset_in0, rst_controller_003:reset_in0, rst_controller_004:reset_in0, rst_controller_005:reset_in0]
 	signal cpu_debug_reset_request_reset_ports_inv                                       : std_logic;                     -- cpu_debug_reset_request_reset:inv -> dram_cntrl:reset_n
 	signal mm_interconnect_0_jtag_avalon_jtag_slave_read_ports_inv                       : std_logic;                     -- mm_interconnect_0_jtag_avalon_jtag_slave_read:inv -> jtag:av_read_n
@@ -807,7 +807,7 @@ architecture rtl of digital_theremin is
 	signal rst_controller_002_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> [audio_serializer_0:reset_n, dc_fifo_0:out_reset_n]
 	signal rst_controller_003_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_003_reset_out_reset:inv -> [cpu:reset_n, jtag:rst_n, sysid:reset_n, timer:reset_n]
 	signal rst_controller_004_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_004_reset_out_reset:inv -> [dc_fifo_0:in_reset_n, pitch_generation_0:rsi_reset_n, volume_generation_0:rsi_reset_n]
-	signal rst_controller_005_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_005_reset_out_reset:inv -> epcq_controller_0:reset_n
+	signal rst_controller_005_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_005_reset_out_reset:inv -> epcs_cntl:reset_n
 
 begin
 
@@ -968,7 +968,7 @@ begin
 			zs_we_n        => dram_cntrl_wire_we_n                                  --      .export
 		);
 
-	epcq_controller_0 : component digital_theremin_epcq_controller_0
+	epcs_cntl : component digital_theremin_epcs_cntl
 		generic map (
 			DEVICE_FAMILY     => "Cyclone V",
 			ASI_WIDTH         => 1,
@@ -979,25 +979,25 @@ begin
 			CHIP_SELS         => 1
 		)
 		port map (
-			clk                  => pll_cpu_outclk3_clk,                                       --       clock_sink.clk
-			reset_n              => rst_controller_005_reset_out_reset_ports_inv,              --            reset.reset_n
-			avl_csr_read         => mm_interconnect_0_epcq_controller_0_avl_csr_read,          --          avl_csr.read
-			avl_csr_waitrequest  => mm_interconnect_0_epcq_controller_0_avl_csr_waitrequest,   --                 .waitrequest
-			avl_csr_write        => mm_interconnect_0_epcq_controller_0_avl_csr_write,         --                 .write
-			avl_csr_addr         => mm_interconnect_0_epcq_controller_0_avl_csr_address,       --                 .address
-			avl_csr_wrdata       => mm_interconnect_0_epcq_controller_0_avl_csr_writedata,     --                 .writedata
-			avl_csr_rddata       => mm_interconnect_0_epcq_controller_0_avl_csr_readdata,      --                 .readdata
-			avl_csr_rddata_valid => mm_interconnect_0_epcq_controller_0_avl_csr_readdatavalid, --                 .readdatavalid
-			avl_mem_write        => mm_interconnect_0_epcq_controller_0_avl_mem_write,         --          avl_mem.write
-			avl_mem_burstcount   => mm_interconnect_0_epcq_controller_0_avl_mem_burstcount,    --                 .burstcount
-			avl_mem_waitrequest  => mm_interconnect_0_epcq_controller_0_avl_mem_waitrequest,   --                 .waitrequest
-			avl_mem_read         => mm_interconnect_0_epcq_controller_0_avl_mem_read,          --                 .read
-			avl_mem_addr         => mm_interconnect_0_epcq_controller_0_avl_mem_address,       --                 .address
-			avl_mem_wrdata       => mm_interconnect_0_epcq_controller_0_avl_mem_writedata,     --                 .writedata
-			avl_mem_rddata       => mm_interconnect_0_epcq_controller_0_avl_mem_readdata,      --                 .readdata
-			avl_mem_rddata_valid => mm_interconnect_0_epcq_controller_0_avl_mem_readdatavalid, --                 .readdatavalid
-			avl_mem_byteenable   => mm_interconnect_0_epcq_controller_0_avl_mem_byteenable,    --                 .byteenable
-			irq                  => irq_synchronizer_receiver_irq(0)                           -- interrupt_sender.irq
+			clk                  => pll_cpu_outclk3_clk,                               --       clock_sink.clk
+			reset_n              => rst_controller_005_reset_out_reset_ports_inv,      --            reset.reset_n
+			avl_csr_read         => mm_interconnect_0_epcs_cntl_avl_csr_read,          --          avl_csr.read
+			avl_csr_waitrequest  => mm_interconnect_0_epcs_cntl_avl_csr_waitrequest,   --                 .waitrequest
+			avl_csr_write        => mm_interconnect_0_epcs_cntl_avl_csr_write,         --                 .write
+			avl_csr_addr         => mm_interconnect_0_epcs_cntl_avl_csr_address,       --                 .address
+			avl_csr_wrdata       => mm_interconnect_0_epcs_cntl_avl_csr_writedata,     --                 .writedata
+			avl_csr_rddata       => mm_interconnect_0_epcs_cntl_avl_csr_readdata,      --                 .readdata
+			avl_csr_rddata_valid => mm_interconnect_0_epcs_cntl_avl_csr_readdatavalid, --                 .readdatavalid
+			avl_mem_write        => mm_interconnect_0_epcs_cntl_avl_mem_write,         --          avl_mem.write
+			avl_mem_burstcount   => mm_interconnect_0_epcs_cntl_avl_mem_burstcount,    --                 .burstcount
+			avl_mem_waitrequest  => mm_interconnect_0_epcs_cntl_avl_mem_waitrequest,   --                 .waitrequest
+			avl_mem_read         => mm_interconnect_0_epcs_cntl_avl_mem_read,          --                 .read
+			avl_mem_addr         => mm_interconnect_0_epcs_cntl_avl_mem_address,       --                 .address
+			avl_mem_wrdata       => mm_interconnect_0_epcs_cntl_avl_mem_writedata,     --                 .writedata
+			avl_mem_rddata       => mm_interconnect_0_epcs_cntl_avl_mem_readdata,      --                 .readdata
+			avl_mem_rddata_valid => mm_interconnect_0_epcs_cntl_avl_mem_readdatavalid, --                 .readdatavalid
+			avl_mem_byteenable   => mm_interconnect_0_epcs_cntl_avl_mem_byteenable,    --                 .byteenable
+			irq                  => irq_synchronizer_receiver_irq(0)                   -- interrupt_sender.irq
 		);
 
 	jtag : component digital_theremin_jtag
@@ -1145,7 +1145,7 @@ begin
 			audio_and_video_config_0_reset_reset_bridge_in_reset_reset  => rst_controller_001_reset_out_reset,                                            -- audio_and_video_config_0_reset_reset_bridge_in_reset.reset
 			cpu_reset_reset_bridge_in_reset_reset                       => rst_controller_003_reset_out_reset,                                            --                      cpu_reset_reset_bridge_in_reset.reset
 			dram_cntrl_reset_reset_bridge_in_reset_reset                => cpu_debug_reset_request_reset,                                                 --               dram_cntrl_reset_reset_bridge_in_reset.reset
-			epcq_controller_0_reset_reset_bridge_in_reset_reset         => rst_controller_005_reset_out_reset,                                            --        epcq_controller_0_reset_reset_bridge_in_reset.reset
+			epcs_cntl_reset_reset_bridge_in_reset_reset                 => rst_controller_005_reset_out_reset,                                            --                epcs_cntl_reset_reset_bridge_in_reset.reset
 			LCD_Controller_reset_reset_bridge_in_reset_reset            => rst_controller_reset_out_reset,                                                --           LCD_Controller_reset_reset_bridge_in_reset.reset
 			pitch_generation_0_reset_reset_bridge_in_reset_reset        => rst_controller_004_reset_out_reset,                                            --       pitch_generation_0_reset_reset_bridge_in_reset.reset
 			cpu_data_master_address                                     => cpu_data_master_address,                                                       --                                      cpu_data_master.address
@@ -1186,22 +1186,22 @@ begin
 			dram_cntrl_s1_readdatavalid                                 => mm_interconnect_0_dram_cntrl_s1_readdatavalid,                                 --                                                     .readdatavalid
 			dram_cntrl_s1_waitrequest                                   => mm_interconnect_0_dram_cntrl_s1_waitrequest,                                   --                                                     .waitrequest
 			dram_cntrl_s1_chipselect                                    => mm_interconnect_0_dram_cntrl_s1_chipselect,                                    --                                                     .chipselect
-			epcq_controller_0_avl_csr_address                           => mm_interconnect_0_epcq_controller_0_avl_csr_address,                           --                            epcq_controller_0_avl_csr.address
-			epcq_controller_0_avl_csr_write                             => mm_interconnect_0_epcq_controller_0_avl_csr_write,                             --                                                     .write
-			epcq_controller_0_avl_csr_read                              => mm_interconnect_0_epcq_controller_0_avl_csr_read,                              --                                                     .read
-			epcq_controller_0_avl_csr_readdata                          => mm_interconnect_0_epcq_controller_0_avl_csr_readdata,                          --                                                     .readdata
-			epcq_controller_0_avl_csr_writedata                         => mm_interconnect_0_epcq_controller_0_avl_csr_writedata,                         --                                                     .writedata
-			epcq_controller_0_avl_csr_readdatavalid                     => mm_interconnect_0_epcq_controller_0_avl_csr_readdatavalid,                     --                                                     .readdatavalid
-			epcq_controller_0_avl_csr_waitrequest                       => mm_interconnect_0_epcq_controller_0_avl_csr_waitrequest,                       --                                                     .waitrequest
-			epcq_controller_0_avl_mem_address                           => mm_interconnect_0_epcq_controller_0_avl_mem_address,                           --                            epcq_controller_0_avl_mem.address
-			epcq_controller_0_avl_mem_write                             => mm_interconnect_0_epcq_controller_0_avl_mem_write,                             --                                                     .write
-			epcq_controller_0_avl_mem_read                              => mm_interconnect_0_epcq_controller_0_avl_mem_read,                              --                                                     .read
-			epcq_controller_0_avl_mem_readdata                          => mm_interconnect_0_epcq_controller_0_avl_mem_readdata,                          --                                                     .readdata
-			epcq_controller_0_avl_mem_writedata                         => mm_interconnect_0_epcq_controller_0_avl_mem_writedata,                         --                                                     .writedata
-			epcq_controller_0_avl_mem_burstcount                        => mm_interconnect_0_epcq_controller_0_avl_mem_burstcount,                        --                                                     .burstcount
-			epcq_controller_0_avl_mem_byteenable                        => mm_interconnect_0_epcq_controller_0_avl_mem_byteenable,                        --                                                     .byteenable
-			epcq_controller_0_avl_mem_readdatavalid                     => mm_interconnect_0_epcq_controller_0_avl_mem_readdatavalid,                     --                                                     .readdatavalid
-			epcq_controller_0_avl_mem_waitrequest                       => mm_interconnect_0_epcq_controller_0_avl_mem_waitrequest,                       --                                                     .waitrequest
+			epcs_cntl_avl_csr_address                                   => mm_interconnect_0_epcs_cntl_avl_csr_address,                                   --                                    epcs_cntl_avl_csr.address
+			epcs_cntl_avl_csr_write                                     => mm_interconnect_0_epcs_cntl_avl_csr_write,                                     --                                                     .write
+			epcs_cntl_avl_csr_read                                      => mm_interconnect_0_epcs_cntl_avl_csr_read,                                      --                                                     .read
+			epcs_cntl_avl_csr_readdata                                  => mm_interconnect_0_epcs_cntl_avl_csr_readdata,                                  --                                                     .readdata
+			epcs_cntl_avl_csr_writedata                                 => mm_interconnect_0_epcs_cntl_avl_csr_writedata,                                 --                                                     .writedata
+			epcs_cntl_avl_csr_readdatavalid                             => mm_interconnect_0_epcs_cntl_avl_csr_readdatavalid,                             --                                                     .readdatavalid
+			epcs_cntl_avl_csr_waitrequest                               => mm_interconnect_0_epcs_cntl_avl_csr_waitrequest,                               --                                                     .waitrequest
+			epcs_cntl_avl_mem_address                                   => mm_interconnect_0_epcs_cntl_avl_mem_address,                                   --                                    epcs_cntl_avl_mem.address
+			epcs_cntl_avl_mem_write                                     => mm_interconnect_0_epcs_cntl_avl_mem_write,                                     --                                                     .write
+			epcs_cntl_avl_mem_read                                      => mm_interconnect_0_epcs_cntl_avl_mem_read,                                      --                                                     .read
+			epcs_cntl_avl_mem_readdata                                  => mm_interconnect_0_epcs_cntl_avl_mem_readdata,                                  --                                                     .readdata
+			epcs_cntl_avl_mem_writedata                                 => mm_interconnect_0_epcs_cntl_avl_mem_writedata,                                 --                                                     .writedata
+			epcs_cntl_avl_mem_burstcount                                => mm_interconnect_0_epcs_cntl_avl_mem_burstcount,                                --                                                     .burstcount
+			epcs_cntl_avl_mem_byteenable                                => mm_interconnect_0_epcs_cntl_avl_mem_byteenable,                                --                                                     .byteenable
+			epcs_cntl_avl_mem_readdatavalid                             => mm_interconnect_0_epcs_cntl_avl_mem_readdatavalid,                             --                                                     .readdatavalid
+			epcs_cntl_avl_mem_waitrequest                               => mm_interconnect_0_epcs_cntl_avl_mem_waitrequest,                               --                                                     .waitrequest
 			jtag_avalon_jtag_slave_address                              => mm_interconnect_0_jtag_avalon_jtag_slave_address,                              --                               jtag_avalon_jtag_slave.address
 			jtag_avalon_jtag_slave_write                                => mm_interconnect_0_jtag_avalon_jtag_slave_write,                                --                                                     .write
 			jtag_avalon_jtag_slave_read                                 => mm_interconnect_0_jtag_avalon_jtag_slave_read,                                 --                                                     .read

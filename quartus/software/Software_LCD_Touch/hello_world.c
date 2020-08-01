@@ -19,8 +19,10 @@
 #include "altera_avalon_pio_regs.h"
 #include "LT24_Controller.h"
 #include "LT24_Controller_regs.h"
-#include "Pitch_dummy.h"
-#include "Pitch_dummy_regs.h"
+//#include "Pitch_dummy.h"
+//#include "Pitch_dummy_regs.h"
+#include "Pitch_generation_top.h"
+#include "Pitch_generation_top_regs.h"
 #include "Volume_dummy.h"
 #include "Volume_generation_top_regs.h"
 #include "Volume_generation_top.h"
@@ -71,7 +73,7 @@ alt_u32 alarm_callback_vol(void* context) {
 	//Set alarm flag
 	printf("ALARM vol!!!\n");
 	printf("freq vol gen %d\n", read_freq_vol_gen());
-	return context = 2000;
+	return context = 500;
 }
 int main() {
 	//initialization
@@ -95,7 +97,7 @@ int main() {
 	printf("Hello from Nios II!\n");
 
 	//set alarm vol
-	if (alt_alarm_start(&vol_alarm, 2000, alarm_callback_vol, NULL) < 0) {
+	if (alt_alarm_start(&vol_alarm, 500, alarm_callback_vol, NULL) < 0) {
 		printf("No System Clock Available\n");
 	}
 
@@ -109,19 +111,11 @@ int main() {
 			case ST_main:
 				if (xy.y_coord <= 1400) { //Coordinates for calibration
 					state = ST_cali;
+
 					LCD_Clear(WHITE);
 					draw_calibrating_screen();
 					cali_enable = 1;
-					printf("cntrl Register nach Maskierung pitch %d\n",
-							done_calibration_pitch());
-					printf("cntrl Register nach Maskierung vol %d\n",
-							done_calibration_vol());
-					set_calibration_pitch();
-					set_calibration_vol();
-					printf("cntrl Register nach Maskierung pitch %d\n",
-							done_calibration_pitch());
-					printf("cntrl Register nach Maskierung vol %d\n",
-							done_calibration_vol());
+
 					usleep(1000000);
 
 					LCD_Clear(WHITE);
@@ -144,18 +138,16 @@ int main() {
 					state = ST_main;
 					LCD_Clear(WHITE);
 					draw_main_screen();
-				} else if ((xy.y_coord <= 2050) && (xy.x_coord <= 700)) { //Coordinates for -vol
-					if (vol_bar <= 1) {
-						vol_bar = 2;
+				} else{
+					if ((xy.y_coord <= 2050) && (xy.x_coord <= 700)) { //Coordinates for -vol
+						if(vol_bar != 0){
+							vol_bar--;
+						}
 					}
-					vol_bar--;
-					set_vol_gen(vol_bar);
-					printf("vol_gain Register %d\n", read_vol_gain());
-					draw_update_volume_bar(vol_bar);
-				} else if ((xy.y_coord <= 2050) && (xy.x_coord >= 1300)) { //Coordinates for +vol
-					vol_bar++;
-					if (vol_bar >= 10) {
-						vol_bar = 10;
+					if ((xy.y_coord <= 2050) && (xy.x_coord >= 1300)) { //Coordinates for +vol
+						if (vol_bar != 9) {
+							vol_bar++;
+						}
 					}
 					set_vol_gen(vol_bar);
 					printf("vol_gain Register %d\n", read_vol_gain());

@@ -69,7 +69,7 @@ begin
             sig_Freq_reg <= sig_Freq_cmb;
             manual_freq_reg <= manual_freq_cmb;
 
-            freq_up_down_1 <= sig_freq_up_down;
+            --freq_up_down_1 <= sig_freq_up_down;
             freq_up_down_2 <= freq_up_down_1;
             freq_up_down_3 <= freq_up_down_1 and not freq_up_down_2;
         end if;

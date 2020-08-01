@@ -544,7 +544,7 @@
    </peripheral>
   <peripheral>
       <baseAddress>0x00000000</baseAddress>
-      <name>digital_theremin_epcq_controller_0_avl_csr_altera_epcq_controller</name>
+      <name>digital_theremin_epcs_cntl_avl_csr_altera_epcq_controller</name>
       <description>altera serial flash controller</description>
       <registers>
         <register>

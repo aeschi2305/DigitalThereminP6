@@ -31,8 +31,6 @@ entity system is
 		lcd_controller_conduit_end_lt24_rs                    : out   std_logic;                                        --                                            .lt24_rs
 		lcd_reset_n_external_connection_export                : out   std_logic;                                        --             lcd_reset_n_external_connection.export
 		led_cntrl_export                                      : out   std_logic;                                        --                                   led_cntrl.export
-		led_delay_export                                      : out   std_logic;                                        --                                   led_delay.export
-		led_gli_export                                        : out   std_logic;                                        --                                     led_gli.export
 		pitch_generation_top_0_conduit_end_0_coe_square_freq  : in    std_logic                     := '0';             --        pitch_generation_top_0_conduit_end_0.coe_square_freq
 		pitch_generation_top_0_conduit_end_0_coe_freq_up_down : in    std_logic_vector(1 downto 0)  := (others => '0'); --                                            .coe_freq_up_down
 		pitch_generation_top_0_conduit_end_0_coe_cal_glis     : in    std_logic_vector(1 downto 0)  := (others => '0'); --                                            .coe_cal_glis
@@ -78,25 +76,6 @@ architecture rtl of system is
 			out_port   : out std_logic                                         -- export
 		);
 	end component system_LCD_Reset_N;
-
-	component pitch_dummy is
-		generic (
-			dat_len_avl : natural                       := 31;
-			data_freq   : std_logic_vector(31 downto 0) := "00000000000000001111101000000000";
-			delay_thres : std_logic_vector(31 downto 0) := "00000000000000000000000000000011";
-			data_freq1  : std_logic_vector(31 downto 0) := "00000000000000000111110100000000"
-		);
-		port (
-			avs_sP_address   : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
-			avs_sP_readdata  : out std_logic_vector(31 downto 0);                    -- readdata
-			avs_sP_write     : in  std_logic                     := 'X';             -- write
-			avs_sP_writedata : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			coe_led_gli      : out std_logic;                                        -- export
-			rsi_reset_n      : in  std_logic                     := 'X';             -- reset_n
-			csi_clk          : in  std_logic                     := 'X';             -- clk
-			coe_led_delay    : out std_logic                                         -- export
-		);
-	end component pitch_dummy;
 
 	component volume_dummy is
 		generic (
@@ -409,10 +388,6 @@ architecture rtl of system is
 			LCD_Reset_N_s1_readdata                                     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			LCD_Reset_N_s1_writedata                                    : out std_logic_vector(31 downto 0);                    -- writedata
 			LCD_Reset_N_s1_chipselect                                   : out std_logic;                                        -- chipselect
-			Pitch_dummy_0_sp_address                                    : out std_logic_vector(1 downto 0);                     -- address
-			Pitch_dummy_0_sp_write                                      : out std_logic;                                        -- write
-			Pitch_dummy_0_sp_readdata                                   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			Pitch_dummy_0_sp_writedata                                  : out std_logic_vector(31 downto 0);                    -- writedata
 			pitch_generation_top_0_stg_address                          : out std_logic_vector(1 downto 0);                     -- address
 			pitch_generation_top_0_stg_write                            : out std_logic;                                        -- write
 			pitch_generation_top_0_stg_readdata                         : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
@@ -606,7 +581,7 @@ architecture rtl of system is
 		);
 	end component system_rst_controller_001;
 
-	signal pll_outclk0_clk                                                               : std_logic;                     -- pll:outclk_0 -> [Pitch_dummy_0:csi_clk, Volume_dummy_0:csi_clk, cpu:clk, dram_ctrl:clk, irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, jtag_uart:clk, mm_interconnect_0:pll_outclk0_clk, rst_controller_001:clk, sysid:clock, timer:clk]
+	signal pll_outclk0_clk                                                               : std_logic;                     -- pll:outclk_0 -> [Volume_dummy_0:csi_clk, cpu:clk, dram_ctrl:clk, irq_mapper:clk, irq_synchronizer:sender_clk, irq_synchronizer_001:sender_clk, jtag_uart:clk, mm_interconnect_0:pll_outclk0_clk, rst_controller_001:clk, sysid:clock, timer:clk]
 	signal pll_0_outclk0_clk                                                             : std_logic;                     -- pll_0:outclk_0 -> [mm_interconnect_0:pll_0_outclk0_clk, pitch_generation_top_0:csi_clk, rst_controller_003:clk, volume_generation_top_0:csi_clk]
 	signal pll_outclk1_clk                                                               : std_logic;                     -- pll:outclk_1 -> [LCD_Controller:clk, LCD_Reset_N:clk, irq_synchronizer:receiver_clk, irq_synchronizer_001:receiver_clk, mm_interconnect_0:pll_outclk1_clk, rst_controller:clk, touch_panel_busy:clk, touch_panel_pen_irq_n:clk, touch_panel_spi:clk]
 	signal pll_outclk3_clk                                                               : std_logic;                     -- pll:outclk_3 -> [audio_and_video_config_0:clk, mm_interconnect_0:pll_outclk3_clk, rst_controller_002:clk]
@@ -680,10 +655,6 @@ architecture rtl of system is
 	signal mm_interconnect_0_timer_s1_address                                            : std_logic_vector(2 downto 0);  -- mm_interconnect_0:timer_s1_address -> timer:address
 	signal mm_interconnect_0_timer_s1_write                                              : std_logic;                     -- mm_interconnect_0:timer_s1_write -> mm_interconnect_0_timer_s1_write:in
 	signal mm_interconnect_0_timer_s1_writedata                                          : std_logic_vector(15 downto 0); -- mm_interconnect_0:timer_s1_writedata -> timer:writedata
-	signal mm_interconnect_0_pitch_dummy_0_sp_readdata                                   : std_logic_vector(31 downto 0); -- Pitch_dummy_0:avs_sP_readdata -> mm_interconnect_0:Pitch_dummy_0_sp_readdata
-	signal mm_interconnect_0_pitch_dummy_0_sp_address                                    : std_logic_vector(1 downto 0);  -- mm_interconnect_0:Pitch_dummy_0_sp_address -> Pitch_dummy_0:avs_sP_address
-	signal mm_interconnect_0_pitch_dummy_0_sp_write                                      : std_logic;                     -- mm_interconnect_0:Pitch_dummy_0_sp_write -> Pitch_dummy_0:avs_sP_write
-	signal mm_interconnect_0_pitch_dummy_0_sp_writedata                                  : std_logic_vector(31 downto 0); -- mm_interconnect_0:Pitch_dummy_0_sp_writedata -> Pitch_dummy_0:avs_sP_writedata
 	signal mm_interconnect_0_volume_dummy_0_sp_readdata                                  : std_logic_vector(31 downto 0); -- Volume_dummy_0:avs_sP_readdata -> mm_interconnect_0:Volume_dummy_0_sp_readdata
 	signal mm_interconnect_0_volume_dummy_0_sp_address                                   : std_logic_vector(1 downto 0);  -- mm_interconnect_0:Volume_dummy_0_sp_address -> Volume_dummy_0:avs_sP_address
 	signal mm_interconnect_0_volume_dummy_0_sp_write                                     : std_logic;                     -- mm_interconnect_0:Volume_dummy_0_sp_write -> Volume_dummy_0:avs_sP_write
@@ -730,7 +701,7 @@ architecture rtl of system is
 	signal mm_interconnect_0_touch_panel_spi_spi_control_port_read_ports_inv             : std_logic;                     -- mm_interconnect_0_touch_panel_spi_spi_control_port_read:inv -> touch_panel_spi:read_n
 	signal mm_interconnect_0_touch_panel_spi_spi_control_port_write_ports_inv            : std_logic;                     -- mm_interconnect_0_touch_panel_spi_spi_control_port_write:inv -> touch_panel_spi:write_n
 	signal rst_controller_reset_out_reset_ports_inv                                      : std_logic;                     -- rst_controller_reset_out_reset:inv -> [LCD_Controller:reset_n, LCD_Reset_N:reset_n, touch_panel_busy:reset_n, touch_panel_pen_irq_n:reset_n, touch_panel_spi:reset_n]
-	signal rst_controller_001_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [Pitch_dummy_0:rsi_reset_n, Volume_dummy_0:rsi_reset_n, cpu:reset_n, jtag_uart:rst_n, sysid:reset_n, timer:reset_n]
+	signal rst_controller_001_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [Volume_dummy_0:rsi_reset_n, cpu:reset_n, jtag_uart:rst_n, sysid:reset_n, timer:reset_n]
 	signal rst_controller_003_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_003_reset_out_reset:inv -> [pitch_generation_top_0:rsi_reset_n, volume_generation_top_0:rsi_reset_n]
 	signal rst_controller_004_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_004_reset_out_reset:inv -> ton_generation_dummy_0:reset_n
 
@@ -761,24 +732,6 @@ begin
 			chipselect => mm_interconnect_0_lcd_reset_n_s1_chipselect,      --                    .chipselect
 			readdata   => mm_interconnect_0_lcd_reset_n_s1_readdata,        --                    .readdata
 			out_port   => lcd_reset_n_external_connection_export            -- external_connection.export
-		);
-
-	pitch_dummy_0 : component pitch_dummy
-		generic map (
-			dat_len_avl => 31,
-			data_freq   => "00011100000000000001100000000000",
-			delay_thres => "00000000000000000000000000000011",
-			data_freq1  => "10100000000000001010001001100000"
-		)
-		port map (
-			avs_sP_address   => mm_interconnect_0_pitch_dummy_0_sp_address,   --            sp.address
-			avs_sP_readdata  => mm_interconnect_0_pitch_dummy_0_sp_readdata,  --              .readdata
-			avs_sP_write     => mm_interconnect_0_pitch_dummy_0_sp_write,     --              .write
-			avs_sP_writedata => mm_interconnect_0_pitch_dummy_0_sp_writedata, --              .writedata
-			coe_led_gli      => led_gli_export,                               -- conduit_end_0.export
-			rsi_reset_n      => rst_controller_001_reset_out_reset_ports_inv, --         reset.reset_n
-			csi_clk          => pll_outclk0_clk,                              --         clock.clk
-			coe_led_delay    => led_delay_export                              --   conduit_end.export
 		);
 
 	volume_dummy_0 : component volume_dummy
@@ -897,7 +850,7 @@ begin
 			avs_sTG_address   => mm_interconnect_0_pitch_generation_top_0_stg_address,   --              .address
 			avs_sTG_writedata => mm_interconnect_0_pitch_generation_top_0_stg_writedata, --              .writedata
 			avs_sTG_readdata  => mm_interconnect_0_pitch_generation_top_0_stg_readdata,  --              .readdata
-			aso_se_ready      => '1',                                                   --            se.ready
+			aso_se_ready      => open,                                                   --            se.ready
 			aso_se_valid      => open,                                                   --              .valid
 			aso_se_data       => open,                                                   --              .data
 			coe_square_freq   => pitch_generation_top_0_conduit_end_0_coe_square_freq,   -- conduit_end_0.coe_square_freq
@@ -1077,10 +1030,6 @@ begin
 			LCD_Reset_N_s1_readdata                                     => mm_interconnect_0_lcd_reset_n_s1_readdata,                                     --                                                     .readdata
 			LCD_Reset_N_s1_writedata                                    => mm_interconnect_0_lcd_reset_n_s1_writedata,                                    --                                                     .writedata
 			LCD_Reset_N_s1_chipselect                                   => mm_interconnect_0_lcd_reset_n_s1_chipselect,                                   --                                                     .chipselect
-			Pitch_dummy_0_sp_address                                    => mm_interconnect_0_pitch_dummy_0_sp_address,                                    --                                     Pitch_dummy_0_sp.address
-			Pitch_dummy_0_sp_write                                      => mm_interconnect_0_pitch_dummy_0_sp_write,                                      --                                                     .write
-			Pitch_dummy_0_sp_readdata                                   => mm_interconnect_0_pitch_dummy_0_sp_readdata,                                   --                                                     .readdata
-			Pitch_dummy_0_sp_writedata                                  => mm_interconnect_0_pitch_dummy_0_sp_writedata,                                  --                                                     .writedata
 			pitch_generation_top_0_stg_address                          => mm_interconnect_0_pitch_generation_top_0_stg_address,                          --                           pitch_generation_top_0_stg.address
 			pitch_generation_top_0_stg_write                            => mm_interconnect_0_pitch_generation_top_0_stg_write,                            --                                                     .write
 			pitch_generation_top_0_stg_readdata                         => mm_interconnect_0_pitch_generation_top_0_stg_readdata,                         --                                                     .readdata

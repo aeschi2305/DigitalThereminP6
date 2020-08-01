@@ -1,0 +1,24 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst Test_Cal_Glis.pll_0 -pg 1 -lvl 2 -y 210
+preplace inst Test_Cal_Glis.audio_and_video_config_0 -pg 1 -lvl 4 -y 230
+preplace inst Test_Cal_Glis.pitch_generation_0 -pg 1 -lvl 1 -y 340
+preplace inst Test_Cal_Glis.dc_fifo_0 -pg 1 -lvl 3 -y 90
+preplace inst Test_Cal_Glis.clk_0 -pg 1 -lvl 1 -y 230
+preplace inst Test_Cal_Glis.audio_serializer_0 -pg 1 -lvl 4 -y 30
+preplace inst Test_Cal_Glis -pg 1 -lvl 1 -y 40 -regy -20
+preplace netloc EXPORT<net_container>Test_Cal_Glis</net_container>(SLAVE)Test_Cal_Glis.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>Test_Cal_Glis</net_container>(SLAVE)audio_serializer_0.se,(MASTER)dc_fifo_0.out) 1 3 1 N
+preplace netloc EXPORT<net_container>Test_Cal_Glis</net_container>(SLAVE)Test_Cal_Glis.i2c,(SLAVE)audio_and_video_config_0.external_interface) 1 0 4 NJ 320 NJ 320 NJ 280 NJ
+preplace netloc EXPORT<net_container>Test_Cal_Glis</net_container>(SLAVE)Test_Cal_Glis.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>Test_Cal_Glis</net_container>(MASTER)Test_Cal_Glis.xck,(MASTER)pll_0.outclk3) 1 2 3 NJ 320 NJ 340 NJ
+preplace netloc POINT_TO_POINT<net_container>Test_Cal_Glis</net_container>(MASTER)pll_0.outclk2,(SLAVE)audio_and_video_config_0.clk) 1 2 2 N 260 NJ
+preplace netloc FAN_OUT<net_container>Test_Cal_Glis</net_container>(SLAVE)dc_fifo_0.out_clk,(MASTER)pll_0.outclk1,(SLAVE)audio_serializer_0.clock) 1 2 2 490 240 680
+preplace netloc POINT_TO_POINT<net_container>Test_Cal_Glis</net_container>(MASTER)clk_0.clk,(SLAVE)pll_0.refclk) 1 1 1 N
+preplace netloc EXPORT<net_container>Test_Cal_Glis</net_container>(SLAVE)audio_serializer_0.conduit_end_0,(SLAVE)Test_Cal_Glis.dacdat) 1 0 4 NJ 80 NJ 80 NJ 80 NJ
+preplace netloc POINT_TO_POINT<net_container>Test_Cal_Glis</net_container>(MASTER)pll_0.outclk0,(SLAVE)dc_fifo_0.in_clk) 1 2 1 450
+preplace netloc EXPORT<net_container>Test_Cal_Glis</net_container>(SLAVE)Test_Cal_Glis.daclrc,(SLAVE)audio_serializer_0.conduit_end_1) 1 0 4 NJ 180 NJ 180 NJ 220 NJ
+preplace netloc EXPORT<net_container>Test_Cal_Glis</net_container>(SLAVE)audio_serializer_0.conduit_end,(SLAVE)Test_Cal_Glis.bclk) 1 0 4 NJ 60 NJ 60 NJ 60 NJ
+preplace netloc FAN_OUT<net_container>Test_Cal_Glis</net_container>(SLAVE)audio_serializer_0.reset,(SLAVE)dc_fifo_0.in_clk_reset,(SLAVE)audio_and_video_config_0.reset,(SLAVE)pll_0.reset,(SLAVE)dc_fifo_0.out_clk_reset,(MASTER)clk_0.clk_reset) 1 1 3 290 200 510 300 720
+levelinfo -pg 1 0 50 980
+levelinfo -hier Test_Cal_Glis 60 120 320 540 760 930

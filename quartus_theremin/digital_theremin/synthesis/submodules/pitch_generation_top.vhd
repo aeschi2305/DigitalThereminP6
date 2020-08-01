@@ -44,7 +44,7 @@ architecture struct of pitch_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 580000;
+  constant cordic_def_freq :natural := 569800;
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:
@@ -71,7 +71,7 @@ component cordic_Control is
   );
 end component cordic_Control;
 
-component filter is
+component filter_pitch is
   generic (
    N : natural := 16;  --Number of Bits of the sine wave (precision)
    cic1Bits : natural := 23;
@@ -95,7 +95,7 @@ component filter is
      cic2_en        : out boolean;
      cic3_en        : out boolean
   );
-end component filter;
+end component filter_pitch;
 
 
 component cordic_pipelined is
@@ -192,7 +192,7 @@ begin
     ); 
 
   -- user design: cic
-  cic_1 : entity work.filter
+  cic_pitch_1 : entity work.filter_pitch
     generic map (
       N => N,
       cic1Bits => cic1Bits,

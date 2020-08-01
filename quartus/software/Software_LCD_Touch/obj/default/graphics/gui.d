@@ -11,8 +11,8 @@ obj/default/graphics/gui.o: graphics/gui.c graphics/gui.h \
  graphics/simple_text.h \
  ../Software_LCD_Touch_bsp//drivers/inc/LT24_Controller_regs.h \
  graphics/bahnschriftCondensed_22.h \
- ../Software_LCD_Touch_bsp//drivers/inc/pitch_dummy.h \
- ../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy_regs.h
+ ../Software_LCD_Touch_bsp//drivers/inc/pitch_generation_top.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top_regs.h
 
 graphics/gui.h:
 
@@ -42,6 +42,6 @@ graphics/simple_text.h:
 
 graphics/bahnschriftCondensed_22.h:
 
-../Software_LCD_Touch_bsp//drivers/inc/pitch_dummy.h:
+../Software_LCD_Touch_bsp//drivers/inc/pitch_generation_top.h:
 
-../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy_regs.h:
+../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top_regs.h:

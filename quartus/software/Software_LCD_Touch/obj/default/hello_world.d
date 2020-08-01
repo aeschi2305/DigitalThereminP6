@@ -8,9 +8,9 @@ obj/default/hello_world.o: hello_world.c \
  ../Software_LCD_Touch_bsp//drivers/inc/LT24_Controller_regs.h \
  ../Software_LCD_Touch_bsp//drivers/inc/altera_avalon_pio_regs.h \
  ../Software_LCD_Touch_bsp//drivers/inc/LT24_Controller_regs.h \
- ../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy.h \
- ../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy_regs.h \
- ../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy_regs.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top_regs.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top_regs.h \
  ../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy.h \
  ../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy_regs.h \
  ../Software_LCD_Touch_bsp//drivers/inc/Volume_generation_top_regs.h \
@@ -32,7 +32,7 @@ obj/default/hello_world.o: hello_world.c \
  ../Software_LCD_Touch_bsp//HAL/inc/sys/alt_llist.h \
  ../Software_LCD_Touch_bsp//HAL/inc/priv/alt_alarm.h graphics/gui.h \
  graphics/simple_text.h \
- ../Software_LCD_Touch_bsp//drivers/inc/pitch_dummy.h
+ ../Software_LCD_Touch_bsp//drivers/inc/pitch_generation_top.h
 
 ../Software_LCD_Touch_bsp/system.h:
 
@@ -54,11 +54,11 @@ obj/default/hello_world.o: hello_world.c \
 
 ../Software_LCD_Touch_bsp//drivers/inc/LT24_Controller_regs.h:
 
-../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy.h:
+../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top.h:
 
-../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy_regs.h:
+../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top_regs.h:
 
-../Software_LCD_Touch_bsp//drivers/inc/Pitch_dummy_regs.h:
+../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top_regs.h:
 
 ../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy.h:
 
@@ -110,4 +110,4 @@ graphics/gui.h:
 
 graphics/simple_text.h:
 
-../Software_LCD_Touch_bsp//drivers/inc/pitch_dummy.h:
+../Software_LCD_Touch_bsp//drivers/inc/pitch_generation_top.h:

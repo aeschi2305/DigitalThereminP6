@@ -36,8 +36,8 @@ end entity Calibration_verify;
 
 architecture stimuli_and_monitor of Calibration_verify is
   constant c_cycle_time       : time := 18.51851852 ns; -- 54MHZ
-  constant c_cycle_time_rect_1  : time := 1.72771157 us; --579kHz 
-  constant c_cycle_time_rect_1  : time := 1.72771008 us; --579.005kHz 
+  constant c_cycle_time_rect_1  : time := 1.754385965 us; --570kHz 
+  --constant c_cycle_time_rect_1  : time := 1.72771008 us; --579.005kHz 
   --constant c_cycle_time_DACLRCK  : time := 20.83333 us; --48kHz
   signal enable : boolean   := true;
 begin
@@ -80,15 +80,15 @@ begin
 
     wait for 20*c_cycle_time;
     
-    avs_writedata <= (dat_len_avl-1 downto 2 => '0') & "01";
+    avs_writedata <= (dat_len_avl-1 downto 2 => '0') & "00";
     avs_address <= "00";
     avs_write <= '1';
     wait for c_cycle_time;
     avs_write <= '0';
     
-    wait until rising_edge(<<Signal .Glissando_tb.Tone_generation_pm.freq_meas_1.CalGlis)
+    wait until rising_edge(<<Signal .Glissando_tb.pitch_generation_pm.freq_meas_pitch_1.CalGlis)
     
-    enable <= false;
+    --enable <= false;
     wait;
   end process p_control;
 

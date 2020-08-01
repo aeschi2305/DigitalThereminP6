@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>29.07.2020 16:09:27</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1596031767079</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>30.07.2020 15:19:58</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1596115198969</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\software\Software_LCD_Touch_bsp\</BspGeneratedLocation>
         <BspSettingsFile>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\software\Software_LCD_Touch_bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\system.sopcinfo</SopcDesignFile>
@@ -923,13 +923,13 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>Volume_dummy_0</slaveDescriptor>
+                <slaveDescriptor>pitch_generation_top_0</slaveDescriptor>
                 <addressRange>0x08001050 - 0x0800105F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>Pitch_dummy_0</slaveDescriptor>
+                <slaveDescriptor>Volume_dummy_0</slaveDescriptor>
                 <addressRange>0x08001060 - 0x0800106F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
