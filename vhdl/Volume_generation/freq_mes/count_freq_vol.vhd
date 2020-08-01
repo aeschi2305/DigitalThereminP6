@@ -40,9 +40,9 @@ architecture rtl of count_freq_vol is
   ---------------------------------------------------------------------------
 
   constant ZERO :signed(sine_N-1 downto 0) := (others => '0');
-  constant sine_in_length : natural := 6;
-  constant neg : natural := 5;
-  constant threas_const : signed(sine_N-1 downto 0) := (sine_N-1 downto sine_N-1-neg => '1') & (sine_N-2-neg downto 0 => '0');
+  constant sine_in_length : natural := 2;
+  signal threas_val_1 : signed(sine_N-1 downto 0);
+  signal threas_val_2 : signed(sine_N-1 downto 0);
   signal sine_in_reg : t_reg_input(sine_in_length-1 downto 0);
   signal count_reg : integer range 0 to max_per;
   signal count_cmb : integer range 0 to max_per+1;
@@ -64,17 +64,23 @@ begin
      meas_en <= '1';
      count_reg <= 0;
      freq_meas <= '0';
+     threas_val_1 <= (others => '0');
+     threas_val_2 <= (others => '0');
+     threas <= '0';
    elsif rising_edge(clk) then
      if enable_in = '1' then
         sine_in_reg(0) <= filt_in;
-        l_buf : for ii in 1 to sine_in_length-1 loop
-          sine_in_reg(ii) <= sine_in_reg(ii-1);
-        end loop l_buf;
-        if filt_in <  threas_const then
+        sine_in_reg(1) <= sine_in_reg(0);
+        if sine_in_reg(0) < threas_val_1 then
+          threas_val_1 <= sine_in_reg(0);
+        end if;
+        if filt_in <  threas_val_2 then
           threas <= '1';
+          threas_val_1 <= (others => '0');
         end if;          
         en_out <= '0';
-        if threas = '1' and (sine_in_reg(1) < ZERO) and (sine_in_reg(0) >= ZERO) then -- if ((sine_in_reg(5) < ZERO) and (sine_in_reg(4) < ZERO) and (sine_in_reg(3) < ZERO) and (sine_in_reg(2) < ZERO) and (sine_in_reg(1) < ZERO) and (sine_in_reg(0) >= ZERO)) then
+        if threas = '1' and (sine_in_reg(1) < ZERO) and (sine_in_reg(0) >= ZERO) then 
+          threas_val_2 <= '1' & threas_val_1(sine_N-1 downto 1);
           threas <= '0';
           freq_meas <= not freq_meas;
         	if count_reg < min_per then

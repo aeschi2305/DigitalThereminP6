@@ -73,7 +73,8 @@ architecture struct of Calibration_tb is
 
     -- Avalon conduit Interfaces
     coe_square_freq   : in std_logic;
-    coe_freq_up_down  : in std_logic_vector(1 downto 0)
+    coe_freq_up_down  : in std_logic_vector(1 downto 0);
+    coe_Cal_Glis      : in std_logic_vector(1 downto 0)
   );
 end component pitch_generation_top;
 
@@ -121,7 +122,8 @@ begin
 
     -- Avalon conduit Interfaces
     coe_square_freq   => square_freq,
-    coe_freq_up_down  => "00"
+    coe_freq_up_down  => "00",
+    coe_Cal_Glis      => "00"
     ); 
 
   

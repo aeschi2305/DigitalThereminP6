@@ -37,13 +37,21 @@ end entity Glissando_verify;
 architecture stimuli_and_monitor of Glissando_verify is
 
   constant c_cycle_time       : time := 18.51851852 ns; -- 54MHZ
-  constant c_cycle_time_rect_1  : time := 1.754385965 us; --579kHz 
-  constant c_cycle_time_rect_2  : time := 1.72702921 us; --579.029kHz 
+
+  type t_c_cycle is array(integer range 0 to 1) of time range 1.724137931 us to 1.730103806 us;
+
+  constant c_cycle_time_rect : t_c_cycle := (1.730103806 us,
+                                            1.724286576 us);
+
+  --constant c_cycle_time_rect_1  : time := 1.754385965 us; --579kHz 
+  --constant c_cycle_time_rect_2  : time := 1.72702921 us; --579.029kHz 
   --constant c_cycle_time_rect_2  : time := 1.727414061 us; --578.9kHz
   --constant c_cycle_time_rect_2  : time := 1.72681747 us; --578.9kHz
   signal enable : boolean   := true;
   signal enable_toggle : boolean   := true;
   signal count : integer range 0 to 11;
+
+  signal index : integer range 0 to 1;
 begin
   
 
@@ -67,9 +75,9 @@ begin
     wait for 2*c_cycle_time;
     while enable loop
       square_freq <= '0';
-      wait for c_cycle_time_rect_1/2;
+      wait for c_cycle_time_rect(index)/2;
       square_freq <= '1';
-      wait for c_cycle_time_rect_1/2;
+      wait for c_cycle_time_rect(index)/2;
     end loop;
     wait;  -- don't do it again
   end process p_clk_rect;
@@ -82,6 +90,7 @@ begin
     avs_writedata <= (others => '0');
     avs_address <= "00";
     avs_write <= '0';
+    index <= 0;
     --enable_toggle <= false;
 
 
@@ -95,7 +104,7 @@ begin
 
     wait for c_cycle_time;
 
-    avs_writedata <= (dat_len_avl-1 downto 3 => '0') & "000";
+    avs_writedata <= (dat_len_avl-1 downto 3 => '0') & "001";
     avs_address <= "00";
     avs_write <= '1';
     wait for c_cycle_time;
@@ -103,9 +112,13 @@ begin
 
 
     
-    --wait until rising_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_pitch_1.CalGlis_1.approx_done : std_ulogic>>);
-    --wait for 2 ms;
-   --
+    wait until rising_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_pitch_1.CalGlis_1.approx_done : std_ulogic>>);
+    wait for 2 ms;
+
+    --index <= 1;
+
+
+   
     --while count /= 11 loop
     --  wait until falling_edge(<<Signal .glissando_tb.pitch_generation_pm.freq_meas_pitch_1.freq_meas : std_ulogic>>);
     --  if count = 11 then
