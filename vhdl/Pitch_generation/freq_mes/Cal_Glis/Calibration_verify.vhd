@@ -36,11 +36,11 @@ end entity Calibration_verify;
 
 architecture stimuli_and_monitor of Calibration_verify is
   constant c_cycle_time       : time := 18.51851852 ns; -- 54MHZ
-  type t_c_cycle is array(integer range 0 to 1) of time range 1.726519337 us to 1.72860847 us;
-
-constant c_cycle_time_rect : t_c_cycle := (1.727712509 us,
-                                        1.726519337 us);
-  --constant c_cycle_time_rect  : time := 1.72860847 us; --578.5kHz --1.725625539 us; --578kHz
+  --type t_c_cycle is array(integer range 0 to 1) of time range 1.726519337 us to 1.72860847 us;
+--
+  --constant c_cycle_time_rect : t_c_cycle := (1.727712509 us,
+  --                                      1.726519337 us);
+  constant c_cycle_time_rect  : time := 1.72860847 us; --578.5kHz --1.725625539 us; --578kHz
   --constant c_cycle_time_DACLRCK  : time := 20.83333 us; --48kHz
   signal enable : boolean   := true;
   signal index : integer range 0 to 1;
@@ -67,9 +67,9 @@ begin
     wait for 2*c_cycle_time;
     while enable loop
       square_freq <= '0';
-      wait for c_cycle_time_rect(index)/2;
+      wait for c_cycle_time_rect/2;
       square_freq <= '1';
-      wait for c_cycle_time_rect(index)/2;
+      wait for c_cycle_time_rect/2;
     end loop;
     wait;  -- don't do it again
   end process p_clk_rect;
@@ -85,7 +85,7 @@ begin
 
     wait for 20*c_cycle_time;
     
-    avs_writedata <= (dat_len_avl-1 downto 2 => '0') & "10";
+    avs_writedata <= (dat_len_avl-1 downto 2 => '0') & "00";
     avs_address <= "00";
     avs_write <= '1';
     wait for c_cycle_time;

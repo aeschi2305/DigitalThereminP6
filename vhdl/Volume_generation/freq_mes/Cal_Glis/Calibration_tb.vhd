@@ -53,9 +53,9 @@ architecture struct of Calibration_tb is
   component Volume_generation_top is
   generic (
     dat_len_avl : natural := 24;   --Number of Bits of Avalon data w/r
-    cic1Bits : natural := 23;
-    cic2Bits : natural := 26;
-    cic3Bits : natural := 29
+    cic1Bits : natural := 21;
+    cic2Bits : natural := 25;
+    cic3Bits : natural := 28
   );
   port( 
     -- Avalon Clock Reset Interfaces
@@ -98,9 +98,9 @@ begin
   Volume_generation_pm : entity work.Volume_generation_top
     generic map(
       dat_len_avl => dat_len_avl,   --Number of Bits of Avalon data w/r
-      cic1Bits    => 23,
-      cic2Bits    => 26,
-      cic3Bits    => 29
+      cic1Bits    => 21,
+      cic2Bits    => 25,
+      cic3Bits    => 28
     )
     port map (
     -- Avalon Clock Reset Interfaces

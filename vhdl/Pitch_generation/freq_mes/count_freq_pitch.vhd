@@ -76,11 +76,11 @@ begin
         end if;
         if filt_in <  threas_val_2 then
           threas <= '1';
-          threas_val_1 <= (others => '0');
         end if;  
         en_out <= '0';
         if threas = '1' and (sine_in_reg(1) < ZERO) and (sine_in_reg(0) >= ZERO) then
           threas_val_2 <= '1' & threas_val_1(sine_N-1 downto 1);
+          threas_val_1 <= (others => '0');
           threas <= '0';
           freq_meas <= not freq_meas;
         	if count_reg < min_per then
