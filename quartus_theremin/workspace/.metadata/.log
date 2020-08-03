@@ -1,0 +1,1133 @@
+!SESSION 2020-07-30 17:31:47.292 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-30 17:33:52.184
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-07-30 17:36:16.807
+!MESSAGE Indexed 'digital_Theremin_bsp' (89 sources, 75 headers) in 2.22 sec: 1'638 declarations; 4'798 references; 136 unresolved inclusions; 6 syntax errors; 259 unresolved names (3.9 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-07-30 17:36:20.014
+!MESSAGE Indexed 'digital_Theremin' (1 sources, 21 headers) in 0.086 sec: 983 declarations; 1'599 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-30 17:40:14.157
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-30 17:40:16.100
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-07-30 17:45:57.438 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-30 17:46:10.785
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY org.eclipse.ui 4 4 2020-07-30 17:49:23.614
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@523abba9)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@6e9e4332)}
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-30 17:53:30.352
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-30 17:53:32.320
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-30 17:54:20.103
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-30 17:54:20.629
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-30 17:54:22.687
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-07-31 08:01:59.151 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-31 08:02:23.054
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 08:07:01.456
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 08:07:03.516
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 08:09:20.958
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 08:09:21.481
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 08:09:23.586
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-07-31 08:58:04.915 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-31 08:58:20.373
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:08:50.867
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:08:52.902
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:10:27.313
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:10:27.835
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:10:29.820
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:28:23.942
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:28:24.430
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:28:26.379
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:28:57.193
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:28:57.662
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:28:59.680
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:29:39.230
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:29:39.698
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:29:41.650
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:49:37.784
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:49:38.249
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 09:49:40.354
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596122539 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 10:15:50.169
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2020-07-31 10:15:55.536
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception: System timestamp mismatch - connected: "1596182637", expected: "1596122539".
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.assertTrue(SystemConsoleConnectionModel.java:645)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateSystemId(SystemConsoleConnectionModel.java:631)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:511)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2020-07-31 10:15:55.541
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception: System timestamp mismatch - connected: "1596182637", expected: "1596122539".
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.assertTrue(SystemConsoleConnectionModel.java:645)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateSystemId(SystemConsoleConnectionModel.java:631)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:511)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 10:16:23.458
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596182637]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 10:16:25.575
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596182637 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 10:30:54.492
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 10:30:54.960
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --sidp=0xa0010c8 --id=0x1 --timestamp=1596182637 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 10:30:57.261
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --tcpport=auto --sidp=0xa0010c8 --id=0x1 --timestamp=1596182637]
+!SESSION 2020-07-31 10:48:20.717 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-31 10:48:37.656
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 10:49:22.919
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596184644]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 10:49:24.935
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596184644 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-07-31 12:09:25.036 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-31 12:09:43.586
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 12:11:22.656
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 12:11:24.697
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 13:03:03.857
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 13:03:04.335
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 13:03:06.457
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-07-31 13:54:55.387 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-07-31 13:55:02.735
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-31 13:55:15.025
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 13:55:56.445
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 13:55:58.499
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 13:56:33.542
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 13:56:34.059
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 13:56:36.011
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:08:26.855
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:08:27.317
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:08:29.308
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:09:32.171
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:09:32.622
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:09:34.713
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:10:09.503
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:10:09.943
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:10:11.933
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-07-31 14:12:09.942 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-07-31 14:12:14.985
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-31 14:12:23.256
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:12:53.157
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:12:55.086
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:15:53.027
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:15:53.545
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:15:55.561
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:32:47.790
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:32:48.236
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:32:50.237
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:36:41.749
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:36:42.187
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:36:44.173
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:37:16.660
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:37:17.179
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:37:19.148
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:41:15.800
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:41:16.268
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:41:18.231
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:41:54.947
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:41:55.414
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:41:57.420
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:42:46.303
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:42:46.791
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:42:48.760
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:44:10.525
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:44:10.999
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2020-07-31 14:44:12.980
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --sidp=0xa0010c8, --id=0x1, --timestamp=1596187259] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:44:15.863
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2020-07-31 14:44:18.489
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --sidp=0xa0010c8, --id=0x1, --timestamp=1596187259, /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf] return code: 2, no processors found
+
+!ENTRY com.altera.sbtgui.launch 4 0 2020-07-31 14:44:18.491
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:44:33.201
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 14:44:35.240
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-07-31 15:11:15.043 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-31 15:11:59.676
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 15:12:12.139
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 15:12:14.149
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 15:15:54.819
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 15:15:55.324
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 15:15:57.471
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 15:16:40.403
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 15:16:40.901
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 15:16:42.866
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596187259 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-07-31 16:15:07.907 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-31 16:15:30.220
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 16:16:10.945
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596203979]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 16:16:12.958
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596203979 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 16:17:45.069
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 16:17:45.531
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596203979]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 16:17:47.453
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596203979 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 16:18:31.477
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 16:18:31.961
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596203979]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 16:18:33.983
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596203979 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-07-31 16:19:20.151 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-31 16:19:31.039
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 16:19:40.574
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596203979]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 16:19:42.623
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596203979 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-07-31 17:08:55.650 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-07-31 17:09:14.306
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 17:10:55.120
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-07-31 17:10:57.118
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-08-01 08:33:35.792 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-08-01 08:33:59.394
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 08:39:16.083
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 08:39:18.323
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:11:07.392
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:11:07.881
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:11:09.946
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:11:37.711
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:11:38.231
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:11:40.263
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:16:16.954
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:16:17.385
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:16:19.418
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:16:46.956
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:16:47.473
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:16:49.481
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:18:51.234
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:18:51.727
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:18:53.769
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-08-01 09:45:29.183 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-08-01 09:45:44.853
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:49:17.992
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:49:20.022
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:49:52.594
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:49:53.182
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:49:55.158
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:54:49.325
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:54:49.727
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:54:51.652
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:55:14.030
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:55:14.512
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:55:16.482
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:59:57.807
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 09:59:58.264
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 10:00:00.293
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 10:10:35.236
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 10:10:35.740
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 10:10:37.702
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 12:08:19.413
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 12:08:19.878
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 12:08:22.032
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 12:14:17.722
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 12:14:18.212
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 12:14:20.197
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 12:18:57.214
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 12:18:57.676
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 12:18:59.702
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596207273 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-08-01 16:02:52.992 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-08-01 16:02:58.547
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-08-01 16:03:18.004
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 16:03:39.029
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596289751]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 16:03:41.102
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596289751 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 16:22:39.076
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 16:22:39.582
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596289751]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-01 16:22:41.549
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596289751 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-08-02 12:29:52.110 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-08-02 12:30:12.035
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+!SESSION 2020-08-02 12:53:11.627 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-08-02 12:53:24.074
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 12:55:07.551
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 12:55:09.541
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:13:35.045
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:13:35.526
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:13:37.605
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:14:08.812
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2020-08-02 13:14:15.130
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception: Connected system ID hash not found on target at expected base address.
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.assertTrue(SystemConsoleConnectionModel.java:645)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateSystemId(SystemConsoleConnectionModel.java:589)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:511)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2020-08-02 13:14:15.187
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception: Connected system ID hash not found on target at expected base address.
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.assertTrue(SystemConsoleConnectionModel.java:645)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateSystemId(SystemConsoleConnectionModel.java:589)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:511)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2020-08-02 13:16:10.710 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-08-02 13:16:14.940
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-08-02 13:16:28.473
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:16:36.811
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:16:38.818
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:36:36.874
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:36:37.367
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:36:39.319
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:38:11.966
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:38:12.397
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:38:14.348
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:38:40.969
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:38:41.442
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:38:43.472
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:52:08.133
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:52:08.657
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 13:52:10.541
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:06:01.895
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:06:02.387
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:06:04.386
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:14:32.812
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:14:33.317
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:14:35.255
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:20:35.238
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:20:35.724
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:20:37.649
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
+!SESSION 2020-08-02 14:47:49.296 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-08-02 14:48:04.380
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:48:14.273
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-08-02 14:48:16.323
+!MESSAGE Executing: [C:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --sidp=0xa0010c8 --id=0x1 --timestamp=1596364560 /cygdrive/c/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/software/digital_Theremin/digital_Theremin.elf]
