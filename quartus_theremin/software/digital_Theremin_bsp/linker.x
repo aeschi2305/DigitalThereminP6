@@ -2,9 +2,9 @@
  * linker.x - Linker script
  *
  * Machine generated for CPU 'cpu' in SOPC Builder design 'digital_theremin'
- * SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/digital_theremin.sopcinfo
+ * SOPC Builder design path: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus_theremin/digital_theremin.sopcinfo
  *
- * Generated: Fri Jul 31 08:57:53 CEST 2020
+ * Generated: Mon Aug 03 08:59:24 CEST 2020
  */
 
 /*

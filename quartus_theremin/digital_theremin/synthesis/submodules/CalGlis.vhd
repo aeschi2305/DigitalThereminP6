@@ -315,7 +315,9 @@ signal delay_count_cmb : natural range 0 to 1048576;
 constant min_freq_val      : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "110010000000";  -- corresponds to 100Hz
 constant cal_val        : unsigned(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "111100000000";  -- corresponds to 120Hz
 constant cal_stp        : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "000001000000"; --"000001000000";  -- corresponds to 2Hz 
---constant cal_stp        : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "000001000000";  -- corresponds to 2Hz
+
+constant freq_cal_max   : signed(freq_len-1 downto 0) := (freq_len-1 downto 20 => '0') & "01001110001000000000";
+constant freq_cal_max_neg : signed(freq_len-1 downto 0) := (freq_len-1 downto 20 => '1') & "10110001111000000000";
 
 signal freq_diff_reg    : signed(freq_len-1 downto 0);
 signal freq_diff_cmb    : signed(freq_len-1 downto 0);
@@ -512,6 +514,9 @@ begin
                     if freq_enable = '1' and delay = '1' then 
                         if freq < cal_val then
                             cal_done <= '1';
+                            delay <= '0';
+                            done <= '1';
+                        elsif freq_cal_reg > freq_cal_max or freq_cal_reg < freq_cal_max_neg then
                             delay <= '0';
                             done <= '1';
                         else

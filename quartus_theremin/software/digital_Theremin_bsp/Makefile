@@ -101,7 +101,7 @@ ACDS_VERSION := 17.1
 # BUILD_NUMBER: 590
 
 SETTINGS_FILE := settings.bsp
-SOPC_FILE := C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/digital_theremin.sopcinfo
+SOPC_FILE := D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus_theremin/digital_theremin.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS

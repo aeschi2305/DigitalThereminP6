@@ -86,7 +86,7 @@ ACDS_VERSION := 17.1
 
 # Qsys--generated SOPCINFO file. Required for resolving node instance ID's with 
 # design component names. 
-SOPCINFO_FILE := C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/digital_theremin.sopcinfo
+SOPCINFO_FILE := D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus_theremin/digital_theremin.sopcinfo
 
 # Big-Endian operation. 
 # setting BIG_ENDIAN is false
@@ -157,9 +157,9 @@ SOPC_SYSID_FLAG += --sidp=0xa0010c8
 ELF_PATCH_FLAG  += --sidp 0xa0010c8
 
 # The SOPC Timestamp 
-# setting SOPC_TIMESTAMP is 1596364560
-SOPC_SYSID_FLAG += --timestamp=1596364560
-ELF_PATCH_FLAG  += --timestamp 1596364560
+# setting SOPC_TIMESTAMP is 1596436643
+SOPC_SYSID_FLAG += --timestamp=1596436643
+ELF_PATCH_FLAG  += --timestamp 1596436643
 
 # Enable JTAG UART driver to recover when host is inactive causing buffer to 
 # full without returning error. Printf will not fail with this recovery. none 
