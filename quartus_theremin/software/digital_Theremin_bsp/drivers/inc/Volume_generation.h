@@ -33,11 +33,10 @@ alt_u32 done_calibration_vol_gen(void);
 
 void set_vol_gen(alt_u8 vol_bar);
 
-alt_u32 read_freq_vol_gen(void);
+alt_u32 read_vol_db_gain(void);
 
 alt_u32 read_cntrl_vol_gen(void);
 
-alt_u32 read_vol_gain_gen(void);
 
 
 #ifdef __cplusplus

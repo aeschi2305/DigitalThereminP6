@@ -33,7 +33,7 @@ void set_vol_gen(alt_u8 vol_bar)
 }
 
 
-alt_u32 read_freq_vol_gen(void)
+alt_u32 read_vol_db_gain(void)
 {
 	return IORD_VOLUME_GENERATION_AVALON_VOL_RD_freq(VOLUME_GENERATION_0_BASE);
 }
@@ -43,7 +43,3 @@ alt_u32 read_cntrl_vol_gen(void)
 	return IORD_VOLUME_GENERATION_AVALON_VOL_RD_CNTRL(VOLUME_GENERATION_0_BASE);
 }
 
-alt_u32 read_vol_gain_gen(void)
-{
-	return IORD_VOLUME_GENERATION_AVALON_VOL_RD_vol_gain(VOLUME_GENERATION_0_BASE);	
-}

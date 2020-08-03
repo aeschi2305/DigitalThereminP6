@@ -32,7 +32,7 @@ extern "C"
 
 void codec_wm8731_init(void);
 
-void set_vol_test(alt_u8 vol_bar);
+void set_vol(alt_u32 vol_gain);
 
 
 #ifdef __cplusplus

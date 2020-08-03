@@ -19,8 +19,6 @@
 #include "altera_avalon_pio_regs.h"
 #include "LT24_Controller.h"
 #include "LT24_Controller_regs.h"
-//#include "Pitch_dummy.h"
-//#include "Pitch_dummy_regs.h"
 #include "Pitch_generation.h"
 #include "Pitch_generation_regs.h"
 #include "Volume_generation_regs.h"
@@ -43,6 +41,7 @@
 alt_alarm my_alarm, vol_alarm;
 alt_u32 ton_delay = 0;
 alt_u8 cntrl_reg = 4;
+alt_u8 vol_antenna_on_off = 1;
 
 typedef enum {
 	ST_main, ST_cali, ST_volume, ST_play_help, ST_glissando_set, ST_display_ton
@@ -63,14 +62,15 @@ alt_u32 alarm_callback(void* context) {
 	alt_u32 tmp = read_freq_pitch();
 	printf("freq data %ld\n", tmp);
 	draw_display_ton_update((cntrl_reg & 4) >> 2);
-	return context = 100;
+	return context = 50;
 }
 //  callback function for alarm
 alt_u32 alarm_callback_vol(void* context) {
 	//Set alarm flag
 	printf("ALARM vol!!!\n");
-	printf("freq vol gen %d\n", read_freq_vol_gen());
-	return context = 500;
+	printf("freq vol gen %d\n", read_vol_db_gain());
+	set_vol(read_vol_db_gain());
+	return context = 200;
 }
 int main() {
 	//initialization
@@ -94,7 +94,7 @@ int main() {
 	printf("Hello from Nios II!\n");
 
 	//set alarm vol
-	if (alt_alarm_start(&vol_alarm, 500, alarm_callback_vol, NULL) < 0) {
+	if (alt_alarm_start(&vol_alarm, 200, alarm_callback_vol, NULL) < 0) {
 		printf("No System Clock Available\n");
 	}
 
@@ -122,6 +122,7 @@ int main() {
 					LCD_Clear(WHITE);
 					draw_volume_screen();
 					draw_update_volume_bar(vol_bar);
+					draw_vol_antenna_on_off(vol_antenna_on_off);
 				} else if (xy.y_coord > 2800) { //Coordinates for play help
 					state = ST_play_help;
 					LCD_Clear(WHITE);
@@ -147,8 +148,19 @@ int main() {
 						}
 					}
 					set_vol_gen(vol_bar);
-					printf("vol_gain Register %d\n", read_vol_gain_gen());
 					draw_update_volume_bar(vol_bar);
+					if ((xy.y_coord > 1900) && (xy.y_coord < 2800)){ //Coordinates for disabel Volume antenna
+						vol_antenna_on_off = vol_antenna_on_off^ 0x01;
+						draw_vol_antenna_on_off(vol_antenna_on_off);
+						if(vol_antenna_on_off == 1){//set alarm vol
+							if (alt_alarm_start(&vol_alarm, 200, alarm_callback_vol, NULL) < 0) {
+								printf("No System Clock Available\n");
+							}
+						}else{//disable alarm vol
+							alt_alarm_stop(&vol_alarm);
+							set_vol(40);
+						}
+					}
 				}
 				break;
 		    //******calibration state****************************************************
@@ -213,11 +225,10 @@ int main() {
 					set_glissando_delay(glissando_delay);
 					draw_update_glissando_delay(glissando_delay);
 					printf("gli_delay register %d\n", read_delay_gli());
-				} else if ((xy.y_coord > 1900) && (xy.x_coord >= 1800)){ //Coordinates for musical scale setting(Tonleiter)
+				} else if ((xy.y_coord > 1900) && (xy.y_coord < 2800)){ //Coordinates for musical scale setting(Tonleiter)
 					cntrl_reg = cntrl_reg^ 0x04;
 					draw_penta_on_off(cntrl_reg);
 					set_cntrl_reg(cntrl_reg);
-
 
 				}
 				break;

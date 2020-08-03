@@ -44,6 +44,8 @@ void draw_volume_screen(void);
 
 void draw_update_volume_bar(alt_u8 vol_bar);
 
+void draw_vol_antenna_on_off(alt_u8 on_off);
+
 void draw_help_screen(void);
 
 void draw_glissando_on_off(alt_u8 on_off);

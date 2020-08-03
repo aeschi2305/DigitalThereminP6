@@ -314,7 +314,7 @@ signal delay_count_cmb : natural range 0 to 1048576;
 
 constant min_freq_val      : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "110010000000";  -- corresponds to 100Hz
 constant cal_val        : unsigned(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "111100000000";  -- corresponds to 120Hz
-constant cal_stp        : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "000001000000";  -- corresponds to 2Hz 
+constant cal_stp        : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "000001000000"; --"000001000000";  -- corresponds to 2Hz 
 --constant cal_stp        : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "000001000000";  -- corresponds to 2Hz
 
 signal freq_diff_reg    : signed(freq_len-1 downto 0);
@@ -348,6 +348,7 @@ signal done_old         : std_ulogic;
 signal gli_fast         : std_ulogic;
 signal approx_done		: std_ulogic;
 signal delay 			: std_ulogic;
+signal init             : std_ulogic;
 
 signal disp_index : std_logic_vector(5 downto 0);
 
@@ -358,7 +359,7 @@ signal gli_penta_index_reg : integer range 0 to penta_index'length;
 signal gli_penta_index_cmb : integer range 0 to penta_index'length;
 
 
-type state_type_calgli is (s_idle, s_check, s_sign, s_diff, s_freq_range, s_step, s_step_cnt);
+type state_type_calgli is (s_idle, s_reset, s_check, s_sign, s_diff, s_freq_range, s_step, s_step_cnt);
 signal state_ns : state_type_calgli; -- next state
 signal state_cs : state_type_calgli; -- current state
 
@@ -378,11 +379,18 @@ begin
         state_ns <= state_cs; 
         case state_cs is
 
-            when s_idle => 
-                if cal_enable = '1' and freq_enable = '1' then
+            when s_idle =>
+                if init = '1' then 
+                    if cal_enable = '1' and freq_enable = '1' then
+                        state_ns <= s_reset;
+                    elsif glis_allow = true and freq_enable = '1' then
+                        state_ns <= s_freq_range;
+                    end if;
+                end if;
+
+             when s_reset => 
+                if done = '1' and done_old = '0' then
                     state_ns <= s_check;
-                elsif glis_allow = true and freq_enable = '1' then
-                    state_ns <= s_freq_range;
                 end if;
 
             when s_check => 
@@ -451,7 +459,7 @@ begin
             cal_done <= '0';
             approx_done <= '0';
 
-            case state_ns is
+            case state_cs is
 
                 when s_idle =>          --idle state where no effect or calibration is happening
                 	done <= '0';
@@ -460,8 +468,15 @@ begin
                     end if;
                     freq_gli_reg <= (others => '0');
 
-                when s_check =>                     --Used to check if the frequency is too low to measure
+                when s_reset =>                     --resets the calibration if already calibrated
                     freq_cal_reg <= (others => '0');
+                    done <= '0';
+                    if freq_enable = '1' then
+                        done <= '1';
+                    end if;
+
+                when s_check =>                     --Used to check if the frequency is too low to measure
+
                     done <= '0';
 
                     if freq_enable = '1' then
@@ -471,9 +486,11 @@ begin
                         done <= '1';
                     end if;
 
+
+
                 when s_sign =>                      --Used to determin if the frequency of the reference oscillator is bigger
                     done <= '0';
-                    if freq_enable = '1' then
+                    if freq_enable = '1' and delay = '1' then
                         if meas = '0' then
                             freq_old <= signed(freq);                   --saves old value and subtracts 100Hz to check sign
                             freq_cal_reg <= freq_sign;          
@@ -482,19 +499,26 @@ begin
                             if freq_old > signed(freq) then
                                 freq_cal_reg <= freq_sign_chn;  --changes the sign
                             end if;
+                            delay <= '0';
                             done <= '1';
                             meas <= '0';
                         end if;
+                    elsif freq_enable = '1' then
+                        delay <= '1';
                     end if;     
 
                 when s_diff =>                  --sets the frequency so that the difference becomes 100Hz by reducing the ref. osc. in steps
                     done <= '0';
-                    if freq_enable = '1' then
-                        freq_cal_reg <= freq_cal_cmb;
+                    if freq_enable = '1' and delay = '1' then 
                         if freq < cal_val then
                             cal_done <= '1';
+                            delay <= '0';
                             done <= '1';
+                        else
+                            freq_cal_reg <= freq_cal_cmb;
                         end if;
+                    elsif freq_enable = '1' then
+                        delay <= '1';
                     end if;
 
                 when s_freq_range =>                --Calculates the nearest note and its index
@@ -512,7 +536,8 @@ begin
                     end if;
 
 
-                when s_step =>                                             --calculates the frequency steps
+                when s_step =>                                            --calculates the frequency steps
+                    delay <= '0';
                     if gli_diff_reg(gli_diff_reg'high) = '1' then
                         gli_step <= freq_step(gli_index_reg);
                     else
@@ -550,7 +575,11 @@ begin
     begin
         if reset_n = '0' then
             disp_index <= (others => '0');
+            init <= '0';
         elsif rising_edge(clk) then
+            if freq_enable = '1' then
+                init <= '1';
+            end if;
             if mus_scale = '0' then
                 disp_index <= std_logic_vector(to_unsigned(gli_index_reg,6));
             else 
@@ -593,7 +622,7 @@ begin
         gli_diff_cmb_n <= gli_diff_reg + gli_step;
         gli_diff_neg_cmb_n <= gli_diff_neg_reg - gli_step;
         delay_count_cmb <= delay_count_reg + 1;
-        freq_actual_cmb <= signed(freq) - freq_gli_cmb_tmp;
+        freq_actual_cmb <= signed(freq) - freq_gli_reg;
 
         freq_diff_cmb <= freq_cal_reg + freq_gli_reg;
     end process p_fsm_cmb;

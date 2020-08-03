@@ -74,9 +74,9 @@ end component cordic_Control;
 component filter_pitch is
   generic (
    N : natural := 16;  --Number of Bits of the sine wave (precision)
-   cic1Bits : natural := 23;
-   cic2Bits : natural := 26;
-   cic3Bits : natural := 29
+   cic1Bits : natural := 21;
+   cic2Bits : natural := 25;
+   cic3Bits : natural := 28
   );
     port (
      reset_n        : in  std_ulogic; -- asynchronous reset

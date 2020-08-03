@@ -73,25 +73,36 @@ void draw_calibrating_screen_done(void)
  *--------------------------------------------------*/
 void draw_volume_screen(void)
 {
-	vid_print_string(10,25,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
-	LCD_DrawRect(55,10,115,90,GREY);
-	vid_print_string(260,60,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
-	LCD_DrawRect(55,100,115,180,GREY);
-	vid_print_string(175,74,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+	vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+	LCD_DrawRect(39,195,99,310,GREY_SOFT);
+	LCD_DrawRect(39,10,99,90,GREY);
+	vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+	LCD_DrawRect(39,100,99,180,GREY);
+	vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
 
-	LCD_DrawRect(170,10,230,110,GREY);
+	LCD_DrawRect(175,10,235,110,GREY);
 	vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
+
 
 void draw_update_volume_bar(alt_u8 vol_bar)
 {
 	alt_u8 i;
-	LCD_DrawRect(55,195,115,310,GREY_SOFT);
+	LCD_DrawRect(39,195,99,310,GREY_SOFT);
 	for(i = 0; i < vol_bar+1; i++){
-		LCD_DrawRect(60,(299-i*6-i*5),110,(299-i*6-i*5+6),GREEN);
+		LCD_DrawRect(44,(299-i*6-i*5),94,(299-i*6-i*5+6),GREEN);
 	}
 }
 
+void draw_vol_antenna_on_off(alt_u8 on_off){
+	if(on_off == 1){
+		LCD_DrawRect(107,10,167,310,GREEN);
+		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna on");
+	}else{
+		LCD_DrawRect(107,10,167,310,GREY);
+		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna off");
+	}
+}
 /*----------------------------------------------------
  * Function:
  * Purpose :
@@ -128,11 +139,11 @@ void draw_glissando_on_off(alt_u8 on_off){
 void draw_glissando_set(void)
 {
 	vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
-	LCD_DrawRect(40,195,100,310,GREY_SOFT);
-	LCD_DrawRect(40,10,100,90,GREY);
-	vid_print_string(260,45,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
-	LCD_DrawRect(40,100,100,180,GREY);
-	vid_print_string(175,59,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+	LCD_DrawRect(39,195,99,310,GREY_SOFT);
+	LCD_DrawRect(39,10,99,90,GREY);
+	vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+	LCD_DrawRect(39,100,99,180,GREY);
+	vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
 
 	LCD_DrawRect(175,10,235,110,GREY);
 	vid_print_string(244,194,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
@@ -141,21 +152,23 @@ void draw_glissando_set(void)
 void draw_update_glissando_delay(alt_u8 gli_delay)
 {
 	alt_u8 i;
-	LCD_DrawRect(40,195,100,310,GREY_SOFT);
+	LCD_DrawRect(39,195,99,310,GREY_SOFT);
 	for(i = 0; i < gli_delay; i++){
-		LCD_DrawRect(45,(299-i*6-i*5),95,(299-i*6-i*5+6),GREEN);
+		LCD_DrawRect(44,(299-i*6-i*5),94,(299-i*6-i*5+6),GREEN);
 	}
 }
 
 void draw_penta_on_off(alt_u8 on_off){
 	if(on_off == 4){
-		LCD_DrawRect(110,100,170,310,GREEN);
+		LCD_DrawRect(107,10,167,310,GREEN);
 		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic on");
 	}else{
-		LCD_DrawRect(110,100,170,310,GREY);
+		LCD_DrawRect(107,10,167,310,GREY);
 		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic off");
 	}
 }
+
+
 /*----------------------------------------------------
  * Function:
  * Purpose :
