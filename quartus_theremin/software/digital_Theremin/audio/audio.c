@@ -46,7 +46,7 @@ void set_vol(alt_u32 vol_gain)
 	{
 		if(zero_cross)
 		{
-			alt_up_av_config_write_audio_cfg_register(i2c_dev,0x02,((alt_u8)vol_gain_tmp + 47) | 384);
+			alt_up_av_config_write_audio_cfg_register(i2c_dev,0x02,((alt_u8)vol_gain_tmp + 47) | 256); //384
 		}
 		else
 		{

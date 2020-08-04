@@ -3,6 +3,8 @@
 	<name>RemoteSystemsTempFiles</name>
 	<comment></comment>
 	<projects>
+		<project>digital_Theremin</project>
+		<project>digital_Theremin_bsp</project>
 	</projects>
 	<buildSpec>
 	</buildSpec>

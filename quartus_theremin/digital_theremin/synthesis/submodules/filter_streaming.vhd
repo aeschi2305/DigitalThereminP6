@@ -25,6 +25,8 @@ entity filter_streaming is
      valid        : out std_logic;	--Control Signals
      ready        : in std_logic;	
 
+     vol_cntrl    : in std_logic;
+
      enable         : in boolean
   );
 end entity filter_streaming;
@@ -56,7 +58,11 @@ begin
   variable audio_tmp : std_logic_vector(M-1 downto 0);
   begin
     cic_gain := cic_out * to_signed(121,cic_out'length);
-    audio_tmp := std_logic_vector(cic_gain(N-1+5 downto N-M+5));
+    if vol_cntrl = '0' then
+      audio_tmp := std_logic_vector(cic_gain(N-1+5 downto N-M+5));
+    else
+      audio_tmp := std_logic_vector(shift_right(cic_gain(N-1+5 downto N-M+5),3));
+    end if;
     audio_tmp(audio_tmp'high) := not audio_tmp(audio_tmp'high);
     audio_cmb <= audio_tmp;
   end process p_comb_cmb;

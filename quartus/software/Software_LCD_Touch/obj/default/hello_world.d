@@ -11,12 +11,10 @@ obj/default/hello_world.o: hello_world.c \
  ../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top.h \
  ../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top_regs.h \
  ../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top_regs.h \
- ../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy.h \
- ../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy_regs.h \
- ../Software_LCD_Touch_bsp//drivers/inc/Volume_generation_top_regs.h \
- ../Software_LCD_Touch_bsp//drivers/inc/Volume_generation_top.h \
- ../Software_LCD_Touch_bsp//drivers/inc/volume_generation_top_regs.h \
- ../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy_regs.h audio/audio.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Volume_generation_regs.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/Volume_generation.h \
+ ../Software_LCD_Touch_bsp//drivers/inc/volume_generation_regs.h \
+ audio/audio.h \
  ../Software_LCD_Touch_bsp//drivers/inc/altera_up_avalon_audio_and_video_config.h \
  ../Software_LCD_Touch_bsp//HAL/inc/sys/alt_dev.h \
  ../Software_LCD_Touch_bsp//HAL/inc/sys/alt_llist.h \
@@ -60,17 +58,11 @@ obj/default/hello_world.o: hello_world.c \
 
 ../Software_LCD_Touch_bsp//drivers/inc/Pitch_generation_top_regs.h:
 
-../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy.h:
+../Software_LCD_Touch_bsp//drivers/inc/Volume_generation_regs.h:
 
-../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy_regs.h:
+../Software_LCD_Touch_bsp//drivers/inc/Volume_generation.h:
 
-../Software_LCD_Touch_bsp//drivers/inc/Volume_generation_top_regs.h:
-
-../Software_LCD_Touch_bsp//drivers/inc/Volume_generation_top.h:
-
-../Software_LCD_Touch_bsp//drivers/inc/volume_generation_top_regs.h:
-
-../Software_LCD_Touch_bsp//drivers/inc/Volume_dummy_regs.h:
+../Software_LCD_Touch_bsp//drivers/inc/volume_generation_regs.h:
 
 audio/audio.h:
 

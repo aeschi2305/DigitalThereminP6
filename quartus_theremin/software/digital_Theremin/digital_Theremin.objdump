@@ -33,49 +33,49 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   9 .debug_aranges 00000fe8  00000000  00000000  00019028  2**3
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_info   0002624b  00000000  00000000  0001a010  2**0
+ 10 .debug_info   00026239  00000000  00000000  0001a010  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_abbrev 00009b3f  00000000  00000000  0004025b  2**0
+ 11 .debug_abbrev 00009b3f  00000000  00000000  00040249  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_line   0000c34b  00000000  00000000  00049d9a  2**0
+ 12 .debug_line   0000c34b  00000000  00000000  00049d88  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_frame  00002b98  00000000  00000000  000560e8  2**2
+ 13 .debug_frame  00002b98  00000000  00000000  000560d4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    000045eb  00000000  00000000  00058c80  2**0
+ 14 .debug_str    00004649  00000000  00000000  00058c6c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_loc    00017868  00000000  00000000  0005d26b  2**0
+ 15 .debug_loc    00017868  00000000  00000000  0005d2b5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_alt_sim_info 00000050  00000000  00000000  00074ad4  2**2
+ 16 .debug_alt_sim_info 00000050  00000000  00000000  00074b20  2**2
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_ranges 000018b8  00000000  00000000  00074b28  2**3
+ 17 .debug_ranges 000018b8  00000000  00000000  00074b70  2**3
                   CONTENTS, READONLY, DEBUGGING
- 18 .thread_model 00000003  00000000  00000000  0007a1e2  2**0
+ 18 .thread_model 00000003  00000000  00000000  0007a22a  2**0
                   CONTENTS, READONLY
- 19 .cpu          00000003  00000000  00000000  0007a1e5  2**0
+ 19 .cpu          00000003  00000000  00000000  0007a22d  2**0
                   CONTENTS, READONLY
- 20 .qsys         00000001  00000000  00000000  0007a1e8  2**0
+ 20 .qsys         00000001  00000000  00000000  0007a230  2**0
                   CONTENTS, READONLY
- 21 .simulation_enabled 00000001  00000000  00000000  0007a1e9  2**0
+ 21 .simulation_enabled 00000001  00000000  00000000  0007a231  2**0
                   CONTENTS, READONLY
- 22 .sysid_hash   00000004  00000000  00000000  0007a1ea  2**0
+ 22 .sysid_hash   00000004  00000000  00000000  0007a232  2**0
                   CONTENTS, READONLY
- 23 .sysid_base   00000004  00000000  00000000  0007a1ee  2**0
+ 23 .sysid_base   00000004  00000000  00000000  0007a236  2**0
                   CONTENTS, READONLY
- 24 .sysid_time   00000004  00000000  00000000  0007a1f2  2**0
+ 24 .sysid_time   00000004  00000000  00000000  0007a23a  2**0
                   CONTENTS, READONLY
- 25 .stderr_dev   00000004  00000000  00000000  0007a1f6  2**0
+ 25 .stderr_dev   00000004  00000000  00000000  0007a23e  2**0
                   CONTENTS, READONLY
- 26 .stdin_dev    00000004  00000000  00000000  0007a1fa  2**0
+ 26 .stdin_dev    00000004  00000000  00000000  0007a242  2**0
                   CONTENTS, READONLY
- 27 .stdout_dev   00000004  00000000  00000000  0007a1fe  2**0
+ 27 .stdout_dev   00000004  00000000  00000000  0007a246  2**0
                   CONTENTS, READONLY
- 28 .sopc_system_name 00000010  00000000  00000000  0007a202  2**0
+ 28 .sopc_system_name 00000010  00000000  00000000  0007a24a  2**0
                   CONTENTS, READONLY
- 29 .quartus_project_dir 0000004b  00000000  00000000  0007a212  2**0
+ 29 .quartus_project_dir 00000045  00000000  00000000  0007a25a  2**0
                   CONTENTS, READONLY
- 30 .jdi          0000655b  00000000  00000000  0007a25d  2**0
+ 30 .jdi          0000656b  00000000  00000000  0007a29f  2**0
                   CONTENTS, READONLY
- 31 .sopcinfo     000af030  00000000  00000000  000807b8  2**0
+ 31 .sopcinfo     000af0b9  00000000  00000000  0008080a  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 097f0000 l    d  .entry	00000000 .entry
@@ -1150,12 +1150,12 @@ void set_vol(alt_u32 vol_gain)
  40003f0:	10803fcc 	andi	r2,r2,255
  40003f4:	10000a26 	beq	r2,zero,4000420 <set_vol+0x80>
 		{
-			alt_up_av_config_write_audio_cfg_register(i2c_dev,0x02,((alt_u8)vol_gain_tmp + 47) | 384);
+			alt_up_av_config_write_audio_cfg_register(i2c_dev,0x02,((alt_u8)vol_gain_tmp + 47) | 256); //384
  40003f8:	d0e01517 	ldw	r3,-32684(gp)
  40003fc:	e0bffe17 	ldw	r2,-8(fp)
  4000400:	10803fcc 	andi	r2,r2,255
  4000404:	10800bc4 	addi	r2,r2,47
- 4000408:	10806014 	ori	r2,r2,384
+ 4000408:	10804014 	ori	r2,r2,256
  400040c:	100d883a 	mov	r6,r2
  4000410:	01400084 	movi	r5,2
  4000414:	1809883a 	mov	r4,r3
@@ -1168,7 +1168,7 @@ void set_vol(alt_u32 vol_gain)
 }
  400041c:	00001306 	br	400046c <set_vol+0xcc>
 		{
-			alt_up_av_config_write_audio_cfg_register(i2c_dev,0x02,((alt_u8)vol_gain_tmp + 47) | 384);
+			alt_up_av_config_write_audio_cfg_register(i2c_dev,0x02,((alt_u8)vol_gain_tmp + 47) | 256); //384
 		}
 		else
 		{
@@ -2875,10 +2875,10 @@ alt_u32 alarm_callback_vol(void* context) {
  4001788:	40108a00 	call	40108a0 <read_vol_db_gain>
  400178c:	1009883a 	mov	r4,r2
  4001790:	40003a00 	call	40003a0 <set_vol>
-	return context = 200;
- 4001794:	00803204 	movi	r2,200
+	return context = 50;
+ 4001794:	00800c84 	movi	r2,50
  4001798:	e0bfff15 	stw	r2,-4(fp)
- 400179c:	00803204 	movi	r2,200
+ 400179c:	00800c84 	movi	r2,50
 }
  40017a0:	e037883a 	mov	sp,fp
  40017a4:	dfc00117 	ldw	ra,4(sp)
@@ -2936,11 +2936,11 @@ int main() {
  400181c:	400246c0 	call	400246c <puts>
 
 	//set alarm vol
-	if (alt_alarm_start(&vol_alarm, 200, alarm_callback_vol, NULL) < 0) {
+	if (alt_alarm_start(&vol_alarm, 50, alarm_callback_vol, NULL) < 0) {
  4001820:	000f883a 	mov	r7,zero
  4001824:	01810034 	movhi	r6,1024
  4001828:	3185d504 	addi	r6,r6,5972
- 400182c:	01403204 	movi	r5,200
+ 400182c:	01400c84 	movi	r5,50
  4001830:	01010074 	movhi	r4,1025
  4001834:	211cb404 	addi	r4,r4,29392
  4001838:	400eb180 	call	400eb18 <alt_alarm_start>
@@ -3174,11 +3174,11 @@ int main() {
  4001a60:	10803fcc 	andi	r2,r2,255
  4001a64:	10800058 	cmpnei	r2,r2,1
  4001a68:	10000c1e 	bne	r2,zero,4001a9c <main+0x2e8>
-							if (alt_alarm_start(&vol_alarm, 200, alarm_callback_vol, NULL) < 0) {
+							if (alt_alarm_start(&vol_alarm, 50, alarm_callback_vol, NULL) < 0) {
  4001a6c:	000f883a 	mov	r7,zero
  4001a70:	01810034 	movhi	r6,1024
  4001a74:	3185d504 	addi	r6,r6,5972
- 4001a78:	01403204 	movi	r5,200
+ 4001a78:	01400c84 	movi	r5,50
  4001a7c:	01010074 	movhi	r4,1025
  4001a80:	211cb404 	addi	r4,r4,29392
  4001a84:	400eb180 	call	400eb18 <alt_alarm_start>
@@ -3195,7 +3195,7 @@ int main() {
 				break;
  4001a98:	0000e606 	br	4001e34 <main+0x680>
 						if(vol_antenna_on_off == 1){//set alarm vol
-							if (alt_alarm_start(&vol_alarm, 200, alarm_callback_vol, NULL) < 0) {
+							if (alt_alarm_start(&vol_alarm, 50, alarm_callback_vol, NULL) < 0) {
 								printf("No System Clock Available\n");
 							}
 						}else{//disable alarm vol
@@ -18055,17 +18055,10 @@ void alt_main (void)
  400f370:	40132580 	call	4013258 <exit>
 
 0400f374 <__malloc_lock>:
- * configuration is single threaded, so there is nothing to do here. Note that 
- * this requires that malloc is never called by an interrupt service routine.
- */
-
-void __malloc_lock ( struct _reent *_r )
-{
  400f374:	defffe04 	addi	sp,sp,-8
  400f378:	df000115 	stw	fp,4(sp)
  400f37c:	df000104 	addi	fp,sp,4
  400f380:	e13fff15 	stw	r4,-4(fp)
-}
  400f384:	0001883a 	nop
  400f388:	e037883a 	mov	sp,fp
  400f38c:	df000017 	ldw	fp,0(sp)
@@ -18073,17 +18066,10 @@ void __malloc_lock ( struct _reent *_r )
  400f394:	f800283a 	ret
 
 0400f398 <__malloc_unlock>:
-/*
- *
- */
-
-void __malloc_unlock ( struct _reent *_r )
-{
  400f398:	defffe04 	addi	sp,sp,-8
  400f39c:	df000115 	stw	fp,4(sp)
  400f3a0:	df000104 	addi	fp,sp,4
  400f3a4:	e13fff15 	stw	r4,-4(fp)
-}
  400f3a8:	0001883a 	nop
  400f3ac:	e037883a 	mov	sp,fp
  400f3b0:	df000017 	ldw	fp,0(sp)
@@ -18582,21 +18568,13 @@ void alt_tick (void)
  400f7a8:	f800283a 	ret
 
 0400f7ac <usleep>:
-#if defined (__GNUC__) && __GNUC__ >= 4
-int ALT_USLEEP (useconds_t us)
-#else
-unsigned int ALT_USLEEP (unsigned int us)
-#endif
-{
  400f7ac:	defffd04 	addi	sp,sp,-12
  400f7b0:	dfc00215 	stw	ra,8(sp)
  400f7b4:	df000115 	stw	fp,4(sp)
  400f7b8:	df000104 	addi	fp,sp,4
  400f7bc:	e13fff15 	stw	r4,-4(fp)
-  return alt_busy_sleep(us);
  400f7c0:	e13fff17 	ldw	r4,-4(fp)
  400f7c4:	40128300 	call	4012830 <alt_busy_sleep>
-}
  400f7c8:	e037883a 	mov	sp,fp
  400f7cc:	dfc00117 	ldw	ra,4(sp)
  400f7d0:	df000017 	ldw	fp,0(sp)
@@ -21457,12 +21435,6 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
  4011354:	f800283a 	ret
 
 04011358 <alt_avalon_spi_command>:
-
-int alt_avalon_spi_command(alt_u32 base, alt_u32 slave,
-                           alt_u32 write_length, const alt_u8 * write_data,
-                           alt_u32 read_length, alt_u8 * read_data,
-                           alt_u32 flags)
-{
  4011358:	defff404 	addi	sp,sp,-48
  401135c:	df000b15 	stw	fp,44(sp)
  4011360:	df000b04 	addi	fp,sp,44
@@ -21470,37 +21442,20 @@ int alt_avalon_spi_command(alt_u32 base, alt_u32 slave,
  4011368:	e17ffd15 	stw	r5,-12(fp)
  401136c:	e1bffe15 	stw	r6,-8(fp)
  4011370:	e1ffff15 	stw	r7,-4(fp)
-  const alt_u8 * write_end = write_data + write_length;
  4011374:	e0ffff17 	ldw	r3,-4(fp)
  4011378:	e0bffe17 	ldw	r2,-8(fp)
  401137c:	1885883a 	add	r2,r3,r2
  4011380:	e0bff815 	stw	r2,-32(fp)
-  alt_u8 * read_end = read_data + read_length;
  4011384:	e0c00217 	ldw	r3,8(fp)
  4011388:	e0800117 	ldw	r2,4(fp)
  401138c:	1885883a 	add	r2,r3,r2
  4011390:	e0bff915 	stw	r2,-28(fp)
-
-  alt_u32 write_zeros = read_length;
  4011394:	e0800117 	ldw	r2,4(fp)
  4011398:	e0bff515 	stw	r2,-44(fp)
-  alt_u32 read_ignore = write_length;
  401139c:	e0bffe17 	ldw	r2,-8(fp)
  40113a0:	e0bff615 	stw	r2,-40(fp)
-
-  /* We must not send more than two bytes to the target before it has
-   * returned any as otherwise it will overflow. */
-  /* Unfortunately the hardware does not seem to work with credits > 1,
-   * leave it at 1 for now. */
-  alt_32 credits = 1;
  40113a4:	00800044 	movi	r2,1
  40113a8:	e0bff715 	stw	r2,-36(fp)
-  /* Warning: this function is not currently safe if called in a multi-threaded
-   * environment, something above must perform locking to make it safe if more
-   * than one thread intends to use it.
-   */
-
-  IOWR_ALTERA_AVALON_SPI_SLAVE_SEL(base, 1 << slave);
  40113ac:	e0bffc17 	ldw	r2,-16(fp)
  40113b0:	10800504 	addi	r2,r2,20
  40113b4:	1009883a 	mov	r4,r2
@@ -21508,79 +21463,39 @@ int alt_avalon_spi_command(alt_u32 base, alt_u32 slave,
  40113bc:	e0bffd17 	ldw	r2,-12(fp)
  40113c0:	1884983a 	sll	r2,r3,r2
  40113c4:	20800035 	stwio	r2,0(r4)
-  
-  /* Set the SSO bit (force chipselect) only if the toggle flag is not set */
-  if ((flags & ALT_AVALON_SPI_COMMAND_TOGGLE_SS_N) == 0) {
  40113c8:	e0800317 	ldw	r2,12(fp)
  40113cc:	1080008c 	andi	r2,r2,2
  40113d0:	1000051e 	bne	r2,zero,40113e8 <alt_avalon_spi_command+0x90>
-    IOWR_ALTERA_AVALON_SPI_CONTROL(base, ALTERA_AVALON_SPI_CONTROL_SSO_MSK);
  40113d4:	e0bffc17 	ldw	r2,-16(fp)
  40113d8:	10800304 	addi	r2,r2,12
  40113dc:	1007883a 	mov	r3,r2
  40113e0:	00810004 	movi	r2,1024
  40113e4:	18800035 	stwio	r2,0(r3)
-  /*
-   * Discard any stale data present in the RXDATA register, in case
-   * previous communication was interrupted and stale data was left
-   * behind.
-   */
-  IORD_ALTERA_AVALON_SPI_RXDATA(base);
  40113e8:	e0bffc17 	ldw	r2,-16(fp)
  40113ec:	10800037 	ldwio	r2,0(r2)
-  for ( ; ; )
-  {
-    
-    do
-    {
-      status = IORD_ALTERA_AVALON_SPI_STATUS(base);
  40113f0:	e0bffc17 	ldw	r2,-16(fp)
  40113f4:	10800204 	addi	r2,r2,8
  40113f8:	10800037 	ldwio	r2,0(r2)
  40113fc:	e0bffa15 	stw	r2,-24(fp)
-    }
-    while (((status & ALTERA_AVALON_SPI_STATUS_TRDY_MSK) == 0 || credits == 0) &&
  4011400:	e0bffa17 	ldw	r2,-24(fp)
  4011404:	1080100c 	andi	r2,r2,64
-            (status & ALTERA_AVALON_SPI_STATUS_RRDY_MSK) == 0);
  4011408:	10000226 	beq	r2,zero,4011414 <alt_avalon_spi_command+0xbc>
-    
-    do
-    {
-      status = IORD_ALTERA_AVALON_SPI_STATUS(base);
-    }
-    while (((status & ALTERA_AVALON_SPI_STATUS_TRDY_MSK) == 0 || credits == 0) &&
  401140c:	e0bff717 	ldw	r2,-36(fp)
  4011410:	1000031e 	bne	r2,zero,4011420 <alt_avalon_spi_command+0xc8>
-            (status & ALTERA_AVALON_SPI_STATUS_RRDY_MSK) == 0);
  4011414:	e0bffa17 	ldw	r2,-24(fp)
  4011418:	1080200c 	andi	r2,r2,128
-    
-    do
-    {
-      status = IORD_ALTERA_AVALON_SPI_STATUS(base);
-    }
-    while (((status & ALTERA_AVALON_SPI_STATUS_TRDY_MSK) == 0 || credits == 0) &&
  401141c:	103ff426 	beq	r2,zero,40113f0 <__reset+0xfa8213f0>
-            (status & ALTERA_AVALON_SPI_STATUS_RRDY_MSK) == 0);
-
-    if ((status & ALTERA_AVALON_SPI_STATUS_TRDY_MSK) != 0 && credits > 0)
  4011420:	e0bffa17 	ldw	r2,-24(fp)
  4011424:	1080100c 	andi	r2,r2,64
  4011428:	10001e26 	beq	r2,zero,40114a4 <alt_avalon_spi_command+0x14c>
  401142c:	e0bff717 	ldw	r2,-36(fp)
  4011430:	00801c0e 	bge	zero,r2,40114a4 <alt_avalon_spi_command+0x14c>
-    {
-      credits--;
  4011434:	e0bff717 	ldw	r2,-36(fp)
  4011438:	10bfffc4 	addi	r2,r2,-1
  401143c:	e0bff715 	stw	r2,-36(fp)
-
-      if (write_data < write_end)
  4011440:	e0ffff17 	ldw	r3,-4(fp)
  4011444:	e0bff817 	ldw	r2,-32(fp)
  4011448:	18800a2e 	bgeu	r3,r2,4011474 <alt_avalon_spi_command+0x11c>
-        IOWR_ALTERA_AVALON_SPI_TXDATA(base, *write_data++);
  401144c:	e0bffc17 	ldw	r2,-16(fp)
  4011450:	10800104 	addi	r2,r2,4
  4011454:	1009883a 	mov	r4,r2
@@ -21591,95 +21506,58 @@ int alt_avalon_spi_command(alt_u32 base, alt_u32 slave,
  4011468:	10803fcc 	andi	r2,r2,255
  401146c:	20800035 	stwio	r2,0(r4)
  4011470:	00000c06 	br	40114a4 <alt_avalon_spi_command+0x14c>
-      else if (write_zeros > 0)
  4011474:	e0bff517 	ldw	r2,-44(fp)
  4011478:	10000826 	beq	r2,zero,401149c <alt_avalon_spi_command+0x144>
-      {
-        write_zeros--;
  401147c:	e0bff517 	ldw	r2,-44(fp)
  4011480:	10bfffc4 	addi	r2,r2,-1
  4011484:	e0bff515 	stw	r2,-44(fp)
-        IOWR_ALTERA_AVALON_SPI_TXDATA(base, 0);
  4011488:	e0bffc17 	ldw	r2,-16(fp)
  401148c:	10800104 	addi	r2,r2,4
  4011490:	0007883a 	mov	r3,zero
  4011494:	10c00035 	stwio	r3,0(r2)
  4011498:	00000206 	br	40114a4 <alt_avalon_spi_command+0x14c>
-      }
-      else
-        credits = -1024;
  401149c:	00bf0004 	movi	r2,-1024
  40114a0:	e0bff715 	stw	r2,-36(fp)
-    };
-
-    if ((status & ALTERA_AVALON_SPI_STATUS_RRDY_MSK) != 0)
  40114a4:	e0bffa17 	ldw	r2,-24(fp)
  40114a8:	1080200c 	andi	r2,r2,128
  40114ac:	103fd026 	beq	r2,zero,40113f0 <__reset+0xfa8213f0>
-    {
-      alt_u32 rxdata = IORD_ALTERA_AVALON_SPI_RXDATA(base);
  40114b0:	e0bffc17 	ldw	r2,-16(fp)
  40114b4:	10800037 	ldwio	r2,0(r2)
  40114b8:	e0bffb15 	stw	r2,-20(fp)
-
-      if (read_ignore > 0)
  40114bc:	e0bff617 	ldw	r2,-40(fp)
  40114c0:	10000426 	beq	r2,zero,40114d4 <alt_avalon_spi_command+0x17c>
-        read_ignore--;
  40114c4:	e0bff617 	ldw	r2,-40(fp)
  40114c8:	10bfffc4 	addi	r2,r2,-1
  40114cc:	e0bff615 	stw	r2,-40(fp)
  40114d0:	00000506 	br	40114e8 <alt_avalon_spi_command+0x190>
-      else
-        *read_data++ = (alt_u8)rxdata;
  40114d4:	e0800217 	ldw	r2,8(fp)
  40114d8:	10c00044 	addi	r3,r2,1
  40114dc:	e0c00215 	stw	r3,8(fp)
  40114e0:	e0fffb17 	ldw	r3,-20(fp)
  40114e4:	10c00005 	stb	r3,0(r2)
-      credits++;
  40114e8:	e0bff717 	ldw	r2,-36(fp)
  40114ec:	10800044 	addi	r2,r2,1
  40114f0:	e0bff715 	stw	r2,-36(fp)
-
-      if (read_ignore == 0 && read_data == read_end)
  40114f4:	e0bff617 	ldw	r2,-40(fp)
  40114f8:	103fbd1e 	bne	r2,zero,40113f0 <__reset+0xfa8213f0>
  40114fc:	e0c00217 	ldw	r3,8(fp)
  4011500:	e0bff917 	ldw	r2,-28(fp)
  4011504:	18bfba1e 	bne	r3,r2,40113f0 <__reset+0xfa8213f0>
-  }
-
-  /* Wait until the interface has finished transmitting */
-  do
-  {
-    status = IORD_ALTERA_AVALON_SPI_STATUS(base);
  4011508:	e0bffc17 	ldw	r2,-16(fp)
  401150c:	10800204 	addi	r2,r2,8
  4011510:	10800037 	ldwio	r2,0(r2)
  4011514:	e0bffa15 	stw	r2,-24(fp)
-  }
-  while ((status & ALTERA_AVALON_SPI_STATUS_TMT_MSK) == 0);
  4011518:	e0bffa17 	ldw	r2,-24(fp)
  401151c:	1080080c 	andi	r2,r2,32
  4011520:	103ff926 	beq	r2,zero,4011508 <__reset+0xfa821508>
-
-  /* Clear SSO (release chipselect) unless the caller is going to
-   * keep using this chip
-   */
-  if ((flags & ALT_AVALON_SPI_COMMAND_MERGE) == 0)
  4011524:	e0800317 	ldw	r2,12(fp)
  4011528:	1080004c 	andi	r2,r2,1
  401152c:	1000041e 	bne	r2,zero,4011540 <alt_avalon_spi_command+0x1e8>
-    IOWR_ALTERA_AVALON_SPI_CONTROL(base, 0);
  4011530:	e0bffc17 	ldw	r2,-16(fp)
  4011534:	10800304 	addi	r2,r2,12
  4011538:	0007883a 	mov	r3,zero
  401153c:	10c00035 	stwio	r3,0(r2)
-
-  return read_length;
  4011540:	e0800117 	ldw	r2,4(fp)
-}
  4011544:	e037883a 	mov	sp,fp
  4011548:	df000017 	ldw	fp,0(sp)
  401154c:	dec00104 	addi	sp,sp,4
@@ -21823,24 +21701,14 @@ static ALT_INLINE int ALT_ALWAYS_INLINE alt_sysclk_init (alt_u32 nticks)
  4011644:	f800283a 	ret
 
 04011648 <alt_flash_device_register>:
-
-typedef struct alt_flash_dev alt_flash_dev; 
-typedef alt_flash_dev alt_flash_fd;
-
-static ALT_INLINE int alt_flash_device_register( alt_flash_fd* fd)
-{
  4011648:	defffd04 	addi	sp,sp,-12
  401164c:	dfc00215 	stw	ra,8(sp)
  4011650:	df000115 	stw	fp,4(sp)
  4011654:	df000104 	addi	fp,sp,4
  4011658:	e13fff15 	stw	r4,-4(fp)
-  extern alt_llist alt_flash_dev_list;
-
-  return alt_dev_llist_insert ((alt_dev_llist*) fd, &alt_flash_dev_list);
  401165c:	d1601204 	addi	r5,gp,-32696
  4011660:	e13fff17 	ldw	r4,-4(fp)
  4011664:	40129940 	call	4012994 <alt_dev_llist_insert>
-}
  4011668:	e037883a 	mov	sp,fp
  401166c:	dfc00117 	ldw	ra,4(sp)
  4011670:	df000017 	ldw	fp,0(sp)
@@ -21848,116 +21716,69 @@ static ALT_INLINE int alt_flash_device_register( alt_flash_fd* fd)
  4011678:	f800283a 	ret
 
 0401167c <alt_epcq_controller_lock>:
-  * -EINVAL -> Invalid arguments
-  * -ETIME  -> Time out and skipping the looping after 0.7 sec.
-  * -ENOLCK -> Sectors lock failed.
-**/
-int alt_epcq_controller_lock(alt_flash_dev *flash_info, alt_u32 sectors_to_lock)
-{
  401167c:	defff804 	addi	sp,sp,-32
  4011680:	dfc00715 	stw	ra,28(sp)
  4011684:	df000615 	stw	fp,24(sp)
  4011688:	df000604 	addi	fp,sp,24
  401168c:	e13ffe15 	stw	r4,-8(fp)
  4011690:	e17fff15 	stw	r5,-4(fp)
-    alt_u32 mem_op_value = 0; /* value to write to EPCQ_MEM_OP register */
  4011694:	e03ffa15 	stw	zero,-24(fp)
-    alt_epcq_controller_dev* epcq_flash_info = NULL;
  4011698:	e03ffb15 	stw	zero,-20(fp)
-    alt_u32 result = 0;
  401169c:	e03ffc15 	stw	zero,-16(fp)
-    alt_32 status = 0;
  40116a0:	e03ffd15 	stw	zero,-12(fp)
-
-    /* return -EINVAL if flash_info is NULL */
-    if(NULL == flash_info || 0 > sectors_to_lock)
  40116a4:	e0bffe17 	ldw	r2,-8(fp)
  40116a8:	1000021e 	bne	r2,zero,40116b4 <alt_epcq_controller_lock+0x38>
-    {
-    	return -EINVAL;
  40116ac:	00bffa84 	movi	r2,-22
  40116b0:	00003106 	br	4011778 <alt_epcq_controller_lock+0xfc>
-    }
-	
-    epcq_flash_info = (alt_epcq_controller_dev*)flash_info;
  40116b4:	e0bffe17 	ldw	r2,-8(fp)
  40116b8:	e0bffb15 	stw	r2,-20(fp)
-
-    /* sector value should occupy bits 17:8 */
-    mem_op_value = sectors_to_lock << 8;
  40116bc:	e0bfff17 	ldw	r2,-4(fp)
  40116c0:	1004923a 	slli	r2,r2,8
  40116c4:	e0bffa15 	stw	r2,-24(fp)
-
-    /* sector protect commands 0b11 occupies lower 2 bits */
-    mem_op_value |= ALTERA_EPCQ_CONTROLLER_MEM_OP_SECTOR_PROTECT_CMD;
  40116c8:	e0bffa17 	ldw	r2,-24(fp)
  40116cc:	108000d4 	ori	r2,r2,3
  40116d0:	e0bffa15 	stw	r2,-24(fp)
-
-    /* write sector protect command to EPCQ_MEM_OP register to protect sectors */
-    IOWR_ALTERA_EPCQ_CONTROLLER_MEM_OP(epcq_flash_info->csr_base, mem_op_value);
  40116d4:	e0bffb17 	ldw	r2,-20(fp)
  40116d8:	10803017 	ldw	r2,192(r2)
  40116dc:	10800304 	addi	r2,r2,12
  40116e0:	1007883a 	mov	r3,r2
  40116e4:	e0bffa17 	ldw	r2,-24(fp)
  40116e8:	18800035 	stwio	r2,0(r3)
-    
-    /* poll write in progress to make sure no operation is in progress */
-    status = alt_epcq_poll_for_write_in_progress(epcq_flash_info);
  40116ec:	e13ffb17 	ldw	r4,-20(fp)
  40116f0:	40120ac0 	call	40120ac <alt_epcq_poll_for_write_in_progress>
  40116f4:	e0bffd15 	stw	r2,-12(fp)
-    if(status != 0)
  40116f8:	e0bffd17 	ldw	r2,-12(fp)
  40116fc:	10000226 	beq	r2,zero,4011708 <alt_epcq_controller_lock+0x8c>
-    {
-    	return status;
  4011700:	e0bffd17 	ldw	r2,-12(fp)
  4011704:	00001c06 	br	4011778 <alt_epcq_controller_lock+0xfc>
-    }
-	
-	status = IORD_ALTERA_EPCQ_CONTROLLER_STATUS(epcq_flash_info->csr_base);
  4011708:	e0bffb17 	ldw	r2,-20(fp)
  401170c:	10803017 	ldw	r2,192(r2)
  4011710:	10800037 	ldwio	r2,0(r2)
  4011714:	e0bffd15 	stw	r2,-12(fp)
-	result |= (status >> 2) & 0x07; /* extract out BP3 - BP0 */
  4011718:	e0bffd17 	ldw	r2,-12(fp)
  401171c:	1005d0ba 	srai	r2,r2,2
  4011720:	108001cc 	andi	r2,r2,7
  4011724:	e0fffc17 	ldw	r3,-16(fp)
  4011728:	1884b03a 	or	r2,r3,r2
  401172c:	e0bffc15 	stw	r2,-16(fp)
-	result |= (status >> 3) & 0x08; /* extract out BP4 */
  4011730:	e0bffd17 	ldw	r2,-12(fp)
  4011734:	1005d0fa 	srai	r2,r2,3
  4011738:	1080020c 	andi	r2,r2,8
  401173c:	e0fffc17 	ldw	r3,-16(fp)
  4011740:	1884b03a 	or	r2,r3,r2
  4011744:	e0bffc15 	stw	r2,-16(fp)
-    result |= (status >> 1) & 0x10; /* extract out TOP/BOTTOM bit */
  4011748:	e0bffd17 	ldw	r2,-12(fp)
  401174c:	1005d07a 	srai	r2,r2,1
  4011750:	1080040c 	andi	r2,r2,16
  4011754:	e0fffc17 	ldw	r3,-16(fp)
  4011758:	1884b03a 	or	r2,r3,r2
  401175c:	e0bffc15 	stw	r2,-16(fp)
-
-	if(result != sectors_to_lock)
  4011760:	e0fffc17 	ldw	r3,-16(fp)
  4011764:	e0bfff17 	ldw	r2,-4(fp)
  4011768:	18800226 	beq	r3,r2,4011774 <alt_epcq_controller_lock+0xf8>
-	{
-		return -ENOLCK;
  401176c:	00bff484 	movi	r2,-46
  4011770:	00000106 	br	4011778 <alt_epcq_controller_lock+0xfc>
-	}
-
-    return 0;
  4011774:	0005883a 	mov	r2,zero
-}
  4011778:	e037883a 	mov	sp,fp
  401177c:	dfc00117 	ldw	ra,4(sp)
  4011780:	df000017 	ldw	fp,0(sp)
@@ -21965,204 +21786,113 @@ int alt_epcq_controller_lock(alt_flash_dev *flash_info, alt_u32 sectors_to_lock)
  4011788:	f800283a 	ret
 
 0401178c <alt_epcq_controller_get_info>:
-(
-    alt_flash_fd *fd, /** flash device descriptor */
-    flash_region **info, /** pointer to flash_region will be stored here */
-    int *number_of_regions /** number of regions will be stored here */
-)
-{
  401178c:	defffb04 	addi	sp,sp,-20
  4011790:	df000415 	stw	fp,16(sp)
  4011794:	df000404 	addi	fp,sp,16
  4011798:	e13ffd15 	stw	r4,-12(fp)
  401179c:	e17ffe15 	stw	r5,-8(fp)
  40117a0:	e1bfff15 	stw	r6,-4(fp)
-	alt_flash_dev* flash = NULL;
  40117a4:	e03ffc15 	stw	zero,-16(fp)
-	
-	/* return -EINVAL if fd,info and number_of_regions are NULL */
-	if(NULL == fd || NULL == info || NULL == number_of_regions)
  40117a8:	e0bffd17 	ldw	r2,-12(fp)
  40117ac:	10000426 	beq	r2,zero,40117c0 <alt_epcq_controller_get_info+0x34>
  40117b0:	e0bffe17 	ldw	r2,-8(fp)
  40117b4:	10000226 	beq	r2,zero,40117c0 <alt_epcq_controller_get_info+0x34>
  40117b8:	e0bfff17 	ldw	r2,-4(fp)
  40117bc:	1000021e 	bne	r2,zero,40117c8 <alt_epcq_controller_get_info+0x3c>
-    {
-    	return -EINVAL;
  40117c0:	00bffa84 	movi	r2,-22
  40117c4:	00001006 	br	4011808 <alt_epcq_controller_get_info+0x7c>
-    }
-
-    flash = (alt_flash_dev*)fd;
  40117c8:	e0bffd17 	ldw	r2,-12(fp)
  40117cc:	e0bffc15 	stw	r2,-16(fp)
-
-    *number_of_regions = flash->number_of_regions;
  40117d0:	e0bffc17 	ldw	r2,-16(fp)
  40117d4:	10c00c17 	ldw	r3,48(r2)
  40117d8:	e0bfff17 	ldw	r2,-4(fp)
  40117dc:	10c00015 	stw	r3,0(r2)
-
-    if (!flash->number_of_regions)
  40117e0:	e0bffc17 	ldw	r2,-16(fp)
  40117e4:	10800c17 	ldw	r2,48(r2)
  40117e8:	1000021e 	bne	r2,zero,40117f4 <alt_epcq_controller_get_info+0x68>
-    {
-      return -EIO;
  40117ec:	00bffec4 	movi	r2,-5
  40117f0:	00000506 	br	4011808 <alt_epcq_controller_get_info+0x7c>
-    }
-    else
-    {
-      *info = &flash->region_info[0];
  40117f4:	e0bffc17 	ldw	r2,-16(fp)
  40117f8:	10c00d04 	addi	r3,r2,52
  40117fc:	e0bffe17 	ldw	r2,-8(fp)
  4011800:	10c00015 	stw	r3,0(r2)
-    }
-
-    return 0;
  4011804:	0005883a 	mov	r2,zero
-}
  4011808:	e037883a 	mov	sp,fp
  401180c:	df000017 	ldw	fp,0(sp)
  4011810:	dec00104 	addi	sp,sp,4
  4011814:	f800283a 	ret
 
 04011818 <alt_epcq_controller_erase_block>:
-  * 0 -> success
-  * -EINVAL -> Invalid arguments
-  * -EIO -> write failed, sector might be protected 
-**/
-int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
-{
  4011818:	defff904 	addi	sp,sp,-28
  401181c:	df000615 	stw	fp,24(sp)
  4011820:	df000604 	addi	fp,sp,24
  4011824:	e13ffe15 	stw	r4,-8(fp)
  4011828:	e17fff15 	stw	r5,-4(fp)
-    alt_32 ret_code = 0;
  401182c:	e03ffa15 	stw	zero,-24(fp)
-    alt_u32 mem_op_value = 0; /* value to write to EPCQ_MEM_OP register */
  4011830:	e03ffb15 	stw	zero,-20(fp)
-    alt_epcq_controller_dev* epcq_flash_info = NULL;
  4011834:	e03ffc15 	stw	zero,-16(fp)
-    alt_u32 sector_number = 0; 
  4011838:	e03ffd15 	stw	zero,-12(fp)
-
-    /* return -EINVAL if flash_info is NULL */
-    if(NULL == flash_info)
  401183c:	e0bffe17 	ldw	r2,-8(fp)
  4011840:	1000021e 	bne	r2,zero,401184c <alt_epcq_controller_erase_block+0x34>
-    {
-    	return -EINVAL;
  4011844:	00bffa84 	movi	r2,-22
  4011848:	00003306 	br	4011918 <alt_epcq_controller_erase_block+0x100>
-    }
-	
-    epcq_flash_info = (alt_epcq_controller_dev*)flash_info;
  401184c:	e0bffe17 	ldw	r2,-8(fp)
  4011850:	e0bffc15 	stw	r2,-16(fp)
-    /* 
-     * Sanity checks that block_offset is within the flash memory span and that the 
-     * block offset is sector aligned.
-     *
-     */
-    if((block_offset < 0) 
  4011854:	e0bfff17 	ldw	r2,-4(fp)
  4011858:	10000a16 	blt	r2,zero,4011884 <alt_epcq_controller_erase_block+0x6c>
-        || (block_offset >= epcq_flash_info->size_in_bytes)
  401185c:	e0bffc17 	ldw	r2,-16(fp)
  4011860:	10803117 	ldw	r2,196(r2)
  4011864:	e0ffff17 	ldw	r3,-4(fp)
  4011868:	1880062e 	bgeu	r3,r2,4011884 <alt_epcq_controller_erase_block+0x6c>
-        || (block_offset & (epcq_flash_info->sector_size - 1)) != 0)
  401186c:	e0bffc17 	ldw	r2,-16(fp)
  4011870:	10803417 	ldw	r2,208(r2)
  4011874:	10ffffc4 	addi	r3,r2,-1
  4011878:	e0bfff17 	ldw	r2,-4(fp)
  401187c:	1884703a 	and	r2,r3,r2
  4011880:	10000226 	beq	r2,zero,401188c <alt_epcq_controller_erase_block+0x74>
-    {
-    	return -EINVAL;
  4011884:	00bffa84 	movi	r2,-22
  4011888:	00002306 	br	4011918 <alt_epcq_controller_erase_block+0x100>
-    }
-
-    /* calculate current sector/block number */
-    sector_number = (block_offset/(epcq_flash_info->sector_size));
  401188c:	e0ffff17 	ldw	r3,-4(fp)
  4011890:	e0bffc17 	ldw	r2,-16(fp)
  4011894:	10803417 	ldw	r2,208(r2)
  4011898:	1885203a 	divu	r2,r3,r2
  401189c:	e0bffd15 	stw	r2,-12(fp)
-
-    /* sector value should occupy bits 23:8 */
-    mem_op_value = (sector_number << 8) & ALTERA_EPCQ_CONTROLLER_MEM_OP_SECTOR_VALUE_MASK;
  40118a0:	e0bffd17 	ldw	r2,-12(fp)
  40118a4:	1006923a 	slli	r3,r2,8
  40118a8:	00804034 	movhi	r2,256
  40118ac:	10bfc004 	addi	r2,r2,-256
  40118b0:	1884703a 	and	r2,r3,r2
  40118b4:	e0bffb15 	stw	r2,-20(fp)
-
-    /* sector erase commands 0b10 occupies lower 2 bits */
-    mem_op_value |= ALTERA_EPCQ_CONTROLLER_MEM_OP_SECTOR_ERASE_CMD;
  40118b8:	e0bffb17 	ldw	r2,-20(fp)
  40118bc:	10800094 	ori	r2,r2,2
  40118c0:	e0bffb15 	stw	r2,-20(fp)
-
-    /* write sector erase command to EPCQ_MEM_OP register to erase sector "sector_number" */
-    IOWR_ALTERA_EPCQ_CONTROLLER_MEM_OP(epcq_flash_info->csr_base, mem_op_value);
  40118c4:	e0bffc17 	ldw	r2,-16(fp)
  40118c8:	10803017 	ldw	r2,192(r2)
  40118cc:	10800304 	addi	r2,r2,12
  40118d0:	1007883a 	mov	r3,r2
  40118d4:	e0bffb17 	ldw	r2,-20(fp)
  40118d8:	18800035 	stwio	r2,0(r3)
-	
-    /* check whether erase triggered a illegal erase interrupt  */
-    if((IORD_ALTERA_EPCQ_CONTROLLER_ISR(epcq_flash_info->csr_base) &
  40118dc:	e0bffc17 	ldw	r2,-16(fp)
  40118e0:	10803017 	ldw	r2,192(r2)
  40118e4:	10800404 	addi	r2,r2,16
  40118e8:	10800037 	ldwio	r2,0(r2)
  40118ec:	1080004c 	andi	r2,r2,1
  40118f0:	10000826 	beq	r2,zero,4011914 <alt_epcq_controller_erase_block+0xfc>
-            		ALTERA_EPCQ_CONTROLLER_ISR_ILLEGAL_ERASE_MASK) ==
-            				ALTERA_EPCQ_CONTROLLER_ISR_ILLEGAL_ERASE_ACTIVE)
-    {
-	    /* clear register */
-	    /* EPCQ_ISR access is write one to clear (W1C) */
-    	IOWR_ALTERA_EPCQ_CONTROLLER_ISR(epcq_flash_info->csr_base,
  40118f4:	e0bffc17 	ldw	r2,-16(fp)
  40118f8:	10803017 	ldw	r2,192(r2)
  40118fc:	10800404 	addi	r2,r2,16
  4011900:	1007883a 	mov	r3,r2
  4011904:	00800044 	movi	r2,1
  4011908:	18800035 	stwio	r2,0(r3)
-    		ALTERA_EPCQ_CONTROLLER_ISR_ILLEGAL_ERASE_MASK );
-    	return -EIO; /* erase failed, sector might be protected */
  401190c:	00bffec4 	movi	r2,-5
  4011910:	00000106 	br	4011918 <alt_epcq_controller_erase_block+0x100>
-    }
-
-    return ret_code;
  4011914:	e0bffa17 	ldw	r2,-24(fp)
-}
  4011918:	e037883a 	mov	sp,fp
  401191c:	df000017 	ldw	fp,0(sp)
  4011920:	dec00104 	addi	sp,sp,4
  4011924:	f800283a 	ret
 
 04011928 <alt_epcq_controller_write_block>:
-    int block_offset, /** sector/block offset in byte addressing */
-    int data_offset, /** offset of write from base address */
-    const void *data, /** data to be written */
-    int length /** bytes of data to be written, >0 */
-)
-{
  4011928:	defff304 	addi	sp,sp,-52
  401192c:	dfc00c15 	stw	ra,48(sp)
  4011930:	df000b15 	stw	fp,44(sp)
@@ -22171,46 +21901,29 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  401193c:	e17ffd15 	stw	r5,-12(fp)
  4011940:	e1bffe15 	stw	r6,-8(fp)
  4011944:	e1ffff15 	stw	r7,-4(fp)
-    alt_u32 buffer_offset = 0; /** offset into data buffer to get write data */
  4011948:	e03ff515 	stw	zero,-44(fp)
-    alt_u32 remaining_length = length; /** length left to write */
  401194c:	e0800217 	ldw	r2,8(fp)
  4011950:	e0bff615 	stw	r2,-40(fp)
-    alt_u32 write_offset = data_offset; /** offset into flash to write too */
  4011954:	e0bffe17 	ldw	r2,-8(fp)
  4011958:	e0bff715 	stw	r2,-36(fp)
-
-    alt_epcq_controller_dev *epcq_flash_info = (alt_epcq_controller_dev*)flash_info;
  401195c:	e0bffc17 	ldw	r2,-16(fp)
  4011960:	e0bffa15 	stw	r2,-24(fp)
-    /* 
-     * Sanity checks that data offset is not larger then a sector, that block offset is 
-     * sector aligned and within the valid flash memory range and a write doesn't spill into 
-     * the adjacent flash sector.
-     */
-    if(block_offset < 0
  4011964:	e0bffd17 	ldw	r2,-12(fp)
  4011968:	10001e16 	blt	r2,zero,40119e4 <alt_epcq_controller_write_block+0xbc>
-        || data_offset < 0
  401196c:	e0bffe17 	ldw	r2,-8(fp)
  4011970:	10001c16 	blt	r2,zero,40119e4 <alt_epcq_controller_write_block+0xbc>
-        || NULL == flash_info
  4011974:	e0bffc17 	ldw	r2,-16(fp)
  4011978:	10001a26 	beq	r2,zero,40119e4 <alt_epcq_controller_write_block+0xbc>
-        || NULL == data
  401197c:	e0bfff17 	ldw	r2,-4(fp)
  4011980:	10001826 	beq	r2,zero,40119e4 <alt_epcq_controller_write_block+0xbc>
-        || data_offset >= epcq_flash_info->size_in_bytes
  4011984:	e0bffa17 	ldw	r2,-24(fp)
  4011988:	10803117 	ldw	r2,196(r2)
  401198c:	e0fffe17 	ldw	r3,-8(fp)
  4011990:	1880142e 	bgeu	r3,r2,40119e4 <alt_epcq_controller_write_block+0xbc>
-        || block_offset >= epcq_flash_info->size_in_bytes
  4011994:	e0bffa17 	ldw	r2,-24(fp)
  4011998:	10803117 	ldw	r2,196(r2)
  401199c:	e0fffd17 	ldw	r3,-12(fp)
  40119a0:	1880102e 	bgeu	r3,r2,40119e4 <alt_epcq_controller_write_block+0xbc>
-        || length > (epcq_flash_info->sector_size - (data_offset - block_offset))
  40119a4:	e0bffa17 	ldw	r2,-24(fp)
  40119a8:	10803417 	ldw	r2,208(r2)
  40119ac:	e13ffe17 	ldw	r4,-8(fp)
@@ -22219,99 +21932,50 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  40119b8:	10c7c83a 	sub	r3,r2,r3
  40119bc:	e0800217 	ldw	r2,8(fp)
  40119c0:	18800836 	bltu	r3,r2,40119e4 <alt_epcq_controller_write_block+0xbc>
-        || length < 0
  40119c4:	e0800217 	ldw	r2,8(fp)
  40119c8:	10000616 	blt	r2,zero,40119e4 <alt_epcq_controller_write_block+0xbc>
-        || (block_offset & (epcq_flash_info->sector_size - 1)) != 0) 
  40119cc:	e0bffa17 	ldw	r2,-24(fp)
  40119d0:	10803417 	ldw	r2,208(r2)
  40119d4:	10ffffc4 	addi	r3,r2,-1
  40119d8:	e0bffd17 	ldw	r2,-12(fp)
  40119dc:	1884703a 	and	r2,r3,r2
  40119e0:	10004c26 	beq	r2,zero,4011b14 <alt_epcq_controller_write_block+0x1ec>
-    {
-    	return -EINVAL;
  40119e4:	00bffa84 	movi	r2,-22
  40119e8:	00004d06 	br	4011b20 <alt_epcq_controller_write_block+0x1f8>
-     * We need to make sure that we pad the first few bytes so they're word aligned if they are
-     * not already.
-     */
-    while (remaining_length > 0)
-    {
-    	alt_u32 word_to_write = 0xFFFFFFFF; /** initialize word to write to blank word */
  40119ec:	00bfffc4 	movi	r2,-1
  40119f0:	e0bffb15 	stw	r2,-20(fp)
-    	alt_u32 padding = 0; /** bytes to pad the next word that is written */
  40119f4:	e03ff815 	stw	zero,-32(fp)
-    	alt_u32 bytes_to_copy = sizeof(alt_u32); /** number of bytes from source to copy */
  40119f8:	00800104 	movi	r2,4
  40119fc:	e0bff915 	stw	r2,-28(fp)
-
-        /*
-         * we need to make sure the write is word aligned
-    	 * this should only be true at most 1 time
-    	 */
-        if (0 != (write_offset & (sizeof(alt_u32) - 1)))
  4011a00:	e0bff717 	ldw	r2,-36(fp)
  4011a04:	108000cc 	andi	r2,r2,3
  4011a08:	10001526 	beq	r2,zero,4011a60 <alt_epcq_controller_write_block+0x138>
-        {
-        	/*
-        	 * data is not word aligned
-        	 * calculate padding bytes need to add before start of a data offset
-        	 */
-            padding = write_offset & (sizeof(alt_u32) - 1);
  4011a0c:	e0bff717 	ldw	r2,-36(fp)
  4011a10:	108000cc 	andi	r2,r2,3
  4011a14:	e0bff815 	stw	r2,-32(fp)
-
-            /* update variables to account for padding being added */
-            bytes_to_copy -= padding;
  4011a18:	e0fff917 	ldw	r3,-28(fp)
  4011a1c:	e0bff817 	ldw	r2,-32(fp)
  4011a20:	1885c83a 	sub	r2,r3,r2
  4011a24:	e0bff915 	stw	r2,-28(fp)
-
-            if(bytes_to_copy > remaining_length)
  4011a28:	e0bff917 	ldw	r2,-28(fp)
  4011a2c:	e0fff617 	ldw	r3,-40(fp)
  4011a30:	1880022e 	bgeu	r3,r2,4011a3c <alt_epcq_controller_write_block+0x114>
-            {
-            	bytes_to_copy = remaining_length;
  4011a34:	e0bff617 	ldw	r2,-40(fp)
  4011a38:	e0bff915 	stw	r2,-28(fp)
-            }
-
-            write_offset = write_offset - padding;
  4011a3c:	e0fff717 	ldw	r3,-36(fp)
  4011a40:	e0bff817 	ldw	r2,-32(fp)
  4011a44:	1885c83a 	sub	r2,r3,r2
  4011a48:	e0bff715 	stw	r2,-36(fp)
-            if(0 != (write_offset & (sizeof(alt_u32) - 1)))
  4011a4c:	e0bff717 	ldw	r2,-36(fp)
  4011a50:	108000cc 	andi	r2,r2,3
  4011a54:	10000726 	beq	r2,zero,4011a74 <alt_epcq_controller_write_block+0x14c>
-            {
-            	return -EINVAL;
  4011a58:	00bffa84 	movi	r2,-22
  4011a5c:	00003006 	br	4011b20 <alt_epcq_controller_write_block+0x1f8>
-            }
-        }
-        else
-        {
-            if(bytes_to_copy > remaining_length)
  4011a60:	e0bff917 	ldw	r2,-28(fp)
  4011a64:	e0fff617 	ldw	r3,-40(fp)
  4011a68:	1880022e 	bgeu	r3,r2,4011a74 <alt_epcq_controller_write_block+0x14c>
-            {
-            	bytes_to_copy = remaining_length;
  4011a6c:	e0bff617 	ldw	r2,-40(fp)
  4011a70:	e0bff915 	stw	r2,-28(fp)
-            }
-        }
-
-        /* prepare the word to be written */
-        memcpy((((void*)&word_to_write)) + padding, ((void*)data) + buffer_offset, bytes_to_copy);
  4011a74:	e0fffb04 	addi	r3,fp,-20
  4011a78:	e0bff817 	ldw	r2,-32(fp)
  4011a7c:	1889883a 	add	r4,r3,r2
@@ -22321,74 +21985,40 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011a8c:	e1bff917 	ldw	r6,-28(fp)
  4011a90:	100b883a 	mov	r5,r2
  4011a94:	40021f80 	call	40021f8 <memcpy>
-
-        /* update offset and length variables */
-        buffer_offset += bytes_to_copy;
  4011a98:	e0fff517 	ldw	r3,-44(fp)
  4011a9c:	e0bff917 	ldw	r2,-28(fp)
  4011aa0:	1885883a 	add	r2,r3,r2
  4011aa4:	e0bff515 	stw	r2,-44(fp)
-        remaining_length -= bytes_to_copy;
  4011aa8:	e0fff617 	ldw	r3,-40(fp)
  4011aac:	e0bff917 	ldw	r2,-28(fp)
  4011ab0:	1885c83a 	sub	r2,r3,r2
  4011ab4:	e0bff615 	stw	r2,-40(fp)
-
-        /* write to flash 32 bits at a time */
-        IOWR_32DIRECT(epcq_flash_info->data_base, write_offset, word_to_write);
  4011ab8:	e0bffa17 	ldw	r2,-24(fp)
  4011abc:	10c02e17 	ldw	r3,184(r2)
  4011ac0:	e0bff717 	ldw	r2,-36(fp)
  4011ac4:	1885883a 	add	r2,r3,r2
  4011ac8:	e0fffb17 	ldw	r3,-20(fp)
  4011acc:	10c00035 	stwio	r3,0(r2)
-
-        /* check whether write triggered a illegal write interrupt */
-        if((IORD_ALTERA_EPCQ_CONTROLLER_ISR(epcq_flash_info->csr_base) &
  4011ad0:	e0bffa17 	ldw	r2,-24(fp)
  4011ad4:	10803017 	ldw	r2,192(r2)
  4011ad8:	10800404 	addi	r2,r2,16
  4011adc:	10800037 	ldwio	r2,0(r2)
  4011ae0:	1080008c 	andi	r2,r2,2
  4011ae4:	10000826 	beq	r2,zero,4011b08 <alt_epcq_controller_write_block+0x1e0>
-        		ALTERA_EPCQ_CONTROLLER_ISR_ILLEGAL_WRITE_MASK) ==
-        				ALTERA_EPCQ_CONTROLLER_ISR_ILLEGAL_WRITE_ACTIVE)
-        {
-		    /* clear register */
-        	IOWR_ALTERA_EPCQ_CONTROLLER_ISR(epcq_flash_info->csr_base,
  4011ae8:	e0bffa17 	ldw	r2,-24(fp)
  4011aec:	10803017 	ldw	r2,192(r2)
  4011af0:	10800404 	addi	r2,r2,16
  4011af4:	1007883a 	mov	r3,r2
  4011af8:	00800084 	movi	r2,2
  4011afc:	18800035 	stwio	r2,0(r3)
-			ALTERA_EPCQ_CONTROLLER_ISR_ILLEGAL_WRITE_MASK );
-        	return -EIO; /** write failed, sector might be protected */
  4011b00:	00bffec4 	movi	r2,-5
  4011b04:	00000606 	br	4011b20 <alt_epcq_controller_write_block+0x1f8>
-        }
-
-        /* update current offset */
-        write_offset = write_offset + sizeof(alt_u32);
  4011b08:	e0bff717 	ldw	r2,-36(fp)
  4011b0c:	10800104 	addi	r2,r2,4
  4011b10:	e0bff715 	stw	r2,-36(fp)
-    /*
-     * Do writes one 32-bit word at a time.
-     * We need to make sure that we pad the first few bytes so they're word aligned if they are
-     * not already.
-     */
-    while (remaining_length > 0)
  4011b14:	e0bff617 	ldw	r2,-40(fp)
  4011b18:	103fb41e 	bne	r2,zero,40119ec <__reset+0xfa8219ec>
-
-        /* update current offset */
-        write_offset = write_offset + sizeof(alt_u32);
-    }
-
-    return 0;
  4011b1c:	0005883a 	mov	r2,zero
-}
  4011b20:	e037883a 	mov	sp,fp
  4011b24:	dfc00117 	ldw	ra,4(sp)
  4011b28:	df000017 	ldw	fp,0(sp)
@@ -22396,12 +22026,6 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011b30:	f800283a 	ret
 
 04011b34 <alt_epcq_controller_write>:
-    alt_flash_dev *flash_info, /** device info */
-    int offset, /** offset of write from base address */
-    const void *src_addr, /** source buffer */
-    int length /** size of writing */
-)
-{
  4011b34:	defff004 	addi	sp,sp,-64
  4011b38:	dfc00f15 	stw	ra,60(sp)
  4011b3c:	df000e15 	stw	fp,56(sp)
@@ -22410,41 +22034,22 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011b48:	e17ffd15 	stw	r5,-12(fp)
  4011b4c:	e1bffe15 	stw	r6,-8(fp)
  4011b50:	e1ffff15 	stw	r7,-4(fp)
-    alt_32 ret_code = 0;
  4011b54:	e03ff315 	stw	zero,-52(fp)
-
-    alt_epcq_controller_dev *epcq_flash_info = NULL;
  4011b58:	e03ff915 	stw	zero,-28(fp)
-
-    alt_u32 write_offset = offset; /** address of next byte to write */
  4011b5c:	e0bffd17 	ldw	r2,-12(fp)
  4011b60:	e0bff415 	stw	r2,-48(fp)
-    alt_u32 remaining_length = length; /** length of write data left to be written */
  4011b64:	e0bfff17 	ldw	r2,-4(fp)
  4011b68:	e0bff515 	stw	r2,-44(fp)
-    alt_u32 buffer_offset = 0; /** offset into source buffer to get write data */
  4011b6c:	e03ff615 	stw	zero,-40(fp)
-    alt_u32 i = 0;
  4011b70:	e03ff715 	stw	zero,-36(fp)
-
-    /* return -EINVAL if flash_info and src_addr are NULL */
-	if(NULL == flash_info || NULL == src_addr)
  4011b74:	e0bffc17 	ldw	r2,-16(fp)
  4011b78:	10000226 	beq	r2,zero,4011b84 <alt_epcq_controller_write+0x50>
  4011b7c:	e0bffe17 	ldw	r2,-8(fp)
  4011b80:	1000021e 	bne	r2,zero,4011b8c <alt_epcq_controller_write+0x58>
-    {
-    	return -EINVAL;
  4011b84:	00bffa84 	movi	r2,-22
  4011b88:	00005d06 	br	4011d00 <alt_epcq_controller_write+0x1cc>
-    }
-	
-	epcq_flash_info = (alt_epcq_controller_dev*)flash_info;
  4011b8c:	e0bffc17 	ldw	r2,-16(fp)
  4011b90:	e0bff915 	stw	r2,-28(fp)
-	
-    /* make sure the write parameters are within the bounds of the flash */
-    ret_code = alt_epcq_validate_read_write_arguments(epcq_flash_info, offset, length);
  4011b94:	e0bffd17 	ldw	r2,-12(fp)
  4011b98:	e0ffff17 	ldw	r3,-4(fp)
  4011b9c:	180d883a 	mov	r6,r3
@@ -22452,82 +22057,43 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011ba4:	e13ff917 	ldw	r4,-28(fp)
  4011ba8:	40120100 	call	4012010 <alt_epcq_validate_read_write_arguments>
  4011bac:	e0bff315 	stw	r2,-52(fp)
-
-	if(0 != ret_code)
  4011bb0:	e0bff317 	ldw	r2,-52(fp)
  4011bb4:	10000226 	beq	r2,zero,4011bc0 <alt_epcq_controller_write+0x8c>
-	{
-		return ret_code;
  4011bb8:	e0bff317 	ldw	r2,-52(fp)
  4011bbc:	00005006 	br	4011d00 <alt_epcq_controller_write+0x1cc>
-
-    /*
-     * This loop erases and writes data one sector at a time. We check for write completion 
-     * before starting the next sector.
-     */
-    for(i = offset/epcq_flash_info->sector_size ; i < epcq_flash_info->number_of_sectors; i++)
  4011bc0:	e0fffd17 	ldw	r3,-12(fp)
  4011bc4:	e0bff917 	ldw	r2,-28(fp)
  4011bc8:	10803417 	ldw	r2,208(r2)
  4011bcc:	1885203a 	divu	r2,r3,r2
  4011bd0:	e0bff715 	stw	r2,-36(fp)
  4011bd4:	00004306 	br	4011ce4 <alt_epcq_controller_write+0x1b0>
-    {
-        alt_u32 block_offset = 0; /** block offset in byte addressing */
  4011bd8:	e03ffa15 	stw	zero,-24(fp)
-    	alt_u32 offset_within_current_sector = 0; /** offset into current sector to write */
  4011bdc:	e03ff815 	stw	zero,-32(fp)
-        alt_u32 length_to_write = 0; /** length to write to current sector */
  4011be0:	e03ffb15 	stw	zero,-20(fp)
-
-    	if(0 >= remaining_length)
  4011be4:	e0bff517 	ldw	r2,-44(fp)
  4011be8:	10004326 	beq	r2,zero,4011cf8 <alt_epcq_controller_write+0x1c4>
-    	{
-    		break; /* out of data to write */
-    	}
-
-        /* calculate current sector/block offset in byte addressing */
-        block_offset = write_offset & ~(epcq_flash_info->sector_size - 1);
  4011bec:	e0bff917 	ldw	r2,-28(fp)
  4011bf0:	10803417 	ldw	r2,208(r2)
  4011bf4:	0087c83a 	sub	r3,zero,r2
  4011bf8:	e0bff417 	ldw	r2,-48(fp)
  4011bfc:	1884703a 	and	r2,r3,r2
  4011c00:	e0bffa15 	stw	r2,-24(fp)
-           
-        /* calculate offset into sector/block if there is one */
-        if(block_offset != write_offset)
  4011c04:	e0fffa17 	ldw	r3,-24(fp)
  4011c08:	e0bff417 	ldw	r2,-48(fp)
  4011c0c:	18800426 	beq	r3,r2,4011c20 <alt_epcq_controller_write+0xec>
-        {
-            offset_within_current_sector = write_offset - block_offset;
  4011c10:	e0fff417 	ldw	r3,-48(fp)
  4011c14:	e0bffa17 	ldw	r2,-24(fp)
  4011c18:	1885c83a 	sub	r2,r3,r2
  4011c1c:	e0bff815 	stw	r2,-32(fp)
-        }
-
-        /* erase sector */
-        ret_code = alt_epcq_controller_erase_block(flash_info, block_offset);
  4011c20:	e0bffa17 	ldw	r2,-24(fp)
  4011c24:	100b883a 	mov	r5,r2
  4011c28:	e13ffc17 	ldw	r4,-16(fp)
  4011c2c:	40118180 	call	4011818 <alt_epcq_controller_erase_block>
  4011c30:	e0bff315 	stw	r2,-52(fp)
-
-        if(0 != ret_code)
  4011c34:	e0bff317 	ldw	r2,-52(fp)
  4011c38:	10000226 	beq	r2,zero,4011c44 <alt_epcq_controller_write+0x110>
-        {
-            return ret_code;
  4011c3c:	e0bff317 	ldw	r2,-52(fp)
  4011c40:	00002f06 	br	4011d00 <alt_epcq_controller_write+0x1cc>
-        }
-
-        /* calculate the byte size of data to be written in a sector */
-        length_to_write = MIN(epcq_flash_info->sector_size - offset_within_current_sector, 
  4011c44:	e0bff917 	ldw	r2,-28(fp)
  4011c48:	10c03417 	ldw	r3,208(r2)
  4011c4c:	e0bff817 	ldw	r2,-32(fp)
@@ -22536,10 +22102,6 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011c58:	1880012e 	bgeu	r3,r2,4011c60 <alt_epcq_controller_write+0x12c>
  4011c5c:	1805883a 	mov	r2,r3
  4011c60:	e0bffb15 	stw	r2,-20(fp)
-                remaining_length);
-
-        /* write data to erased block */
-        ret_code = alt_epcq_controller_write_block(flash_info, block_offset, write_offset,
  4011c64:	e13ffa17 	ldw	r4,-24(fp)
  4011c68:	e17ff417 	ldw	r5,-48(fp)
  4011c6c:	e0fffe17 	ldw	r3,-8(fp)
@@ -22553,40 +22115,22 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011c8c:	e13ffc17 	ldw	r4,-16(fp)
  4011c90:	40119280 	call	4011928 <alt_epcq_controller_write_block>
  4011c94:	e0bff315 	stw	r2,-52(fp)
-            src_addr + buffer_offset, length_to_write);
-
-
-        if(0 != ret_code)
  4011c98:	e0bff317 	ldw	r2,-52(fp)
  4011c9c:	10000226 	beq	r2,zero,4011ca8 <alt_epcq_controller_write+0x174>
-        {
-            return ret_code;
  4011ca0:	e0bff317 	ldw	r2,-52(fp)
  4011ca4:	00001606 	br	4011d00 <alt_epcq_controller_write+0x1cc>
-        }
-
-        /* update remaining length and buffer_offset pointer */
-        remaining_length -= length_to_write;
  4011ca8:	e0fff517 	ldw	r3,-44(fp)
  4011cac:	e0bffb17 	ldw	r2,-20(fp)
  4011cb0:	1885c83a 	sub	r2,r3,r2
  4011cb4:	e0bff515 	stw	r2,-44(fp)
-        buffer_offset += length_to_write;
  4011cb8:	e0fff617 	ldw	r3,-40(fp)
  4011cbc:	e0bffb17 	ldw	r2,-20(fp)
  4011cc0:	1885883a 	add	r2,r3,r2
  4011cc4:	e0bff615 	stw	r2,-40(fp)
-        write_offset += length_to_write; 
  4011cc8:	e0fff417 	ldw	r3,-48(fp)
  4011ccc:	e0bffb17 	ldw	r2,-20(fp)
  4011cd0:	1885883a 	add	r2,r3,r2
  4011cd4:	e0bff415 	stw	r2,-48(fp)
-
-    /*
-     * This loop erases and writes data one sector at a time. We check for write completion 
-     * before starting the next sector.
-     */
-    for(i = offset/epcq_flash_info->sector_size ; i < epcq_flash_info->number_of_sectors; i++)
  4011cd8:	e0bff717 	ldw	r2,-36(fp)
  4011cdc:	10800044 	addi	r2,r2,1
  4011ce0:	e0bff715 	stw	r2,-36(fp)
@@ -22595,21 +22139,8 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011cec:	e0fff717 	ldw	r3,-36(fp)
  4011cf0:	18bfb936 	bltu	r3,r2,4011bd8 <__reset+0xfa821bd8>
  4011cf4:	00000106 	br	4011cfc <alt_epcq_controller_write+0x1c8>
-    	alt_u32 offset_within_current_sector = 0; /** offset into current sector to write */
-        alt_u32 length_to_write = 0; /** length to write to current sector */
-
-    	if(0 >= remaining_length)
-    	{
-    		break; /* out of data to write */
  4011cf8:	0001883a 	nop
-        remaining_length -= length_to_write;
-        buffer_offset += length_to_write;
-        write_offset += length_to_write; 
-    }
-
-    return ret_code;
  4011cfc:	e0bff317 	ldw	r2,-52(fp)
-}
  4011d00:	e037883a 	mov	sp,fp
  4011d04:	dfc00117 	ldw	ra,4(sp)
  4011d08:	df000017 	ldw	fp,0(sp)
@@ -22617,12 +22148,6 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011d10:	f800283a 	ret
 
 04011d14 <alt_epcq_controller_read>:
-    alt_flash_dev *flash_info, /** device info */
-    int offset, /** offset of read from base address */
-    void *dest_addr, /** destination buffer */
-    int length /** size of read */
-)
-{
  4011d14:	defff804 	addi	sp,sp,-32
  4011d18:	dfc00715 	stw	ra,28(sp)
  4011d1c:	df000615 	stw	fp,24(sp)
@@ -22631,29 +22156,16 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011d28:	e17ffd15 	stw	r5,-12(fp)
  4011d2c:	e1bffe15 	stw	r6,-8(fp)
  4011d30:	e1ffff15 	stw	r7,-4(fp)
-    alt_32 ret_code = 0;
  4011d34:	e03ffa15 	stw	zero,-24(fp)
-	alt_epcq_controller_dev *epcq_flash_info = NULL;
  4011d38:	e03ffb15 	stw	zero,-20(fp)
-	
-	/* return -EINVAL if flash_info and dest_addr are NULL */
-	if(NULL == flash_info || NULL == dest_addr)
  4011d3c:	e0bffc17 	ldw	r2,-16(fp)
  4011d40:	10000226 	beq	r2,zero,4011d4c <alt_epcq_controller_read+0x38>
  4011d44:	e0bffe17 	ldw	r2,-8(fp)
  4011d48:	1000021e 	bne	r2,zero,4011d54 <alt_epcq_controller_read+0x40>
-    {
-    	return -EINVAL;
  4011d4c:	00bffa84 	movi	r2,-22
  4011d50:	00001606 	br	4011dac <alt_epcq_controller_read+0x98>
-    }
-	
-    epcq_flash_info = (alt_epcq_controller_dev*)flash_info;
  4011d54:	e0bffc17 	ldw	r2,-16(fp)
  4011d58:	e0bffb15 	stw	r2,-20(fp)
-
-	/* validate arguments */
-	ret_code = alt_epcq_validate_read_write_arguments(epcq_flash_info, offset, length);
  4011d5c:	e0bffd17 	ldw	r2,-12(fp)
  4011d60:	e0ffff17 	ldw	r3,-4(fp)
  4011d64:	180d883a 	mov	r6,r3
@@ -22661,13 +22173,8 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011d6c:	e13ffb17 	ldw	r4,-20(fp)
  4011d70:	40120100 	call	4012010 <alt_epcq_validate_read_write_arguments>
  4011d74:	e0bffa15 	stw	r2,-24(fp)
-
-	/* copy data from flash to destination address */
-	if(0 == ret_code)
  4011d78:	e0bffa17 	ldw	r2,-24(fp)
  4011d7c:	10000a1e 	bne	r2,zero,4011da8 <alt_epcq_controller_read+0x94>
-	{
-		memcpy(dest_addr, (alt_u8*)epcq_flash_info->data_base + offset, length);
  4011d80:	e0bffb17 	ldw	r2,-20(fp)
  4011d84:	10c02e17 	ldw	r3,184(r2)
  4011d88:	e0bffd17 	ldw	r2,-12(fp)
@@ -22678,11 +22185,7 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011d9c:	180b883a 	mov	r5,r3
  4011da0:	e13ffe17 	ldw	r4,-8(fp)
  4011da4:	40021f80 	call	40021f8 <memcpy>
-	}
-
-    return ret_code;
  4011da8:	e0bffa17 	ldw	r2,-24(fp)
-}
  4011dac:	e037883a 	mov	sp,fp
  4011db0:	dfc00117 	ldw	ra,4(sp)
  4011db4:	df000017 	ldw	fp,0(sp)
@@ -22690,68 +22193,34 @@ int alt_epcq_controller_erase_block(alt_flash_dev *flash_info, int block_offset)
  4011dbc:	f800283a 	ret
 
 04011dc0 <altera_epcq_controller_init>:
- * 0 -> success
- * -EINVAL -> Invalid arguments.
- * -ENODEV -> System is configured incorrectly.
-**/
-alt_32 altera_epcq_controller_init(alt_epcq_controller_dev *flash)
-{
  4011dc0:	defffa04 	addi	sp,sp,-24
  4011dc4:	dfc00515 	stw	ra,20(sp)
  4011dc8:	df000415 	stw	fp,16(sp)
  4011dcc:	df000404 	addi	fp,sp,16
  4011dd0:	e13fff15 	stw	r4,-4(fp)
-	alt_u32 silicon_id = 0;
  4011dd4:	e03ffc15 	stw	zero,-16(fp)
-	alt_u32 size_in_bytes = 0;
  4011dd8:	e03ffe15 	stw	zero,-8(fp)
-	alt_u32 number_of_sectors = 0;
  4011ddc:	e03ffd15 	stw	zero,-12(fp)
-
-    /* return -EINVAL if flash is NULL */
-	if(NULL == flash)
  4011de0:	e0bfff17 	ldw	r2,-4(fp)
  4011de4:	1000021e 	bne	r2,zero,4011df0 <altera_epcq_controller_init+0x30>
-    {
-    	return -EINVAL;
  4011de8:	00bffa84 	movi	r2,-22
  4011dec:	00008306 	br	4011ffc <altera_epcq_controller_init+0x23c>
-    }
-	
-	/* return -ENODEV if CSR slave is not attached */
-	if(NULL == (void *)flash->csr_base)
  4011df0:	e0bfff17 	ldw	r2,-4(fp)
  4011df4:	10803017 	ldw	r2,192(r2)
  4011df8:	1000021e 	bne	r2,zero,4011e04 <altera_epcq_controller_init+0x44>
-	{
-		return -ENODEV;
  4011dfc:	00bffb44 	movi	r2,-19
  4011e00:	00007e06 	br	4011ffc <altera_epcq_controller_init+0x23c>
-	 *
-	 * In both cases, we can determine the number of sectors, which we can use
-	 * to calculate a size. We compare that size to the system.h value to make sure
-	 * the EPCQ soft IP was configured correctly.
-	 */
-	if(0 == flash->is_epcs)
  4011e04:	e0bfff17 	ldw	r2,-4(fp)
  4011e08:	10803217 	ldw	r2,200(r2)
  4011e0c:	1000361e 	bne	r2,zero,4011ee8 <altera_epcq_controller_init+0x128>
-	{
-		/* If we're an EPCQ, we read EPCQ_RD_RDID for the silicon ID */
-		silicon_id = IORD_ALTERA_EPCQ_CONTROLLER_RDID(flash->csr_base);
  4011e10:	e0bfff17 	ldw	r2,-4(fp)
  4011e14:	10803017 	ldw	r2,192(r2)
  4011e18:	10800204 	addi	r2,r2,8
  4011e1c:	10800037 	ldwio	r2,0(r2)
  4011e20:	e0bffc15 	stw	r2,-16(fp)
-		silicon_id &= ALTERA_EPCQ_CONTROLLER_RDID_MASK;
  4011e24:	e0bffc17 	ldw	r2,-16(fp)
  4011e28:	10803fcc 	andi	r2,r2,255
  4011e2c:	e0bffc15 	stw	r2,-16(fp)
-
-		/* Determine which EPCQ device so we can figure out the number of sectors */
-		/* EPCQ share the same ID for the same capacity*/
-		switch(silicon_id)
  4011e30:	e0bffc17 	ldw	r2,-16(fp)
  4011e34:	10bffac4 	addi	r2,r2,-21
  4011e38:	10c00368 	cmpgeui	r3,r2,13
@@ -22775,86 +22244,37 @@ alt_32 altera_epcq_controller_init(alt_epcq_controller_dev *flash)
  4011e80:	04011ee0 	cmpeqi	r16,zero,1147
  4011e84:	04011ec8 	cmpgei	r16,zero,1147
  4011e88:	04011ed4 	movui	r16,1147
-		{
-			case ALTERA_EPCQ_CONTROLLER_RDID_EPCQ16:
-			{
-				number_of_sectors = 32;
  4011e8c:	00800804 	movi	r2,32
  4011e90:	e0bffd15 	stw	r2,-12(fp)
-				break;
  4011e94:	00002e06 	br	4011f50 <altera_epcq_controller_init+0x190>
-			}
-			case ALTERA_EPCQ_CONTROLLER_RDID_EPCQ32:
-			{
-				number_of_sectors = 64;
  4011e98:	00801004 	movi	r2,64
  4011e9c:	e0bffd15 	stw	r2,-12(fp)
-				break;
  4011ea0:	00002b06 	br	4011f50 <altera_epcq_controller_init+0x190>
-			}
-			case ALTERA_EPCQ_CONTROLLER_RDID_EPCQ64:
-			{
-				number_of_sectors = 128;
  4011ea4:	00802004 	movi	r2,128
  4011ea8:	e0bffd15 	stw	r2,-12(fp)
-				break;
  4011eac:	00002806 	br	4011f50 <altera_epcq_controller_init+0x190>
-			}
-			case ALTERA_EPCQ_CONTROLLER_RDID_EPCQ128:
-			{
-				number_of_sectors = 256;
  4011eb0:	00804004 	movi	r2,256
  4011eb4:	e0bffd15 	stw	r2,-12(fp)
-				break;
  4011eb8:	00002506 	br	4011f50 <altera_epcq_controller_init+0x190>
-			}
-			case ALTERA_EPCQ_CONTROLLER_RDID_EPCQ256:
-			{
-				number_of_sectors = 512;
  4011ebc:	00808004 	movi	r2,512
  4011ec0:	e0bffd15 	stw	r2,-12(fp)
-				break;
  4011ec4:	00002206 	br	4011f50 <altera_epcq_controller_init+0x190>
-			}
-			case ALTERA_EPCQ_CONTROLLER_RDID_EPCQ512:
-			{
-				number_of_sectors = 1024;
  4011ec8:	00810004 	movi	r2,1024
  4011ecc:	e0bffd15 	stw	r2,-12(fp)
-				break;
  4011ed0:	00001f06 	br	4011f50 <altera_epcq_controller_init+0x190>
-			}
-			case ALTERA_EPCQ_CONTROLLER_RDID_EPCQ1024:
-			{
-				number_of_sectors = 2048;
  4011ed4:	00820004 	movi	r2,2048
  4011ed8:	e0bffd15 	stw	r2,-12(fp)
-				break;
  4011edc:	00001c06 	br	4011f50 <altera_epcq_controller_init+0x190>
-			}
-			default:
-			{
-				return -ENODEV;
  4011ee0:	00bffb44 	movi	r2,-19
  4011ee4:	00004506 	br	4011ffc <altera_epcq_controller_init+0x23c>
-			}
-		}
-	}
-	else {
-		/* If we're an EPCS, we read EPCQ_RD_SID for the silicon ID */
-		silicon_id = IORD_ALTERA_EPCQ_CONTROLLER_SID(flash->csr_base);
  4011ee8:	e0bfff17 	ldw	r2,-4(fp)
  4011eec:	10803017 	ldw	r2,192(r2)
  4011ef0:	10800104 	addi	r2,r2,4
  4011ef4:	10800037 	ldwio	r2,0(r2)
  4011ef8:	e0bffc15 	stw	r2,-16(fp)
-		silicon_id &= ALTERA_EPCQ_CONTROLLER_SID_MASK;
  4011efc:	e0bffc17 	ldw	r2,-16(fp)
  4011f00:	10803fcc 	andi	r2,r2,255
  4011f04:	e0bffc15 	stw	r2,-16(fp)
-
-		/* Determine which EPCS device so we can figure out various properties */
-		switch(silicon_id)
  4011f08:	e0bffc17 	ldw	r2,-16(fp)
  4011f0c:	10c005a0 	cmpeqi	r3,r2,22
  4011f10:	1800071e 	bne	r3,zero,4011f30 <altera_epcq_controller_init+0x170>
@@ -22862,127 +22282,60 @@ alt_32 altera_epcq_controller_init(alt_epcq_controller_dev *flash)
  4011f18:	1800081e 	bne	r3,zero,4011f3c <altera_epcq_controller_init+0x17c>
  4011f1c:	10800520 	cmpeqi	r2,r2,20
  4011f20:	10000926 	beq	r2,zero,4011f48 <altera_epcq_controller_init+0x188>
-		{
-			case ALTERA_EPCQ_CONTROLLER_SID_EPCS16:
-			{
-				number_of_sectors = 32;
  4011f24:	00800804 	movi	r2,32
  4011f28:	e0bffd15 	stw	r2,-12(fp)
-				break;
  4011f2c:	00000806 	br	4011f50 <altera_epcq_controller_init+0x190>
-			}
-			case ALTERA_EPCQ_CONTROLLER_SID_EPCS64:
-			{
-				number_of_sectors = 128;
  4011f30:	00802004 	movi	r2,128
  4011f34:	e0bffd15 	stw	r2,-12(fp)
-				break;
  4011f38:	00000506 	br	4011f50 <altera_epcq_controller_init+0x190>
-			}
-			case ALTERA_EPCQ_CONTROLLER_SID_EPCS128:
-			{
-				number_of_sectors = 256;
  4011f3c:	00804004 	movi	r2,256
  4011f40:	e0bffd15 	stw	r2,-12(fp)
-				break;
  4011f44:	00000206 	br	4011f50 <altera_epcq_controller_init+0x190>
-			}
-			default:
-			{
-				return -ENODEV;
  4011f48:	00bffb44 	movi	r2,-19
  4011f4c:	00002b06 	br	4011ffc <altera_epcq_controller_init+0x23c>
-			}
-		}
-	}
-
-	/* Calculate size of flash based on number of sectors */
-	size_in_bytes = number_of_sectors * flash->sector_size;
  4011f50:	e0bfff17 	ldw	r2,-4(fp)
  4011f54:	10c03417 	ldw	r3,208(r2)
  4011f58:	e0bffd17 	ldw	r2,-12(fp)
  4011f5c:	1885383a 	mul	r2,r3,r2
  4011f60:	e0bffe15 	stw	r2,-8(fp)
-	/*
-	 * Make sure calculated size is the same size given in system.h
-	 * Also check number of sectors is the same number given in system.h
-	 * Otherwise the EPCQ IP was not configured correctly
-	 */
-	if(	size_in_bytes != flash->size_in_bytes ||
  4011f64:	e0bfff17 	ldw	r2,-4(fp)
  4011f68:	10c03117 	ldw	r3,196(r2)
  4011f6c:	e0bffe17 	ldw	r2,-8(fp)
  4011f70:	1880041e 	bne	r3,r2,4011f84 <altera_epcq_controller_init+0x1c4>
-			number_of_sectors != flash->number_of_sectors)
  4011f74:	e0bfff17 	ldw	r2,-4(fp)
  4011f78:	10c03317 	ldw	r3,204(r2)
-	/*
-	 * Make sure calculated size is the same size given in system.h
-	 * Also check number of sectors is the same number given in system.h
-	 * Otherwise the EPCQ IP was not configured correctly
-	 */
-	if(	size_in_bytes != flash->size_in_bytes ||
  4011f7c:	e0bffd17 	ldw	r2,-12(fp)
  4011f80:	18800426 	beq	r3,r2,4011f94 <altera_epcq_controller_init+0x1d4>
-			number_of_sectors != flash->number_of_sectors)
-	{
-		flash->dev.number_of_regions = 0;
  4011f84:	e0bfff17 	ldw	r2,-4(fp)
  4011f88:	10000c15 	stw	zero,48(r2)
-		return -ENODEV;
  4011f8c:	00bffb44 	movi	r2,-19
  4011f90:	00001a06 	br	4011ffc <altera_epcq_controller_init+0x23c>
-	}
-	else
-	{
-		flash->silicon_id = silicon_id;
  4011f94:	e0bfff17 	ldw	r2,-4(fp)
  4011f98:	e0fffc17 	ldw	r3,-16(fp)
  4011f9c:	10c03615 	stw	r3,216(r2)
-		flash->number_of_sectors = number_of_sectors;
  4011fa0:	e0bfff17 	ldw	r2,-4(fp)
  4011fa4:	e0fffd17 	ldw	r3,-12(fp)
  4011fa8:	10c03315 	stw	r3,204(r2)
-
-		/*
-		 * populate fields of region_info required to conform to HAL API
-		 * create 1 region that composed of "number_of_sectors" blocks
-		 */
-		flash->dev.number_of_regions = 1;
  4011fac:	e0bfff17 	ldw	r2,-4(fp)
  4011fb0:	00c00044 	movi	r3,1
  4011fb4:	10c00c15 	stw	r3,48(r2)
-		flash->dev.region_info[0].offset = 0;
  4011fb8:	e0bfff17 	ldw	r2,-4(fp)
  4011fbc:	10000d15 	stw	zero,52(r2)
-		flash->dev.region_info[0].region_size = size_in_bytes;
  4011fc0:	e0fffe17 	ldw	r3,-8(fp)
  4011fc4:	e0bfff17 	ldw	r2,-4(fp)
  4011fc8:	10c00e15 	stw	r3,56(r2)
-		flash->dev.region_info[0].number_of_blocks = number_of_sectors;
  4011fcc:	e0fffd17 	ldw	r3,-12(fp)
  4011fd0:	e0bfff17 	ldw	r2,-4(fp)
  4011fd4:	10c00f15 	stw	r3,60(r2)
-		flash->dev.region_info[0].block_size = flash->sector_size;
  4011fd8:	e0bfff17 	ldw	r2,-4(fp)
  4011fdc:	10803417 	ldw	r2,208(r2)
  4011fe0:	1007883a 	mov	r3,r2
  4011fe4:	e0bfff17 	ldw	r2,-4(fp)
  4011fe8:	10c01015 	stw	r3,64(r2)
-    /*
-     * Register this device as a valid flash device type
-     *
-     * Only register the device if it's configured correctly.
-     */
-		alt_flash_device_register(&(flash->dev));
  4011fec:	e0bfff17 	ldw	r2,-4(fp)
  4011ff0:	1009883a 	mov	r4,r2
  4011ff4:	40116480 	call	4011648 <alt_flash_device_register>
-
-
-    return 0;
  4011ff8:	0005883a 	mov	r2,zero
-}
  4011ffc:	e037883a 	mov	sp,fp
  4012000:	dfc00117 	ldw	ra,4(sp)
  4012004:	df000017 	ldw	fp,0(sp)
@@ -22990,159 +22343,76 @@ alt_32 altera_epcq_controller_init(alt_epcq_controller_dev *flash)
  401200c:	f800283a 	ret
 
 04012010 <alt_epcq_validate_read_write_arguments>:
-(
-		alt_epcq_controller_dev *flash_info, /** device info */
-		alt_u32 offset, /** offset of read/write */
-		alt_u32 length /** length of read/write */
-)
-{
  4012010:	defff904 	addi	sp,sp,-28
  4012014:	df000615 	stw	fp,24(sp)
  4012018:	df000604 	addi	fp,sp,24
  401201c:	e13ffd15 	stw	r4,-12(fp)
  4012020:	e17ffe15 	stw	r5,-8(fp)
  4012024:	e1bfff15 	stw	r6,-4(fp)
-    alt_epcq_controller_dev *epcq_flash_info = NULL;
  4012028:	e03ffa15 	stw	zero,-24(fp)
-    alt_u32 start_address = 0;
  401202c:	e03ffb15 	stw	zero,-20(fp)
-    alt_32 end_address = 0;
  4012030:	e03ffc15 	stw	zero,-16(fp)
-	
-  /* return -EINVAL if flash_info is NULL */
-   if(NULL == flash_info)
  4012034:	e0bffd17 	ldw	r2,-12(fp)
  4012038:	1000021e 	bne	r2,zero,4012044 <alt_epcq_validate_read_write_arguments+0x34>
-   {
-    	return -EINVAL;
  401203c:	00bffa84 	movi	r2,-22
  4012040:	00001606 	br	401209c <alt_epcq_validate_read_write_arguments+0x8c>
-   }
-	
-  epcq_flash_info = (alt_epcq_controller_dev*)flash_info;
  4012044:	e0bffd17 	ldw	r2,-12(fp)
  4012048:	e0bffa15 	stw	r2,-24(fp)
-
-  start_address = epcq_flash_info->data_base + offset; /** first address of read or write */
  401204c:	e0bffa17 	ldw	r2,-24(fp)
  4012050:	10c02e17 	ldw	r3,184(r2)
  4012054:	e0bffe17 	ldw	r2,-8(fp)
  4012058:	1885883a 	add	r2,r3,r2
  401205c:	e0bffb15 	stw	r2,-20(fp)
-  end_address = start_address + length; /** last address of read or write (not inclusive) */
  4012060:	e0fffb17 	ldw	r3,-20(fp)
  4012064:	e0bfff17 	ldw	r2,-4(fp)
  4012068:	1885883a 	add	r2,r3,r2
  401206c:	e0bffc15 	stw	r2,-16(fp)
-
-  /* make sure start and end address is less then the end address of the flash */
-  if(
-		  start_address >= epcq_flash_info->data_end ||
  4012070:	e0bffa17 	ldw	r2,-24(fp)
  4012074:	10802f17 	ldw	r2,188(r2)
-
-  start_address = epcq_flash_info->data_base + offset; /** first address of read or write */
-  end_address = start_address + length; /** last address of read or write (not inclusive) */
-
-  /* make sure start and end address is less then the end address of the flash */
-  if(
  4012078:	e0fffb17 	ldw	r3,-20(fp)
  401207c:	1880042e 	bgeu	r3,r2,4012090 <alt_epcq_validate_read_write_arguments+0x80>
-		  start_address >= epcq_flash_info->data_end ||
-		  end_address > epcq_flash_info->data_end ||
  4012080:	e0bffa17 	ldw	r2,-24(fp)
  4012084:	10c02f17 	ldw	r3,188(r2)
  4012088:	e0bffc17 	ldw	r2,-16(fp)
-		  offset < 0 ||
  401208c:	1880022e 	bgeu	r3,r2,4012098 <alt_epcq_validate_read_write_arguments+0x88>
-		  length < 0
-  )
-  {
-	  return -EINVAL;
  4012090:	00bffa84 	movi	r2,-22
  4012094:	00000106 	br	401209c <alt_epcq_validate_read_write_arguments+0x8c>
-  }
-
-  return 0;
  4012098:	0005883a 	mov	r2,zero
-}
  401209c:	e037883a 	mov	sp,fp
  40120a0:	df000017 	ldw	fp,0(sp)
  40120a4:	dec00104 	addi	sp,sp,4
  40120a8:	f800283a 	ret
 
 040120ac <alt_epcq_poll_for_write_in_progress>:
- * 0 -> success
- * -EINVAL -> Invalid arguments
- * -ETIME  -> Time out and skipping the looping after 0.7 sec.
- */
-alt_32 static alt_epcq_poll_for_write_in_progress(alt_epcq_controller_dev* epcq_flash_info)
-{  
  40120ac:	defffb04 	addi	sp,sp,-20
  40120b0:	dfc00415 	stw	ra,16(sp)
  40120b4:	df000315 	stw	fp,12(sp)
  40120b8:	df000304 	addi	fp,sp,12
  40120bc:	e13fff15 	stw	r4,-4(fp)
-    /* we'll want to implement timeout if a timeout value is specified */
-#if ALTERA_EPCQ_CONTROLLER_1US_TIMEOUT_VALUE > 0
-	alt_u32 timeout = ALTERA_EPCQ_CONTROLLER_1US_TIMEOUT_VALUE;
  40120c0:	008002f4 	movhi	r2,11
  40120c4:	10ab9804 	addi	r2,r2,-20896
  40120c8:	e0bffe15 	stw	r2,-8(fp)
-	alt_u16 counter = 0;
  40120cc:	e03ffd0d 	sth	zero,-12(fp)
-#endif
-
-    /* return -EINVAL if epcq_flash_info is NULL */
-	if(NULL == epcq_flash_info)
  40120d0:	e0bfff17 	ldw	r2,-4(fp)
  40120d4:	10000c1e 	bne	r2,zero,4012108 <alt_epcq_poll_for_write_in_progress+0x5c>
-    {
-    	return -EINVAL;
  40120d8:	00bffa84 	movi	r2,-22
  40120dc:	00001006 	br	4012120 <alt_epcq_poll_for_write_in_progress+0x74>
-	/* while Write in Progress bit is set, we wait */
-	while((IORD_ALTERA_EPCQ_CONTROLLER_STATUS(epcq_flash_info->csr_base) &
-			ALTERA_EPCQ_CONTROLLER_STATUS_WIP_MASK) ==
-			ALTERA_EPCQ_CONTROLLER_STATUS_WIP_BUSY)
-	{
-        alt_busy_sleep(1); /* delay 1us */
  40120e0:	01000044 	movi	r4,1
  40120e4:	40128300 	call	4012830 <alt_busy_sleep>
-#if ALTERA_EPCQ_CONTROLLER_1US_TIMEOUT_VALUE > 0
-		if(timeout <= counter )
  40120e8:	e0fffd0b 	ldhu	r3,-12(fp)
  40120ec:	e0bffe17 	ldw	r2,-8(fp)
  40120f0:	18800236 	bltu	r3,r2,40120fc <alt_epcq_poll_for_write_in_progress+0x50>
-		{
-			return -ETIME;
  40120f4:	00bff084 	movi	r2,-62
  40120f8:	00000906 	br	4012120 <alt_epcq_poll_for_write_in_progress+0x74>
-		}
-		
-		counter++;
  40120fc:	e0bffd0b 	ldhu	r2,-12(fp)
  4012100:	10800044 	addi	r2,r2,1
  4012104:	e0bffd0d 	sth	r2,-12(fp)
-    {
-    	return -EINVAL;
-    }
-
-	/* while Write in Progress bit is set, we wait */
-	while((IORD_ALTERA_EPCQ_CONTROLLER_STATUS(epcq_flash_info->csr_base) &
  4012108:	e0bfff17 	ldw	r2,-4(fp)
  401210c:	10803017 	ldw	r2,192(r2)
  4012110:	10800037 	ldwio	r2,0(r2)
  4012114:	1080004c 	andi	r2,r2,1
  4012118:	103ff11e 	bne	r2,zero,40120e0 <__reset+0xfa8220e0>
-		counter++;
-#endif
-
-	}
-
-	return 0;
  401211c:	0005883a 	mov	r2,zero
-}
  4012120:	e037883a 	mov	sp,fp
  4012124:	dfc00117 	ldw	ra,4(sp)
  4012128:	df000017 	ldw	fp,0(sp)
@@ -23970,24 +23240,16 @@ unsigned int alt_busy_sleep (unsigned int us)
  4012954:	f800283a 	ret
 
 04012958 <alt_get_errno>:
-#undef errno
-
-extern int errno;
-
-static ALT_INLINE int* alt_get_errno(void)
-{
  4012958:	defffe04 	addi	sp,sp,-8
  401295c:	dfc00115 	stw	ra,4(sp)
  4012960:	df000015 	stw	fp,0(sp)
  4012964:	d839883a 	mov	fp,sp
-  return ((alt_errno) ? alt_errno() : &errno);
  4012968:	d0a00d17 	ldw	r2,-32716(gp)
  401296c:	10000326 	beq	r2,zero,401297c <alt_get_errno+0x24>
  4012970:	d0a00d17 	ldw	r2,-32716(gp)
  4012974:	103ee83a 	callr	r2
  4012978:	00000106 	br	4012980 <alt_get_errno+0x28>
  401297c:	d0a01e04 	addi	r2,gp,-32648
-}
  4012980:	e037883a 	mov	sp,fp
  4012984:	dfc00117 	ldw	ra,4(sp)
  4012988:	df000017 	ldw	fp,0(sp)
@@ -23995,75 +23257,42 @@ static ALT_INLINE int* alt_get_errno(void)
  4012990:	f800283a 	ret
 
 04012994 <alt_dev_llist_insert>:
-/*
- *
- */
-
-int alt_dev_llist_insert (alt_dev_llist* dev, alt_llist* list)
-{
  4012994:	defffa04 	addi	sp,sp,-24
  4012998:	dfc00515 	stw	ra,20(sp)
  401299c:	df000415 	stw	fp,16(sp)
  40129a0:	df000404 	addi	fp,sp,16
  40129a4:	e13ffe15 	stw	r4,-8(fp)
  40129a8:	e17fff15 	stw	r5,-4(fp)
-  /*
-   * check that the device exists, and that it has a valid name.
-   */
-
-  if (!dev || !dev->name)
  40129ac:	e0bffe17 	ldw	r2,-8(fp)
  40129b0:	10000326 	beq	r2,zero,40129c0 <alt_dev_llist_insert+0x2c>
  40129b4:	e0bffe17 	ldw	r2,-8(fp)
  40129b8:	10800217 	ldw	r2,8(r2)
  40129bc:	1000061e 	bne	r2,zero,40129d8 <alt_dev_llist_insert+0x44>
-  {
-    ALT_ERRNO = EINVAL;
  40129c0:	40129580 	call	4012958 <alt_get_errno>
  40129c4:	1007883a 	mov	r3,r2
  40129c8:	00800584 	movi	r2,22
  40129cc:	18800015 	stw	r2,0(r3)
-    return -EINVAL;
  40129d0:	00bffa84 	movi	r2,-22
  40129d4:	00001306 	br	4012a24 <alt_dev_llist_insert+0x90>
-  
-  /*
-   * register the device.
-   */
-  
-  alt_llist_insert(list, &dev->llist);
  40129d8:	e0bffe17 	ldw	r2,-8(fp)
  40129dc:	e0ffff17 	ldw	r3,-4(fp)
  40129e0:	e0fffc15 	stw	r3,-16(fp)
  40129e4:	e0bffd15 	stw	r2,-12(fp)
- */
-
-static ALT_INLINE void ALT_ALWAYS_INLINE alt_llist_insert(alt_llist* list, 
-                alt_llist* entry)
-{
-  entry->previous = list;
  40129e8:	e0bffd17 	ldw	r2,-12(fp)
  40129ec:	e0fffc17 	ldw	r3,-16(fp)
  40129f0:	10c00115 	stw	r3,4(r2)
-  entry->next     = list->next;
  40129f4:	e0bffc17 	ldw	r2,-16(fp)
  40129f8:	10c00017 	ldw	r3,0(r2)
  40129fc:	e0bffd17 	ldw	r2,-12(fp)
  4012a00:	10c00015 	stw	r3,0(r2)
-
-  list->next->previous = entry;
  4012a04:	e0bffc17 	ldw	r2,-16(fp)
  4012a08:	10800017 	ldw	r2,0(r2)
  4012a0c:	e0fffd17 	ldw	r3,-12(fp)
  4012a10:	10c00115 	stw	r3,4(r2)
-  list->next           = entry;
  4012a14:	e0bffc17 	ldw	r2,-16(fp)
  4012a18:	e0fffd17 	ldw	r3,-12(fp)
  4012a1c:	10c00015 	stw	r3,0(r2)
-
-  return 0;  
  4012a20:	0005883a 	mov	r2,zero
-}
  4012a24:	e037883a 	mov	sp,fp
  4012a28:	dfc00117 	ldw	ra,4(sp)
  4012a2c:	df000017 	ldw	fp,0(sp)
@@ -24071,33 +23300,17 @@ static ALT_INLINE void ALT_ALWAYS_INLINE alt_llist_insert(alt_llist* list,
  4012a34:	f800283a 	ret
 
 04012a38 <_do_ctors>:
-/*
- * Run the C++ static constructors.
- */
-
-void _do_ctors(void)
-{
  4012a38:	defffd04 	addi	sp,sp,-12
  4012a3c:	dfc00215 	stw	ra,8(sp)
  4012a40:	df000115 	stw	fp,4(sp)
  4012a44:	df000104 	addi	fp,sp,4
-  constructor* ctor;
-
-  for (ctor = &__CTOR_END__[-1]; ctor >= __CTOR_LIST__; ctor--)
  4012a48:	00810074 	movhi	r2,1025
  4012a4c:	108d7504 	addi	r2,r2,13780
  4012a50:	e0bfff15 	stw	r2,-4(fp)
  4012a54:	00000606 	br	4012a70 <_do_ctors+0x38>
-        (*ctor) (); 
  4012a58:	e0bfff17 	ldw	r2,-4(fp)
  4012a5c:	10800017 	ldw	r2,0(r2)
  4012a60:	103ee83a 	callr	r2
-
-void _do_ctors(void)
-{
-  constructor* ctor;
-
-  for (ctor = &__CTOR_END__[-1]; ctor >= __CTOR_LIST__; ctor--)
  4012a64:	e0bfff17 	ldw	r2,-4(fp)
  4012a68:	10bfff04 	addi	r2,r2,-4
  4012a6c:	e0bfff15 	stw	r2,-4(fp)
@@ -24105,8 +23318,6 @@ void _do_ctors(void)
  4012a74:	00810074 	movhi	r2,1025
  4012a78:	108d7604 	addi	r2,r2,13784
  4012a7c:	18bff62e 	bgeu	r3,r2,4012a58 <__reset+0xfa822a58>
-        (*ctor) (); 
-}
  4012a80:	0001883a 	nop
  4012a84:	e037883a 	mov	sp,fp
  4012a88:	dfc00117 	ldw	ra,4(sp)
@@ -24115,33 +23326,17 @@ void _do_ctors(void)
  4012a94:	f800283a 	ret
 
 04012a98 <_do_dtors>:
-/*
- * Run the C++ static destructors.
- */
-
-void _do_dtors(void)
-{
  4012a98:	defffd04 	addi	sp,sp,-12
  4012a9c:	dfc00215 	stw	ra,8(sp)
  4012aa0:	df000115 	stw	fp,4(sp)
  4012aa4:	df000104 	addi	fp,sp,4
-  destructor* dtor;
-
-  for (dtor = &__DTOR_END__[-1]; dtor >= __DTOR_LIST__; dtor--)
  4012aa8:	00810074 	movhi	r2,1025
  4012aac:	108d7504 	addi	r2,r2,13780
  4012ab0:	e0bfff15 	stw	r2,-4(fp)
  4012ab4:	00000606 	br	4012ad0 <_do_dtors+0x38>
-        (*dtor) (); 
  4012ab8:	e0bfff17 	ldw	r2,-4(fp)
  4012abc:	10800017 	ldw	r2,0(r2)
  4012ac0:	103ee83a 	callr	r2
-
-void _do_dtors(void)
-{
-  destructor* dtor;
-
-  for (dtor = &__DTOR_END__[-1]; dtor >= __DTOR_LIST__; dtor--)
  4012ac4:	e0bfff17 	ldw	r2,-4(fp)
  4012ac8:	10bfff04 	addi	r2,r2,-4
  4012acc:	e0bfff15 	stw	r2,-4(fp)
@@ -24149,8 +23344,6 @@ void _do_dtors(void)
  4012ad4:	00810074 	movhi	r2,1025
  4012ad8:	108d7604 	addi	r2,r2,13784
  4012adc:	18bff62e 	bgeu	r3,r2,4012ab8 <__reset+0xfa822ab8>
-        (*dtor) (); 
-}
  4012ae0:	0001883a 	nop
  4012ae4:	e037883a 	mov	sp,fp
  4012ae8:	dfc00117 	ldw	ra,4(sp)

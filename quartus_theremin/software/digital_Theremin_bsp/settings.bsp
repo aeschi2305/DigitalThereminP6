@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>03.08.2020 08:59:23</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1596437963616</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>03.08.2020 13:01:27</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1596452487926</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\GitHub\Projekt6\DigitalTheremin\DigitalThereminP6\quartus_theremin\software\digital_Theremin_bsp\</BspGeneratedLocation>
         <BspSettingsFile>D:\GitHub\Projekt6\DigitalTheremin\DigitalThereminP6\quartus_theremin\software\digital_Theremin_bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>D:\GitHub\Projekt6\DigitalTheremin\DigitalThereminP6\quartus_theremin\digital_theremin.sopcinfo</SopcDesignFile>

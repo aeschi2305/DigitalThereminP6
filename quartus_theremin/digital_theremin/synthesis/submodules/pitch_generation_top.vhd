@@ -36,7 +36,8 @@ entity pitch_generation_top is
     -- Avalon conduit Interfaces
     coe_square_freq   : in std_logic;
     coe_freq_up_down  : in std_logic_vector(1 downto 0);
-    coe_Cal_Glis      : in std_logic_vector(1 downto 0)
+    coe_Cal_Glis      : in std_logic_vector(1 downto 0);
+    coe_vol_cntrl     : in std_logic
   );
 end entity pitch_generation_top;
 
@@ -93,7 +94,9 @@ component filter_pitch is
 
      cic1_en        : out boolean;
      cic2_en        : out boolean;
-     cic3_en        : out boolean
+     cic3_en        : out boolean;
+
+     vol_cntrl    : in std_logic
   );
 end component filter_pitch;
 
@@ -213,7 +216,9 @@ begin
 
       cic1_en     => open,
       cic2_en     => meas_enable,
-      cic3_en     => open
+      cic3_en     => open,
+
+      vol_cntrl   => coe_vol_cntrl
     ); 
 
   -- user design: freq_mes

@@ -8,8 +8,7 @@
    <name preferredWidth="268" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Project,Library/Memory Interfaces and Controllers,Library/Basic Functions,Library/University Program/Memory,Library/Memory Interfaces and Controllers/Flash,Project/digital_theremin,Library/University Program,Library/Basic Functions/On Chip Memory,Library/Basic Functions/Configuration and Programming,Library" />
+ <library expandedCategories="Project/digital_theremin,Project,Library" />
  <window width="1920" height="1030" x="0" y="0" />
  <generation synthesis="VHDL" />
 </preferences>

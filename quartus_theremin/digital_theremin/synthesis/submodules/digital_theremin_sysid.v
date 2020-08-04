@@ -49,7 +49,7 @@ module digital_theremin_sysid (
 
   wire    [ 31: 0] readdata;
   //control_slave, which is an e_avalon_slave
-  assign readdata = address ? 1596436643 : 1;
+  assign readdata = address ? 1596451401 : 1;
 
 endmodule
 

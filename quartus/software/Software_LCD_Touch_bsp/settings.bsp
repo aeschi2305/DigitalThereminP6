@@ -2,11 +2,11 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>30.07.2020 15:19:58</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1596115198969</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\software\Software_LCD_Touch_bsp\</BspGeneratedLocation>
-        <BspSettingsFile>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\software\Software_LCD_Touch_bsp\settings.bsp</BspSettingsFile>
-        <SopcDesignFile>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus\system.sopcinfo</SopcDesignFile>
+        <BspGeneratedTimeStamp>03.08.2020 11:04:04</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1596445444630</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>D:\GitHub\Projekt6\DigitalTheremin\DigitalThereminP6\quartus\software\Software_LCD_Touch_bsp\</BspGeneratedLocation>
+        <BspSettingsFile>D:\GitHub\Projekt6\DigitalTheremin\DigitalThereminP6\quartus\software\Software_LCD_Touch_bsp\settings.bsp</BspSettingsFile>
+        <SopcDesignFile>D:\GitHub\Projekt6\DigitalTheremin\DigitalThereminP6\quartus\system.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>cpu</Cpu>
         <SchemaVersion>1.9</SchemaVersion>

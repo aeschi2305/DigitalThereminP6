@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 17.1 590 (Future versions may contain additional information.) -->
- <!-- 2020.08.03.08:37:23 -->
+ <!-- 2020.08.03.12:43:21 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1596436643</value>
+  <value>1596451401</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -10232,6 +10232,12 @@ parameters are a RESULT of the module parameters. -->
     <width>2</width>
     <role>coe_cal_glis</role>
    </port>
+   <port>
+    <name>coe_vol_cntrl</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>coe_vol_cntrl</role>
+   </port>
   </interface>
  </module>
  <module name="pll_cpu" kind="altera_pll" version="17.1" path="pll_cpu">
@@ -18681,7 +18687,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1596436643</value>
+   <value>1596451401</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -18701,7 +18707,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1596436643</value>
+   <value>1596451401</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -18717,7 +18723,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1596436643</value>
+   <value>1596451401</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>

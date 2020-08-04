@@ -33,7 +33,9 @@ entity filter_pitch is
 
      cic1_en        : out boolean;
      cic2_en        : out boolean;
-     cic3_en        : out boolean
+     cic3_en        : out boolean;
+
+     vol_cntrl    : in std_logic
 
   );
 end entity filter_pitch;
@@ -106,6 +108,8 @@ component filter_streaming is
      streaming     : out std_logic_vector(M-1 downto 0);  --Output signal
      valid        : out std_logic;  --Control Signals
      ready        : in std_logic;
+
+     vol_cntrl    : in std_logic;
 
      enable         : boolean
   );
@@ -190,6 +194,8 @@ begin
       streaming     =>  audio_out, 
       valid         =>  valid,
       ready         =>  ready,
+
+      vol_cntrl     => vol_cntrl,
 
       enable        =>  enable4
     ); 

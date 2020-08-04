@@ -263,7 +263,7 @@ constant min_freq_val      : signed(freq_len-1 downto 0) := (freq_len-1 downto 1
 constant cal_val        : unsigned(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "111100000000";  -- corresponds to 120Hz
 constant cal_stp        : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "000001000000";  -- corresponds to 2Hz (for simulation purposes)
 
-constant freq_cal_max 	: signed(freq_len-1 downto 0) := (freq_len-1 downto 20 => '0') & "01001110001000000000";
+--constant freq_cal_max 	: signed(freq_len-1 downto 0) := (freq_len-1 downto 20 => '0') & "01001110001000000000";
 constant freq_cal_max_neg : signed(freq_len-1 downto 0) := (freq_len-1 downto 20 => '1') & "10110001111000000000";
 
 
@@ -443,7 +443,7 @@ begin
                             cal_done <= '1';
                             delay <= '0';
                             done <= '1';
-                        elsif freq_cal_reg > freq_cal_max or freq_cal_reg < freq_cal_max_neg then
+                        elsif freq_cal_reg < freq_cal_max_neg then
                         	delay <= '0';
                             done <= '1';
                         else

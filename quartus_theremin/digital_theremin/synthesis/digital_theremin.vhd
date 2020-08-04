@@ -33,6 +33,7 @@ entity digital_theremin is
 		pitch_in_coe_square_freq                         : in    std_logic                     := '0';             --                                    pitch_in.coe_square_freq
 		pitch_in_coe_freq_up_down                        : in    std_logic_vector(1 downto 0)  := (others => '0'); --                                            .coe_freq_up_down
 		pitch_in_coe_cal_glis                            : in    std_logic_vector(1 downto 0)  := (others => '0'); --                                            .coe_cal_glis
+		pitch_in_coe_vol_cntrl                           : in    std_logic                     := '0';             --                                            .coe_vol_cntrl
 		reset_reset_n                                    : in    std_logic                     := '0';             --                                       reset.reset_n
 		sdram_clk_clk                                    : out   std_logic;                                        --                                   sdram_clk.clk
 		touch_panel_busy_external_connection_export      : in    std_logic                     := '0';             --        touch_panel_busy_external_connection.export
@@ -278,7 +279,8 @@ architecture rtl of digital_theremin is
 			aso_se_data       : out std_logic_vector(23 downto 0);                    -- data
 			coe_square_freq   : in  std_logic                     := 'X';             -- coe_square_freq
 			coe_freq_up_down  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- coe_freq_up_down
-			coe_Cal_Glis      : in  std_logic_vector(1 downto 0)  := (others => 'X')  -- coe_cal_glis
+			coe_Cal_Glis      : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- coe_cal_glis
+			coe_vol_cntrl     : in  std_logic                     := 'X'              -- coe_vol_cntrl
 		);
 	end component pitch_generation_top;
 
@@ -1033,7 +1035,8 @@ begin
 			aso_se_data       => pitch_generation_0_se_data,                         --              .data
 			coe_square_freq   => pitch_in_coe_square_freq,                           -- conduit_end_0.coe_square_freq
 			coe_freq_up_down  => pitch_in_coe_freq_up_down,                          --              .coe_freq_up_down
-			coe_Cal_Glis      => pitch_in_coe_cal_glis                               --              .coe_cal_glis
+			coe_Cal_Glis      => pitch_in_coe_cal_glis,                              --              .coe_cal_glis
+			coe_vol_cntrl     => pitch_in_coe_vol_cntrl                              --              .coe_vol_cntrl
 		);
 
 	pll_cpu : component digital_theremin_pll_cpu

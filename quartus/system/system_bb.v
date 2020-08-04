@@ -22,10 +22,6 @@ module system (
 	lcd_controller_conduit_end_lt24_wr,
 	lcd_controller_conduit_end_lt24_rs,
 	lcd_reset_n_external_connection_export,
-	led_cntrl_export,
-	pitch_generation_top_0_conduit_end_0_coe_square_freq,
-	pitch_generation_top_0_conduit_end_0_coe_freq_up_down,
-	pitch_generation_top_0_conduit_end_0_coe_cal_glis,
 	reset_reset_n,
 	sdram_clk_clk,
 	square_freq_coe_square_freq,
@@ -59,10 +55,6 @@ module system (
 	output		lcd_controller_conduit_end_lt24_wr;
 	output		lcd_controller_conduit_end_lt24_rs;
 	output		lcd_reset_n_external_connection_export;
-	output		led_cntrl_export;
-	input		pitch_generation_top_0_conduit_end_0_coe_square_freq;
-	input	[1:0]	pitch_generation_top_0_conduit_end_0_coe_freq_up_down;
-	input	[1:0]	pitch_generation_top_0_conduit_end_0_coe_cal_glis;
 	input		reset_reset_n;
 	output		sdram_clk_clk;
 	input		square_freq_coe_square_freq;

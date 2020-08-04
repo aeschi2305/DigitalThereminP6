@@ -24,11 +24,11 @@ set_sw_property bsp_subdirectory drivers
 #
 
 # C/C++ source files
-add_sw_property c_source HAL/src/Volume_generation_top.c
+add_sw_property c_source HAL/src/Volume_generation.c
 
 # Include files
-add_sw_property include_source HAL/inc/Volume_generation_top.h
-add_sw_property include_source inc/Volume_generation_top_regs.h
+add_sw_property include_source HAL/inc/Volume_generation.h
+add_sw_property include_source inc/Volume_generation_regs.h
 
 # This driver supports HAL 
 add_sw_property supported_bsp_type HAL

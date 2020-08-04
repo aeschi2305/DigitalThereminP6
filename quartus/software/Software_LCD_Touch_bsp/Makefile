@@ -101,7 +101,7 @@ ACDS_VERSION := 17.1
 # BUILD_NUMBER: 590
 
 SETTINGS_FILE := settings.bsp
-SOPC_FILE := C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
+SOPC_FILE := D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus/system.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS
@@ -241,7 +241,7 @@ Volume_generation_top_driver_SRCS_ROOT := drivers
 
 # volume_generation_top_driver sources 
 Volume_generation_top_driver_C_LIB_SRCS := \
-	$(Volume_generation_top_driver_SRCS_ROOT)/src/Volume_generation_top.c
+	$(Volume_generation_top_driver_SRCS_ROOT)/src/Volume_generation.c
 
 # altera_avalon_jtag_uart_driver sources root 
 altera_avalon_jtag_uart_driver_SRCS_ROOT := drivers

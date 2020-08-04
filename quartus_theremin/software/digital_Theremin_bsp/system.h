@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'digital_theremin'
  * SOPC Builder design path: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus_theremin/digital_theremin.sopcinfo
  *
- * Generated: Mon Aug 03 08:59:24 CEST 2020
+ * Generated: Mon Aug 03 13:01:29 CEST 2020
  */
 
 /*
@@ -382,7 +382,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1596436643
+#define SYSID_TIMESTAMP 1596451401
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 

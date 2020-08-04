@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Thu Jul 30 09:03:36 2020
+Analysis & Synthesis Status : Successful - Mon Aug 03 10:29:21 2020
 Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Standard Edition
 Revision Name : DigitalThereminP6
 Top-level Entity Name : system
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 7796
-Total pins : 85
+Total registers : 8947
+Total pins : 83
 Total virtual pins : 0
-Total block memory bits : 376,896
+Total block memory bits : 85,440
 Total DSP Blocks : 65
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

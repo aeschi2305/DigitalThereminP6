@@ -19,14 +19,10 @@
 #include "altera_avalon_pio_regs.h"
 #include "LT24_Controller.h"
 #include "LT24_Controller_regs.h"
-//#include "Pitch_dummy.h"
-//#include "Pitch_dummy_regs.h"
 #include "Pitch_generation_top.h"
 #include "Pitch_generation_top_regs.h"
-#include "Volume_dummy.h"
-#include "Volume_generation_top_regs.h"
-#include "Volume_generation_top.h"
-#include "Volume_dummy_regs.h"
+#include "Volume_generation_regs.h"
+#include "Volume_generation.h"
 #include "audio.h"
 #include "simple_text.h"
 #include "bahnschriftCondensed_22.h"
@@ -44,8 +40,8 @@
 
 alt_alarm my_alarm, vol_alarm;
 alt_u32 ton_delay = 0;
-alt_u8 penta_on_off = 0;
-
+alt_u8 cntrl_reg = 4;
+alt_u8 vol_antenna_on_off = 1;
 
 typedef enum {
 	ST_main, ST_cali, ST_volume, ST_play_help, ST_glissando_set, ST_display_ton
@@ -65,15 +61,16 @@ alt_u32 alarm_callback(void* context) {
 	printf("freq data\n");
 	alt_u32 tmp = read_freq_pitch();
 	printf("freq data %ld\n", tmp);
-	draw_display_ton_update(penta_on_off);
-	return context = 1000;
+	draw_display_ton_update((cntrl_reg & 4) >> 2);
+	return context = 50;
 }
 //  callback function for alarm
 alt_u32 alarm_callback_vol(void* context) {
 	//Set alarm flag
 	printf("ALARM vol!!!\n");
-	printf("freq vol gen %d\n", read_freq_vol_gen());
-	return context = 500;
+	printf("freq vol gen %d\n", read_vol_db_gain());
+	set_vol(read_vol_db_gain());
+	return context = 50;
 }
 int main() {
 	//initialization
@@ -97,7 +94,7 @@ int main() {
 	printf("Hello from Nios II!\n");
 
 	//set alarm vol
-	if (alt_alarm_start(&vol_alarm, 500, alarm_callback_vol, NULL) < 0) {
+	if (alt_alarm_start(&vol_alarm, 50, alarm_callback_vol, NULL) < 0) {
 		printf("No System Clock Available\n");
 	}
 
@@ -125,11 +122,12 @@ int main() {
 					LCD_Clear(WHITE);
 					draw_volume_screen();
 					draw_update_volume_bar(vol_bar);
+					//draw_vol_antenna_on_off(vol_antenna_on_off);
 				} else if (xy.y_coord > 2800) { //Coordinates for play help
 					state = ST_play_help;
 					LCD_Clear(WHITE);
 					draw_help_screen();
-					draw_glissando_on_off(glissando_on_off);
+					draw_glissando_on_off(cntrl_reg & 0x01);
 				}
 				break;
 			//******volume state*********************************************************
@@ -150,8 +148,19 @@ int main() {
 						}
 					}
 					set_vol_gen(vol_bar);
-					printf("vol_gain Register %d\n", read_vol_gain());
 					draw_update_volume_bar(vol_bar);
+					if ((xy.y_coord > 1900) && (xy.y_coord < 2800)){ //Coordinates for disabel Volume antenna
+						vol_antenna_on_off = vol_antenna_on_off^ 0x01;
+						//draw_vol_antenna_on_off(vol_antenna_on_off);
+						if(vol_antenna_on_off == 1){//set alarm vol
+							if (alt_alarm_start(&vol_alarm, 50, alarm_callback_vol, NULL) < 0) {
+								printf("No System Clock Available\n");
+							}
+						}else{//disable alarm vol
+							alt_alarm_stop(&vol_alarm);
+							set_vol(40);
+						}
+					}
 				}
 				break;
 		    //******calibration state****************************************************
@@ -172,18 +181,20 @@ int main() {
 					LCD_Clear(WHITE);
 					draw_main_screen();
 				} else if ((xy.y_coord <= 1200) && (xy.x_coord >= 1300)) { //Coordinates for glissando on off
-					draw_glissando_on_off(glissando_on_off ^ 0x01);
-					glissando_on_off = glissando_on_off ^ 0x01;
+					cntrl_reg = cntrl_reg ^ 0x01;
+
+					draw_glissando_on_off(cntrl_reg & 0x01);
+					//set_cntrl_reg(cntrl_reg);
 				} else if ((xy.y_coord <= 1200) && (xy.x_coord <= 1300)) { //Coordinates for glissando set
 					state = ST_glissando_set;
 					LCD_Clear(WHITE);
 					draw_glissando_set();
 					draw_update_glissando_delay(glissando_delay);
-					draw_penta_on_off(penta_on_off);
+					draw_penta_on_off(cntrl_reg & 0x04);
 				} else if ((xy.y_coord >= 1200) && (xy.x_coord >= 1300)) { //Coordinates for display ton
 					state = ST_display_ton;
 					//Configure alarm for 1 seconds
-					if (alt_alarm_start(&my_alarm, 1000, alarm_callback, NULL) < 0) {
+					if (alt_alarm_start(&my_alarm, 100, alarm_callback, NULL) < 0) {
 						printf("No System Clock Available\n");
 					}
 					LCD_Clear(WHITE);
@@ -196,7 +207,7 @@ int main() {
 					state = ST_play_help;
 					LCD_Clear(WHITE);
 					draw_help_screen();
-					draw_glissando_on_off(glissando_on_off);
+					draw_glissando_on_off(cntrl_reg & 0x01);
 				} else if ((xy.y_coord <= 2050) && (xy.x_coord <= 700)) { //Coordinates for delay -
 					if (glissando_delay <= 1) {
 						glissando_delay = 2;
@@ -214,9 +225,10 @@ int main() {
 					set_glissando_delay(glissando_delay);
 					draw_update_glissando_delay(glissando_delay);
 					printf("gli_delay register %d\n", read_delay_gli());
-				} else if ((xy.y_coord > 1900) && (xy.x_coord >= 1800)){
-					draw_penta_on_off(penta_on_off^ 0x01);
-					penta_on_off = penta_on_off^ 0x01;
+				} else if ((xy.y_coord > 1900) && (xy.y_coord < 2800)){ //Coordinates for musical scale setting(Tonleiter)
+					cntrl_reg = cntrl_reg^ 0x04;
+					draw_penta_on_off(cntrl_reg);
+					//set_cntrl_reg(cntrl_reg);
 
 				}
 				break;
@@ -224,10 +236,11 @@ int main() {
 			case ST_display_ton:
 				if ((xy.y_coord >= 2800) && (xy.x_coord <= 1100)) { //Coordinates for return play help
 					state = ST_play_help;
+					alt_alarm_stop(&my_alarm);
 					LCD_Clear(WHITE);
 					draw_help_screen();
-					draw_glissando_on_off(glissando_on_off);
-					alt_alarm_stop(&my_alarm);
+					draw_glissando_on_off(cntrl_reg & 0x01);
+
 				}
 				break;
 			}

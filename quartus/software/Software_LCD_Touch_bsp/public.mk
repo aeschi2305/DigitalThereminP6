@@ -86,7 +86,7 @@ ACDS_VERSION := 17.1
 
 # Qsys--generated SOPCINFO file. Required for resolving node instance ID's with 
 # design component names. 
-SOPCINFO_FILE := C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus/system.sopcinfo
+SOPCINFO_FILE := D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus/system.sopcinfo
 
 # Big-Endian operation. 
 # setting BIG_ENDIAN is false
