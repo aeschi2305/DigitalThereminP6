@@ -1,52 +1,1112 @@
-11:12:33 **** Incremental Build of configuration Nios II for project Software_LCD_Touch ****
+15:30:15 **** Incremental Build of configuration Nios II for project digital_Theremin ****
 make all 
-Info: Building ../Software_LCD_Touch_bsp/
-C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Software_LCD_Touch_bsp/
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
 [BSP build complete]
-Info: Compiling hello_world.c to obj/default/hello_world.o
-nios2-elf-gcc -xc -MP -MMD -c -I../Software_LCD_Touch_bsp//HAL/inc -I../Software_LCD_Touch_bsp/ -I../Software_LCD_Touch_bsp//drivers/inc -Igraphics -Itouch -Iaudio  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world.o hello_world.c
-hello_world.c: In function 'alarm_callback':
-hello_world.c:65:17: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
-  return context = 50;
-                 ^
-hello_world.c:65:9: warning: return makes integer from pointer without a cast [-Wint-conversion]
-  return context = 50;
-         ^
-hello_world.c: In function 'alarm_callback_vol':
-hello_world.c:71:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
-  printf("freq vol gen %d\n", read_vol_db_gain());
-         ^
-hello_world.c:71:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
-hello_world.c:72:2: warning: implicit declaration of function 'set_vol' [-Wimplicit-function-declaration]
-  set_vol(read_vol_db_gain());
+Info: Compiling graphics/gui.c to obj/default/graphics/gui.o
+nios2-elf-gcc -xc -MP -MMD -c -I../digital_Theremin_bsp//HAL/inc -I../digital_Theremin_bsp/ -I../digital_Theremin_bsp//drivers/inc -Iaudio -Igraphics -Itouch  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphics/gui.o graphics/gui.c
+graphics/gui.c: In function 'draw_main_screen':
+graphics/gui.c:24:31: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Calibrate");
+                               ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:24:50: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Calibrate");
+                                                  ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:26:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:26:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:28:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,184,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Play Help");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:28:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,184,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Play Help");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_calibrating_screen':
+graphics/gui.c:39:71: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("position hands!"),109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"position hands!");
+                                                                       ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:39:90: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("position hands!"),109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"position hands!");
+                                                                                          ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:42:2: warning: implicit declaration of function 'set_calibration_vol_gen' [-Wimplicit-function-declaration]
+  set_calibration_vol_gen(cntrl_reg_vol);
   ^
-hello_world.c:73:17: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+graphics/gui.c:45:47: warning: implicit declaration of function 'done_calibration_vol_gen' [-Wimplicit-function-declaration]
+  while(((done_calibration_pitch()&2) == 2 && (done_calibration_vol_gen()&2) == 2) || cnt_point <= 5){
+                                               ^
+graphics/gui.c:46:67: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(160 - get_string_width("calibrating"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibrating");
+                                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:46:86: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(160 - get_string_width("calibrating"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibrating");
+                                                                                      ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:48:42: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string((138+i*10),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,".");
+                                          ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:48:61: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string((138+i*10),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,".");
+                                                             ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_calibrating_screen_done':
+graphics/gui.c:63:66: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("calibration"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibration");
+                                                                  ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:63:85: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("calibration"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibration");
+                                                                                     ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:64:60: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("done"),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"done");
+                                                            ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:64:79: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("done"),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"done");
+                                                                               ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:66:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:66:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_volume_screen':
+graphics/gui.c:76:31: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+                               ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:76:50: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+                                                  ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:79:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:79:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:81:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:81:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:84:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:84:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_vol_antenna_on_off':
+graphics/gui.c:100:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna on");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:100:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna on");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:103:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna off");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:103:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna off");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_help_screen':
+graphics/gui.c:115:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(235,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Set");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:115:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(235,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Set");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:117:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(15,109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"display pitch");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:117:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(15,109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"display pitch");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:120:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:120:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_glissando_on_off':
+graphics/gui.c:127:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando on");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:127:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando on");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:130:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando off");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:130:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando off");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_glissando_set':
+graphics/gui.c:141:31: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
+                               ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:141:50: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
+                                                  ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:144:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:144:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:146:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:146:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:149:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,194,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:149:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,194,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_penta_on_off':
+graphics/gui.c:164:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic on");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:164:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic on");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:167:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic off");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:167:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic off");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_display_ton':
+graphics/gui.c:183:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:183:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_display_ton_update':
+graphics/gui.c:203:74: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(penta_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                          ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:203:93: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(penta_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                                             ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:203:116: warning: passing argument 6 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(penta_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:211:72: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(ton_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                        ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:211:91: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(ton_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                                           ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:211:114: warning: passing argument 6 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(ton_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                                                                  ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:194:4: warning: 'index_old' is used uninitialized in this function [-Wuninitialized]
+  if(index_old != index){
+    ^
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc -xc -MP -MMD -c -I../digital_Theremin_bsp//HAL/inc -I../digital_Theremin_bsp/ -I../digital_Theremin_bsp//drivers/inc -Iaudio -Igraphics -Itouch  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world.o hello_world.c
+hello_world.c: In function 'alarm_callback':
+hello_world.c:66:17: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
   return context = 50;
                  ^
-hello_world.c:73:9: warning: return makes integer from pointer without a cast [-Wint-conversion]
+hello_world.c:66:9: warning: return makes integer from pointer without a cast [-Wint-conversion]
   return context = 50;
          ^
 hello_world.c: In function 'main':
-hello_world.c:218:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+hello_world.c:204:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
       printf("freq pitch %d\n", read_freq_pitch());
              ^
-hello_world.c:218:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
-hello_world.c:219:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+hello_world.c:204:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+hello_world.c:205:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
       printf("gli_delay register %d\n", read_delay_gli());
              ^
-hello_world.c:219:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
-hello_world.c:227:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+hello_world.c:205:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+hello_world.c:213:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
       printf("gli_delay register %d\n", read_delay_gli());
              ^
-hello_world.c:227:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
-hello_world.c:84:9: warning: unused variable 'glissando_on_off' [-Wunused-variable]
+hello_world.c:213:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+hello_world.c:79:9: warning: unused variable 'glissando_on_off' [-Wunused-variable]
   alt_u8 glissando_on_off = 0;
          ^
-Info: Linking Software_LCD_Touch.elf
-nios2-elf-g++  -T'../Software_LCD_Touch_bsp//linker.x' -msys-crt0='../Software_LCD_Touch_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../Software_LCD_Touch_bsp/   -Wl,-Map=Software_LCD_Touch.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o Software_LCD_Touch.elf obj/default/audio/audio.o obj/default/graphics/bahnschriftCondensed_22.o obj/default/graphics/gui.o obj/default/graphics/simple_text.o obj/default/hello_world.o obj/default/touch/touch_isr.o -lm -msys-lib=m
-nios2-elf-insert Software_LCD_Touch.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --id 1 --sidp 0x80010b8 --timestamp 1596114605 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name system --quartus_project_dir "D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus" --jdi ../..//output_files/DigitalThereminP6.jdi --sopcinfo D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus/system.sopcinfo
-Info: (Software_LCD_Touch.elf) 90 KBytes program size (code + initialized data).
-Info:                          65439 KBytes free for stack + heap.
-Info: Creating Software_LCD_Touch.objdump
-nios2-elf-objdump --disassemble --syms --all-header --source Software_LCD_Touch.elf >Software_LCD_Touch.objdump
-[Software_LCD_Touch build complete]
+Info: Linking digital_Theremin.elf
+nios2-elf-g++  -T'../digital_Theremin_bsp//linker.x' -msys-crt0='../digital_Theremin_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../digital_Theremin_bsp/   -Wl,-Map=digital_Theremin.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o digital_Theremin.elf obj/default/audio/audio.o obj/default/graphics/bahnschriftCondensed_22.o obj/default/graphics/gui.o obj/default/graphics/simple_text.o obj/default/hello_world.o obj/default/touch/touch_isr.o -lm -msys-lib=m
+nios2-elf-insert digital_Theremin.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --id 1 --sidp 0xa0010c8 --timestamp 1596616975 --stderr_dev jtag --stdin_dev jtag --stdout_dev jtag --sopc_system_name digital_theremin --quartus_project_dir "D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus_theremi_new" --jdi ../..//output_files/digital_theremin.jdi --sopcinfo D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus_theremi_new/digital_theremin.sopcinfo
+Info: (digital_Theremin.elf) 92 KBytes program size (code + initialized data).
+Info:                        65443 KBytes free for stack + heap.
+Info: Creating digital_Theremin.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source digital_Theremin.elf >digital_Theremin.objdump
+[digital_Theremin build complete]
+15:31:29 **** Build of configuration Nios II for project digital_Theremin ****
+make all 
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+[BSP build complete]
+[digital_Theremin build complete]
+15:31:32 **** Incremental Build of configuration Nios II for project digital_Theremin ****
+make all 
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+[BSP build complete]
+[digital_Theremin build complete]
+16:25:58 **** Build of configuration Nios II for project digital_Theremin ****
+make all 
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+[BSP build complete]
+[digital_Theremin build complete]
+16:26:01 **** Incremental Build of configuration Nios II for project digital_Theremin ****
+make all 
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+[BSP build complete]
+[digital_Theremin build complete]
+09:04:02 **** Build of configuration Nios II for project digital_Theremin ****
+make all 
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+[BSP build complete]
+[digital_Theremin build complete]
+09:04:21 **** Incremental Build of configuration Nios II for project digital_Theremin ****
+make all 
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+[BSP build complete]
+[digital_Theremin build complete]
+10:51:12 **** Build of configuration Nios II for project digital_Theremin ****
+make all 
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+[BSP build complete]
+Info: Compiling graphics/gui.c to obj/default/graphics/gui.o
+nios2-elf-gcc -xc -MP -MMD -c -I../digital_Theremin_bsp//HAL/inc -I../digital_Theremin_bsp/ -I../digital_Theremin_bsp//drivers/inc -Iaudio -Igraphics -Itouch  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/graphics/gui.o graphics/gui.c
+graphics/gui.c: In function 'draw_main_screen':
+graphics/gui.c:24:31: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Calibrate");
+                               ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:24:50: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Calibrate");
+                                                  ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:26:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:26:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:28:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,184,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Play Help");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:28:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(80,184,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Play Help");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_calibrating_screen':
+graphics/gui.c:39:71: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("position hands!"),109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"position hands!");
+                                                                       ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:39:90: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("position hands!"),109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"position hands!");
+                                                                                          ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:42:2: warning: implicit declaration of function 'set_calibration_vol_gen' [-Wimplicit-function-declaration]
+  set_calibration_vol_gen(cntrl_reg_vol);
+  ^
+graphics/gui.c:45:47: warning: implicit declaration of function 'done_calibration_vol_gen' [-Wimplicit-function-declaration]
+  while(((done_calibration_pitch()&2) == 2 && (done_calibration_vol_gen()&2) == 2) || cnt_point <= 5){
+                                               ^
+graphics/gui.c:46:67: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(160 - get_string_width("calibrating"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibrating");
+                                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:46:86: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(160 - get_string_width("calibrating"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibrating");
+                                                                                      ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:48:42: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string((138+i*10),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,".");
+                                          ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:48:61: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string((138+i*10),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,".");
+                                                             ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_calibrating_screen_done':
+graphics/gui.c:63:66: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("calibration"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibration");
+                                                                  ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:63:85: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("calibration"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibration");
+                                                                                     ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:64:60: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("done"),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"done");
+                                                            ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:64:79: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(160 - get_string_width("done"),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"done");
+                                                                               ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:66:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:66:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_volume_screen':
+graphics/gui.c:76:31: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+                               ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:76:50: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+                                                  ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:79:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:79:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:81:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:81:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:84:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:84:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_vol_antenna_on_off':
+graphics/gui.c:100:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna on");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:100:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna on");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:103:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna off");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:103:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna off");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_help_screen':
+graphics/gui.c:115:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(235,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Set");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:115:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(235,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Set");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:117:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(15,109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"display pitch");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:117:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(15,109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"display pitch");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:120:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:120:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_glissando_on_off':
+graphics/gui.c:127:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando on");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:127:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando on");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:130:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando off");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:130:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando off");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_glissando_set':
+graphics/gui.c:141:31: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
+                               ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:141:50: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
+                                                  ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:144:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:144:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:146:32: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+                                ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:146:51: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
+                                                   ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:149:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,194,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:149:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,194,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_penta_on_off':
+graphics/gui.c:162:12: warning: suggest parentheses around comparison in operand of '&' [-Wparentheses]
+  if(on_off & 4 == 4){
+            ^
+graphics/gui.c:164:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic on");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:164:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic on");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:167:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic off");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:167:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+   vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic off");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_display_ton':
+graphics/gui.c:183:33: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                 ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:183:52: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+  vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c: In function 'draw_display_ton_update':
+graphics/gui.c:203:74: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(penta_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                          ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:203:93: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(penta_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                                             ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:203:116: warning: passing argument 6 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(penta_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                                                                    ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:211:72: warning: passing argument 4 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(ton_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                        ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u8 * {aka const unsigned char *}' but argument is of type 'const alt_u8 (*)[5404] {aka const unsigned char (*)[5404]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:211:91: warning: passing argument 5 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(ton_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                                           ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'const alt_u16 (*)[2] {aka const short unsigned int (*)[2]}' but argument is of type 'const alt_u16 (*)[95][2] {aka const short unsigned int (*)[95][2]}'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:211:114: warning: passing argument 6 of 'vid_print_string' from incompatible pointer type [-Wincompatible-pointer-types]
+    vid_print_string(160 - get_string_width(ton_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+                                                                                                                  ^
+In file included from graphics/gui.h:15:0,
+                 from graphics/gui.c:9:
+graphics/simple_text.h:35:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int vid_print_string(int horiz_offset, int vert_offset, int color, const alt_u8 *font, const alt_u16 (*font_descriptor)[2], char string[]);
+     ^
+graphics/gui.c:194:4: warning: 'index_old' is used uninitialized in this function [-Wuninitialized]
+  if(index_old != index){
+    ^
+Info: Linking digital_Theremin.elf
+nios2-elf-g++  -T'../digital_Theremin_bsp//linker.x' -msys-crt0='../digital_Theremin_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../digital_Theremin_bsp/   -Wl,-Map=digital_Theremin.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o digital_Theremin.elf obj/default/audio/audio.o obj/default/graphics/bahnschriftCondensed_22.o obj/default/graphics/gui.o obj/default/graphics/simple_text.o obj/default/hello_world.o obj/default/touch/touch_isr.o -lm -msys-lib=m
+nios2-elf-insert digital_Theremin.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --id 1 --sidp 0xa0010c8 --timestamp 1596616975 --stderr_dev jtag --stdin_dev jtag --stdout_dev jtag --sopc_system_name digital_theremin --quartus_project_dir "D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus_theremi_new" --jdi ../..//output_files/digital_theremin.jdi --sopcinfo D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus_theremi_new/digital_theremin.sopcinfo
+Info: (digital_Theremin.elf) 92 KBytes program size (code + initialized data).
+Info:                        65443 KBytes free for stack + heap.
+Info: Creating digital_Theremin.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source digital_Theremin.elf >digital_Theremin.objdump
+[digital_Theremin build complete]
+10:51:34 **** Incremental Build of configuration Nios II for project digital_Theremin ****
+make all 
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+[BSP build complete]
+[digital_Theremin build complete]
+10:58:41 **** Build of configuration Nios II for project digital_Theremin ****
+make all 
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+[BSP build complete]
+[digital_Theremin build complete]
+10:58:43 **** Incremental Build of configuration Nios II for project digital_Theremin ****
+make all 
+Info: Building ../digital_Theremin_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+[BSP build complete]
+[digital_Theremin build complete]

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>RemoteSystemsTempFiles</name>
+	<comment></comment>
+	<projects>
+		<project>digital_Theremin</project>
+		<project>digital_Theremin_bsp</project>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.rse.ui.remoteSystemsTempNature</nature>
+	</natures>
+</projectDescription>

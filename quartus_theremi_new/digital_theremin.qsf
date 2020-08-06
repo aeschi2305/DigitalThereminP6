@@ -1,0 +1,1058 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
+# Date created = 09:46:48  July 29, 2020
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		digital_theremin_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CSEMA5F31C6
+set_global_assignment -name TOP_LEVEL_ENTITY digital_theremin
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "09:46:48  JULY 29, 2020"
+set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Standard Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
+set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "ACTIVE SERIAL X4"
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN ON
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name ACTIVE_SERIAL_CLOCK FREQ_25MHZ
+set_global_assignment -name QIP_FILE digital_theremin/synthesis/digital_theremin.qip
+set_global_assignment -name SDC_FILE digital_theremin.sdc
+set_location_assignment PIN_AJ14 -to dram_cntrl_wire_addr[12]
+set_location_assignment PIN_AH13 -to dram_cntrl_wire_addr[11]
+set_location_assignment PIN_AG12 -to dram_cntrl_wire_addr[10]
+set_location_assignment PIN_AG13 -to dram_cntrl_wire_addr[9]
+set_location_assignment PIN_AH15 -to dram_cntrl_wire_addr[8]
+set_location_assignment PIN_AF15 -to dram_cntrl_wire_addr[7]
+set_location_assignment PIN_AD14 -to dram_cntrl_wire_addr[6]
+set_location_assignment PIN_AC14 -to dram_cntrl_wire_addr[5]
+set_location_assignment PIN_AB15 -to dram_cntrl_wire_addr[4]
+set_location_assignment PIN_AE14 -to dram_cntrl_wire_addr[3]
+set_location_assignment PIN_AG15 -to dram_cntrl_wire_addr[2]
+set_location_assignment PIN_AH14 -to dram_cntrl_wire_addr[1]
+set_location_assignment PIN_AK14 -to dram_cntrl_wire_addr[0]
+set_location_assignment PIN_AF13 -to dram_cntrl_wire_ba[1]
+set_location_assignment PIN_AJ12 -to dram_cntrl_wire_ba[0]
+set_location_assignment PIN_AF11 -to dram_cntrl_wire_cas_n
+set_location_assignment PIN_AK13 -to dram_cntrl_wire_cke
+set_location_assignment PIN_AG11 -to dram_cntrl_wire_cs_n
+set_location_assignment PIN_AJ5 -to dram_cntrl_wire_dq[15]
+set_location_assignment PIN_AJ6 -to dram_cntrl_wire_dq[14]
+set_location_assignment PIN_AH7 -to dram_cntrl_wire_dq[13]
+set_location_assignment PIN_AH8 -to dram_cntrl_wire_dq[12]
+set_location_assignment PIN_AH9 -to dram_cntrl_wire_dq[11]
+set_location_assignment PIN_AJ9 -to dram_cntrl_wire_dq[10]
+set_location_assignment PIN_AJ10 -to dram_cntrl_wire_dq[9]
+set_location_assignment PIN_AH10 -to dram_cntrl_wire_dq[8]
+set_location_assignment PIN_AJ11 -to dram_cntrl_wire_dq[7]
+set_location_assignment PIN_AK11 -to dram_cntrl_wire_dq[6]
+set_location_assignment PIN_AG10 -to dram_cntrl_wire_dq[5]
+set_location_assignment PIN_AK9 -to dram_cntrl_wire_dq[4]
+set_location_assignment PIN_AK8 -to dram_cntrl_wire_dq[3]
+set_location_assignment PIN_AK7 -to dram_cntrl_wire_dq[2]
+set_location_assignment PIN_AJ7 -to dram_cntrl_wire_dq[1]
+set_location_assignment PIN_AK6 -to dram_cntrl_wire_dq[0]
+set_location_assignment PIN_AB13 -to dram_cntrl_wire_dqm[0]
+set_location_assignment PIN_AK12 -to dram_cntrl_wire_dqm[1]
+set_location_assignment PIN_AE13 -to dram_cntrl_wire_ras_n
+set_location_assignment PIN_AA13 -to dram_cntrl_wire_we_n
+set_location_assignment PIN_AK23 -to lcd_controller_conduit_end_lt24_data[15]
+set_location_assignment PIN_AG23 -to lcd_controller_conduit_end_lt24_data[14]
+set_location_assignment PIN_AK24 -to lcd_controller_conduit_end_lt24_data[13]
+set_location_assignment PIN_AJ24 -to lcd_controller_conduit_end_lt24_data[12]
+set_location_assignment PIN_AJ25 -to lcd_controller_conduit_end_lt24_data[11]
+set_location_assignment PIN_AH25 -to lcd_controller_conduit_end_lt24_data[10]
+set_location_assignment PIN_AK26 -to lcd_controller_conduit_end_lt24_data[9]
+set_location_assignment PIN_AJ26 -to lcd_controller_conduit_end_lt24_data[8]
+set_location_assignment PIN_AK27 -to lcd_controller_conduit_end_lt24_data[7]
+set_location_assignment PIN_AK28 -to lcd_controller_conduit_end_lt24_data[6]
+set_location_assignment PIN_AK29 -to lcd_controller_conduit_end_lt24_data[5]
+set_location_assignment PIN_AJ27 -to lcd_controller_conduit_end_lt24_data[4]
+set_location_assignment PIN_AE23 -to lcd_controller_conduit_end_lt24_data[3]
+set_location_assignment PIN_AE24 -to lcd_controller_conduit_end_lt24_data[2]
+set_location_assignment PIN_AF25 -to lcd_controller_conduit_end_lt24_data[1]
+set_location_assignment PIN_AF26 -to lcd_controller_conduit_end_lt24_data[0]
+set_location_assignment PIN_AH23 -to lcd_controller_conduit_end_lt24_cs
+set_location_assignment PIN_AG26 -to lcd_controller_conduit_end_lt24_rd
+set_location_assignment PIN_AH27 -to lcd_controller_conduit_end_lt24_rs
+set_location_assignment PIN_AH24 -to lcd_controller_conduit_end_lt24_wr
+set_location_assignment PIN_AD21 -to lcd_reset_n_external_connection_export
+set_location_assignment PIN_AB21 -to touch_panel_busy_external_connection_export
+set_location_assignment PIN_AB17 -to touch_panel_pen_irq_n_external_connection_export
+set_location_assignment PIN_AA21 -to touch_panel_spi_external_MISO
+set_location_assignment PIN_AC23 -to touch_panel_spi_external_MOSI
+set_location_assignment PIN_AD24 -to touch_panel_spi_external_SCLK
+set_location_assignment PIN_AA20 -to touch_panel_spi_external_SS_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to touch_panel_spi_external_SS_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to touch_panel_spi_external_SCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to touch_panel_spi_external_MOSI
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to touch_panel_spi_external_MISO
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to touch_panel_pen_irq_n_external_connection_export
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to touch_panel_busy_external_connection_export
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_reset_n_external_connection_export
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_wr
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_rs
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_rd
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[15]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[14]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[13]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_data[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lcd_controller_conduit_end_lt24_cs
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_we_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_ras_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dqm[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dqm[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[15]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[14]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[13]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_dq[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_cs_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_cke
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_cas_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_ba[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_ba[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dram_cntrl_wire_addr[0]
+set_location_assignment PIN_AH12 -to sdram_clk_clk
+set_location_assignment PIN_AE12 -to reset_reset_n
+set_location_assignment PIN_J12 -to audio_and_video_config_0_external_interface_SCLK
+set_location_assignment PIN_K12 -to audio_and_video_config_0_external_interface_SDAT
+set_location_assignment PIN_AF14 -to clk_clk
+set_location_assignment PIN_H7 -to i2s_coe_aud1_bclk
+set_location_assignment PIN_J7 -to i2s_coe_aud2_dacdat
+set_location_assignment PIN_H8 -to i2s_coe_aud3_daclrck
+set_location_assignment PIN_G7 -to aud_xck_clk
+set_location_assignment PIN_AK16 -to pitch_in_coe_square_freq
+set_location_assignment PIN_AC12 -to pitch_in_coe_freq_up_down[1]
+set_location_assignment PIN_AB12 -to pitch_in_coe_freq_up_down[0]
+set_location_assignment PIN_AF9 -to pitch_in_coe_cal_glis[0]
+set_location_assignment PIN_AF10 -to pitch_in_coe_cal_glis[1]
+set_location_assignment PIN_AD11 -to volume_in_coe_freq_up_down[0]
+set_location_assignment PIN_AD12 -to volume_in_coe_freq_up_down[1]
+set_location_assignment PIN_AK19 -to volume_in_coe_square_freq
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tck
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tdi
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tdo
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tms
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to aud_xck_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to audio_and_video_config_0_external_interface_SCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to audio_and_video_config_0_external_interface_SDAT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to i2s_coe_aud1_bclk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to i2s_coe_aud2_dacdat
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to i2s_coe_aud3_daclrck
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to pitch_in_coe_cal_glis[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to pitch_in_coe_cal_glis[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to pitch_in_coe_freq_up_down[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to pitch_in_coe_freq_up_down[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to pitch_in_coe_square_freq
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to reset_reset_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_clk_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to volume_in_coe_freq_up_down[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to volume_in_coe_freq_up_down[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to volume_in_coe_square_freq
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
+set_global_assignment -name SIGNALTAP_FILE stp1.stp
+set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to "digital_theremin_pll_sig_proc:pll_sig_proc|outclk_0" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] -to "pitch_generation_top:pitch_generation_0|aso_se_data[0]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to "pitch_generation_top:pitch_generation_0|aso_se_data[10]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to "pitch_generation_top:pitch_generation_0|aso_se_data[11]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[3] -to "pitch_generation_top:pitch_generation_0|aso_se_data[12]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[4] -to "pitch_generation_top:pitch_generation_0|aso_se_data[13]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[5] -to "pitch_generation_top:pitch_generation_0|aso_se_data[14]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[6] -to "pitch_generation_top:pitch_generation_0|aso_se_data[15]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[7] -to "pitch_generation_top:pitch_generation_0|aso_se_data[16]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[8] -to "pitch_generation_top:pitch_generation_0|aso_se_data[17]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[9] -to "pitch_generation_top:pitch_generation_0|aso_se_data[18]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[10] -to "pitch_generation_top:pitch_generation_0|aso_se_data[19]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[11] -to "pitch_generation_top:pitch_generation_0|aso_se_data[1]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[12] -to "pitch_generation_top:pitch_generation_0|aso_se_data[20]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[13] -to "pitch_generation_top:pitch_generation_0|aso_se_data[21]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[14] -to "pitch_generation_top:pitch_generation_0|aso_se_data[22]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[15] -to "pitch_generation_top:pitch_generation_0|aso_se_data[23]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[16] -to "pitch_generation_top:pitch_generation_0|aso_se_data[2]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[17] -to "pitch_generation_top:pitch_generation_0|aso_se_data[3]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[18] -to "pitch_generation_top:pitch_generation_0|aso_se_data[4]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[19] -to "pitch_generation_top:pitch_generation_0|aso_se_data[5]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[20] -to "pitch_generation_top:pitch_generation_0|aso_se_data[6]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[21] -to "pitch_generation_top:pitch_generation_0|aso_se_data[7]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[22] -to "pitch_generation_top:pitch_generation_0|aso_se_data[8]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[23] -to "pitch_generation_top:pitch_generation_0|aso_se_data[9]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[0] -to "pitch_generation_top:pitch_generation_0|aso_se_data[0]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[1] -to "pitch_generation_top:pitch_generation_0|aso_se_data[10]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[2] -to "pitch_generation_top:pitch_generation_0|aso_se_data[11]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[3] -to "pitch_generation_top:pitch_generation_0|aso_se_data[12]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[4] -to "pitch_generation_top:pitch_generation_0|aso_se_data[13]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[5] -to "pitch_generation_top:pitch_generation_0|aso_se_data[14]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[6] -to "pitch_generation_top:pitch_generation_0|aso_se_data[15]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[7] -to "pitch_generation_top:pitch_generation_0|aso_se_data[16]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[8] -to "pitch_generation_top:pitch_generation_0|aso_se_data[17]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[9] -to "pitch_generation_top:pitch_generation_0|aso_se_data[18]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[10] -to "pitch_generation_top:pitch_generation_0|aso_se_data[19]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[11] -to "pitch_generation_top:pitch_generation_0|aso_se_data[1]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[12] -to "pitch_generation_top:pitch_generation_0|aso_se_data[20]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[13] -to "pitch_generation_top:pitch_generation_0|aso_se_data[21]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[14] -to "pitch_generation_top:pitch_generation_0|aso_se_data[22]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[15] -to "pitch_generation_top:pitch_generation_0|aso_se_data[23]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[16] -to "pitch_generation_top:pitch_generation_0|aso_se_data[2]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[17] -to "pitch_generation_top:pitch_generation_0|aso_se_data[3]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[18] -to "pitch_generation_top:pitch_generation_0|aso_se_data[4]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[19] -to "pitch_generation_top:pitch_generation_0|aso_se_data[5]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[20] -to "pitch_generation_top:pitch_generation_0|aso_se_data[6]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[21] -to "pitch_generation_top:pitch_generation_0|aso_se_data[7]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[22] -to "pitch_generation_top:pitch_generation_0|aso_se_data[8]" -section_id auto_signaltap_3
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[23] -to "pitch_generation_top:pitch_generation_0|aso_se_data[9]" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_BLOCK_TYPE=AUTO" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=24" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=24" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=24" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_INFO=805334531" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_POWER_UP_TRIGGER=0" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=102" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SEGMENT_SIZE=65536" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ATTRIBUTE_MEM_MODE=OFF" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_FLOW_USE_GENERATED=0" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_BITS=11" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_BUFFER_FULL_STOP=1" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_CURRENT_RESOURCE_WIDTH=1" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INCREMENTAL_ROUTING=1" -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[0] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[1] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[2] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[3] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[4] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[5] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[6] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[7] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[8] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[9] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[10] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[11] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[12] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[13] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[14] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[15] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[17] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[18] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[19] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[20] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[21] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[25] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[27] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to auto_signaltap_3|vcc -section_id auto_signaltap_3
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[31] -to auto_signaltap_3|gnd -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL=1" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=65536" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLED=0" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_PIPELINE=0" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_PIPELINE=0" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_COUNTER_PIPELINE=0" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_3
+set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to "digital_theremin_pll_sig_proc:pll_sig_proc|outclk_0" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[3] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[4] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[5] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[6] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[7] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[8] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[9] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[10] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[11] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[12] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[13] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[14] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[15] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[16] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[17] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[18] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[19] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[20] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[21] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[22] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[23] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[24] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[25] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[26] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[27] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[28] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[29] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[30] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[31] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[32] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[33] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[34] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[35] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[36] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[37] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[38] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[39] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[40] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[41] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[42] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[43] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[44] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[45] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[46] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[47] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[48] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[49] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[50] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[51] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[52] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[53] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[54] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[55] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[56] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[57] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[58] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[59] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[60] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[61] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[62] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[63] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[64] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[65] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[66] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[67] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[68] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[69] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[70] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[71] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[72] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[73] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[74] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[75] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[76] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[77] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[78] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[79] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[80] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[81] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[82] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[83] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[84] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[85] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[86] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[87] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[88] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[89] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[90] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[91] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[92] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[93] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[94] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[95] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[96] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[97] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[98] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[99] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[100] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[101] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[102] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[103] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[104] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[105] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[106] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[107] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[108] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[109] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[110] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[111] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[112] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[113] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[114] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[115] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[116] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[117] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[118] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[119] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[120] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[121] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[122] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[26]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[123] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[27]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[124] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[28]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[125] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[29]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[126] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[127] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[30]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[128] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[31]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[129] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[130] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[131] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[132] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[133] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[134] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[135] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[136] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[137] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[138] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[139] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[140] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[141] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[142] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[143] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[144] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[145] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[146] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[147] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[148] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[149] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[150] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[151] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[152] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[153] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[154] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[155] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[156] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[157] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[158] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[159] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[160] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[161] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[162] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[163] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[164] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[165] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[166] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[167] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[168] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[169] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[170] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[171] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[172] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[173] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[174] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[175] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[176] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[177] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[178] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[179] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[180] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[181] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[182] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[183] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[184] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[185] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[186] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[187] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[188] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[189] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[190] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[191] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[192] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[193] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[194] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[195] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[196] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[197] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[198] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[199] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[200] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[201] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[202] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[203] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[204] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[205] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[206] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[207] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[208] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[209] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[210] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[211] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[212] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[213] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[214] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[215] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[216] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[217] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[218] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[219] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[220] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[221] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[222] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[223] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[224] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[225] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[226] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[227] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[228] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[229] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[230] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[231] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[232] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[233] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[234] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[235] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[236] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[237] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[238] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[239] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[240] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[241] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[242] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[243] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[244] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[245] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[246] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[247] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[248] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[249] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[250] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[251] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[252] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[253] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[254] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[255] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[256] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[257] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[258] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[259] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[260] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[261] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[262] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[263] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[264] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[265] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[266] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[267] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[268] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[269] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[270] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[271] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[272] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[273] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[274] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[275] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[276] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[277] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[278] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[279] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[280] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[281] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[282] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[283] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[284] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[26]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[285] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[27]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[286] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[28]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[287] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[29]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[288] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[289] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[30]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[290] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[31]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[291] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[292] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[293] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[294] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[295] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[296] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[297] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[298] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[299] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[300] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[301] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[302] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[303] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[304] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[305] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[306] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[307] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[308] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[309] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[310] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[311] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[312] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[313] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[314] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[315] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[316] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[317] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[318] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[319] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[320] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[321] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[322] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[323] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[0] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[1] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[2] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[3] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[4] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[5] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[6] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[7] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[8] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[9] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[10] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[11] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[12] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[13] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[14] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[15] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[16] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[17] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[18] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[19] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[20] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[21] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[22] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[23] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[24] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[25] -to "Volume_generation_top:volume_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[26] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[27] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[28] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[29] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[30] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[31] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[32] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[33] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[34] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[35] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[36] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[37] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[38] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[39] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[40] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[41] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[42] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[43] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[44] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[45] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[46] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[47] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[48] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[49] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[50] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[51] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_cal_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[52] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[53] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[54] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[55] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[56] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[57] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[58] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[59] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[60] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[61] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[62] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[63] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[64] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[65] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[66] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[67] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[68] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[69] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[70] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[71] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[72] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[73] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[74] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[75] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[76] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[77] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_diff[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[78] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[79] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[80] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[81] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[82] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[83] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[84] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[85] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[86] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[87] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[88] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[89] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[90] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[91] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[92] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[93] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[94] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[95] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[96] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[97] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[98] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[99] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[100] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[101] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[102] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[103] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|CalGlis_vol:CalGlis_vol_1|freq_gli_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[104] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[105] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[106] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[107] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[108] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[109] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[110] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[111] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[112] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[113] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[114] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[115] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[116] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[117] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[118] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[119] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[120] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[121] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[122] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[26]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[123] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[27]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[124] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[28]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[125] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[29]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[126] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[127] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[30]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[128] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[31]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[129] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[130] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[131] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[132] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[133] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[134] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[135] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|cntrl_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[136] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[137] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[138] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[139] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[140] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[141] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[142] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[143] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[144] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[145] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[146] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[147] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[148] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[149] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[150] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[151] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[152] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[153] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[154] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[155] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[156] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[157] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[158] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[159] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[160] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[161] -to "Volume_generation_top:volume_generation_0|freq_meas_vol:freq_meas_vol_1|goldschmidt:goldschmid_1|quo[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[162] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[163] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[164] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[165] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[166] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[167] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[168] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[169] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[170] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[171] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[172] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[173] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[174] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[175] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[176] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[177] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[178] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[179] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[180] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[181] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[182] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[183] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[184] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[185] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[186] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[187] -to "pitch_generation_top:pitch_generation_0|cordic_Control:cordic_Control_1|sig_Freq_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[188] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[189] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[190] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[191] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[192] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[193] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[194] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[195] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[196] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[197] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[198] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[199] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[200] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[201] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[202] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[203] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[204] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[205] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[206] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[207] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[208] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[209] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[210] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[211] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[212] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[213] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_cal_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[214] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[215] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[216] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[217] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[218] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[219] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[220] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[221] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[222] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[223] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[224] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[225] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[226] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[227] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[228] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[229] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[230] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[231] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[232] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[233] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[234] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[235] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[236] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[237] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[238] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[239] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_diff[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[240] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[241] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[242] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[243] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[244] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[245] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[246] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[247] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[248] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[249] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[250] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[251] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[252] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[253] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[254] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[255] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[256] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[257] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[258] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[259] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[260] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[261] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[262] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[263] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[264] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[265] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|CalGlis:CalGlis_1|freq_gli_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[266] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[267] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[268] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[269] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[270] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[271] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[272] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[273] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[274] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[275] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[276] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[277] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[278] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[279] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[280] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[281] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[282] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[283] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[284] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[26]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[285] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[27]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[286] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[28]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[287] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[29]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[288] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[289] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[30]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[290] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[31]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[291] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[292] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[293] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[294] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[295] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[296] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[297] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|cntrl_reg[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[298] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[299] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[300] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[301] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[302] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[303] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[304] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[305] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[306] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[307] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[308] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[309] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[310] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[311] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[312] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[313] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[314] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[315] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[316] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[317] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[318] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[319] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[320] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[321] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[322] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[323] -to "pitch_generation_top:pitch_generation_0|freq_meas_pitch:freq_meas_pitch_1|goldschmidt:goldschmid_1|quo[9]" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_BLOCK_TYPE=AUTO" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=324" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=324" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=324" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_INFO=805334528" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_POWER_UP_TRIGGER=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=993" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SEGMENT_SIZE=128" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ATTRIBUTE_MEM_MODE=OFF" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_FLOW_USE_GENERATED=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_BITS=11" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_BUFFER_FULL_STOP=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_CURRENT_RESOURCE_WIDTH=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INCREMENTAL_ROUTING=1" -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[0] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[1] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[2] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[3] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[4] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[5] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[6] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[7] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[8] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[9] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[10] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[11] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[12] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[13] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[14] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[15] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[17] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[18] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[19] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[20] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[21] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[25] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[27] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[31] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=128" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLED=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_PIPELINE=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_PIPELINE=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_COUNTER_PIPELINE=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_0
+set_location_assignment PIN_AD10 -to pitch_in_coe_vol_cntrl
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to pitch_in_coe_vol_cntrl
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp

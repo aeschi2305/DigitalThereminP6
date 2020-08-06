@@ -37,7 +37,7 @@ entity pitch_generation_top is
     coe_square_freq   : in std_logic;
     coe_freq_up_down  : in std_logic_vector(1 downto 0);
     coe_Cal_Glis      : in std_logic_vector(1 downto 0);
-    coe_vol_volume    : in unsigned(17 downto 0);
+    coe_vol_volume    : in std_logic_vector(17 downto 0);
     coe_vol_enable    : in std_logic
   );
 end entity pitch_generation_top;
@@ -46,7 +46,7 @@ architecture struct of pitch_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 569100;--569800;
+  constant cordic_def_freq :natural := 570000;--569800;
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:
@@ -55,9 +55,10 @@ architecture struct of pitch_generation_top is
   signal mixer_out            : signed(N-1 downto 0);
   signal freq_dif             : signed(N-1 downto 0);
   signal audio_out            : std_logic_vector(23 downto 0);
-  signal audio_meas           : signed(cic2Bits-1 downto 0);
-  signal meas_enable         : boolean;
+  signal audio_meas           : signed(17 downto 0);
+  signal meas_enable         : std_ulogic;
   signal freq_diff            : signed(25 downto 0);
+  signal volume               : unsigned(17 downto 0);
 
 component cordic_Control is
     generic (
@@ -89,16 +90,11 @@ component filter_pitch is
      valid          : out std_logic;  --Control Signals
      ready          : in std_logic;
 
-     cic1o          : out signed(cic1Bits-1 downto 0);
-     cic2o          : out signed(cic2Bits-1 downto 0);
-     cic3o          : out signed(cic3Bits-1 downto 0);
-
-     cic1_en        : out boolean;
-     cic2_en        : out boolean;
-     cic3_en        : out boolean;
-
      volume_out     : in unsigned(17 downto 0);
-     volume_enable  : in std_logic
+     volume_enable  : in std_logic;
+
+     fir            : out signed(17 downto 0);
+     fir_en         : out std_ulogic
   );
 end component filter_pitch;
 
@@ -150,7 +146,7 @@ component freq_meas_pitch is
 
     audio_out     : in std_logic_vector(31 downto 0); 
     freq_diff     : out signed(N+Qprec-1 downto 0);
-    meas_enable   : in boolean;
+    meas_enable   : in std_ulogic;
     Cal_Glis_enable : in std_logic_vector(1 downto 0)
   );
 end component freq_meas_pitch;
@@ -201,8 +197,7 @@ begin
     generic map (
       N => N,
       cic1Bits => cic1Bits,
-      cic2Bits => cic2Bits,
-      cic3Bits => cic3Bits
+      cic2Bits => cic2Bits
     )
     port map (
       reset_n     => rsi_reset_n,
@@ -212,16 +207,11 @@ begin
       valid       => aso_se_valid,
       ready       => aso_se_ready,
 
-      cic1o       => open,
-      cic2o       => audio_meas,
-      cic3o       => open,
+      volume_out    => volume,
+      volume_enable => coe_vol_enable,
 
-      cic1_en     => open,
-      cic2_en     => meas_enable,
-      cic3_en     => open,
-
-      volume_out    => coe_vol_volume,
-      volume_enable => coe_vol_enable
+      fir           => audio_meas,
+      fir_en        => meas_enable
     ); 
 
   -- user design: freq_mes
@@ -244,10 +234,12 @@ begin
       avs_writedata => avs_sTG_writedata,
       avs_readdata  => avs_sTG_readdata,
 
-      audio_out     => audio_meas(cic2Bits-1 downto cic2Bits-sine_N),
+      audio_out     => audio_meas,
       freq_diff     => freq_diff,
       meas_enable   => meas_enable,
       Cal_Glis_enable => coe_Cal_Glis
     ); 
+
+    volume <= unsigned(coe_vol_volume); 
   
 end architecture struct;

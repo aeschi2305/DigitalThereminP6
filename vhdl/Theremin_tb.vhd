@@ -21,7 +21,7 @@ architecture struct of Theremin_tb is
   signal clk                : std_ulogic;
   signal square_freq_pitch  : std_ulogic;
   signal square_freq_vol  : std_ulogic;
-  signal volume             : unsigned(17 downto 0);
+  signal volume             : std_logic_vector(17 downto 0);
   signal vol_enable         : std_logic;
   signal reset_n            : std_ulogic;
   signal avs_write     : std_logic;
@@ -71,7 +71,7 @@ architecture struct of Theremin_tb is
     coe_square_freq   : in std_logic;
     coe_freq_up_down  : in std_logic_vector(1 downto 0);
     coe_Cal_Glis      : in std_logic_vector(1 downto 0);
-    coe_vol_volume    : in unsigned(17 downto 0);
+    coe_vol_volume    : in std_logic_vector(17 downto 0);
     coe_vol_enable    : in std_logic
   );
   end component pitch_generation_top;
@@ -93,7 +93,7 @@ architecture struct of Theremin_tb is
     -- Avalon conduit Interfaces
     coe_square_freq   : in std_logic;
     coe_freq_up_down  : in std_logic_vector(1 downto 0);
-    coe_vol_volume    : out unsigned(17 downto 0);
+    coe_vol_volume    : out std_logic_vector(17 downto 0);
     coe_vol_enable    : out std_logic
   );
 end component Volume_generation_top;

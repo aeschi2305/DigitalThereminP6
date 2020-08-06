@@ -91,7 +91,7 @@ begin
     wait for 20*c_cycle_time;
     
     avs_writedata <= (dat_len_avl-1 downto 1 => '0') & '1';
-    avs_write <= '0';
+    avs_write <= '1';
     wait for c_cycle_time;
     avs_write <= '0';
     

@@ -26,6 +26,7 @@ entity freq_meas_vol is
     -- Slave Port
     sfm_write     : in std_logic;
     sfm_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
+    sfm_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
 
     audio_out     : in signed(sine_N-1 downto 0); 
     freq_diff     : out signed(N+Qprec-1 downto 0);
@@ -186,42 +187,22 @@ begin
    begin
      if reset_n = '0' then
        cntrl_reg <= (others => '0');
+       cntrl_reg(0) <= '1';
      elsif rising_edge(clk) then
        if sfm_write = '1' then
          cntrl_reg <= sfm_writedata;
+       elsif(cntrl_reg(1) = '1') then
+         if cal_done = '1' then
+           cntrl_reg(1) <= '0';
+         end if;
        end if;
      end if;
    end process p_wr;
 
- --p_wr : process(reset_n,clk)
- --begin
- --  if reset_n = '0' then
- --    cntrl_reg <= (others => '0');
- --    vol_gain_reg <= (others => '0');
- --  elsif rising_edge(clk) then
- --    if sfm_write = '1' then
- --      case sfm_address is
- --        when "00" => cntrl_reg <= sfm_writedata;
- --        when "10" => vol_gain_reg <= sfm_writedata;
- --        when others => cntrl_reg <= cntrl_reg;
- --      end case;
- --    elsif(cntrl_reg(1) = '1') then
- --       if cal_done = '1' then
- --         cntrl_reg(1) <= '0';
- --       end if;
- --    end if;
- --  end if;
- --end process p_wr;
---
- --p_rd : process(all)
- --begin
- --   case sfm_address is
- --     when "00" => sfm_readdata <= cntrl_reg;
- --     when "01" => sfm_readdata <= vol_data_reg;
- --     when "10" => sfm_readdata <= vol_gain_reg;
- --     when others => sfm_readdata <= (others => '0');
- --   end case;
- --end process p_rd;
+ p_rd : process(all)
+ begin
+    sfm_readdata <= cntrl_reg;
+ end process p_rd;
 
 
 

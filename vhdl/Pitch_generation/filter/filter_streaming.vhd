@@ -28,7 +28,7 @@ entity filter_streaming is
      volume_out    : in unsigned(17 downto 0);
      volume_enable : in std_logic;
 
-     enable         : in boolean
+     enable         : in std_ulogic
   );
 end entity filter_streaming;
 
@@ -63,7 +63,7 @@ begin
           count_reg <= 0;
           volume <= (others => '0');
   elsif rising_edge(clk) then
-        if enable = true then
+        if enable = '1' then
           audio_reg <= audio_cmb;
           audio_s_reg(0) <= cic_out;
           audio_s_reg(1) <= audio_s_reg(0);
@@ -124,7 +124,7 @@ begin
   if reset_n = '0' then
         valid <= '0';
   elsif rising_edge(clk) then
-        if enable = true then
+        if enable = '1' then
           valid <= '1';
         elsif ready = '1' then
           valid <= '0';
