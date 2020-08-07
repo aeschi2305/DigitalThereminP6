@@ -19,6 +19,8 @@ alt_u8 zero_cross;
  * Return  : none
  *--------------------------------------------------*/
 
+alt_u8 vol_gain_array[10] = {3, 10, 17, 24, 31, 38, 45, 52, 59, 66};
+
 void codec_wm8731_init(void)
 {
 	i2c_dev = alt_up_av_config_open_dev("/dev/audio_and_video_config_0");//Opens the Audio/Video Configuration device specified by name
@@ -37,27 +39,7 @@ void codec_wm8731_init(void)
 
 void set_vol(alt_u32 vol_gain)
 {
-	int vol_gain_tmp = vol_gain;
-	if(vol_gain_tmp == 0 && cnt_zero < 5)
-	{
-		cnt_zero++;
-	}
-	else if(vol_gain_tmp != 0)
-	{
-		if(zero_cross)
-		{
-			alt_up_av_config_write_audio_cfg_register(i2c_dev,0x02,((alt_u8)vol_gain_tmp + 47) | 256); //384
-		}
-		else
-		{
-			alt_up_av_config_write_audio_cfg_register(i2c_dev,0x02,((alt_u8)vol_gain_tmp + 47) | 256);
-			zero_cross = 1;
-		}
-	}
-	else
-	{
-		alt_up_av_config_write_audio_cfg_register(i2c_dev,0x02,256);
-		zero_cross = 0;
-		cnt_zero = 0;
-	}
+
+	alt_up_av_config_write_audio_cfg_register(i2c_dev,0x02,(vol_gain_array[vol_gain] + 48) | 256);
+
 }

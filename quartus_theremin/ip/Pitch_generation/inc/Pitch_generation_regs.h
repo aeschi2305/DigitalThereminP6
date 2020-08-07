@@ -1,5 +1,5 @@
 /*----------------------------------------------------
- * File    :
+ * File    : pitch_generation_regs
  * Author  :
  * Date    :
  * Company : Institute of Microelectronics (IME) FHNW

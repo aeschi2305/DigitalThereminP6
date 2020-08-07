@@ -140,7 +140,7 @@ module digital_theremin_mm_interconnect_0_router
     localparam PAD3 = log2ceil(64'ha001020 - 64'ha001000); 
     localparam PAD4 = log2ceil(64'ha001040 - 64'ha001020); 
     localparam PAD5 = log2ceil(64'ha001060 - 64'ha001040); 
-    localparam PAD6 = log2ceil(64'ha001070 - 64'ha001060); 
+    localparam PAD6 = log2ceil(64'ha001064 - 64'ha001060); 
     localparam PAD7 = log2ceil(64'ha001080 - 64'ha001070); 
     localparam PAD8 = log2ceil(64'ha001090 - 64'ha001080); 
     localparam PAD9 = log2ceil(64'ha0010a0 - 64'ha001090); 
@@ -245,7 +245,7 @@ module digital_theremin_mm_interconnect_0_router
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 10;
     end
 
-    // ( 0xa001060 .. 0xa001070 )
+    // ( 0xa001060 .. 0xa001064 )
     if ( {address[RG:PAD6],{PAD6{1'b0}}} == 28'ha001060   ) begin
             src_channel = 15'b100000000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 14;

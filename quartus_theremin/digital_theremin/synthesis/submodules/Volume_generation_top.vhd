@@ -25,12 +25,13 @@ entity Volume_generation_top is
     rsi_reset_n       : in std_logic;
     -- Avalon Slave Port
     avs_sVG_write     : in std_logic;
-    avs_sVG_address   : in std_logic_vector(1 downto 0);
     avs_sVG_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
     avs_sVG_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
     -- Avalon conduit Interfaces
     coe_square_freq   : in std_logic;
-    coe_freq_up_down  : in std_logic_vector(1 downto 0)
+    coe_freq_up_down  : in std_logic_vector(1 downto 0);
+    coe_vol_volume    : out std_logic_vector(17 downto 0);
+    coe_vol_enable    : out std_logic
   );
 end entity Volume_generation_top;
 
@@ -38,7 +39,7 @@ architecture struct of Volume_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 555000;
+  constant cordic_def_freq :natural := 550000;--555000;
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:
@@ -52,6 +53,7 @@ architecture struct of Volume_generation_top is
   signal freq_diff            : signed(25 downto 0);
   signal clk                  : std_logic;
   signal reset_n              : std_logic;
+  signal volume               : unsigned(17 downto 0);
 
 component cordic_Control is
     generic (
@@ -62,12 +64,12 @@ component cordic_Control is
     reset_n : in std_ulogic;
     clk : in std_ulogic;
     phi : out signed(N-1 downto 0);      --calculated angle for cordic processor
-    freq_dif : in signed(N-1 downto 0);
+    freq_dif : in signed(25 downto 0);
     sig_freq_up_down : in std_logic_vector(1 downto 0)
   );
 end component cordic_Control;
 
-component filter is
+component filter_vol is
   generic (
    N : natural := 16;  --Number of Bits of the sine wave (precision)
    cic1Bits : natural := 23;
@@ -91,7 +93,7 @@ component filter is
      cic2_en        : out boolean;
      cic3_en        : out boolean
   );
-end component filter;
+end component filter_vol;
 
 
 component cordic_pipelined is
@@ -134,13 +136,14 @@ component freq_meas_vol is
     reset_n       : in std_ulogic;
     clk           : in std_ulogic;
     -- Slave Port
-    sfm_address   : in  std_logic_vector(1 downto 0);
     sfm_write     : in std_logic;
     sfm_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
-    sfm_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
+    sfm_readdata  : in std_logic_vector(dat_len_avl-1 downto 0);
 
     audio_out     : in std_logic_vector(31 downto 0); 
     freq_diff     : out signed(N+Qprec-1 downto 0);
+    volume_out    : out unsigned(17 downto 0);
+    volume_enable : out std_logic;
     meas_enable  : in boolean
   );
 end component freq_meas_vol;
@@ -187,7 +190,7 @@ begin
     ); 
 
   -- user design: cic
-  cic_1 : entity work.filter
+  filter_vol_1 : entity work.filter_vol
     generic map (
       N => N,
       cic1Bits => cic1Bits,
@@ -226,14 +229,18 @@ begin
       reset_n       => reset_n,
       clk           => clk,
       -- Slave Port
-      sfm_address   => avs_sVG_address,
       sfm_write     => avs_sVG_write,
       sfm_writedata => avs_sVG_writedata,
       sfm_readdata  => avs_sVG_readdata,
 
       audio_out     => audio_meas(cic3Bits-1 downto cic3Bits-sine_N),
       freq_diff     => freq_diff,
+      volume_out    => volume,
+      volume_enable => coe_vol_enable,
       meas_enable   => meas_enable
     ); 
+
+
+    coe_vol_volume <= std_logic_vector(volume);
   
 end architecture struct;

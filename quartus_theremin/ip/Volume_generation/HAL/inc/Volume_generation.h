@@ -1,4 +1,4 @@
-/* File    : LT24_Controller.h
+/* File    : Volume_generation.h
  * Author  :
  * Date    :
  * Company : Institute of Microelectronics (IME) FHNW
@@ -27,15 +27,13 @@ extern "C"
 #define VOLUME_GENERATION_INSTANCE(name, device) extern int alt_no_storage
 #define VOLUME_GENERATION_INIT(name, device) while (0)
 
-void set_calibration_vol_gen(void);
+void set_calibration_vol_gen(alt_u8 cntrl_reg_vol);
 
 alt_u32 done_calibration_vol_gen(void);
 
 void set_vol_gen(alt_u8 vol_bar);
 
-alt_u32 read_vol_db_gain(void);
 
-alt_u32 read_cntrl_vol_gen(void);
 
 
 

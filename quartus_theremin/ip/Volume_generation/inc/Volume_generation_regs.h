@@ -12,9 +12,7 @@
 #include "altera_avalon_pio_regs.h"
 
 #define  IORD_VOLUME_GENERATION_AVALON_VOL_RD_CNTRL(base)			IORD(base,0x00)
-#define  IORD_VOLUME_GENERATION_AVALON_VOL_RD_freq(base)			IORD(base,0x01)
-#define  IORD_VOLUME_GENERATION_AVALON_VOL_RD_vol_gain(base)		IORD(base,0x02)
 
 #define  IOWR_VOLUME_GENERATION_AVALON_VOL_WR_CNTRL(base,value)  	IOWR(base,0x00,value)
-#define  IOWR_VOLUME_GENERATION_AVALON_VOL_WR_VOL_GAIN(base,value)  		IOWR(base,0x02,value)
+
 

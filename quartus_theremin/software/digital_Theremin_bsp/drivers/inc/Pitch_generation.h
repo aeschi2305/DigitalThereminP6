@@ -17,12 +17,7 @@
 /*
  * Define
  */
-#define RED 0xf800
-#define GREEN 0x07e0
-#define BLUE 0x001f
-#define BLACK  0x0000
-#define GREY 0xBDBD
-#define WHITE 0xffff
+
 
 #ifdef __cplusplus
 extern "C"
@@ -40,7 +35,7 @@ void set_glissando_delay(alt_u8 delay);
 
 void set_cntrl_reg(alt_u8 cntrl_reg);
 
-void set_calibration_pitch(void);
+void set_calibration_pitch(alt_u8 cntrl_reg_pitch);
 
 alt_u32 done_calibration_pitch(void);
 

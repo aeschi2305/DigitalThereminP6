@@ -142,12 +142,12 @@ ACDS_VERSION := 17.1
 ELF := digital_Theremin.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += hello_world.c
 C_SRCS += audio/audio.c
 C_SRCS += graphics/bahnschriftCondensed_22.c
 C_SRCS += graphics/gui.c
 C_SRCS += graphics/simple_text.c
 C_SRCS += touch/touch_isr.c
+C_SRCS += main.c
 CXX_SRCS :=
 ASM_SRCS :=
 

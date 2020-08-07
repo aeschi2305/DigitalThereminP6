@@ -24,13 +24,14 @@ entity freq_meas_vol is
     reset_n       : in std_ulogic;
     clk           : in std_ulogic;
     -- Slave Port
-    sfm_address   : in  std_logic_vector(1 downto 0);
     sfm_write     : in std_logic;
     sfm_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
     sfm_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
 
     audio_out     : in signed(sine_N-1 downto 0); 
     freq_diff     : out signed(N+Qprec-1 downto 0);
+    volume_out    : out unsigned(17 downto 0);
+    volume_enable : out std_logic;
     meas_enable  : in boolean
   );
 end entity freq_meas_vol;
@@ -47,8 +48,8 @@ component count_freq_vol is
   generic (
     N : natural := 12;  --Number of Bits of the frequency value
     sine_N : natural:= 24;  --Number of Bits of the input sine wave
-    max_per : natural := 12000;  --maximum period count value
-    min_per : natural := 500     --minimum period count value
+    max_per : natural := 2400;  --maximum period count value
+    min_per : natural := 24     --minimum period count value
   );
   port(
     reset_n     : in std_ulogic;
@@ -120,121 +121,49 @@ end component CalGlis_vol;
   ---------------------------------------------------------------------------
   -- Types         
   ---------------------------------------------------------------------------
-  type t_reg is array(integer range <>) of std_logic_vector(31 downto 0);
-  type t_digit is array(integer range <>) of std_logic_vector(6 downto 0);
-  type t_vol_array is array(integer range 0 to 79) of unsigned(25 downto 0);
-  type t_vol_gain_array is array(integer range 0 to 9) of unsigned(6 downto 0);
-
-  constant vol_values : t_vol_array :=     (   "00000000000010011001101001",
-                                               "00000000000010011101011000",
-                                               "00000000000010100001001101",
-                                               "00000000000010100101001000",
-                                               "00000000000010101001001001",
-                                               "00000000000010101101010000",
-                                               "00000000000010110001011101",
-                                               "00000000000010110101110001",
-                                               "00000000000010111010001100",
-                                               "00000000000010111110101110",
-                                               "00000000000011000011010110",
-                                               "00000000000011001000000110",
-                                               "00000000000011001100111110",
-                                               "00000000000011010001111100",
-                                               "00000000000011010111000011",
-                                               "00000000000011011100010001",
-                                               "00000000000011100001101000",
-                                               "00000000000011100111000111",
-                                               "00000000000011101100101110",
-                                               "00000000000011110010011111",
-                                               "00000000000011111000011000",
-                                               "00000000000011111110011010",
-                                               "00000000000100000100100110",
-                                               "00000000000100001010111011",
-                                               "00000000000100010001011011",
-                                               "00000000000100011000000100",
-                                               "00000000000100011110110111",
-                                               "00000000000100100101110110",
-                                               "00000000000100101100111111",
-                                               "00000000000100110100010011",
-                                               "00000000000100111011110011",
-                                               "00000000000101000011011110",
-                                               "00000000000101001011010101",
-                                               "00000000000101010011011000",
-                                               "00000000000101011011101000",
-                                               "00000000000101100100000101",
-                                               "00000000000101101100101111",
-                                               "00000000000101110101100110",
-                                               "00000000000101111110101011",
-                                               "00000000000110000111111111",
-                                               "00000000000110010001100000",
-                                               "00000000000110011011010001",
-                                               "00000000000110100101010000",
-                                               "00000000000110101111100000",
-                                               "00000000000110111001111111",
-                                               "00000000000111000100101110",
-                                               "00000000000111001111101111",
-                                               "00000000000111011011000000",
-                                               "00000000000111100110100011",
-                                               "00000000000111110010011000",
-                                               "00000000000111111110011111",
-                                               "00000000001000001010111001",
-                                               "00000000001000010111100110",
-                                               "00000000001000100100100111",
-                                               "00000000001000110001111101",
-                                               "00000000001000111111100111",
-                                               "00000000001001001101100110",
-                                               "00000000001001011011111011",
-                                               "00000000001001101010100111",
-                                               "00000000001001111001101001",
-                                               "00000000001010001001000011",
-                                               "00000000001010011000110100",
-                                               "00000000001010101000111111",
-                                               "00000000001010111001100010",
-                                               "00000000001011001010011111",
-                                               "00000000001011011011110110",
-                                               "00000000001011101101101001",
-                                               "00000000001011111111110111",
-                                               "00000000001100010010100001",
-                                               "00000000001100100101101000",
-                                               "00000000001100111001001110",
-                                               "00000000001101001101010001",
-                                               "00000000001101100001110100",
-                                               "00000000001101110110110111",
-                                               "00000000001110001100011010",
-                                               "00000000001110100010011111",
-                                               "00000000001110111001000111",
-                                               "00000000001111010000010001",
-                                               "00000000001111101000000000",
-                                               "00000001001110001000000000");
---"11111111111111111111111111"
-  constant vol_gain : t_vol_gain_array :=     ( "0001101",
-                                                "0011001",
-                                                "0100110",
-                                                "0110011",
-                                                "1000000",
-                                                "1001100",
-                                                "1011001",
-                                                "1100110",
-                                                "1110010",
-                                                "1111111");
+  type t_vol_gain_array is array(integer range 0 to 9) of unsigned(17 downto 0);
   ---------------------------------------------------------------------------
   -- Signals         
   ---------------------------------------------------------------------------
-  signal regs    : t_reg(0 to 2);
+
+  constant vol_gain : t_vol_gain_array :=     ("000110011001100110",
+                                               "001100110010110000",
+                                               "010011001011111001",
+                                               "011001100101000010",
+                                               "011111111110001011",
+                                               "100110010111010101",
+                                               "101100110000011110",
+                                               "110011001001100111",
+                                               "111001100010110001",
+                                               "111111111011111010");
 
 
-
+  --constant freq_max      : unsigned(N-1 downto 0) := (N-1 downto 12 => '0') & "100111000100"; -- equals 2500 Hz
+  constant freq_max      : unsigned(N-1 downto 0) := (N-1 downto 12 => '0') & "110110101100"; -- equals 3500 Hz
+                                                                              
+  constant offset     : unsigned(N-1 downto 0) := (N-1 downto 9 => '0') & "100101100"; -- equals 300Hz
+  constant Qprec_vol  : natural := 18;
   
   signal per_cnt      : unsigned(N-1 downto 0);
   signal freq         : unsigned(N+Qprec-1 downto 0);
   signal freq_diff_int: signed(N+Qprec-1 downto 0);
   signal audio_filt   : signed(sine_N-1 downto 0);
+  signal freq_vol_reg : unsigned(N-1 downto 0);
+  signal freq_vol_cmb : unsigned(N-1 downto 0);
+  signal volume       : unsigned(N+Qprec_vol-1 downto 0);
+  signal volume_gold  : unsigned(N+Qprec_vol-1 downto 0);
+  signal en_vol       : std_ulogic;
   signal en_freq      : std_ulogic;
   signal en_per       : std_ulogic;
   signal en_meas      : std_ulogic;
   signal init         : std_ulogic;
   signal start        : std_ulogic;
   signal enable_start : boolean;
+  signal init_2         : std_ulogic;
+  signal start_2        : std_ulogic;
+  signal enable_start_2 : boolean;
   signal enable_cal   : std_ulogic;
+  signal en_vol_calc  : std_ulogic;
   signal cal_done     : std_ulogic;
   signal freq_meas    : std_ulogic;
 
@@ -253,51 +182,40 @@ begin
   ------------------------------------------------------------------------------
   -- Registerd Process
   ------------------------------------------------------------------------------
- p_wr : process(reset_n,clk)
- begin
-   if reset_n = '0' then
-     cntrl_reg <= (others => '0');
-     vol_gain_reg <= (others => '0');
-   elsif rising_edge(clk) then
-    --Cal_Glis_2 <= Cal_Glis_1;
-    --Cal_Glis_3 <= Cal_Glis_1 and not Cal_Glis_2;
-     if sfm_write = '1' then
-       case sfm_address is
-         when "00" => cntrl_reg <= sfm_writedata;
-         when "10" => vol_gain_reg <= sfm_writedata;
-         when others => cntrl_reg <= cntrl_reg;
-       end case;
-     elsif(cntrl_reg(1) = '1') then
-        if cal_done = '1' then
-          cntrl_reg(1) <= '0';
-        --elsif Cal_Glis_3(0) = '1' then
-        --  cntrl_reg(1) <= '1';
-        --elsif Cal_Glis_3(1) = '1' then
-        --  cntrl_reg(0) <= not cntrl_reg(0);
-        end if;
+
+  p_wr : process(reset_n,clk)
+   begin
+     if reset_n = '0' then
+       cntrl_reg <= (others => '0');
+       cntrl_reg(0) <= '1';
+     elsif rising_edge(clk) then
+       if sfm_write = '1' then
+         cntrl_reg <= sfm_writedata;
+       elsif(cntrl_reg(1) = '1') then
+         if cal_done = '1' then
+           cntrl_reg(1) <= '0';
+         end if;
+       end if;
      end if;
-   end if;
- end process p_wr;
+   end process p_wr;
 
  p_rd : process(all)
  begin
-    case sfm_address is
-      when "00" => sfm_readdata <= cntrl_reg;
-      when "01" => sfm_readdata <= vol_data_reg;
-      when "10" => sfm_readdata <= vol_gain_reg;
-      when others => sfm_readdata <= (others => '0');
-    end case;
+    sfm_readdata <= cntrl_reg;
  end process p_rd;
 
 
 
-p_reg : process(reset_n,clk)
+p_gold_1 : process(reset_n,clk)
   begin
     if reset_n = '0' then
       init <= '0';
       start<= '0';
-      vol_data_reg <= (others => '0');
+      freq_vol_reg <= (others => '0');
+      en_vol_calc <= '0';
+      enable_start <= false;
     elsif rising_edge(clk) then
+    en_vol_calc<= '0';
       if en_per = '1' then
         init <= '1';
         enable_start <= true;
@@ -308,31 +226,55 @@ p_reg : process(reset_n,clk)
       elsif en_freq = '1' then
         init <= '0';
         start <= '0';
+        freq_vol_reg <= freq_vol_cmb;
+        en_vol_calc <= '1';
       end if;
-        vol_data_reg <= vol_data_cmb;
     end if;
-end process p_reg;
+end process p_gold_1;
+
+p_gold_2 : process(reset_n,clk)
+  begin
+    if reset_n = '0' then
+      init_2 <= '0';
+      start_2<= '0';
+      enable_start_2 <= false;
+      volume_enable <= '0';
+      volume <= (others => '0');
+    elsif rising_edge(clk) then
+    volume_enable <= '0';
+      if en_vol_calc = '1' then
+        init_2 <= '1';
+        enable_start_2 <= true;
+      elsif enable_start_2 = true then
+        init_2 <= '0';
+        start_2 <= '1'; 
+        enable_start_2 <= false; 
+      elsif en_vol = '1' then
+        init_2 <= '0';
+        start_2 <= '0';
+      end if;
+      if cntrl_reg(0) = '0' then
+        volume <= (others => '1');
+        volume_enable <= '1';
+      elsif en_vol = '1' then
+        volume_enable <= '1';
+        volume <= volume_gold;
+      end if;
+    end if;
+end process p_gold_2;
 
 p_cmb : process(all)
-  variable vol_index : integer range 0 to vol_values'length-1;
-  variable vol_mult : unsigned(13 downto 0);
-  variable vol_mult_temp : unsigned(7 downto 0);
   begin
-    if vol_values(vol_values'low) > freq or vol_values(vol_values'high) < freq then
-      vol_index := 0;
-    elsif vol_values(vol_values'high) > freq then
-      vol_index := vol_values'length-1;
+    if freq(N+Qprec-1 downto Qprec) > offset then
+      if freq(N+Qprec-1 downto Qprec) > freq_max then
+        freq_vol_cmb <= freq_max - offset;
+      else
+        freq_vol_cmb <= freq(N+Qprec-1 downto Qprec) - offset;
+      end if;
+    else
+      freq_vol_cmb <= (others => '0');
     end if;
-    l_freq_range : for ii in 0 to vol_values'length-2 loop
-        if vol_values(ii) < freq and vol_values(ii+1) > freq then
-            vol_index := ii;
-        end if;
-    end loop l_freq_range;
 
-    vol_mult := to_unsigned(vol_index,7) *  vol_gain(to_integer(unsigned(vol_gain_reg)));
-    vol_mult := shift_right(vol_mult,1);
-    vol_mult_temp := vol_mult(13 downto 7) + (6 downto 1 => '0') & vol_mult(6);
-    vol_data_cmb <= (31 downto 7 => '0') & std_logic_vector(vol_mult_temp(6 downto 0));
 end process p_cmb;
 
 --delay <= to_integer(unsigned(delay_reg));
@@ -349,7 +291,9 @@ end process p_cmb;
   count_meas : entity work.count_freq_vol
        generic map (
      N        => N,  --Number of Bits of the frequency value
-     sine_N   => sine_N
+     sine_N   => sine_N,
+     max_per  => 2400,  --maximum period count value
+     min_per  => 24     --minimum period count value
     )
   port map(
     reset_n     => reset_n,
@@ -377,6 +321,23 @@ end process p_cmb;
     den     => per_cnt,
     quo     => freq,
     done    => en_freq
+  );
+
+  goldschmid_2 : entity work.goldschmidt
+  generic map(
+    N       => N, --Number of numerator and denominator Bits (precision)
+    Qda     => Qda,  --Number for more precision
+    Qprec   => Qprec_vol --Number of bits after the decimal point
+  )
+  port map(
+    reset_n => reset_n,
+    clk     => clk,
+    init    => init_2,
+    start   => start_2,
+    num     => freq_vol_reg,
+    den     => freq_max-offset,
+    quo     => volume_gold,
+    done    => en_vol
   );
 
 
@@ -418,4 +379,5 @@ end process p_cmb;
   -- Output Assignments
   ------------------------------------------------------------------------------
   freq_diff <= freq_diff_int;
-end rtl;
+  volume_out <= volume(Qprec_vol-1 downto 0);
+ end rtl;

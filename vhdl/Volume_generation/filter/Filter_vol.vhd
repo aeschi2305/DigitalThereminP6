@@ -11,7 +11,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.numeric_std.all;
 
-entity filter is
+entity filter_vol is
 	generic (
 	 N : natural := 16;	--Number of Bits of the sine wave (precision)
    cic1Bits : natural := 21;
@@ -37,11 +37,11 @@ entity filter is
      cic3_en        : out boolean
 
   );
-end entity filter;
+end entity filter_vol;
 
 
 
-architecture rtl of filter is
+architecture rtl of filter_vol is
 
 
 constant FIRBits : natural := 27;

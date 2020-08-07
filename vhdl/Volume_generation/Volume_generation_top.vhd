@@ -39,7 +39,7 @@ architecture struct of Volume_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 549100;--555000;
+  constant cordic_def_freq :natural := 550000;--555000;
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:
@@ -69,7 +69,7 @@ component cordic_Control is
   );
 end component cordic_Control;
 
-component filter is
+component filter_vol is
   generic (
    N : natural := 16;  --Number of Bits of the sine wave (precision)
    cic1Bits : natural := 23;
@@ -93,7 +93,7 @@ component filter is
      cic2_en        : out boolean;
      cic3_en        : out boolean
   );
-end component filter;
+end component filter_vol;
 
 
 component cordic_pipelined is
@@ -190,7 +190,7 @@ begin
     ); 
 
   -- user design: cic
-  cic_1 : entity work.filter
+  filter_vol_1 : entity work.filter_vol
     generic map (
       N => N,
       cic1Bits => cic1Bits,

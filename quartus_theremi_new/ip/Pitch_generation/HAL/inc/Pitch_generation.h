@@ -1,4 +1,4 @@
-/* File    : LT24_Controller.h
+/* File    : Pitch_generation.h
  * Author  :
  * Date    :
  * Company : Institute of Microelectronics (IME) FHNW

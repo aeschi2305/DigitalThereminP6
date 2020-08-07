@@ -33,7 +33,6 @@ entity digital_theremin is
 		pitch_in_coe_square_freq                         : in    std_logic                     := '0';             --                                    pitch_in.coe_square_freq
 		pitch_in_coe_freq_up_down                        : in    std_logic_vector(1 downto 0)  := (others => '0'); --                                            .coe_freq_up_down
 		pitch_in_coe_cal_glis                            : in    std_logic_vector(1 downto 0)  := (others => '0'); --                                            .coe_cal_glis
-		pitch_in_coe_vol_cntrl                           : in    std_logic                     := '0';             --                                            .coe_vol_cntrl
 		reset_reset_n                                    : in    std_logic                     := '0';             --                                       reset.reset_n
 		sdram_clk_clk                                    : out   std_logic;                                        --                                   sdram_clk.clk
 		touch_panel_busy_external_connection_export      : in    std_logic                     := '0';             --        touch_panel_busy_external_connection.export
@@ -262,10 +261,12 @@ architecture rtl of digital_theremin is
 
 	component pitch_generation_top is
 		generic (
-			dat_len_avl : natural := 32;
-			cic1Bits    : natural := 21;
-			cic2Bits    : natural := 25;
-			cic3Bits    : natural := 28
+			dat_len_avl   : natural := 32;
+			cic1Bits      : natural := 21;
+			cic2Bits      : natural := 25;
+			cic3Bits      : natural := 28;
+			FIRBits       : natural := 27;
+			StreamingBits : natural := 24
 		);
 		port (
 			csi_clk           : in  std_logic                     := 'X';             -- clk
@@ -280,7 +281,8 @@ architecture rtl of digital_theremin is
 			coe_square_freq   : in  std_logic                     := 'X';             -- coe_square_freq
 			coe_freq_up_down  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- coe_freq_up_down
 			coe_Cal_Glis      : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- coe_cal_glis
-			coe_vol_cntrl     : in  std_logic                     := 'X'              -- coe_vol_cntrl
+			coe_vol_enable    : in  std_logic                     := 'X';             -- coe_vol_enable
+			coe_vol_volume    : in  std_logic_vector(17 downto 0) := (others => 'X')  -- coe_vol_volume
 		);
 	end component pitch_generation_top;
 
@@ -383,11 +385,12 @@ architecture rtl of digital_theremin is
 			csi_clk           : in  std_logic                     := 'X';             -- clk
 			rsi_reset_n       : in  std_logic                     := 'X';             -- reset_n
 			avs_sVG_write     : in  std_logic                     := 'X';             -- write
-			avs_sVG_address   : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
 			avs_sVG_writedata : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
 			avs_sVG_readdata  : out std_logic_vector(31 downto 0);                    -- readdata
 			coe_square_freq   : in  std_logic                     := 'X';             -- coe_square_freq
-			coe_freq_up_down  : in  std_logic_vector(1 downto 0)  := (others => 'X')  -- coe_freq_up_down
+			coe_freq_up_down  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- coe_freq_up_down
+			coe_vol_enable    : out std_logic;                                        -- coe_vol_enable
+			coe_vol_volume    : out std_logic_vector(17 downto 0)                     -- coe_vol_volume
 		);
 	end component Volume_generation_top;
 
@@ -498,7 +501,6 @@ architecture rtl of digital_theremin is
 			touch_panel_spi_spi_control_port_readdata                   : in  std_logic_vector(15 downto 0) := (others => 'X'); -- readdata
 			touch_panel_spi_spi_control_port_writedata                  : out std_logic_vector(15 downto 0);                    -- writedata
 			touch_panel_spi_spi_control_port_chipselect                 : out std_logic;                                        -- chipselect
-			volume_generation_0_svg_address                             : out std_logic_vector(1 downto 0);                     -- address
 			volume_generation_0_svg_write                               : out std_logic;                                        -- write
 			volume_generation_0_svg_readdata                            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			volume_generation_0_svg_writedata                           : out std_logic_vector(31 downto 0)                     -- writedata
@@ -676,6 +678,8 @@ architecture rtl of digital_theremin is
 	signal pll_sig_proc_outclk1_clk                                                      : std_logic;                     -- pll_sig_proc:outclk_1 -> [audio_serializer_0:clk, dc_fifo_0:out_clk, rst_controller_002:clk]
 	signal pll_sig_proc_outclk2_clk                                                      : std_logic;                     -- pll_sig_proc:outclk_2 -> [audio_and_video_config_0:clk, mm_interconnect_0:pll_sig_proc_outclk2_clk, rst_controller_001:clk]
 	signal pll_cpu_outclk3_clk                                                           : std_logic;                     -- pll_cpu:outclk_3 -> [epcs_cntl:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:pll_cpu_outclk3_clk, rst_controller_005:clk]
+	signal volume_generation_0_conduit_end_coe_vol_volume                                : std_logic_vector(17 downto 0); -- volume_generation_0:coe_vol_volume -> pitch_generation_0:coe_vol_volume
+	signal volume_generation_0_conduit_end_coe_vol_enable                                : std_logic;                     -- volume_generation_0:coe_vol_enable -> pitch_generation_0:coe_vol_enable
 	signal cpu_debug_reset_request_reset                                                 : std_logic;                     -- cpu:debug_reset_request -> [cpu_debug_reset_request_reset:in, mm_interconnect_0:dram_cntrl_reset_reset_bridge_in_reset_reset]
 	signal cpu_data_master_readdata                                                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:cpu_data_master_readdata -> cpu:d_readdata
 	signal cpu_data_master_waitrequest                                                   : std_logic;                     -- mm_interconnect_0:cpu_data_master_waitrequest -> cpu:d_waitrequest
@@ -772,7 +776,6 @@ architecture rtl of digital_theremin is
 	signal mm_interconnect_0_pitch_generation_0_stg_write                                : std_logic;                     -- mm_interconnect_0:pitch_generation_0_stg_write -> pitch_generation_0:avs_sTG_write
 	signal mm_interconnect_0_pitch_generation_0_stg_writedata                            : std_logic_vector(31 downto 0); -- mm_interconnect_0:pitch_generation_0_stg_writedata -> pitch_generation_0:avs_sTG_writedata
 	signal mm_interconnect_0_volume_generation_0_svg_readdata                            : std_logic_vector(31 downto 0); -- volume_generation_0:avs_sVG_readdata -> mm_interconnect_0:volume_generation_0_svg_readdata
-	signal mm_interconnect_0_volume_generation_0_svg_address                             : std_logic_vector(1 downto 0);  -- mm_interconnect_0:volume_generation_0_svg_address -> volume_generation_0:avs_sVG_address
 	signal mm_interconnect_0_volume_generation_0_svg_write                               : std_logic;                     -- mm_interconnect_0:volume_generation_0_svg_write -> volume_generation_0:avs_sVG_write
 	signal mm_interconnect_0_volume_generation_0_svg_writedata                           : std_logic_vector(31 downto 0); -- mm_interconnect_0:volume_generation_0_svg_writedata -> volume_generation_0:avs_sVG_writedata
 	signal irq_mapper_receiver1_irq                                                      : std_logic;                     -- jtag:av_irq -> irq_mapper:receiver1_irq
@@ -1018,10 +1021,12 @@ begin
 
 	pitch_generation_0 : component pitch_generation_top
 		generic map (
-			dat_len_avl => 32,
-			cic1Bits    => 21,
-			cic2Bits    => 25,
-			cic3Bits    => 28
+			dat_len_avl   => 32,
+			cic1Bits      => 21,
+			cic2Bits      => 25,
+			cic3Bits      => 28,
+			FIRBits       => 27,
+			StreamingBits => 24
 		)
 		port map (
 			csi_clk           => pll_sig_proc_outclk0_clk,                           --         clock.clk
@@ -1036,7 +1041,8 @@ begin
 			coe_square_freq   => pitch_in_coe_square_freq,                           -- conduit_end_0.coe_square_freq
 			coe_freq_up_down  => pitch_in_coe_freq_up_down,                          --              .coe_freq_up_down
 			coe_Cal_Glis      => pitch_in_coe_cal_glis,                              --              .coe_cal_glis
-			coe_vol_cntrl     => pitch_in_coe_vol_cntrl                              --              .coe_vol_cntrl
+			coe_vol_enable    => volume_generation_0_conduit_end_coe_vol_enable,     --   conduit_end.coe_vol_enable
+			coe_vol_volume    => volume_generation_0_conduit_end_coe_vol_volume      --              .coe_vol_volume
 		);
 
 	pll_cpu : component digital_theremin_pll_cpu
@@ -1131,11 +1137,12 @@ begin
 			csi_clk           => pll_sig_proc_outclk0_clk,                            --         clock.clk
 			rsi_reset_n       => rst_controller_004_reset_out_reset_ports_inv,        --         reset.reset_n
 			avs_sVG_write     => mm_interconnect_0_volume_generation_0_svg_write,     --           svg.write
-			avs_sVG_address   => mm_interconnect_0_volume_generation_0_svg_address,   --              .address
 			avs_sVG_writedata => mm_interconnect_0_volume_generation_0_svg_writedata, --              .writedata
 			avs_sVG_readdata  => mm_interconnect_0_volume_generation_0_svg_readdata,  --              .readdata
 			coe_square_freq   => volume_in_coe_square_freq,                           -- conduit_end_0.coe_square_freq
-			coe_freq_up_down  => volume_in_coe_freq_up_down                           --              .coe_freq_up_down
+			coe_freq_up_down  => volume_in_coe_freq_up_down,                          --              .coe_freq_up_down
+			coe_vol_enable    => volume_generation_0_conduit_end_coe_vol_enable,      --   conduit_end.coe_vol_enable
+			coe_vol_volume    => volume_generation_0_conduit_end_coe_vol_volume       --              .coe_vol_volume
 		);
 
 	mm_interconnect_0 : component digital_theremin_mm_interconnect_0
@@ -1245,8 +1252,7 @@ begin
 			touch_panel_spi_spi_control_port_readdata                   => mm_interconnect_0_touch_panel_spi_spi_control_port_readdata,                   --                                                     .readdata
 			touch_panel_spi_spi_control_port_writedata                  => mm_interconnect_0_touch_panel_spi_spi_control_port_writedata,                  --                                                     .writedata
 			touch_panel_spi_spi_control_port_chipselect                 => mm_interconnect_0_touch_panel_spi_spi_control_port_chipselect,                 --                                                     .chipselect
-			volume_generation_0_svg_address                             => mm_interconnect_0_volume_generation_0_svg_address,                             --                              volume_generation_0_svg.address
-			volume_generation_0_svg_write                               => mm_interconnect_0_volume_generation_0_svg_write,                               --                                                     .write
+			volume_generation_0_svg_write                               => mm_interconnect_0_volume_generation_0_svg_write,                               --                              volume_generation_0_svg.write
 			volume_generation_0_svg_readdata                            => mm_interconnect_0_volume_generation_0_svg_readdata,                            --                                                     .readdata
 			volume_generation_0_svg_writedata                           => mm_interconnect_0_volume_generation_0_svg_writedata                            --                                                     .writedata
 		);

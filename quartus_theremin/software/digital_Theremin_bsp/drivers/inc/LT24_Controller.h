@@ -17,12 +17,14 @@
 /*
  * Define
  */
+/*
 #define RED 0xf800
 #define GREEN 0x07e0
 #define BLUE 0x001f
 #define BLACK  0x0000
 #define GREY 0xBDBD
 #define WHITE 0xffff
+*/
 
 #ifdef __cplusplus
 extern "C"

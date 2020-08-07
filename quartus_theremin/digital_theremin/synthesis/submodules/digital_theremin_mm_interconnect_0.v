@@ -112,8 +112,7 @@ module digital_theremin_mm_interconnect_0 (
 		input  wire [15:0] touch_panel_spi_spi_control_port_readdata,                   //                                                     .readdata
 		output wire [15:0] touch_panel_spi_spi_control_port_writedata,                  //                                                     .writedata
 		output wire        touch_panel_spi_spi_control_port_chipselect,                 //                                                     .chipselect
-		output wire [1:0]  volume_generation_0_svg_address,                             //                              volume_generation_0_svg.address
-		output wire        volume_generation_0_svg_write,                               //                                                     .write
+		output wire        volume_generation_0_svg_write,                               //                              volume_generation_0_svg.write
 		input  wire [31:0] volume_generation_0_svg_readdata,                            //                                                     .readdata
 		output wire [31:0] volume_generation_0_svg_writedata                            //                                                     .writedata
 	);
@@ -2308,7 +2307,7 @@ module digital_theremin_mm_interconnect_0 (
 	);
 
 	altera_merlin_slave_translator #(
-		.AV_ADDRESS_W                   (2),
+		.AV_ADDRESS_W                   (1),
 		.AV_DATA_W                      (32),
 		.UAV_DATA_W                     (32),
 		.AV_BURSTCOUNT_W                (1),
@@ -2347,10 +2346,10 @@ module digital_theremin_mm_interconnect_0 (
 		.uav_writedata          (volume_generation_0_svg_agent_m0_writedata),           //                         .writedata
 		.uav_lock               (volume_generation_0_svg_agent_m0_lock),                //                         .lock
 		.uav_debugaccess        (volume_generation_0_svg_agent_m0_debugaccess),         //                         .debugaccess
-		.av_address             (volume_generation_0_svg_address),                      //      avalon_anti_slave_0.address
-		.av_write               (volume_generation_0_svg_write),                        //                         .write
+		.av_write               (volume_generation_0_svg_write),                        //      avalon_anti_slave_0.write
 		.av_readdata            (volume_generation_0_svg_readdata),                     //                         .readdata
 		.av_writedata           (volume_generation_0_svg_writedata),                    //                         .writedata
+		.av_address             (),                                                     //              (terminated)
 		.av_read                (),                                                     //              (terminated)
 		.av_begintransfer       (),                                                     //              (terminated)
 		.av_beginbursttransfer  (),                                                     //              (terminated)

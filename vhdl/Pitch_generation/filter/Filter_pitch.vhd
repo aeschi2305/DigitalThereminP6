@@ -2,10 +2,10 @@
 -----------------------------------------------------
 -- Project : Digital Theremin
 -----------------------------------------------------
--- File    : cic_codec.vhd
+-- File    : Filter_pitch.vhd
 -- Author  : andreas.frei@students.fhnw.ch
 -----------------------------------------------------
--- Description : Decimation CIC-Filter with Streaming Interface
+-- Description : Decimation CIC-Filter and FIR-Filter
 -----------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
@@ -16,16 +16,13 @@ entity filter_pitch is
 	 N : natural := 16;	--Number of Bits of the sine wave (precision)
    cic1Bits : natural := 21;
    cic2Bits : natural := 25;
-   cic3Bits : natural := 28
+   cic3Bits : natural := 28;
+   FIRBits  : natural := 27
 	);
   	port (
   	 reset_n  	    : in  std_ulogic; -- asynchronous reset
      clk      	    : in  std_ulogic; -- clock
      mixer_out 	    : in signed(N-1 downto 0);				--Input signal
-     -- Streaming Source
-     audio_out      : out std_logic_vector(23 downto 0);	--Output signal
-     valid          : out std_logic;  --Control Signals
-     ready          : in std_logic;
 
      cic1o          : out signed(cic1Bits-1 downto 0);
      cic2o          : out signed(cic2Bits-1 downto 0);
@@ -33,7 +30,10 @@ entity filter_pitch is
 
      cic1_en        : out boolean;
      cic2_en        : out boolean;
-     cic3_en        : out boolean
+     cic3_en        : out boolean;
+
+     FIR_out        : out signed(FIRBits-1 downto 0);
+     FIR_enable     : out std_ulogic
 
   );
 end entity filter_pitch;
@@ -43,7 +43,6 @@ end entity filter_pitch;
 architecture rtl of filter_pitch is
 
 
-constant FIRBits : natural := 27;
 
 signal cic1out : signed(cic1Bits-1 downto 0);
 signal cic2out : signed(cic2Bits-1 downto 0);
@@ -52,7 +51,7 @@ signal FIRout : signed(FIRBits-1 downto 0);
 signal enable1 : boolean;
 signal enable2 : boolean;
 signal enable3 : boolean;
-signal enable4 : boolean;
+signal enable4 : std_ulogic;
 
 component cic_calc is
   generic (
@@ -85,31 +84,13 @@ port (
   reset_n       : in  std_logic;
   -- enable
   en_in        : in boolean;
-  en_out       : out boolean;
+  en_out       : out std_ulogic;
   -- data input
   i_data       : in  signed( N-1 downto 0);
   -- filtered data 
   o_data       : out signed( N-1 downto 0));
 
 end component fir_filter_dec;
-
-component filter_streaming is
-  generic (
-   N : natural := 27; --Input Bits
-   M : natural := 24  --Output Bits
-  );
-    port (
-     reset_n        : in  std_ulogic; -- asynchronous reset
-     clk            : in  std_ulogic; -- clock
-     cic_out      : in signed(N-1 downto 0);        --Input signal
-     -- Streaming Source
-     streaming     : out std_logic_vector(M-1 downto 0);  --Output signal
-     valid        : out std_logic;  --Control Signals
-     ready        : in std_logic;
-
-     enable         : boolean
-  );
-end component filter_streaming;
 
 
 begin
@@ -164,9 +145,9 @@ begin
 
   fir_1 : entity work.fir_filter_dec
     generic map (
-      N => 22, --Number of Filter Coefficients
+      N => 20, --Number of Filter Coefficients
       M => cic3Bits, --Number of Input Bits
-      O => 27, --Number of Output Bits
+      O => FIRBits, --Number of Output Bits
       dec => 5
     )
     port map (
@@ -178,21 +159,6 @@ begin
       o_data      =>  FIRout
     ); 
 
-  cic_streaming1 : entity work.filter_streaming
-    generic map (
-      N => 27,
-      M => 24
-          )
-    port map (
-      reset_n       =>  reset_n, 
-      clk           =>  clk,
-      cic_out       =>  FIRout,
-      streaming     =>  audio_out, 
-      valid         =>  valid,
-      ready         =>  ready,
-
-      enable        =>  enable4
-    ); 
 
     cic1_en <= enable1;
     cic2_en <= enable2;
@@ -201,6 +167,10 @@ begin
     cic1o   <= cic1out;
     cic2o   <= cic2out;
     cic3o   <= cic3out;
+
+    FIR_out <= FIRout;
+    FIR_enable <= enable4;
+
 
  
 end rtl;

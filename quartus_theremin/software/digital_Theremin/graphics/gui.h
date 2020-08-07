@@ -36,7 +36,7 @@ extern "C"
  *--------------------------------------------------*/
 void draw_main_screen(void);
 
-void draw_calibrating_screen(void);
+void draw_calibrating_screen(alt_u8 cntrl_reg_pitch, alt_u8 cntrl_reg_vol);
 
 void draw_calibrating_screen_done(void);
 
@@ -56,7 +56,7 @@ void draw_update_glissando_delay(alt_u8 gli_delay);
 
 void draw_penta_on_off(alt_u8 on_off);
 
-void draw_display_ton(void);
+void draw_display_ton(alt_u8 cntrl_reg_pitch);
 
 void draw_display_ton_update(alt_u8 penta_on_off);
 
