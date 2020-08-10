@@ -69,7 +69,7 @@ void draw_calibrating_screen_done(void)
 	vid_print_string(160 - get_string_width("calibration"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibration");
 	vid_print_string(160 - get_string_width("done"),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"done");
 	LCD_DrawRect(170,10,230,110,GREY);
-	vid_print_string(244,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
 
 /*----------------------------------------------------
@@ -82,12 +82,12 @@ void draw_volume_screen(void)
 	vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
 	LCD_DrawRect(39,195,99,310,GREY_SOFT);
 	LCD_DrawRect(39,10,99,90,GREY);
-	vid_print_string(261,44,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+	vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
 	LCD_DrawRect(39,100,99,180,GREY);
-	vid_print_string(169,55,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"~");
+	vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
 
 	LCD_DrawRect(175,10,235,110,GREY);
-	vid_print_string(249,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
 
 
@@ -106,7 +106,7 @@ void draw_vol_antenna_on_off(alt_u8 on_off){
 		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna on");
 	}else{
 		LCD_DrawRect(107,10,167,310,GREY);
-		vid_print_string(15,126,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna off");
+		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna off");
 	}
 }
 /*----------------------------------------------------
@@ -118,12 +118,12 @@ void draw_help_screen(void)
 {
 
 	LCD_DrawRect(15,10,75,90,GREY);
-	vid_print_string(235,34,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Set");
+	vid_print_string(235,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Set");
 	LCD_DrawRect(90,110,150,310,GREY);
-	vid_print_string(15,109,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"display pitch");
+	vid_print_string(15,109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"display pitch");
 
 	LCD_DrawRect(170,10,230,110,GREY);
-	vid_print_string(244,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 
 }
 
@@ -133,7 +133,7 @@ void draw_glissando_on_off(alt_u8 on_off){
 		vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando on");
 	}else{
 		LCD_DrawRect(15,110,75,310,GREY);
-		vid_print_string(15,34,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando off");
+		vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando off");
 	}
 }
 
@@ -147,12 +147,12 @@ void draw_glissando_set(void)
 	vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
 	LCD_DrawRect(39,195,99,310,GREY_SOFT);
 	LCD_DrawRect(39,10,99,90,GREY);
-	vid_print_string(261,44,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+	vid_print_string(260,44,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
 	LCD_DrawRect(39,100,99,180,GREY);
-	vid_print_string(169,55,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"~");
+	vid_print_string(175,58,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
 
 	LCD_DrawRect(175,10,235,110,GREY);
-	vid_print_string(244,194,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	vid_print_string(244,194,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
 
 void draw_update_glissando_delay(alt_u8 gli_delay)
@@ -170,7 +170,7 @@ void draw_penta_on_off(alt_u8 on_off){
 		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic on");
 	}else{
 		LCD_DrawRect(107,10,167,310,GREY);
-		vid_print_string(15,126,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic off");
+		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic off");
 	}
 }
 
@@ -194,10 +194,10 @@ void draw_display_ton(alt_u8 cntrl_reg_pitch)
 	else
 	{
 		LCD_DrawRect(170,120,230,310,GREY);
-		vid_print_string(20,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"penta. off");
+		vid_print_string(20,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"penta. off");
 	}
 	LCD_DrawRect(170,10,230,110,GREY);
-	vid_print_string(244,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	vid_print_string(244,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
 void draw_display_ton_update(alt_u8 cntrl_reg_pitch)
 {

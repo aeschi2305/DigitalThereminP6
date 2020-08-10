@@ -121,12 +121,12 @@ int main() {
 					LCD_Clear(WHITE);
 					draw_main_screen();
 				} else{
-					if ((xy.y_coord <= 2050) && (xy.x_coord < 1300)) { //Coordinates for -vol
+					if ((xy.y_coord <= 2050) && (xy.x_coord <= 700)) { //Coordinates for -vol
 						if(vol_bar != 0){
 							vol_bar--;
 						}
 					}
-					if ((xy.y_coord <= 2050) && (xy.x_coord >= 1300) && (xy.x_coord <= 2300)) { //Coordinates for +vol
+					if ((xy.y_coord <= 2050) && (xy.x_coord >= 1300)) { //Coordinates for +vol
 						if (vol_bar != 9) {
 							vol_bar++;
 						}
@@ -184,7 +184,7 @@ int main() {
 					LCD_Clear(WHITE);
 					draw_help_screen();
 					draw_glissando_on_off(cntrl_reg_pitch & 0x01);
-				} else if ((xy.y_coord <= 2050) && (xy.x_coord < 1300)) { //Coordinates for delay -
+				} else if ((xy.y_coord <= 2050) && (xy.x_coord <= 700)) { //Coordinates for delay -
 					if (glissando_delay <= 1) {
 						glissando_delay = 2;
 					}
@@ -193,7 +193,7 @@ int main() {
 					draw_update_glissando_delay(glissando_delay);
 					printf("freq pitch %d\n", read_freq_pitch());
 					printf("gli_delay register %d\n", read_delay_gli());
-				} else if ((xy.y_coord <= 2050) && (xy.x_coord >= 1300) && (xy.x_coord <= 2300)) { //Coordinates for delay +
+				} else if ((xy.y_coord <= 2050) && (xy.x_coord >= 1300)) { //Coordinates for delay +
 					glissando_delay++;
 					if (glissando_delay >= 10) {
 						glissando_delay = 10;

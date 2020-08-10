@@ -82,12 +82,12 @@ void draw_volume_screen(void)
 	vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
 	LCD_DrawRect(39,195,99,310,GREY_SOFT);
 	LCD_DrawRect(39,10,99,90,GREY);
-	vid_print_string(261,44,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+	vid_print_string(260,44,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
 	LCD_DrawRect(39,100,99,180,GREY);
-	vid_print_string(169,55,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"~");
+	vid_print_string(175,58,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
 
 	LCD_DrawRect(175,10,235,110,GREY);
-	vid_print_string(249,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	vid_print_string(244,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
 
 
@@ -147,9 +147,9 @@ void draw_glissando_set(void)
 	vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
 	LCD_DrawRect(39,195,99,310,GREY_SOFT);
 	LCD_DrawRect(39,10,99,90,GREY);
-	vid_print_string(261,44,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+	vid_print_string(260,44,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
 	LCD_DrawRect(39,100,99,180,GREY);
-	vid_print_string(169,55,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"~");
+	vid_print_string(175,58,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"+");
 
 	LCD_DrawRect(175,10,235,110,GREY);
 	vid_print_string(244,194,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");

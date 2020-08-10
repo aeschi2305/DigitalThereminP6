@@ -15,7 +15,7 @@ extern "C"
 {
 #endif /* __cplusplus */
 
-const alt_u8 arial_22ptBitmaps[5404];
+const alt_u8 arial_22ptBitmaps[5628];
 const alt_u16 arial_22ptDescriptors[95][2];
 
 
