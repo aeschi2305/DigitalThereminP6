@@ -18,7 +18,6 @@
  * Define
  */
 
-
 #ifdef __cplusplus
 extern "C"
 {

@@ -52,7 +52,7 @@ alt_16 get_pixel_pitch_accuracy(alt_u8 penta_on_off, alt_u32 tmp)
 	alt_32 freq_diff_calc = 0;
     alt_32  freq;
 	alt_32	index;
-	freq = (alt_32)(tmp & 0xFFFFF);
+	freq = (alt_32)(tmp & 0xFFFF);
 	index = (alt_32)((tmp & 0xFC000000)>>26);
 	alt_32 freq_diff [49][2] = {
 			{119, 123},

@@ -2,11 +2,11 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>06.08.2020 15:51:45</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1596721905102</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>D:\GitHub\Projekt6\DigitalTheremin\DigitalThereminP6\quartus_theremin\software\digital_Theremin_bsp\</BspGeneratedLocation>
-        <BspSettingsFile>D:\GitHub\Projekt6\DigitalTheremin\DigitalThereminP6\quartus_theremin\software\digital_Theremin_bsp\settings.bsp</BspSettingsFile>
-        <SopcDesignFile>D:\GitHub\Projekt6\DigitalTheremin\DigitalThereminP6\quartus_theremin\digital_theremin.sopcinfo</SopcDesignFile>
+        <BspGeneratedTimeStamp>10.08.2020 09:36:05</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1597044965987</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus_theremin\software\digital_Theremin_bsp\</BspGeneratedLocation>
+        <BspSettingsFile>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus_theremin\software\digital_Theremin_bsp\settings.bsp</BspSettingsFile>
+        <SopcDesignFile>C:\Users\andre\OneDrive\Dokumente\GitHub\DigitalThereminP6\quartus_theremin\digital_theremin.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>cpu</Cpu>
         <SchemaVersion>1.9</SchemaVersion>

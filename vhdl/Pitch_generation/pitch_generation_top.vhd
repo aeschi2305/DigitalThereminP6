@@ -48,7 +48,7 @@ architecture struct of pitch_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 570000;--569800;
+  constant cordic_def_freq :natural := 562000;--569800;
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:
