@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+<file path="hdl_sim/dram_cntrl.dat" type="DAT" memoryPath="dram_cntrl" />
+<file path="epcs_cntl.hex" type="HEX" memoryPath="epcs_cntl" />
+</simPackage>

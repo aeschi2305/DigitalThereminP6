@@ -1,9 +1,9 @@
 # memory.gdb - GDB memory region definitions
 #
 # Machine generated for CPU 'cpu' in SOPC Builder design 'digital_theremin'
-# SOPC Builder design path: C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin/digital_theremin.sopcinfo
+# SOPC Builder design path: D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus_theremin/digital_theremin.sopcinfo
 #
-# Generated: Sat Aug 08 09:34:00 CEST 2020
+# Generated: Mon Aug 10 09:54:23 CEST 2020
 
 # DO NOT MODIFY THIS FILE
 #
