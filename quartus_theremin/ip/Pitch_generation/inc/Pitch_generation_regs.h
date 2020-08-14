@@ -1,9 +1,9 @@
 /*----------------------------------------------------
- * File    : pitch_generation_regs
- * Author  :
- * Date    :
+ * File    : pitch_generation_regs.h
+ * Author  : Andreas Frei
+ * Date    : 14.08.2020
  * Company : Institute of Microelectronics (IME) FHNW
- * Content :
+ * Content : Register description for pitch generation
  *--------------------------------------------------*/
 //#ifndef __PITCH_GENERATION_REGS_H__
 #define __PITCH_GENERATION_REGS_H__

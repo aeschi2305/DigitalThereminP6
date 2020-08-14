@@ -1,7 +1,7 @@
 /*----------------------------------------------------
  * File    : LT24_Controller.c
- * Author  :
- * Date    : Jun 18 2020
+ * Author  : Andreas Frei
+ * Date    : 14.08.2020
  * Company : Institute of Microelectronics (IME) FHNW
  * Content :
  *--------------------------------------------------*/
@@ -13,8 +13,8 @@
 
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void Delay_Ms(alt_u16 count_ms)
+ * Purpose : to generate a ms delay
  * Return  : none
  *--------------------------------------------------*/
 void Delay_Ms(alt_u16 count_ms)
@@ -26,8 +26,8 @@ void Delay_Ms(alt_u16 count_ms)
 }
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void LCD_SetCursor(alt_u16 Xpos, alt_u16 Ypos)
+ * Purpose : to set the cursor of the LCD
  * Return  : none
  *--------------------------------------------------*/
 
@@ -44,8 +44,11 @@ void LCD_SetCursor(alt_u16 Xpos, alt_u16 Ypos)
 }
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void LCD_SetRect(alt_u16 Xposstart, 
+ *           alt_u16 Yposstart,alt_u16 Xposend, 
+ *			 alt_u16 Yposend)
+ * Purpose : To set the LCD cursor for an entire 
+ *			 rectangle
  * Return  : none
  *--------------------------------------------------*/
 
@@ -65,8 +68,8 @@ void LCD_SetRect(alt_u16 Xposstart, alt_u16 Yposstart,alt_u16 Xposend, alt_u16 Y
 
 }
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void LCD_Clear(alt_u16 Color)
+ * Purpose : to clear the LCD
  * Return  : none
  *--------------------------------------------------*/
 
@@ -83,8 +86,9 @@ void LCD_Clear(alt_u16 Color)
 }
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void LCD_DrawPoint(alt_u16 x,alt_u16 y,
+ *           alt_u16 color )
+ * Purpose : to draw a point on the LCD
  * Return  : none
  *--------------------------------------------------*/
 
@@ -96,8 +100,9 @@ void LCD_DrawPoint(alt_u16 x,alt_u16 y,alt_u16 color )
 }
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void LCD_DrawRect(alt_u16 xs,alt_u16 ys,
+ *           alt_u16 xe,alt_u16 ye,alt_u16 color )
+ * Purpose : to draw a rect
  * Return  : none
  *--------------------------------------------------*/
 
@@ -110,7 +115,13 @@ void LCD_DrawRect(alt_u16 xs,alt_u16 ys,alt_u16 xe,alt_u16 ye,alt_u16 color )
         }
 
 }
-
+/*----------------------------------------------------
+ * Function: void vid_set_pixel(int horiz, int vert,
+ * unsigned int color)
+ * Purpose : Is used by the pirnt_string function 
+ *           to filter the passed color
+ * Return  : none
+ *--------------------------------------------------*/
 
 void vid_set_pixel(int horiz, int vert, unsigned int color)
 {
@@ -126,8 +137,8 @@ void vid_set_pixel(int horiz, int vert, unsigned int color)
 }
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void LCD_Init()
+ * Purpose : to initialise the LCD
  * Return  : none
  *--------------------------------------------------*/
 

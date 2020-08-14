@@ -1,6 +1,6 @@
 /* File    : LT24_Controller.h
- * Author  :
- * Date    :
+ * Author  : Andreas Frei
+ * Date    : 14.08.2020
  * Company : Institute of Microelectronics (IME) FHNW
  * Content : 
  *--------------------------------------------------*/
@@ -35,44 +35,56 @@ extern "C"
 #define LT24_CONTROLLER_INSTANCE(name, device) extern int alt_no_storage
 #define LT24_CONTROLLER_INIT(name, device) while (0)
 
-
-
 /*----------------------------------------------------
- * Function:
- * Purpose :
- * Return  : none
- *--------------------------------------------------*/
-void LCD_Init (void);
-
-/*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void LCD_SetCursor(alt_u16 Xpos, alt_u16 Ypos)
+ * Purpose : to set the cursor of the LCD
  * Return  : none
  *--------------------------------------------------*/
 
 void LCD_SetCursor(alt_u16 Xpos, alt_u16 Ypos);
-
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void LCD_SetRect(alt_u16 Xposstart, 
+ *           alt_u16 Yposstart,alt_u16 Xposend, 
+ *			 alt_u16 Yposend)
+ * Purpose : To set the LCD cursor for an entire 
+ *			 rectangle
+ * Return  : none
+ *--------------------------------------------------*/
+void LCD_SetRect(alt_u16 Xposstart, alt_u16 Yposstart,alt_u16 Xposend, alt_u16 Yposend);
+/*----------------------------------------------------
+ * Function: void LCD_Clear(alt_u16 Color)
+ * Purpose : to clear the LCD
  * Return  : none
  *--------------------------------------------------*/
 void LCD_Clear(alt_u16 Color);
-
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void LCD_DrawPoint(alt_u16 x,alt_u16 y,
+ *           alt_u16 color )
+ * Purpose : to draw a point on the LCD
  * Return  : none
  *--------------------------------------------------*/
-
 void LCD_DrawPoint(alt_u16 x,alt_u16 y,alt_u16 color );
-
-void vid_set_pixel(int horiz, int vert, unsigned int color);
-
-void LCD_SetRect(alt_u16 Xposstart, alt_u16 Yposstart,alt_u16 Xposend, alt_u16 Yposend);
-
+/*----------------------------------------------------
+ * Function: void LCD_DrawRect(alt_u16 xs,alt_u16 ys,
+ *           alt_u16 xe,alt_u16 ye,alt_u16 color )
+ * Purpose : to draw a rect
+ * Return  : none
+ *--------------------------------------------------*/
 void LCD_DrawRect(alt_u16 xs,alt_u16 ys,alt_u16 xe,alt_u16 ye,alt_u16 color );
-
+/*----------------------------------------------------
+ * Function: void vid_set_pixel(int horiz, int vert,
+ * unsigned int color)
+ * Purpose : Is used by the pirnt_string function 
+ *           to filter the passed color
+ * Return  : none
+ *--------------------------------------------------*/
+void vid_set_pixel(int horiz, int vert, unsigned int color);
+/*----------------------------------------------------
+ * Function: void LCD_Init()
+ * Purpose : to initialise the LCD
+ * Return  : none
+ *--------------------------------------------------*/
+void LCD_Init (void);
 
 #ifdef __cplusplus
 }

@@ -1,8 +1,9 @@
-/* File    : touch_isr.h
- * Author  :
- * Date    :
+/*----------------------------------------------------
+ * File    : gui.c
+ * Author  : Dennis Aeschbacher & Andreas Frei
+ * Date    : Aug. 14 2020
  * Company : Institute of Microelectronics (IME) FHNW
- * Content :
+ * Content : GUI design of the different menus
  *--------------------------------------------------*/
 #ifndef __TOUCH_ISR_H__
 #define __TOUCH_ISR_H__
@@ -17,29 +18,24 @@
 #include <sys/alt_alarm.h>
 
 
-/*
- * Define
- */
-
-
 #ifdef __cplusplus
 extern "C"
 {
 #endif /* __cplusplus */
 
-
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void touch_isr(void * context)
+ * Purpose : Is called by the touch interrupt and reads
+ * 			 out the x y coordinates of the touch
  * Return  : none
  *--------------------------------------------------*/
 void touch_isr(void * context);
-
+/*----------------------------------------------------
+ * Function: void touch_init(void* context)
+ * Purpose : Initializes the touch pen irq
+ * Return  : none
+ *--------------------------------------------------*/
 void touch_init(void* context);
-
-void get_xy (void * context);
-
-
 
 #ifdef __cplusplus
 }

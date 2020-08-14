@@ -1,10 +1,10 @@
-obj/default/main.o: main.c ../digital_Theremin_bsp/system.h \
- ../digital_Theremin_bsp/linker.h \
+obj/default/main.o: main.c graphics/arial_22.h \
+ ../digital_Theremin_bsp/system.h ../digital_Theremin_bsp/linker.h \
+ ../digital_Theremin_bsp//HAL/inc/alt_types.h \
  ../digital_Theremin_bsp//drivers/inc/altera_avalon_pio_regs.h \
  ../digital_Theremin_bsp//HAL/inc/io.h \
  ../digital_Theremin_bsp//HAL/inc/alt_types.h \
  ../digital_Theremin_bsp//drivers/inc/LT24_Controller.h \
- ../digital_Theremin_bsp//HAL/inc/alt_types.h \
  ../digital_Theremin_bsp//drivers/inc/LT24_Controller_regs.h \
  ../digital_Theremin_bsp//drivers/inc/altera_avalon_pio_regs.h \
  ../digital_Theremin_bsp//drivers/inc/LT24_Controller_regs.h \
@@ -20,8 +20,7 @@ obj/default/main.o: main.c ../digital_Theremin_bsp/system.h \
  ../digital_Theremin_bsp//HAL/inc/sys/alt_llist.h \
  ../digital_Theremin_bsp//HAL/inc/priv/alt_dev_llist.h \
  ../digital_Theremin_bsp//drivers/inc/altera_up_avalon_audio_and_video_config_regs.h \
- graphics/simple_text.h graphics/bahnschriftCondensed_22.h \
- graphics/bahnschriftCondensed_22.h touch/touch_isr.h \
+ graphics/simple_text.h graphics/arial_22.h touch/touch_isr.h \
  ../digital_Theremin_bsp//drivers/inc/altera_avalon_spi.h \
  ../digital_Theremin_bsp//drivers/inc/altera_avalon_spi_regs.h \
  ../digital_Theremin_bsp//HAL/inc/sys/alt_irq.h \
@@ -32,9 +31,13 @@ obj/default/main.o: main.c ../digital_Theremin_bsp/system.h \
  graphics/simple_text.h \
  ../digital_Theremin_bsp//drivers/inc/pitch_generation.h
 
+graphics/arial_22.h:
+
 ../digital_Theremin_bsp/system.h:
 
 ../digital_Theremin_bsp/linker.h:
+
+../digital_Theremin_bsp//HAL/inc/alt_types.h:
 
 ../digital_Theremin_bsp//drivers/inc/altera_avalon_pio_regs.h:
 
@@ -43,8 +46,6 @@ obj/default/main.o: main.c ../digital_Theremin_bsp/system.h \
 ../digital_Theremin_bsp//HAL/inc/alt_types.h:
 
 ../digital_Theremin_bsp//drivers/inc/LT24_Controller.h:
-
-../digital_Theremin_bsp//HAL/inc/alt_types.h:
 
 ../digital_Theremin_bsp//drivers/inc/LT24_Controller_regs.h:
 
@@ -78,9 +79,7 @@ audio/audio.h:
 
 graphics/simple_text.h:
 
-graphics/bahnschriftCondensed_22.h:
-
-graphics/bahnschriftCondensed_22.h:
+graphics/arial_22.h:
 
 touch/touch_isr.h:
 

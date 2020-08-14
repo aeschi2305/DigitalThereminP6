@@ -1,8 +1,9 @@
-/* File    : audio.h
- * Author  :
- * Date    :
+/*----------------------------------------------------
+ * File    : audio.h
+ * Author  : Andreas Frei
+ * Date    : Aug. 14 2020
  * Company : Institute of Microelectronics (IME) FHNW
- * Content :
+ * Content : Initialize the codec wm8731 and set the volume
  *--------------------------------------------------*/
 #ifndef __AUDIO_H__
 #define __AUDIO_H__
@@ -17,8 +18,6 @@
 #include "alt_types.h"
 
 
-
-
 #ifdef __cplusplus
 extern "C"
 {
@@ -29,11 +28,18 @@ extern "C"
  */
 #define altera_up_avalon_audio_and_video_config_INSTANCE(name, device) extern int alt_no_storage
 #define altera_up_avalon_audio_and_video_config_INIT(name, device) while (0)
-
+/*----------------------------------------------------
+ * Function: void codec_wm8731_init(void)
+ * Purpose : Initialize the codec wm8731
+ * Return  : none
+ *--------------------------------------------------*/
 void codec_wm8731_init(void);
-
+/*----------------------------------------------------
+ * Function: void set_vol(alt_u32 vol_gain)
+ * Purpose : The volume can be adjusted in 10 levels with the vol_gain_array
+ * Return  : none
+ *--------------------------------------------------*/
 void set_vol(alt_u32 vol_gain);
-
 
 #ifdef __cplusplus
 }

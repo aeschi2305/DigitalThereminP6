@@ -1,17 +1,20 @@
 /*----------------------------------------------------
- * File    : touch_isr.c
- * Author  :
- * Date    : Jun 18 2020
+ * File    : gui.c
+ * Author  : Dennis Aeschbacher & Andreas Frei
+ * Date    : Aug. 14 2020
  * Company : Institute of Microelectronics (IME) FHNW
- * Content :
+ * Content : GUI design of the different menus
  *--------------------------------------------------*/
 
 #include "touch_isr.h"
+
 #define DEBUG_OUT(format, arg...)
 #define ACTIVE_DELAY_TIME   (alt_ticks_per_second()/4)
+
 const alt_u8 CommandGetX = 0x92;
 const alt_u8 CommandGetY = 0xD2;
 const alt_u8 pen_IRS_enable = 0x82;
+
 typedef struct {
 	  alt_u16 x_coord;
 	  alt_u16 y_coord;
@@ -20,17 +23,15 @@ typedef struct {
   }XY;
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void touch_isr(void * context)
+ * Purpose : Is called by the touch interrupt and reads
+ * 			 out the x y coordinates of the touch
  * Return  : none
  *--------------------------------------------------*/
 void touch_isr(void * context)
 {
 
-	alt_ic_irq_disable(TOUCH_PANEL_PEN_IRQ_N_IRQ_INTERRUPT_CONTROLLER_ID,TOUCH_PANEL_PEN_IRQ_N_IRQ);
-	//Flag touched
-	//alt_u8* touched = (alt_u8*)context;
-	//*touched = 1;
+	alt_ic_irq_disable(TOUCH_PANEL_PEN_IRQ_N_IRQ_INTERRUPT_CONTROLLER_ID,TOUCH_PANEL_PEN_IRQ_N_IRQ);//disable Interrupt
 	printf("touched!\n");
 
 	volatile XY* xy = (XY*)context;
@@ -40,15 +41,14 @@ void touch_isr(void * context)
 	volatile alt_u8 high_byte, low_byte;
 	alt_u8 data8;
     // x
-	//alt_ic_irq_disable(TOUCH_PANEL_PEN_IRQ_N_IRQ_INTERRUPT_CONTROLLER_ID,TOUCH_PANEL_PEN_IRQ_N_IRQ);
-    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, sizeof(CommandGetX), &CommandGetX, 0, 0,ALT_AVALON_SPI_COMMAND_MERGE);
-    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(high_byte), (alt_u8*)&high_byte,ALT_AVALON_SPI_COMMAND_MERGE);
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, sizeof(CommandGetX), &CommandGetX, 0, 0,ALT_AVALON_SPI_COMMAND_MERGE);//Command for reading the X coordinate
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(high_byte), (alt_u8*)&high_byte,ALT_AVALON_SPI_COMMAND_MERGE);//Reading the X coordinates
     if (result != sizeof(high_byte)){
         printf(("[TOUCH] failed to get x\n row32"));
         return;
     }
 
-    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(low_byte), (alt_u8*)&low_byte,ALT_AVALON_SPI_COMMAND_TOGGLE_SS_N);
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(low_byte), (alt_u8*)&low_byte,ALT_AVALON_SPI_COMMAND_TOGGLE_SS_N);//Reading the X coordinates
 
     if (result != sizeof(low_byte)){
         printf(("[TOUCH] failed to get x\n row39"));
@@ -58,15 +58,15 @@ void touch_isr(void * context)
     ResponseX = (high_byte << 8) | low_byte;
 
     // y
-    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, sizeof(CommandGetY), &CommandGetY, 0, 0, ALT_AVALON_SPI_COMMAND_MERGE);
-    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(high_byte), (alt_u8*)&high_byte, ALT_AVALON_SPI_COMMAND_MERGE);
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, sizeof(CommandGetY), &CommandGetY, 0, 0, ALT_AVALON_SPI_COMMAND_MERGE);//Command for reading the Y coordinate
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(high_byte), (alt_u8*)&high_byte, ALT_AVALON_SPI_COMMAND_MERGE);//Reading the Y coordinates
 
     if (result != sizeof(high_byte)){
         printf(("[TOUCH] failed to get x\n row50"));
         return;
     }
 
-    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(low_byte), (alt_u8*)&low_byte,ALT_AVALON_SPI_COMMAND_TOGGLE_SS_N);
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(low_byte), (alt_u8*)&low_byte,ALT_AVALON_SPI_COMMAND_TOGGLE_SS_N);//Reading the Y coordinates
 
     if (result != sizeof(low_byte)){
         printf(("[TOUCH] failed to get x\n row57"));
@@ -80,7 +80,7 @@ void touch_isr(void * context)
     xy->x_coord = (ResponseX >> 3 ) & 0xFFF;  // 12 bits
     xy->y_coord = (ResponseY >> 3 ) & 0xFFF;  // 12 bits
 
-    if((xy->x_coord == 0 || xy->y_coord == 0) || (alt_nticks() < xy->next_active_time) ){
+    if((xy->x_coord == 0 || xy->y_coord == 0) || (alt_nticks() < xy->next_active_time) ){//Debouncing and 0 detection
     	xy->enable_xy = 0;
     }else{
     	xy->enable_xy = 1;
@@ -99,18 +99,13 @@ void touch_isr(void * context)
 
     //xy->next_active_time = alt_nticks() + ACTIVE_DELAY_TIME;
 }
-
-
-
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void touch_init(void* context)
+ * Purpose : Initializes the touch pen irq
  * Return  : none
  *--------------------------------------------------*/
-
 void touch_init(void* context)
 {
-	//
 	//  - Enable touch pen irg.
 	IOWR_ALTERA_AVALON_PIO_IRQ_MASK(TOUCH_PANEL_PEN_IRQ_N_BASE, 0x01);
 
@@ -119,15 +114,7 @@ void touch_init(void* context)
 
 	//  Register the ISR:
 	alt_ic_isr_register(TOUCH_PANEL_PEN_IRQ_N_IRQ_INTERRUPT_CONTROLLER_ID, TOUCH_PANEL_PEN_IRQ_N_IRQ, touch_isr, context, 0x0);
-
 }
 
-void get_xy (void * context)
-{
 
-
-
-
-
-}
 

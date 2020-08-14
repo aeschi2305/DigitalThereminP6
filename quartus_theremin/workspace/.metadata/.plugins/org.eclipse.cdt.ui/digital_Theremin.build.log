@@ -1,9 +1,39 @@
-09:38:07 **** Incremental Build of configuration Nios II for project digital_Theremin ****
+14:18:22 **** Incremental Build of configuration Nios II for project digital_Theremin ****
 make all 
 Info: Building ../digital_Theremin_bsp/
 C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../digital_Theremin_bsp/
+makefile:599: Warning: SOPC File D:/GitHub/Projekt6/DigitalTheremin/DigitalThereminP6/quartus_theremin/digital_theremin.sopcinfo could not be found.
 [BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../digital_Theremin_bsp//HAL/inc -I../digital_Theremin_bsp/ -I../digital_Theremin_bsp//drivers/inc -Iaudio -Igraphics -Itouch  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+main.c: In function 'alarm_callback':
+main.c:54:17: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  return context = 50;
+                 ^
+main.c:54:9: warning: return makes integer from pointer without a cast [-Wint-conversion]
+  return context = 50;
+         ^
+main.c: In function 'main':
+main.c:183:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+      printf("freq pitch %d\n", read_freq_pitch());
+             ^
+main.c:183:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+main.c:184:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+      printf("gli_delay register %d\n", read_delay_gli());
+             ^
+main.c:184:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+main.c:192:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+      printf("gli_delay register %d\n", read_delay_gli());
+             ^
+main.c:192:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'alt_u32 {aka long unsigned int}' [-Wformat=]
+Info: Linking digital_Theremin.elf
+nios2-elf-g++  -T'../digital_Theremin_bsp//linker.x' -msys-crt0='../digital_Theremin_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../digital_Theremin_bsp/   -Wl,-Map=digital_Theremin.map   -O0 -g -Wall   -mhw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o digital_Theremin.elf obj/default/audio/audio.o obj/default/graphics/arial_22.o obj/default/graphics/gui.o obj/default/graphics/simple_text.o obj/default/main.o obj/default/touch/touch_isr.o -lm -msys-lib=m
+nios2-elf-insert digital_Theremin.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --id 1 --sidp 0xa0010c8 --timestamp 1597062613 --stderr_dev jtag --stdin_dev jtag --stdout_dev jtag --sopc_system_name digital_theremin --quartus_project_dir "C:/Users/andre/OneDrive/Dokumente/GitHub/DigitalThereminP6/quartus_theremin" --jdi ../..//output_files/digital_theremin.jdi
+Info: (digital_Theremin.elf) 93 KBytes program size (code + initialized data).
+Info:                        65442 KBytes free for stack + heap.
+Info: Creating digital_Theremin.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source digital_Theremin.elf >digital_Theremin.objdump
 [digital_Theremin build complete]
 
-09:38:08 Build Finished (took 1s.21ms)
+14:18:25 Build Finished (took 2s.78ms)
 

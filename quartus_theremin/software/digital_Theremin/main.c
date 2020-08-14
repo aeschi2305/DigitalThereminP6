@@ -1,11 +1,12 @@
 /*----------------------------------------------------
- * File    : main.c
- * Author  :
- * Date    : 7. August 2020
+ * File    : gui.c
+ * Author  : Dennis Aeschbacher & Andreas Frei
+ * Date    : Aug. 14 2020
  * Company : Institute of Microelectronics (IME) FHNW
- * Content :
+ * Content : Control of the Digital Theremin
  *--------------------------------------------------*/
 
+#include <arial_22.h>
 #include <stdio.h>
 #include "system.h"
 #include "altera_avalon_pio_regs.h"
@@ -17,17 +18,12 @@
 #include "Volume_generation.h"
 #include "audio.h"
 #include "simple_text.h"
-#include "bahnschriftCondensed_22.h"
 #include "touch_isr.h"
 #include "gui.h"
 #include "sys/alt_alarm.h"
 
-//#define RED 0xf800
-//#define GREEN 0x07e0
-//#define BLUE 0x001f
-//#define BLACK  0x0000
+
 #define WHITE 0xffff
-//#define GREY 0x62CB//0xBDBD
 #define ACTIVE_DELAY_TIME_1   (alt_ticks_per_second()/60)
 
 alt_alarm my_alarm, vol_alarm;
@@ -79,26 +75,19 @@ int main() {
 	draw_main_screen();
 	printf("Hello from Nios II!\n");
 
-	//set alarm vol
-
-
 	while (1) {
 
-		if (xy.enable_xy == 1) {
+		if (xy.enable_xy == 1) { //Debouncing of the touch
 			xy.enable_xy = 0;
-
 			switch (state) {
 			//******main state**********************************************************************
 			case ST_main:
 				if (xy.y_coord <= 1400) { //Coordinates for calibration
 					state = ST_cali;
-
 					LCD_Clear(WHITE);
 					draw_calibrating_screen(cntrl_reg_pitch ^ 0x02,cntrl_reg_vol ^0x02);
 					cali_enable = 1;
-
 					usleep(1000000);
-
 					LCD_Clear(WHITE);
 					draw_calibrating_screen_done();
 				} else if (xy.y_coord <= 2800) { //Coordinates for volume state
@@ -170,7 +159,7 @@ int main() {
 					draw_penta_on_off(cntrl_reg_pitch);
 				} else if ((xy.y_coord >= 1200) && (xy.x_coord >= 1300)) { //Coordinates for display ton
 					state = ST_display_ton;
-					//Configure alarm for 1 seconds
+					//Configure alarm for 100ms seconds
 					if (alt_alarm_start(&my_alarm, 100, alarm_callback, NULL) < 0) {
 						printf("No System Clock Available\n");
 					}
@@ -218,7 +207,7 @@ int main() {
 					draw_glissando_on_off(cntrl_reg_pitch & 0x01);
 
 				}
-				if ((xy.y_coord >= 2800) && (xy.x_coord > 1100))
+				if ((xy.y_coord >= 2800) && (xy.x_coord > 1100)) //Coordinates for musical scale setting(Tonleiter)
 				{
 					alt_alarm_stop(&my_alarm);
 					cntrl_reg_pitch = cntrl_reg_pitch ^ 4;

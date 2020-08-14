@@ -1,0 +1,123 @@
+/*----------------------------------------------------
+ * File    : gui.c
+ * Author  : Dennis Aeschbacher & Andreas Frei
+ * Date    : Aug. 14 2020
+ * Company : Institute of Microelectronics (IME) FHNW
+ * Content : GUI design of the different menus
+ *--------------------------------------------------*/
+
+#include "touch_isr.h"
+
+#define DEBUG_OUT(format, arg...)
+#define ACTIVE_DELAY_TIME   (alt_ticks_per_second()/4)
+
+const alt_u8 CommandGetX = 0x92;
+const alt_u8 CommandGetY = 0xD2;
+const alt_u8 pen_IRS_enable = 0x82;
+
+typedef struct {
+	  alt_u16 x_coord;
+	  alt_u16 y_coord;
+	  alt_u8 enable_xy;
+	  alt_u32 next_active_time;
+  }XY;
+
+/*----------------------------------------------------
+ * Function: void touch_isr(void * context)
+ * Purpose : Is called by the touch interrupt and reads
+ * 			 out the x y coordinates of the touch
+ * Return  : none
+ *--------------------------------------------------*/
+void touch_isr(void * context)
+{
+
+	alt_ic_irq_disable(TOUCH_PANEL_PEN_IRQ_N_IRQ_INTERRUPT_CONTROLLER_ID,TOUCH_PANEL_PEN_IRQ_N_IRQ);//disable Interrupt
+	//Flag touched
+	//alt_u8* touched = (alt_u8*)context;
+	//*touched = 1;
+	printf("touched!\n");
+
+	volatile XY* xy = (XY*)context;
+	volatile int result;
+	volatile alt_u16 ResponseX, ResponseY;
+
+	volatile alt_u8 high_byte, low_byte;
+	alt_u8 data8;
+    // x
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, sizeof(CommandGetX), &CommandGetX, 0, 0,ALT_AVALON_SPI_COMMAND_MERGE);
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(high_byte), (alt_u8*)&high_byte,ALT_AVALON_SPI_COMMAND_MERGE);
+    if (result != sizeof(high_byte)){
+        printf(("[TOUCH] failed to get x\n row32"));
+        return;
+    }
+
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(low_byte), (alt_u8*)&low_byte,ALT_AVALON_SPI_COMMAND_TOGGLE_SS_N);
+
+    if (result != sizeof(low_byte)){
+        printf(("[TOUCH] failed to get x\n row39"));
+        return;
+    }
+
+    ResponseX = (high_byte << 8) | low_byte;
+
+    // y
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, sizeof(CommandGetY), &CommandGetY, 0, 0, ALT_AVALON_SPI_COMMAND_MERGE);
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(high_byte), (alt_u8*)&high_byte, ALT_AVALON_SPI_COMMAND_MERGE);
+
+    if (result != sizeof(high_byte)){
+        printf(("[TOUCH] failed to get x\n row50"));
+        return;
+    }
+
+    result = alt_avalon_spi_command(TOUCH_PANEL_SPI_BASE, 0, 0, 0, sizeof(low_byte), (alt_u8*)&low_byte,ALT_AVALON_SPI_COMMAND_TOGGLE_SS_N);
+
+    if (result != sizeof(low_byte)){
+        printf(("[TOUCH] failed to get x\n row57"));
+        return;
+    }
+
+
+    ResponseY = (high_byte << 8) | low_byte;
+
+
+    xy->x_coord = (ResponseX >> 3 ) & 0xFFF;  // 12 bits
+    xy->y_coord = (ResponseY >> 3 ) & 0xFFF;  // 12 bits
+
+    if((xy->x_coord == 0 || xy->y_coord == 0) || (alt_nticks() < xy->next_active_time) ){
+    	xy->enable_xy = 0;
+    }else{
+    	xy->enable_xy = 1;
+    	xy->next_active_time = alt_nticks() + ACTIVE_DELAY_TIME;
+    }
+    printf("X Koordinate: %d Y Koordinate: %d\n", xy->x_coord,xy->y_coord);
+
+
+	 //  INSERT CODE 6. Then reset that register to 0
+	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(TOUCH_PANEL_PEN_IRQ_N_BASE,0x0);
+
+    //  Reset IRQ Mask
+    IOWR_ALTERA_AVALON_PIO_IRQ_MASK(TOUCH_PANEL_PEN_IRQ_N_BASE, 0x01);
+
+    alt_ic_irq_enable(TOUCH_PANEL_PEN_IRQ_N_IRQ_INTERRUPT_CONTROLLER_ID,TOUCH_PANEL_PEN_IRQ_N_IRQ);
+
+    //xy->next_active_time = alt_nticks() + ACTIVE_DELAY_TIME;
+}
+/*----------------------------------------------------
+ * Function: void touch_init(void* context)
+ * Purpose : Initializes the touch pen irq
+ * Return  : none
+ *--------------------------------------------------*/
+void touch_init(void* context)
+{
+	//  - Enable touch pen irg.
+	IOWR_ALTERA_AVALON_PIO_IRQ_MASK(TOUCH_PANEL_PEN_IRQ_N_BASE, 0x01);
+
+	// Reset the edge capture register.
+	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(TOUCH_PANEL_PEN_IRQ_N_BASE, 0x0);
+
+	//  Register the ISR:
+	alt_ic_isr_register(TOUCH_PANEL_PEN_IRQ_N_IRQ_INTERRUPT_CONTROLLER_ID, TOUCH_PANEL_PEN_IRQ_N_IRQ, touch_isr, context, 0x0);
+}
+
+
+

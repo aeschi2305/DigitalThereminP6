@@ -1,12 +1,13 @@
 /*----------------------------------------------------
  * File    : gui.c
- * Author  :
- * Date    : Dec 18 2020
+ * Author  : Andreas Frei
+ * Date    : Aug. 14 2020
  * Company : Institute of Microelectronics (IME) FHNW
- * Content :
+ * Content : GUI design of the different menus
  *--------------------------------------------------*/
 
 #include "gui.h"
+
 #define GREY 0x4228//0xBDBD
 #define GREY_SOFT 0xCCCC
 #define RED 0xf800
@@ -20,38 +21,38 @@ alt_16 pixel_accuracy_old = 0;
 
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void draw_main_screen(void)
+ * Purpose : Draws the main screen
  * Return  : none
  *--------------------------------------------------*/
 void draw_main_screen(void)
 {
 	LCD_DrawRect(15,10,75,310,GREY);
-	vid_print_string(80,34,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Calibrate");
+	print_string(80,34,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Calibrate");
 	LCD_DrawRect(90,10,150,310,GREY);
-	vid_print_string(80,109,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+	print_string(80,109,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
 	LCD_DrawRect(165,10,225,310,GREY);
-	vid_print_string(80,184,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Play Help");
+	print_string(80,184,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Play Help");
 }
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void draw_calibrating_screen(alt_u8 cntrl_reg_pitch, alt_u8 cntrl_reg_vol)
+ * Purpose : Draws the calibration screen
  * Return  : none
  *--------------------------------------------------*/
 void draw_calibrating_screen(alt_u8 cntrl_reg_pitch, alt_u8 cntrl_reg_vol)
 {
 	alt_u8 cnt_point = 0;
-	vid_print_string(160 - get_string_width("position hands!"),109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"position hands!");
+	print_string(160 - get_string_width("position hands!"),109,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"position hands!");
 	usleep(2000000);
 	set_calibration_pitch(cntrl_reg_pitch);
 	set_calibration_vol_gen(cntrl_reg_vol);
 	LCD_Clear(WHITE);
 
 	while(((done_calibration_pitch()&2) == 2 && (done_calibration_vol_gen()&2) == 2) || cnt_point <= 5){
-		vid_print_string(160 - get_string_width("calibrating"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibrating");
+		print_string(160 - get_string_width("calibrating"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibrating");
 		for(int i = 0; i < cnt_point; i++){
-			vid_print_string((138+i*10),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,".");
+			print_string((138+i*10),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,".");
 		}
 		usleep(1000000);
 		cnt_point += 1;
@@ -63,34 +64,42 @@ void draw_calibrating_screen(alt_u8 cntrl_reg_pitch, alt_u8 cntrl_reg_vol)
 	draw_calibrating_screen_done();
 
 }
-
+/*----------------------------------------------------
+ * Function: void draw_calibrating_screen_done(void)
+ * Purpose : Draws the calibration screen done
+ * Return  : none
+ *--------------------------------------------------*/
 void draw_calibrating_screen_done(void)
 {
-	vid_print_string(160 - get_string_width("calibration"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibration");
-	vid_print_string(160 - get_string_width("done"),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"done");
+	print_string(160 - get_string_width("calibration"),50,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"calibration");
+	print_string(160 - get_string_width("done"),100,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"done");
 	LCD_DrawRect(170,10,230,110,GREY);
-	vid_print_string(244,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	print_string(244,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void draw_volume_screen(void)
+ * Purpose : Draws the volume screen done
  * Return  : none
  *--------------------------------------------------*/
 void draw_volume_screen(void)
 {
-	vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
+	print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
 	LCD_DrawRect(39,195,99,310,GREY_SOFT);
 	LCD_DrawRect(39,10,99,90,GREY);
-	vid_print_string(261,44,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+	print_string(261,44,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
 	LCD_DrawRect(39,100,99,180,GREY);
-	vid_print_string(169,55,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"~");
+	print_string(169,55,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"~");
 
 	LCD_DrawRect(175,10,235,110,GREY);
-	vid_print_string(249,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	print_string(249,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
 
-
+/*----------------------------------------------------
+ * Function: void draw_update_volume_bar(alt_u8 vol_bar)
+ * Purpose : Draws the volume bar update done
+ * Return  : none
+ *--------------------------------------------------*/
 void draw_update_volume_bar(alt_u8 vol_bar)
 {
 	alt_u8 i;
@@ -99,62 +108,76 @@ void draw_update_volume_bar(alt_u8 vol_bar)
 		LCD_DrawRect(44,(299-i*6-i*5),94,(299-i*6-i*5+6),GREEN);
 	}
 }
-
-void draw_vol_antenna_on_off(alt_u8 on_off){
+/*----------------------------------------------------
+ * Function: void draw_vol_antenna_on_off(alt_u8 on_off)
+ * Purpose : Draws the button antenna vol on off and update
+ * Return  : none
+ *--------------------------------------------------*/
+void draw_vol_antenna_on_off(alt_u8 on_off)
+{
 	if((on_off & 1) == 1){
 		LCD_DrawRect(107,10,167,310,GREEN);
-		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna on");
+		print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna on");
 	}else{
 		LCD_DrawRect(107,10,167,310,GREY);
-		vid_print_string(15,126,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna off");
+		print_string(15,126,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"vol antenna off");
 	}
 }
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void draw_help_screen(void)
+ * Purpose : Draws the help screen
  * Return  : none
  *--------------------------------------------------*/
 void draw_help_screen(void)
 {
 
 	LCD_DrawRect(15,10,75,90,GREY);
-	vid_print_string(235,34,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Set");
+	print_string(235,34,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Set");
 	LCD_DrawRect(90,110,150,310,GREY);
-	vid_print_string(15,109,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"display pitch");
+	print_string(15,109,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"display pitch");
 
 	LCD_DrawRect(170,10,230,110,GREY);
-	vid_print_string(244,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	print_string(244,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 
 }
-
-void draw_glissando_on_off(alt_u8 on_off){
+/*----------------------------------------------------
+ * Function: void draw_glissando_on_off(alt_u8 on_off)
+ * Purpose : Draws the button glissando on off and update
+ * Return  : none
+ *--------------------------------------------------*/
+void draw_glissando_on_off(alt_u8 on_off)
+{
 	if(on_off == 1){
 		LCD_DrawRect(15,110,75,310,GREEN);
-		vid_print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando on");
+		print_string(15,34,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando on");
 	}else{
 		LCD_DrawRect(15,110,75,310,GREY);
-		vid_print_string(15,34,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando off");
+		print_string(15,34,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Glissando off");
 	}
 }
 
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void draw_glissando_set(void)
+ * Purpose : Draws the glissando set screen
  * Return  : none
  *--------------------------------------------------*/
 void draw_glissando_set(void)
 {
-	vid_print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
+	print_string(10,10,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"Delay");
 	LCD_DrawRect(39,195,99,310,GREY_SOFT);
 	LCD_DrawRect(39,10,99,90,GREY);
-	vid_print_string(261,44,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
+	print_string(261,44,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"_");
 	LCD_DrawRect(39,100,99,180,GREY);
-	vid_print_string(169,55,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"~");
+	print_string(169,55,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"~");
 
 	LCD_DrawRect(175,10,235,110,GREY);
-	vid_print_string(244,194,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	print_string(244,194,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
-
+/*----------------------------------------------------
+ * Function: void draw_update_glissando_delay(alt_u8 gli_delay)
+ * Purpose : Draws the glissando delay screen
+ * Return  : none
+ *--------------------------------------------------*/
 void draw_update_glissando_delay(alt_u8 gli_delay)
 {
 	alt_u8 i;
@@ -163,21 +186,23 @@ void draw_update_glissando_delay(alt_u8 gli_delay)
 		LCD_DrawRect(44,(299-i*6-i*5),94,(299-i*6-i*5+6),GREEN);
 	}
 }
-
+/*----------------------------------------------------
+ * Function: void draw_penta_on_off(alt_u8 on_off)
+ * Purpose : Draws the button penta on off and update
+ * Return  : none
+ *--------------------------------------------------*/
 void draw_penta_on_off(alt_u8 on_off){
 	if((on_off & 4) == 4){
 		LCD_DrawRect(107,10,167,310,GREEN);
-		vid_print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic on");
+		print_string(15,126,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic on");
 	}else{
 		LCD_DrawRect(107,10,167,310,GREY);
-		vid_print_string(15,126,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic off");
+		print_string(15,126,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"pentatonic off");
 	}
 }
-
-
 /*----------------------------------------------------
- * Function:
- * Purpose :
+ * Function: void draw_display_ton(alt_u8 cntrl_reg_pitch)
+ * Purpose : Draws the display ton screen
  * Return  : none
  *--------------------------------------------------*/
 void draw_display_ton(alt_u8 cntrl_reg_pitch)
@@ -189,16 +214,21 @@ void draw_display_ton(alt_u8 cntrl_reg_pitch)
 		LCD_DrawRect(60,159,155,161,BLACK);
 		LCD_DrawRect(10,130,60,180,WHITE);
 		LCD_DrawRect(170,120,230,310,GREEN);
-		vid_print_string(20,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"penta. on");
+		print_string(20,189,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,"penta. on");
 	}
 	else
 	{
 		LCD_DrawRect(170,120,230,310,GREY);
-		vid_print_string(20,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"penta. off");
+		print_string(20,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"penta. off");
 	}
 	LCD_DrawRect(170,10,230,110,GREY);
-	vid_print_string(244,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
+	print_string(244,189,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"@");
 }
+/*----------------------------------------------------
+ * Function: void draw_display_ton_update(alt_u8 cntrl_reg_pitch)
+ * Purpose : Draws the display ton update screen
+ * Return  : none
+ *--------------------------------------------------*/
 void draw_display_ton_update(alt_u8 cntrl_reg_pitch)
 {
 	alt_u32 tmp = read_freq_pitch();
@@ -231,12 +261,12 @@ void draw_display_ton_update(alt_u8 cntrl_reg_pitch)
 			for(int i = 0; i < 4;i++){
 				display_string[i] = penta_string[index][i];
 			}
-			vid_print_string(160 - get_string_width(penta_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+			print_string(160 - get_string_width(penta_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
 		}else{
 			for(int i = 0; i < 4;i++){
 					display_string[i] = ton_string[index][i];
 				}
-			vid_print_string(160 - get_string_width(ton_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
+			print_string(160 - get_string_width(ton_string[index]),35,BLACK,&arial_22ptBitmaps,&arial_22ptDescriptors,&display_string);
 		}
 		pixel_accuracy_mean = pixel_accuracy;
 	}
