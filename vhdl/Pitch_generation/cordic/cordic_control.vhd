@@ -22,11 +22,11 @@ entity cordic_Control is
      cordic_def_freq : natural := 577000
     );
   port(
-    reset_n : in std_ulogic;
-    clk : in std_ulogic;
+    reset_n : in std_ulogic;    -- asynchronous reset
+    clk : in std_ulogic;        -- clock
     phi : out signed(N-1 downto 0);      --calculated angle for cordic processor
-    freq_dif : in signed(25 downto 0);
-    sig_freq_up_down : in std_logic_vector(1 downto 0)
+    freq_dif : in signed(25 downto 0);     --Frequency difference from frequency measurement
+    sig_freq_up_down : in std_logic_vector(1 downto 0)      --inputs for manual calibration
   );
 end entity cordic_Control;
 
@@ -55,7 +55,9 @@ signal freq_up_down_3 : std_logic_vector(1 downto 0);
 
 begin
     
-    --Registered Process--
+  ------------------------------------------------------------------------------
+  -- Registered Process
+  ------------------------------------------------------------------------------
     p_reg : process(reset_n,clk)
     begin
       if reset_n = '0' then
@@ -69,11 +71,14 @@ begin
             sig_Freq_reg <= sig_Freq_cmb;
             manual_freq_reg <= manual_freq_cmb;
 
-            --freq_up_down_1 <= sig_freq_up_down;
             freq_up_down_2 <= freq_up_down_1;
             freq_up_down_3 <= freq_up_down_1 and not freq_up_down_2;
         end if;
     end process p_reg;
+
+  ------------------------------------------------------------------------------
+  -- Combinatorial Processes
+  ------------------------------------------------------------------------------
 
     --Combinatorial Process to calculate current sawtooth and triangle angle
     p_cmb_phicalc : process(all)
@@ -112,5 +117,8 @@ begin
         phi_step <= sig_Freq_reg*clk_Period;
     end process p_cmb_stepcalc;
 
+  ------------------------------------------------------------------------------
+  -- Output assignements
+  ------------------------------------------------------------------------------
     phi <= phi_reg;
     end architecture behavioral; 

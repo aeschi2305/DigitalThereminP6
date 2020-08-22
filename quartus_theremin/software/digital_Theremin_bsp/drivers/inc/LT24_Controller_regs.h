@@ -1,9 +1,9 @@
 /*----------------------------------------------------
- * File    :
- * Author  :
- * Date    :
+ * File    : lt24_controller_regs.h
+ * Author  : Andreas Frei
+ * Date    : 14.08.2020
  * Company : Institute of Microelectronics (IME) FHNW
- * Content :
+ * Content : Register description for lt24 controller
  *--------------------------------------------------*/
 //#ifndef __LT24_CONTROLLER_REGS_H__
 #define __LT24_CONTROLLER_REGS_H__

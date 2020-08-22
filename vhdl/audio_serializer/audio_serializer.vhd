@@ -2,10 +2,10 @@
 -----------------------------------------------------
 -- Project : Digital Theremin
 -----------------------------------------------------
--- File    : cic_codec.vhd
--- Author  : andreas.frei@students.fhnw.ch
+-- File    : audio_serializer.vhd
+-- Author  : dennis.aeschbacher@students.fhnw.ch
 -----------------------------------------------------
--- Description : Test component for 1kHz square Wave
+-- Description : serializes the parallel audio data and communicates with the codec
 -----------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
@@ -18,13 +18,12 @@ entity audio_serializer is
      clk      	    : in  std_logic; -- clock
    
      -- Streaming Source
-    coe_AUD1_BCLK                     : in  std_logic;             -- export
-    coe_AUD2_DACDAT                   : out std_logic;                                        -- export
-    coe_AUD3_DACLRCK                  : in  std_logic; 
-    asi_se_ready                      : out std_logic;
-    asi_se_valid                      : in std_logic;
-    asi_se_data                       : in std_logic_vector(23 downto 0)
-               -- export
+    coe_AUD1_BCLK                     : in  std_logic;             -- Bitclock of the codec
+    coe_AUD2_DACDAT                   : out std_logic;             -- serial data connecion of the codec
+    coe_AUD3_DACLRCK                  : in  std_logic; 			   -- Left/right channel clock of the codec
+    asi_se_ready                      : out std_logic;						--ready bit of the streaming interface
+    asi_se_valid                      : in std_logic;						--valid bit of the streaming interface
+    asi_se_data                       : in std_logic_vector(23 downto 0)	--data of the streaming interface
   );
 end entity audio_serializer;
 
@@ -64,13 +63,12 @@ begin
       BCLK_reg <= BCLK_cmb;
       
 
-      if BCLK_reg(1) = '1' and BCLK_reg(0) = '0' then
+      if BCLK_reg(1) = '1' and BCLK_reg(0) = '0' then	--Shift register for serialization
         audio <= audio_reg(audio_reg'high);
         audio_reg <= audio_cmb;
       end if;
 
-      if DACLRCK_reg(0) /= DACLRCK_reg(1) then
-        
+      if DACLRCK_reg(0) /= DACLRCK_reg(1) then 		--Fills the shift register with audio data from streaming interface
         if DACLRCK_reg(0) = '1' then
           audio_reg <= streaming_data_reg;
         elsif DACLRCK_reg(0) = '0'  then
@@ -82,7 +80,7 @@ begin
       end if;
 
       asi_se_ready <= '1';
-      if emptied = true then
+      if emptied = true then 						--handles the streaming interface
         if asi_se_valid = '1' then
           streaming_data_reg <= streaming_data_cmb;
           asi_se_ready <= '0';
@@ -93,7 +91,6 @@ begin
   end process p_ser_reg;
   ------------------------------------------------------------------------------
   -- Serializer Combinatorial Process
-  -- subtracts the old input value from the new
   ------------------------------------------------------------------------------
   p_ser_cmb : process (all)
     variable sine_tmp : std_logic_vector(23 downto 0);

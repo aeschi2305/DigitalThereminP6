@@ -28,13 +28,13 @@ entity filter_vol is
      valid          : out std_logic;  --Control Signals
      ready          : in std_logic;
 
-     cic1o          : out signed(cic1Bits-1 downto 0);
-     cic2o          : out signed(cic2Bits-1 downto 0);
-     cic3o          : out signed(cic3Bits-1 downto 0);
+     cic1o          : out signed(cic1Bits-1 downto 0);  --output of the first cic filter
+     cic2o          : out signed(cic2Bits-1 downto 0);  --output of the second cic filter
+     cic3o          : out signed(cic3Bits-1 downto 0);  --output of the third cic filter
 
-     cic1_en        : out boolean;
-     cic2_en        : out boolean;
-     cic3_en        : out boolean
+     cic1_en        : out boolean;      --enable of the first cic filter
+     cic2_en        : out boolean;      --enable of the second cic filter
+     cic3_en        : out boolean       --enable of the third cic filter
 
   );
 end entity filter_vol;

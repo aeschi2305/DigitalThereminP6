@@ -32,7 +32,7 @@ void draw_main_screen(void)
 	LCD_DrawRect(90,10,150,310,GREY);
 	print_string(80,109,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Volume");
 	LCD_DrawRect(165,10,225,310,GREY);
-	print_string(80,184,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Play Help");
+	print_string(80,184,WHITE_32,&arial_22ptBitmaps,&arial_22ptDescriptors,"Playing-Aids");
 }
 
 /*----------------------------------------------------

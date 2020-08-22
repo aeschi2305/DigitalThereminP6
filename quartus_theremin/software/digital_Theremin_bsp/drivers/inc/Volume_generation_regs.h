@@ -1,9 +1,9 @@
 /*----------------------------------------------------
- * File    :
- * Author  :
- * Date    :
+ * File    : Volume_generation_regs.h
+ * Author  : Andreas Frei
+ * Date    : 14.08.2020
  * Company : Institute of Microelectronics (IME) FHNW
- * Content :
+ * Content : Register description for volume generation
  *--------------------------------------------------*/
 //#ifndef __VOLUME_DUMMY_REGS_H__
 #define __VOLUME_GENERATION_REGS_H__

@@ -21,18 +21,18 @@ entity freq_meas_vol is
     dat_len_avl : natural := 32
   );
   port(
-    reset_n       : in std_ulogic;
-    clk           : in std_ulogic;
+    reset_n       : in std_ulogic;    --asynchronous reset
+    clk           : in std_ulogic;    --clock
     -- Slave Port
-    sfm_write     : in std_logic;
-    sfm_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
-    sfm_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
+    sfm_write     : in std_logic;   --write signal of memory mapped bus
+    sfm_writedata : in std_logic_vector(dat_len_avl-1 downto 0);  --writedata signal of memory mapped bus
+    sfm_readdata  : out std_logic_vector(dat_len_avl-1 downto 0); --readdata signal of memory mapped bus
 
-    audio_out     : in signed(sine_N-1 downto 0); 
-    freq_diff     : out signed(N+Qprec-1 downto 0);
-    volume_out    : out unsigned(17 downto 0);
-    volume_enable : out std_logic;
-    meas_enable  : in boolean
+    audio_out     : in signed(sine_N-1 downto 0);    --audio signal to be measured
+    freq_diff     : out signed(N+Qprec-1 downto 0);  -- calculated frequency difference for cordic control
+    volume_out    : out unsigned(17 downto 0);    --volume value for pitch generation
+    volume_enable : out std_logic;                --enable for volume value
+    meas_enable  : in boolean       --enable for the signal from the filter
   );
 end entity freq_meas_vol;
 
@@ -180,7 +180,7 @@ end component CalGlis_vol;
 
 begin
   ------------------------------------------------------------------------------
-  -- Registerd Process
+  -- Registerd Process to control memory mapped bus
   ------------------------------------------------------------------------------
 
   p_wr : process(reset_n,clk)
@@ -199,12 +199,17 @@ begin
      end if;
    end process p_wr;
 
+  ------------------------------------------------------------------------------
+  -- Combinatorial Process to control memory mapped bus
+  ------------------------------------------------------------------------------
  p_rd : process(all)
  begin
     sfm_readdata <= cntrl_reg;
  end process p_rd;
 
-
+  ------------------------------------------------------------------------------
+  -- Registerd Process to control goldschmidt 1 initialisation and start
+  ------------------------------------------------------------------------------
 
 p_gold_1 : process(reset_n,clk)
   begin
@@ -231,6 +236,10 @@ p_gold_1 : process(reset_n,clk)
       end if;
     end if;
 end process p_gold_1;
+
+  ------------------------------------------------------------------------------
+  -- Registerd Process to control goldschmidt 2 initialisation and start
+  ------------------------------------------------------------------------------
 
 p_gold_2 : process(reset_n,clk)
   begin
@@ -263,6 +272,11 @@ p_gold_2 : process(reset_n,clk)
     end if;
 end process p_gold_2;
 
+  ------------------------------------------------------------------------------
+  -- Combinatorial Process
+  -- calculates the Frequency for the second division in Goldschmidt 2
+  ------------------------------------------------------------------------------
+
 p_cmb : process(all)
   begin
     if freq(N+Qprec-1 downto Qprec) > offset then
@@ -277,11 +291,8 @@ p_cmb : process(all)
 
 end process p_cmb;
 
---delay <= to_integer(unsigned(delay_reg));
 
-  ------------------------------------------------------------------------------
-  -- Combinatorial Process
-  ------------------------------------------------------------------------------
+
   
   ------------------------------------------------------------------------------
   -- Component assignements

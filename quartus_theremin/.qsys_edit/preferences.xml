@@ -8,7 +8,7 @@
    <name preferredWidth="268" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
+ <library expandedCategories="Project/digital_theremin,Library,Project" />
  <window width="2418" height="1318" x="2391" y="-9" />
  <generation synthesis="VHDL" />
 </preferences>

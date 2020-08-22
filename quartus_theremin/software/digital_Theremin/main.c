@@ -33,7 +33,7 @@ alt_u8 cntrl_reg_vol = 1;
 
 
 typedef enum {
-	ST_main, ST_cali, ST_volume, ST_play_help, ST_glissando_set, ST_display_ton
+	ST_main, ST_cali, ST_volume, ST_playing_aids, ST_glissando_set, ST_display_ton
 } state;
 
 typedef struct {
@@ -97,7 +97,7 @@ int main() {
 					draw_update_volume_bar(vol_bar);
 					draw_vol_antenna_on_off(cntrl_reg_vol);
 				} else if (xy.y_coord > 2800) { //Coordinates for play help
-					state = ST_play_help;
+					state = ST_playing_aids;
 					LCD_Clear(WHITE);
 					draw_help_screen();
 					draw_glissando_on_off(cntrl_reg_pitch & 0x01);
@@ -141,7 +141,7 @@ int main() {
 				}
 				break;
 			//******play help state******************************************************
-			case ST_play_help:
+			case ST_playing_aids:
 				if ((xy.y_coord >= 2800) && (xy.x_coord <= 1100)) { //Coordinates for return to main
 					state = ST_main;
 					LCD_Clear(WHITE);
@@ -169,7 +169,7 @@ int main() {
 			//******glissando seting state**********************************************
 			case ST_glissando_set:
 				if ((xy.y_coord >= 2800) && (xy.x_coord <= 1100)) { //Coordinates for return play help
-					state = ST_play_help;
+					state = ST_playing_aids;
 					LCD_Clear(WHITE);
 					draw_help_screen();
 					draw_glissando_on_off(cntrl_reg_pitch & 0x01);
@@ -200,7 +200,7 @@ int main() {
 			//******display ton state****************************************************
 			case ST_display_ton:
 				if ((xy.y_coord >= 2800) && (xy.x_coord <= 1100)) { //Coordinates for return play help
-					state = ST_play_help;
+					state = ST_playing_aids;
 					alt_alarm_stop(&my_alarm);
 					LCD_Clear(WHITE);
 					draw_help_screen();

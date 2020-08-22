@@ -25,8 +25,8 @@ entity cic_calc is
      -- Streaming Source
      cic_out      : out signed(Bout-1 downto 0);	--Output signal
 
-     enable_out : out boolean;
-     enable_in  : in boolean
+     enable_out : out boolean;  --enables the output
+     enable_in  : in boolean    --enables the input
   );
 end entity cic_calc;
 
@@ -70,7 +70,7 @@ begin
 
   ------------------------------------------------------------------------------
   -- Integrator Combinatorial Process
-  -- adds up the input over time
+  -- adds up the input over time with the previous result
   -----------------------------------------------------------------------------
   p_integrator_cmb : process (all)
   begin
@@ -84,7 +84,6 @@ begin
 
   ------------------------------------------------------------------------------
   -- Comb Registerd Process 
-  -- Also handles the communication with the STEAMING SOURCE INTERFACE
   ------------------------------------------------------------------------------
   p_comb_reg : process (reset_n, clk)
   begin

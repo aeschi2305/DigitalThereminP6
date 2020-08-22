@@ -2,10 +2,10 @@
 -----------------------------------------------------
 -- Project : Digital Theremin
 -----------------------------------------------------
--- File    : cic_streaming.vhd
+-- File    : amplifier.vhd
 -- Author  : dennis.aeschbacher@students.fhnw.ch
 -----------------------------------------------------
--- Description : CIC-Filter to Streaming Interface Converter
+-- Description : Compenstates for the CIC-Gain and apply the volume value from volume generation
 -----------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
@@ -19,16 +19,16 @@ entity amplifier is
   	port (
   	 reset_n  	    : in  std_ulogic; -- asynchronous reset
      clk      	    : in  std_ulogic; -- clock
-     filter_out 	  : in signed(N-1 downto 0);				--Input signal
+     filter_out 	  : in signed(N-1 downto 0);				--Input signal (audio data)
      -- Streaming Source
      streaming     : out std_logic_vector(M-1 downto 0);	--Output signal
      valid        : out std_logic;	--Control Signals
      ready        : in std_logic;	
 
-     volume_out    : in unsigned(17 downto 0);
-     volume_enable : in std_logic;
+     volume_out    : in unsigned(17 downto 0);  --volume value
+     volume_enable : in std_logic;              --enable for volume value
 
-     enable         : in std_ulogic
+     enable         : in std_ulogic     --enable for audio data
   );
 end entity amplifier;
 
@@ -54,6 +54,11 @@ signal count_reg : integer range 0 to 5;
 signal count_cmb : integer range 0 to 6;
 begin
 
+  ------------------------------------------------------------------------------
+  -- Registered Process
+  -- Amplifies the audio Signal by the value from volumegeneration and compensates CIC-Gain
+  ------------------------------------------------------------------------------
+
   p_reg : process (reset_n, clk)
   
   begin
@@ -63,17 +68,17 @@ begin
           count_reg <= 0;
           volume <= (others => '0');
   elsif rising_edge(clk) then
-        if enable = '1' then
+        if enable = '1' then                  --loads registers when enabled by filter
           audio_reg <= audio_cmb;
           audio_s_reg(0) <= filter_out;
           audio_s_reg(1) <= audio_s_reg(0);
          end if;
-        if volume_enable = '1' then
+        if volume_enable = '1' then         --loads volume value when enabled by volume generation
           volume <= volume_out;
         end if;
-        if (audio_s_reg(0) >= zero and audio_s_reg(1) <= zero) or (audio_s_reg(1) >= zero and audio_s_reg(0) <= zero) then
+        if (audio_s_reg(0) >= zero and audio_s_reg(1) <= zero) or (audio_s_reg(1) >= zero and audio_s_reg(0) <= zero) then    --Zero-Cross Detection to apply volume value to the audio data
           if volume = zero_vol then
-            if count_reg = 5 then
+            if count_reg = 5 then               
               volume_actual <= (others => '0');
               count_reg <= 0;
             else
@@ -89,6 +94,10 @@ begin
   end process p_reg;
 
 
+  ------------------------------------------------------------------------------
+  -- Combinatorial Process
+  -- combinatorial calculations for the amplification
+  ------------------------------------------------------------------------------
 
   p_comb_cmb : process (all)
   variable cic_gain  : signed(N+cic_gain_const'length-1 downto 0);
@@ -101,12 +110,9 @@ begin
 
     audio_tmp_2 := audio_tmp * signed('0' & volume_actual);
 
-    --audio_tmp_3 := std_logic_vector(audio_tmp_2(audio_tmp_2'high-2 downto audio_tmp_2'high-audio_tmp_3'length-1));
-
     audio_signed <= audio_tmp_2(audio_tmp_2'high-1 downto audio_tmp_2'high-audio_signed'length);
 
     audio_cmb <= not audio_signed(audio_signed'high) & std_logic_vector(audio_signed(audio_signed'high-1 downto 0));
-    --audio_cmb <= audio_tmp_3;
 
     count_cmb <= count_reg + 1;
 

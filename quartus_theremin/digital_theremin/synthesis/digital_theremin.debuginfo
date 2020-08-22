@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="digital_theremin" kind="system" version="17.1" fabric="QSYS">
  <!-- Format version 17.1 590 (Future versions may contain additional information.) -->
- <!-- 2020.08.10.14:31:20 -->
+ <!-- 2020.08.22.12:20:21 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1597062613</value>
+  <value>1598091552</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -9474,6 +9474,14 @@ the requested settings for a module instance. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
+  <parameter name="cordic_def_freq">
+   <type>int</type>
+   <value>562000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -18746,7 +18754,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1597062613</value>
+   <value>1598091552</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -18766,7 +18774,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1597062613</value>
+   <value>1598091552</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -18782,7 +18790,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1597062613</value>
+   <value>1598091552</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -22558,6 +22566,14 @@ the requested settings for a module instance. -->
   <parameter name="cic3Bits">
    <type>int</type>
    <value>28</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="cordic_def_freq">
+   <type>int</type>
+   <value>532000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -37362,5 +37378,5 @@ parameters are a RESULT of the module parameters. -->
   <version>17.1</version>
  </plugin>
  <reportVersion>17.1 590</reportVersion>
- <uniqueIdentifier>7CB0C2C4752000000173D859AFFD</uniqueIdentifier>
+ <uniqueIdentifier>7CB0C2C475200000017415AE0357</uniqueIdentifier>
 </EnsembleReport>

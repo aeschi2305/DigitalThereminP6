@@ -17,8 +17,8 @@ generic (
     O : natural := 27 --Number of Output Bits
 );
 port (
-  clk        : in  std_logic;
-  reset_n       : in  std_logic;
+  clk        : in  std_logic;     --clock
+  reset_n       : in  std_logic;      --asynchronous reset
   en_in        : in boolean;                  -- input enable
   en_out       : out std_ulogic;                 -- output enable
   i_data       : in  signed( M-1 downto 0);   -- data input
@@ -28,7 +28,7 @@ end entity fir_filter_vol;
 architecture rtl of fir_filter_vol is
 type coeff_type is array (0 to N-1) of signed (O-1 downto 0);
 constant addstages : natural := N-1; -- Number of summation stages
-constant coeffs : coeff_type :=  ("000001000010110111",
+constant coeffs : coeff_type :=  ("000001000010110111", --fir filter coefficients
                                   "000001011111110011",
                                   "000010010110101010",
                                   "000011010100011011",
@@ -59,6 +59,10 @@ signal count_cmb         : natural range 0 to 6;
 
 begin
 
+  ------------------------------------------------------------------------------
+  -- Registered Process
+  ------------------------------------------------------------------------------
+
  p_reg : process(reset_n,clk)
     begin
         if reset_n = '0' then
@@ -77,6 +81,11 @@ begin
         end if;
     end process p_reg;
 
+  ------------------------------------------------------------------------------
+  -- Combinatorial Process
+  -- applies the fir filter to the input signal
+  ------------------------------------------------------------------------------
+
 p_cmb : process(all)
     variable mult   : t_mult;
     variable sum    : signed(O*2-1 downto 0);
@@ -92,6 +101,10 @@ p_cmb : process(all)
         p_data_out_cmb <= sum(O*2-1 downto O);
     
     end process p_cmb;
+
+  ------------------------------------------------------------------------------
+  -- Output Assignements
+  ------------------------------------------------------------------------------
 
     o_data <= p_data_out_reg; 
 end rtl;

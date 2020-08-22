@@ -2,10 +2,10 @@
 -----------------------------------------------------
 -- Project : Digital Theremin
 -----------------------------------------------------
--- File    : FIR_Decimation.vhd
+-- File    : FIR_pitch.vhd
 -- Author  : dennis.aeschbacher@students.fhnw.ch
 -----------------------------------------------------
--- Description : Applies an FIR Filter and Decimates the sampling Frequency by the factor dec
+-- Description : Applies an FIR Filter
 -----------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
@@ -17,8 +17,8 @@ generic (
     O : natural := 27 --Number of Output Bits
 );
 port (
-  clk        : in  std_ulogic;
-  reset_n       : in  std_ulogic;
+  clk        : in  std_ulogic;      --clock
+  reset_n       : in  std_ulogic;   --asynchronous reset
   en_in        : in boolean;                  -- input enable
   en_out       : out std_ulogic;                 -- output enable
   i_data       : in  signed( M-1 downto 0);   -- data input
@@ -28,7 +28,7 @@ end entity fir_filter_pitch;
 architecture rtl of fir_filter_pitch is
 type coeff_type is array (0 to N-1) of signed (O-1 downto 0);
 constant addstages : natural := N-1; -- Number of summation stages
-constant coeffs : coeff_type :=  ("000001101001110110",
+constant coeffs : coeff_type :=  ("000001101001110110",   --fir filter coefficients
                                   "000000101001101010",
                                   "000000110001001100",
                                   "000000111001000011",
@@ -80,6 +80,10 @@ signal count_cmb         : natural range 0 to 6;
 
 begin
 
+  ------------------------------------------------------------------------------
+  -- Registered Process
+  ------------------------------------------------------------------------------
+
  p_reg : process(reset_n,clk)
     begin
         if reset_n = '0' then
@@ -98,21 +102,30 @@ begin
         end if;
     end process p_reg;
 
+  ------------------------------------------------------------------------------
+  -- Combinatorial Process
+  -- applies the fir filter to the input signal
+  ------------------------------------------------------------------------------
+
 p_cmb : process(all)
     variable mult   : t_mult;
     variable sum    : signed(O*2-1 downto 0);
       begin 
-        p_data_in_cmb <= i_data(M-1 downto M-O) & p_data_in_reg(0 to p_data_in_reg'length-2);
+        p_data_in_cmb <= i_data(M-1 downto M-O) & p_data_in_reg(0 to p_data_in_reg'length-2);   --shift register for the delays
         l_mult : for ii in 0 to N-1 loop
-            mult(ii) := p_data_in_reg(ii)*coeffs(ii);
+            mult(ii) := p_data_in_reg(ii)*coeffs(ii);       --multiplication with the filter coefficients
         end loop l_mult;
         sum := to_signed(0,sum'length);
-        l_add : for ii in 0 to N-1 loop
+        l_add : for ii in 0 to N-1 loop     --sums up all results of previous multiplication
             sum := sum+mult(ii);
         end loop l_add;
         p_data_out_cmb <= sum(O*2-1 downto O);
     
     end process p_cmb;
+
+  ------------------------------------------------------------------------------
+  -- Output Assignements
+  ------------------------------------------------------------------------------
 
     o_data <= p_data_out_reg; 
 end rtl;

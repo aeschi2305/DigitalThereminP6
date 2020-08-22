@@ -2,7 +2,7 @@ set_global_assignment -entity "digital_theremin" -library "digital_theremin" -na
 set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name IP_TOOL_VERSION "17.1"
 set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "digital_theremin" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../digital_theremin.sopcinfo"]
-set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name SLD_INFO "QSYS_NAME digital_theremin HAS_SOPCINFO 1 GENERATION_ID 1597062613"
+set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name SLD_INFO "QSYS_NAME digital_theremin HAS_SOPCINFO 1 GENERATION_ID 1598091552"
 set_global_assignment -library "digital_theremin" -name MISC_FILE [file join $::quartus(qip_path) "../digital_theremin.cmp"]
 set_global_assignment -library "digital_theremin" -name SLD_FILE [file join $::quartus(qip_path) "digital_theremin.regmap"]
 set_global_assignment -library "digital_theremin" -name SLD_FILE [file join $::quartus(qip_path) "digital_theremin.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "digital_theremin" -library "digital_theremin" -na
 set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTU5NzA2MjYxMw==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTU5ODA5MTU1Mg==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNTRU1BNUYzMUM2::QXV0byBERVZJQ0U="
 set_global_assignment -entity "digital_theremin" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Ng==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -934,6 +934,7 @@ set_global_assignment -entity "Volume_generation_top" -library "digital_theremin
 set_global_assignment -entity "Volume_generation_top" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "Y2ljMUJpdHM=::MjE=::Y2ljMUJpdHM="
 set_global_assignment -entity "Volume_generation_top" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "Y2ljMkJpdHM=::MjU=::Y2ljMkJpdHM="
 set_global_assignment -entity "Volume_generation_top" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "Y2ljM0JpdHM=::Mjg=::Y2ljM0JpdHM="
+set_global_assignment -entity "Volume_generation_top" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "Y29yZGljX2RlZl9mcmVx::NTMyMDAw::Y29yZGljX2RlZl9mcmVx"
 set_global_assignment -entity "digital_theremin_touch_panel_spi" -library "digital_theremin" -name IP_COMPONENT_NAME "ZGlnaXRhbF90aGVyZW1pbl90b3VjaF9wYW5lbF9zcGk="
 set_global_assignment -entity "digital_theremin_touch_panel_spi" -library "digital_theremin" -name IP_COMPONENT_DISPLAY_NAME "U1BJICgzIFdpcmUgU2VyaWFsKQ=="
 set_global_assignment -entity "digital_theremin_touch_panel_spi" -library "digital_theremin" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1667,6 +1668,7 @@ set_global_assignment -entity "pitch_generation_top" -library "digital_theremin"
 set_global_assignment -entity "pitch_generation_top" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "Y2ljM0JpdHM=::Mjg=::Y2ljM0JpdHM="
 set_global_assignment -entity "pitch_generation_top" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "RklSQml0cw==::Mjc=::RklSQml0cw=="
 set_global_assignment -entity "pitch_generation_top" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "U3RyZWFtaW5nQml0cw==::MjQ=::U3RyZWFtaW5nQml0cw=="
+set_global_assignment -entity "pitch_generation_top" -library "digital_theremin" -name IP_COMPONENT_PARAMETER "Y29yZGljX2RlZl9mcmVx::NTYyMDAw::Y29yZGljX2RlZl9mcmVx"
 set_global_assignment -entity "digital_theremin_jtag" -library "digital_theremin" -name IP_COMPONENT_NAME "ZGlnaXRhbF90aGVyZW1pbl9qdGFn"
 set_global_assignment -entity "digital_theremin_jtag" -library "digital_theremin" -name IP_COMPONENT_DISPLAY_NAME "SlRBRyBVQVJU"
 set_global_assignment -entity "digital_theremin_jtag" -library "digital_theremin" -name IP_COMPONENT_REPORT_HIERARCHY "Off"

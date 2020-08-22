@@ -1,0 +1,16 @@
+BLOCK		START ADDRESS		END ADDRESS
+
+Page_0		0x00000000		0x00220CDA
+epcs_cntl.hex		0x007F0000		0x008074FF
+
+
+Configuration device: 5CSEMA5
+Configuration mode: Active Serial
+Quad-Serial configuration device dummy clock cycle: 12
+
+
+Notes:
+
+- Data checksum for this conversion is 0xE06B7CAC
+
+- All the addresses in this file are byte addresses

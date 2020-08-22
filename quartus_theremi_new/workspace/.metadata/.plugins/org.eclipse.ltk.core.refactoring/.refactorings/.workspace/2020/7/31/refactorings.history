@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;digital_Theremin/touch&apos;" deleteContents="false" description="Delete resource &apos;digital_Theremin/touch&apos;" element1="/digital_Theremin/touch" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1596123803518"/>
-</session>

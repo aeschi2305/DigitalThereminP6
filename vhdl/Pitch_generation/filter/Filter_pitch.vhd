@@ -3,7 +3,7 @@
 -- Project : Digital Theremin
 -----------------------------------------------------
 -- File    : Filter_pitch.vhd
--- Author  : andreas.frei@students.fhnw.ch
+-- Author  : dennis.aeschbacher@students.fhnw.ch
 -----------------------------------------------------
 -- Description : Decimation CIC-Filter and FIR-Filter
 -----------------------------------------------------
@@ -24,16 +24,16 @@ entity filter_pitch is
      clk      	    : in  std_ulogic; -- clock
      mixer_out 	    : in signed(N-1 downto 0);				--Input signal
 
-     cic1o          : out signed(cic1Bits-1 downto 0);
-     cic2o          : out signed(cic2Bits-1 downto 0);
-     cic3o          : out signed(cic3Bits-1 downto 0);
+     cic1o          : out signed(cic1Bits-1 downto 0);  --output of the first cic filter
+     cic2o          : out signed(cic2Bits-1 downto 0);  --output of the second cic filter
+     cic3o          : out signed(cic3Bits-1 downto 0);  --output of the third cic filter
 
-     cic1_en        : out boolean;
-     cic2_en        : out boolean;
-     cic3_en        : out boolean;
+     cic1_en        : out boolean;        --enable of the first cic filter
+     cic2_en        : out boolean;        --enable of the second cic filter
+     cic3_en        : out boolean;        --enable of the third cic filter
 
-     FIR_out        : out signed(FIRBits-1 downto 0);
-     FIR_enable     : out std_ulogic
+     FIR_out        : out signed(FIRBits-1 downto 0);   --output of the fir filter
+     FIR_enable     : out std_ulogic                    --enable of the fir filter
 
   );
 end entity filter_pitch;

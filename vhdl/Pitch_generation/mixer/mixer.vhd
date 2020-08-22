@@ -19,8 +19,8 @@ entity mixer is
   	 reset_n  	  : in  std_ulogic; -- asynchronous reset
      clk      	  : in  std_ulogic; -- clock
      square_freq  : in  std_ulogic; -- asynchronous reset, active low
-     sine 		    : in signed(N-1 downto 0);
-     mixer_out 	  : out signed(N-1 downto 0)
+     sine 		    : in signed(N-1 downto 0);  --input signal from cordic processor
+     mixer_out 	  : out signed(N-1 downto 0)  --mixed signals
   );
 end entity mixer;
 
@@ -43,6 +43,7 @@ begin
   end process p_reg;
   ------------------------------------------------------------------------------
   -- Combinatorial Process
+  -- "multiplies" the square wave and the sine wave
   ------------------------------------------------------------------------------
   p_cmb : process (all)
   begin

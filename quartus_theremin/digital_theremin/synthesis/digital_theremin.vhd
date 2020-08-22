@@ -261,12 +261,13 @@ architecture rtl of digital_theremin is
 
 	component pitch_generation_top is
 		generic (
-			dat_len_avl   : natural := 32;
-			cic1Bits      : natural := 21;
-			cic2Bits      : natural := 25;
-			cic3Bits      : natural := 28;
-			FIRBits       : natural := 27;
-			StreamingBits : natural := 24
+			dat_len_avl     : natural := 32;
+			cic1Bits        : natural := 21;
+			cic2Bits        : natural := 25;
+			cic3Bits        : natural := 28;
+			FIRBits         : natural := 27;
+			StreamingBits   : natural := 24;
+			cordic_def_freq : natural := 562000
 		);
 		port (
 			csi_clk           : in  std_logic                     := 'X';             -- clk
@@ -376,10 +377,11 @@ architecture rtl of digital_theremin is
 
 	component Volume_generation_top is
 		generic (
-			dat_len_avl : natural := 32;
-			cic1Bits    : natural := 21;
-			cic2Bits    : natural := 25;
-			cic3Bits    : natural := 28
+			dat_len_avl     : natural := 32;
+			cic1Bits        : natural := 21;
+			cic2Bits        : natural := 25;
+			cic3Bits        : natural := 28;
+			cordic_def_freq : natural := 532000
 		);
 		port (
 			csi_clk           : in  std_logic                     := 'X';             -- clk
@@ -1021,12 +1023,13 @@ begin
 
 	pitch_generation_0 : component pitch_generation_top
 		generic map (
-			dat_len_avl   => 32,
-			cic1Bits      => 21,
-			cic2Bits      => 25,
-			cic3Bits      => 28,
-			FIRBits       => 27,
-			StreamingBits => 24
+			dat_len_avl     => 32,
+			cic1Bits        => 21,
+			cic2Bits        => 25,
+			cic3Bits        => 28,
+			FIRBits         => 27,
+			StreamingBits   => 24,
+			cordic_def_freq => 562000
 		)
 		port map (
 			csi_clk           => pll_sig_proc_outclk0_clk,                           --         clock.clk
@@ -1128,10 +1131,11 @@ begin
 
 	volume_generation_0 : component Volume_generation_top
 		generic map (
-			dat_len_avl => 32,
-			cic1Bits    => 21,
-			cic2Bits    => 25,
-			cic3Bits    => 28
+			dat_len_avl     => 32,
+			cic1Bits        => 21,
+			cic2Bits        => 25,
+			cic3Bits        => 28,
+			cordic_def_freq => 532000
 		)
 		port map (
 			csi_clk           => pll_sig_proc_outclk0_clk,                            --         clock.clk

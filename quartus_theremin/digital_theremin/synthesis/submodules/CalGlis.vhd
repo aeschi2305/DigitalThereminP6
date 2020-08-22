@@ -19,18 +19,18 @@ entity CalGlis is
     glis_allow  : boolean        -- enables the glissando functionality
   );
   port(
-    reset_n     : in std_ulogic;
-    clk         : in std_ulogic;
-    freq        : in unsigned(freq_len-1 downto 0);
-    freq_diff   : out signed(freq_len-1 downto 0);
-    cal_enable  : in std_ulogic;
-    gli_enable  : in std_ulogic;
-    mus_scale   : in std_ulogic;
-    freq_enable : in std_ulogic;
-    cal_done    : out std_ulogic;
-    delay_index : in natural range 0 to 9;
-    freq_meas	: in std_ulogic;
-    freq_disp   : out std_logic_vector(31 downto 0)
+    reset_n     : in std_ulogic;        --asynchronous reset
+    clk         : in std_ulogic;        --clock
+    freq        : in unsigned(freq_len-1 downto 0);     --measured frequency
+    freq_diff   : out signed(freq_len-1 downto 0);      --frequency difference to cordic control
+    cal_enable  : in std_ulogic;        --enables calibration
+    gli_enable  : in std_ulogic;        --enables glissando effect
+    mus_scale   : in std_ulogic;        --controls musical scale (1 = pentatonic, 0 = classic)
+    freq_enable : in std_ulogic;        --frequency measurement enable
+    cal_done    : out std_ulogic;       --done bit for calibration
+    delay_index : in natural range 0 to 9;      --glissando effect delay 
+    freq_meas	: in std_ulogic;        --controls wheter to wait for measurement or to calibrate/glissando
+    freq_disp   : out std_logic_vector(31 downto 0)     --frequency and index value for nios
   );
 end entity CalGlis;
 	
@@ -138,12 +138,12 @@ constant freq_threas  : t_threas_array :=   ("00000000000000111111100011",   --t
                                             "00000000001110001001110010",
                                             "00000000001110111111101001",
                                             "00000000001111111000101110",
-                                            "00000000010000110101001011");--values for when the frequency is approximated enough
+                                            "00000000010000110101001011");
 
-type t_threas_penta_array is array(integer range 0 to 21) of signed(freq_len-1 downto 0);
+type t_threas_penta_array is array(integer range 0 to 21) of signed(freq_len-1 downto 0); 
 
 constant freq_threas_penta  : t_threas_penta_array :=  
-                                            ("00000000000000111111100011",
+                                            ("00000000000000111111100011",      --threashold values of the frequencies of the pitches (pentatonic)
                                             "00000000000001001001011011",
                                             "00000000000001010100110101",
                                             "00000000000001100010000000",
@@ -168,7 +168,7 @@ constant freq_threas_penta  : t_threas_penta_array :=
 
 
 
-constant tolerance_values : t_freq_array := ("00000000000000000000001111",
+constant tolerance_values : t_freq_array := ("00000000000000000000001111",      --values for when the frequency is approximated enough
     										"00000000000000000000001111",
     										"00000000000000000000010000",
     										"00000000000000000000010001",
@@ -298,7 +298,7 @@ constant penta_index : t_penta_index := (1,
 
 type t_max_count_array is array(integer range 0 to 9) of natural range 0 to 1048576;
 
-constant max_count : t_max_count_array := (100,     --kein Delay
+constant max_count : t_max_count_array := (100,     --no Delay
                                            27000,   --ca. 50ms Delay
                                            54000,   --ca. 100ms Delay
                                            108000,   --ca. 200ms Delay
@@ -316,7 +316,6 @@ constant min_freq_val      : signed(freq_len-1 downto 0) := (freq_len-1 downto 1
 constant cal_val        : unsigned(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "111100000000";  -- corresponds to 120Hz
 constant cal_stp        : signed(freq_len-1 downto 0) := (freq_len-1 downto 12 => '0') & "000001000000"; --"000001000000";  -- corresponds to 2Hz 
 
---constant freq_cal_max   : signed(freq_len-1 downto 0) := (freq_len-1 downto 20 => '0') & "01001110001000000000";
 constant freq_cal_max_neg : signed(freq_len-1 downto 0) := (freq_len-1 downto 20 => '1') & "11011000111100000000";
                                                                                             
 signal freq_diff_reg    : signed(freq_len-1 downto 0);
@@ -372,18 +371,20 @@ signal state_disp_cs : state_type_display; -- current state
 
 
 begin
-
+    
+  ------------------------------------------------------------------------------
+  -- Combinatorial Process to determine next state
+  ------------------------------------------------------------------------------
 
     p_fsm_nxt : process(all)
 
     begin
-            -- default
         state_ns <= state_cs; 
         case state_cs is
 
             when s_idle =>
                 if init = '1' then 
-                    if cal_enable = '1' and freq_enable = '1' then
+                    if cal_enable = '1' and freq_enable = '1' then 
                         state_ns <= s_reset;
                     elsif glis_allow = true and freq_enable = '1' then
                         state_ns <= s_freq_range;
@@ -433,6 +434,10 @@ begin
         end case;
 
     end process p_fsm_nxt;
+
+      ------------------------------------------------------------------------------
+      -- Registered Process for the State Machine
+      ------------------------------------------------------------------------------
 
     p_fsm_reg : process(reset_n,clk)
     
@@ -490,7 +495,7 @@ begin
 
 
 
-                when s_sign =>                      --Used to determin if the frequency of the reference oscillator is bigger
+                when s_sign =>                      --Used to determine if the frequency of the reference oscillator is bigger
                     done <= '0';
                     if freq_enable = '1' and delay = '1' then
                         if meas = '0' then
@@ -574,6 +579,10 @@ begin
         end if;
     end process p_fsm_reg;
 
+  ------------------------------------------------------------------------------
+  -- Registered Process
+  -- converts the index value for the nios
+  ------------------------------------------------------------------------------
 
     p_reg : process(reset_n,clk)
     
@@ -593,12 +602,15 @@ begin
         end if;
     end process p_reg;
 
+  ------------------------------------------------------------------------------
+  -- Combinatorial Process of the State Machine
+  ------------------------------------------------------------------------------
+
     p_fsm_cmb : process(all)
     variable gli_index : integer range 0 to pitch_values'length;
     variable step_tmp : signed(freq_len downto 0);
     variable freq_gli_cmb_tmp : signed(freq_len-1 downto 0);
     begin
-        --freq_check <= signed(freq(freq_len-2 downto 0)) + min_freq_val(freq_len-3 downto 0) & "00";           --freq + 400Hz
         freq_sign  <= freq_cal_reg + min_freq_val;                               --freq_cal_reg + 100Hz
         freq_sign_chn <= freq_cal_reg + signed(freq(freq_len-2 downto 0) & '0'); --freq_cal_reg + 2 * freq
         freq_cal_cmb <= freq_cal_reg - cal_stp;
@@ -631,6 +643,10 @@ begin
 
         freq_diff_cmb <= freq_cal_reg + freq_gli_reg;
     end process p_fsm_cmb;
+
+  ------------------------------------------------------------------------------
+  -- Output assignements
+  ------------------------------------------------------------------------------
 
     freq_diff <= freq_diff_reg;
     freq_disp <= disp_index & std_logic_vector(freq_actual_reg);

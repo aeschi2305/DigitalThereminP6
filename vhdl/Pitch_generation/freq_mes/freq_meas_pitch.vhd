@@ -2,7 +2,7 @@
 -----------------------------------------------------
 -- Project : Digital Theremin
 -----------------------------------------------------
--- File    : freq_mes.vhd
+-- File    : freq_meas_pitch.vhd
 -- Author  : dennis.aeschbacher@students.fhnw.ch
 -----------------------------------------------------
 -- Description : Frequency measurement 
@@ -21,18 +21,18 @@ entity freq_meas_pitch is
     dat_len_avl : natural := 32
   );
   port(
-    reset_n       : in std_ulogic;
-    clk           : in std_ulogic;
+    reset_n       : in std_ulogic;    --asynchronous reset
+    clk           : in std_ulogic;    --clock
     -- Slave Port
-    avs_address   : in  std_logic_vector(1 downto 0);
-    avs_write     : in std_logic;
-    avs_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
-    avs_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
+    avs_address   : in  std_logic_vector(1 downto 0);   --address signal of memory mapped bus
+    avs_write     : in std_logic;                       --write signal of memory mapped bus
+    avs_writedata : in std_logic_vector(dat_len_avl-1 downto 0);  --writedata signal of memory mapped bus
+    avs_readdata  : out std_logic_vector(dat_len_avl-1 downto 0); --readdata signal of memory mapped bus
 
-    audio_out     : in signed(sine_N-1 downto 0); 
-    freq_diff     : out signed(N+Qprec-1 downto 0);
-    meas_enable  : in boolean;
-    Cal_Glis_enable : in std_logic_vector(1 downto 0)
+    audio_out     : in signed(sine_N-1 downto 0);     --audio signal to be measured
+    freq_diff     : out signed(N+Qprec-1 downto 0);   -- calculated frequency difference for cordic control
+    meas_enable  : in boolean;                        -- enable for the audio signal
+    Cal_Glis_enable : in std_logic_vector(1 downto 0) 
   );
 end entity freq_meas_pitch;
 
@@ -150,15 +150,12 @@ end component CalGlis;
   signal freq_data_reg   : std_logic_vector(dat_len_avl-1 downto 0);
   signal delay_reg       : std_logic_vector(dat_len_avl-1 downto 0);
 
-  --signal Cal_Glis_1 : std_logic_vector(1 downto 0);
-  --signal Cal_Glis_2 : std_logic_vector(1 downto 0);
-  --signal Cal_Glis_3 : std_logic_vector(1 downto 0);
 
   signal delay : integer range 0 to 9;
 
 begin
   ------------------------------------------------------------------------------
-  -- Registerd Process
+  -- Registerd Process to control memory mapped bus
   ------------------------------------------------------------------------------
  p_wr : process(reset_n,clk)
  begin
@@ -166,9 +163,6 @@ begin
      cntrl_reg <= (31 downto 3 => '0') & "100"; --default calibration off, glissando off, penattonic sclae on
      delay_reg <= (31 downto 3 => '0') & "010"; 
    elsif rising_edge(clk) then
-    --Cal_Glis_1 <= Cal_Glis_enable;
-    --Cal_Glis_2 <= Cal_Glis_1;
-    --Cal_Glis_3 <= Cal_Glis_1 and not Cal_Glis_2;
      if avs_write = '1' then
        case avs_address is
          when "00" => cntrl_reg <= avs_writedata;
@@ -180,13 +174,12 @@ begin
           cntrl_reg(1) <= '0';
         end if;
      end if;
-     --if Cal_Glis_3(0) = '1' then
-     --  cntrl_reg(1) <= '1';
-     --elsif Cal_Glis_3(1) = '1' then
-     --  cntrl_reg(0) <= not cntrl_reg(0);
-     --end if;
    end if;
  end process p_wr;
+
+  ------------------------------------------------------------------------------
+  -- Combinatorial Process to control memory mapped bus
+  ------------------------------------------------------------------------------
 
  p_rd : process(all)
  begin
@@ -197,7 +190,9 @@ begin
     end case;
  end process p_rd;
 
-
+  ------------------------------------------------------------------------------
+  -- Registerd Process to control goldschmidt initialisation and start
+  ------------------------------------------------------------------------------
 
 p_reg : process(reset_n,clk)
   begin
@@ -216,17 +211,8 @@ p_reg : process(reset_n,clk)
         init <= '0';
         start <= '0';
       end if;
-
-
-
     end if;
 end process p_reg;
-
-delay <= to_integer(unsigned(delay_reg));
-
-  ------------------------------------------------------------------------------
-  -- Combinatorial Process
-  ------------------------------------------------------------------------------
   
   ------------------------------------------------------------------------------
   -- Component assignements
@@ -307,4 +293,5 @@ delay <= to_integer(unsigned(delay_reg));
   -- Output Assignments
   ------------------------------------------------------------------------------
   freq_diff <= freq_diff_int;
+  delay <= to_integer(unsigned(delay_reg));
 end rtl;

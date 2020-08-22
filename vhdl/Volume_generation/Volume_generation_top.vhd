@@ -15,9 +15,10 @@ use ieee.numeric_std.all;
 entity Volume_generation_top is
   generic (
     dat_len_avl : natural := 32;   --Number of Bits of Avalon data w/r
-    cic1Bits : natural := 21;
-    cic2Bits : natural := 25;
-    cic3Bits : natural := 28
+    cic1Bits : natural := 21;      --output bits of the first cic filter
+    cic2Bits : natural := 25;      --output bits of the second cic filter
+    cic3Bits : natural := 28;       --output bits of the third cic filter
+    cordic_def_freq : natural := 532000 --default frequency of der Referenceoscillator
   );
   port( 
     -- Avalon Clock Reset Interfaces
@@ -28,10 +29,10 @@ entity Volume_generation_top is
     avs_sVG_writedata : in std_logic_vector(dat_len_avl-1 downto 0);
     avs_sVG_readdata  : out std_logic_vector(dat_len_avl-1 downto 0);
     -- Avalon conduit Interfaces
-    coe_square_freq   : in std_logic;
-    coe_freq_up_down  : in std_logic_vector(1 downto 0);
-    coe_vol_volume    : out std_logic_vector(17 downto 0);
-    coe_vol_enable    : out std_logic
+    coe_square_freq   : in std_logic;   --square wave of the antenna oscillator
+    coe_freq_up_down  : in std_logic_vector(1 downto 0);  --manual calibration signal
+    coe_vol_volume    : out std_logic_vector(17 downto 0); --volume value for pitch generation
+    coe_vol_enable    : out std_logic       --enable for volume value
   );
 end entity Volume_generation_top;
 
@@ -39,7 +40,7 @@ architecture struct of Volume_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 532000;--555000;
+  
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:

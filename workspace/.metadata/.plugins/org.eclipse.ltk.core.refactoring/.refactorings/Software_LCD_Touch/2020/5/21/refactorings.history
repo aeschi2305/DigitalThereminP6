@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Software_LCD_Touch/graphic_lib&apos; to &apos;graphics&apos;" description="Rename resource &apos;graphic_lib&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="graphic_lib" name="graphics" stamp="1590144820605" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Software_LCD_Touch/graphics/graphics_form.c&apos; to &apos;graphics.c&apos;" description="Rename resource &apos;graphics_form.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="graphics/graphics_form.c" name="graphics.c" stamp="1590144835960" updateReferences="true"/>
-</session>

@@ -1,7 +1,0 @@
---from 
-
-AUD_XCK <= audio_pll_0_audio_clk_clk;
-
-AUD_XCK           			  : out std_logic
-
-

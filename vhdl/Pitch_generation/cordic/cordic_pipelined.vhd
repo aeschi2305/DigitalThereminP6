@@ -18,10 +18,10 @@ entity cordic_pipelined is
     stages : natural := 3
   );
   port(
-    reset_n : in std_ulogic;
-    clk : in std_ulogic;
-    phi : in signed(N-1 downto 0);
-    sine : out signed(N-1 downto 0)
+    reset_n : in std_ulogic;          -- asynchronous reset
+    clk : in std_ulogic;              -- clock
+    phi : in signed(N-1 downto 0);    -- angle from cordic control
+    sine : out signed(N-1 downto 0)   -- calculated sine wave
   );
 end entity cordic_pipelined;
 

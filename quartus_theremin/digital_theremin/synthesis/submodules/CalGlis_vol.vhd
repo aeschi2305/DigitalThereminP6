@@ -6,7 +6,7 @@
 -- File    : CalGlis_vol.vhd
 -- Author  : dennis.aeschbacher@students.fhnw.ch
 -----------------------------------------------------
--- Description : controls the calibration process and the glissando effect
+-- Description : controls the calibration process (Glissando ist not used here)
 -----------------------------------------------------
 
 library ieee;
@@ -19,16 +19,16 @@ entity CalGlis_vol is
     glis_allow : boolean        -- enables the glissando functionality
   );
   port(
-    reset_n : in std_ulogic;
-    clk : in std_ulogic;
-    freq : in unsigned(freq_len-1 downto 0);
-    freq_diff : out signed(freq_len-1 downto 0);
-    cal_enable : in std_ulogic;
-    gli_enable : in std_ulogic;
-    freq_enable : in std_ulogic;
-    cal_done   : out std_ulogic;
-    delay_index : in natural range 0 to 9;
-    freq_meas	: in std_ulogic
+    reset_n : in std_ulogic;        --asynchronous reset
+    clk : in std_ulogic;        --clock
+    freq : in unsigned(freq_len-1 downto 0);         --measured frequency
+    freq_diff : out signed(freq_len-1 downto 0);         --frequency difference to cordic control
+    cal_enable : in std_ulogic;          --enables calibration
+    gli_enable : in std_ulogic;          --enables glissando effect
+    freq_enable : in std_ulogic;         --frequency measurement enable
+    cal_done   : out std_ulogic;         --done bit for calibration
+    delay_index : in natural range 0 to 9;       --glissando effect delay 
+    freq_meas	: in std_ulogic          --controls wheter to wait for measurement or to calibrate/glissando
   );
 end entity CalGlis_vol;
 	
@@ -136,10 +136,9 @@ constant freq_threas  : t_threas_array :=   ("00000000000000111111100011",   --t
                                             "00000000001110001001110010",
                                             "00000000001110111111101001",
                                             "00000000001111111000101110",
-                                            "00000000010000110101001011");--values for when the frequency is approximated enough
+                                            "00000000010000110101001011");
 
-
-constant tolerance_values : t_freq_array := ("00000000000000000000001111",
+constant tolerance_values : t_freq_array := ("00000000000000000000001111",  --values for when the frequency is approximated enough
     										"00000000000000000000001111",
     										"00000000000000000000010000",
     										"00000000000000000000010001",
@@ -304,12 +303,15 @@ signal state_cs : state_type; -- current state
 
 
 begin
-
+ 
+  ------------------------------------------------------------------------------
+  -- Combinatorial Process to determine next state
+  ------------------------------------------------------------------------------
 
     p_fsm_nxt : process(all)
 
     begin
-            -- default
+
         state_ns <= state_cs; 
         case state_cs is
 
@@ -363,6 +365,10 @@ begin
         end case;
 
     end process p_fsm_nxt;
+
+      ------------------------------------------------------------------------------
+      -- Registered Process for the State Machine
+      ------------------------------------------------------------------------------
 
     p_fsm_reg : process(reset_n,clk)
     
@@ -495,6 +501,9 @@ begin
         end if;
     end process p_fsm_reg;
 
+      ------------------------------------------------------------------------------
+      -- Combinatorial Process of the State Machine
+      ------------------------------------------------------------------------------
 
 
     p_fsm_cmb : process(all)
@@ -527,6 +536,10 @@ begin
 
         freq_diff_cmb <= freq_cal_reg + freq_gli_reg;
     end process p_fsm_cmb;
+
+------------------------------------------------------------------------------
+-- Output assignements
+------------------------------------------------------------------------------
 
 freq_diff <= freq_diff_reg;
  

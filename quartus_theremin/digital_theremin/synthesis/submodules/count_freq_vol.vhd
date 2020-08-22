@@ -2,8 +2,8 @@
 -----------------------------------------------------
 -- Project : Digital Theremin
 -----------------------------------------------------
--- File    : freq_mes.vhd
--- Author  : 
+-- File    : count_freq_vol.vhd
+-- Author  : dennis.aeschbacher¨@students.fhnw.ch
 -----------------------------------------------------
 -- Description : Frequency measurement through counting
 -----------------------------------------------------
@@ -18,14 +18,14 @@ entity count_freq_vol is
      min_per : natural := 24     --minimum period count value
     );
   port(
-    reset_n : in std_ulogic;
-    clk : in std_ulogic;
+    reset_n : in std_ulogic;    --asynchro
+    clk : in std_ulogic;    --clock
 
-    filt_in     : in signed(sine_N-1 downto 0); 
-    per_cnt      : out unsigned(N-1 downto 0); 
-    enable_in		: in std_ulogic;
-    enable_out  : out std_ulogic;
-    freq_meas    : out std_ulogic
+    filt_in     : in signed(sine_N-1 downto 0);   --input from fir filter
+    per_cnt      : out unsigned(N-1 downto 0);  --result of the counting
+    enable_in		: in std_ulogic;   --input enable
+    enable_out  : out std_ulogic;    --output enable
+    freq_meas    : out std_ulogic    --controls when to measure and when to calibrate in CalGlis_vol
   );
 end entity count_freq_vol;
 
@@ -69,7 +69,7 @@ begin
      threas <= '0';
    elsif rising_edge(clk) then
      if enable_in = '1' then
-        sine_in_reg(0) <= filt_in;
+        sine_in_reg(0) <= filt_in;      --saves the current and old value to check if Zero crossing later
         sine_in_reg(1) <= sine_in_reg(0);
         if sine_in_reg(0) < threas_val_1 then
           threas_val_1 <= sine_in_reg(0);
@@ -78,7 +78,7 @@ begin
           threas <= '1';
         end if;          
         en_out <= '0';
-        if threas = '1' and (sine_in_reg(1) < ZERO) and (sine_in_reg(0) >= ZERO) then 
+        if threas = '1' and (sine_in_reg(1) < ZERO) and (sine_in_reg(0) >= ZERO) then   --checks if Zero crossing
           threas_val_2 <= '1' & threas_val_1(sine_N-1 downto 1);
           threas_val_1 <= (others => '0');
           threas <= '0';

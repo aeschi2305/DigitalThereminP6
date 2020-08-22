@@ -1,4 +1,0 @@
-set_instance_assignment -name PLL_COMPENSATION_MODE DIRECT -to "*digital_theremin_pll_sig_proc*|altera_pll:altera_pll_i*|*"
- 
-set_instance_assignment -name PLL_AUTO_RESET OFF -to "*digital_theremin_pll_sig_proc*|altera_pll:altera_pll_i*|*"
-set_instance_assignment -name PLL_BANDWIDTH_PRESET AUTO -to "*digital_theremin_pll_sig_proc*|altera_pll:altera_pll_i*|*"

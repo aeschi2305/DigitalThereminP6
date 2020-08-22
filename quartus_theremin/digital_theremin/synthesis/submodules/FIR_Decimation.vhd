@@ -55,34 +55,6 @@ constant coeffs : coeff_type :=  ( "000000010101110001001010101",
                                    "000000010101110001001010101");
 
 
-
-
-
-
-
-                                  --"000000000101100110000101100",
-                                  --"111111101110011001010000011",
-                                  --"111111000101101001100010001",
-                                  --"111110001110001010101111011",
-                                  --"111101100110110001011001000",
-                                  --"111101111011011100011001010",
-                                  --"111111110000111111110011110",
-                                  --"000011001100011001010000111",
-                                  --"000111100100110101001100000",
-                                  --"001011101011111011100000110",
-                                  --"001110001011100001010000001",
-                                  --"001110001011100001010000001",
-                                  --"001011101011111011100000110",
-                                  --"000111100100110101001100000",
-                                  --"000011001100011001010000111",
-                                  --"111111110000111111110011110",
-                                  --"111101111011011100011001010",
-                                  --"111101100110110001011001000",
-                                  --"111110001110001010101111011",
-                                  --"111111000101101001100010001",
-                                  --"111111101110011001010000011",
-                                  --"000000000101100110000101100");
-
 type t_data_pipe      is array (0 to N-1) of signed(O-1  downto 0);
 type t_mult           is array (0 to N-1) of signed(O*2-1    downto 0);
 signal p_data_in_reg               : t_data_pipe;
@@ -98,6 +70,10 @@ signal count_cmb         : natural range 0 to 6;
 
 begin
 
+  ------------------------------------------------------------------------------
+  -- Registered Process
+  ------------------------------------------------------------------------------
+
  p_reg : process(reset_n,clk)
     begin
         if reset_n = '0' then
@@ -108,7 +84,7 @@ begin
             en_out <= '0';
         elsif rising_edge(clk) then
             en_out <= '0';
-            if en_in = true and count_reg < dec-1 then 
+            if en_in = true and count_reg < dec-1 then --undersampling of the signal
               p_data_in_reg <= p_data_in_cmb;
               count_reg <= count_cmb;
             elsif en_in = true then
@@ -119,22 +95,31 @@ begin
         end if;
     end process p_reg;
 
+  ------------------------------------------------------------------------------
+  -- Combinatorial Process
+  -- applies FIR Filter
+  ------------------------------------------------------------------------------
+
 p_cmb : process(all)
     variable mult               : t_mult;
     variable sum                  : signed(O*2-1 downto 0);
     begin 
-    p_data_in_cmb <= i_data(M-1 downto M-O) & p_data_in_reg(0 to p_data_in_reg'length-2);
+    p_data_in_cmb <= i_data(M-1 downto M-O) & p_data_in_reg(0 to p_data_in_reg'length-2); --shift register of the FIR filter
     l_mult : for ii in 0 to N-1 loop
-        mult(ii) := p_data_in_reg(ii)*coeffs(ii);
+        mult(ii) := p_data_in_reg(ii)*coeffs(ii);         --multiplication with all coefficients
     end loop l_mult;
     sum := to_signed(0,sum'length);
-    l_add : for ii in 0 to N-1 loop
+    l_add : for ii in 0 to N-1 loop               --sums up all products
         sum := sum+mult(ii);
     end loop l_add;
     p_data_out_cmb <= sum(O*2-1 downto O);
 
     count_cmb <= count_reg + 1;
     end process p_cmb;
+
+  ------------------------------------------------------------------------------
+  -- Output Assignments
+  ------------------------------------------------------------------------------
 
     o_data <= p_data_out_reg; 
 end rtl;

@@ -1,9 +1,0 @@
-15:29:14 **** Incremental Build of configuration Nios II for project Software_LCD_Touch ****
-make all 
-Info: Building ../Software_LCD_Touch_bsp/
-C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Software_LCD_Touch_bsp/
-[BSP build complete]
-[Software_LCD_Touch build complete]
-
-15:29:15 Build Finished (took 907ms)
-

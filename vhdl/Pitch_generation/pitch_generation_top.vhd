@@ -15,11 +15,12 @@ use ieee.numeric_std.all;
 entity pitch_generation_top is
   generic (
     dat_len_avl : natural := 32;   --Number of Bits of Avalon data w/r
-    cic1Bits : natural := 21;
-    cic2Bits : natural := 25;
-    cic3Bits : natural := 28;
-    FIRBits : natural := 27;
-    StreamingBits : natural := 24
+    cic1Bits : natural := 21;      --output bits of the first cic filter
+    cic2Bits : natural := 25;      --output bits of the second cic filter
+    cic3Bits : natural := 28;      --output bits of the third cic filter
+    FIRBits : natural := 27;       --output bits of the fir filter
+    StreamingBits : natural := 24;  --bits of the streaming interface
+    cordic_def_freq :natural := 562000  --default frequency of der Referenceoscillator
   );
   port( 
     -- Avalon Clock Reset Interfaces
@@ -36,19 +37,18 @@ entity pitch_generation_top is
     aso_se_data       : out std_logic_vector(23 downto 0);
 
     -- Avalon conduit Interfaces
-    coe_square_freq   : in std_logic;
-    coe_freq_up_down  : in std_logic_vector(1 downto 0);
-    coe_Cal_Glis      : in std_logic_vector(1 downto 0);
-    coe_vol_volume    : in std_logic_vector(17 downto 0);
-    coe_vol_enable    : in std_logic
-  );
+    coe_square_freq   : in std_logic;   --square wave of the antenna oscillator
+    coe_freq_up_down  : in std_logic_vector(1 downto 0);    --manual calibration signal
+    coe_Cal_Glis      : in std_logic_vector(1 downto 0);    --control over calibration and Glissando 
+    coe_vol_volume    : in std_logic_vector(17 downto 0);   --volume value from volume generation
+    coe_vol_enable    : in std_logic                        --enable for volume value
+  );    
 end entity pitch_generation_top;
 
 architecture struct of pitch_generation_top is
   -- Architecture declarations
   constant N      : natural := 16;
   constant stages : natural := 3;
-  constant cordic_def_freq :natural := 562000;--569800;
   constant sine_N : natural := 18;
 
   -- Internal signal declarations:
