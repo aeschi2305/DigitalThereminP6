@@ -1,2 +1,2 @@
-# DigitalThereminVHDL
-VHDL Code for the Digital Theremin
+# DigitalTheremin
+Project Files for the Bachelor Thesis digital Theremin
